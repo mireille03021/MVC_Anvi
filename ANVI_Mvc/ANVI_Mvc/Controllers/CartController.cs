@@ -67,6 +67,7 @@ namespace ANVI_Mvc.Controllers
             currentCart.AddQuantity(pdid);
             return RedirectToAction("ShoppingCart", "Cart");
         }
+        //123123123123123213123
         [HttpPost]
         public ActionResult ReduceQuantity(string pdid)  //指定物品用
         {
