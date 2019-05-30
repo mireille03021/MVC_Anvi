@@ -34,17 +34,17 @@
 
                         <div class="section__header os-header">
                             <!-- <svg class="icon-svg icon-svg--color-accent icon-svg--size-48 os-header__hanging-icon os-header__hanging-icon--animate" aria-hidden="true" focusable="false">
-                                <use xlink:href="#checkmark">
-                                    <symbol id="checkmark">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none" stroke-width="2" class="checkmark">
-                                            <path class="checkmark__circle" d="M25 49c13.255 0 24-10.745 24-24S38.255 1 25 1 1 11.745 1 25s10.745 24 24 24z">
+                <use xlink:href="#checkmark">
+                    <symbol id="checkmark">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none" stroke-width="2" class="checkmark">
+                            <path class="checkmark__circle" d="M25 49c13.255 0 24-10.745 24-24S38.255 1 25 1 1 11.745 1 25s10.745 24 24 24z">
 
-                                            </path>
-                                            <path class="checkmark__check" d="M15 24.51l7.307 7.308L35.125 19"></path>
-                                        </svg>
-                            </symbol>
-                            </use>
-                            </svg> -->
+                            </path>
+                            <path class="checkmark__check" d="M15 24.51l7.307 7.308L35.125 19"></path>
+                        </svg>
+            </symbol>
+            </use>
+            </svg> -->
                             <div class="svggo">
 
                             </div>
@@ -82,7 +82,7 @@
                                     <p class="os-step__descriotion">You'll get shipping and delivery update by email.</p>
 
 
-\
+                                    \
                                 </div>
                             </div>
 
@@ -131,9 +131,9 @@
                                                 }
                                                 else
                                                 {
-                                                @ViewData["CustomerName"]
-                                                <br> @ViewData["Address"]
-                                                <br> @ViewData["Zipcode"] @ViewData["City"]
+                                                    @ViewData["CustomerName"]
+                                                    <br> @ViewData["Address"]
+                                                    <br> @ViewData["Zipcode"] @ViewData["City"]
 
                                                 }
 
@@ -150,20 +150,24 @@
 
                     </div>
 
+                    @using (Html.BeginForm("ShoppingCart", "Cart", FormMethod.Post))
+                    {
+                        <div class=" step__footer ">
 
-                    <div class=" step__footer ">
-                        <button id="continue_button " class="step__footer__continue-btn btn " type="submit " name="button ">
-                            <!-- loading ICON -->
-                            <span class="btn__content ">繼續購物</span>
-                        </button>
-                        <P class="step__footer__info">
-                            Need help?
-                            <a href=" ">
-                                Contact us
-                            </a>
-                        </P>
+                            <button id="continue_button " class="step__footer__continue-btn btn " type="submit " name="button ">
+                                <!-- loading ICON -->
+                                <span class="btn__content ">繼續購物</span>
+                            </button>
+                            <P class="step__footer__info">
+                                Need help?
+                                <a href=" ">
+                                    Contact us
+                                </a>
+                            </P>
 
-                    </div>
+                        </div>
+                    }
+
 
                 </div>
                 <!-- 一堆SPAN -->
