@@ -221,6 +221,7 @@
   <ItemGroup>
     <Content Include="Assets\css\Account.css" />
     <Content Include="Assets\css\header-styles.css" />
+    <Content Include="Assets\css\Home__Slideshow.css" />
     <Content Include="Assets\css\Login.css" />
     <Content Include="Assets\css\Order_Check.css" />
     <Content Include="Assets\css\Order_Customerclone.css" />
@@ -263,6 +264,9 @@
     <Content Include="Assets\images\EarRings\G_900x.jpg" />
     <Content Include="Assets\images\EarRings\S2_b7105dbe-3ff4-4485-971e-fe5209408ec6_1000x.jpg" />
     <Content Include="Assets\images\EarRings\S_c13dd082-9ddd-4e3d-95de-1b427f0bc827_1000x.jpg" />
+    <Content Include="Assets\images\Home\ANVI-APRIL-ARRIVAL-Cover-Mobile_1800x.jpeg" />
+    <Content Include="Assets\images\Home\ANVI-APRIL-ARRIVAL-Cover_1800x.jpeg" />
+    <Content Include="Assets\images\Home\ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x %281%29.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x.png" />

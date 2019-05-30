@@ -1,31 +1,193 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@section topCSS
+{
+    <link href="~/Assets/css/Home__Slideshow.css" rel="stylesheet" />
+}
+@section endJS
+{
+    <script type="text/javascript" src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+}
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
+<main id="main" role="main">
+    <!-- BEGIN content_for_index -->
+    <div id="shopify-section-slideshow"
+         class="shopify-section shopify-section--slideshow">
+        <section id="section-slideshow"
+                 data-section-id="slideshow"
+                 data-section-type="slideshow">
+            <div class="Slideshow Slideshow--fullscreen">
+                <div class="Slideshow__Carousel Slideshow__Carousel--withScrollButton Carousel Carousel--fadeIn Carousel--fixed Carousel--insideDots"
+                     data-flickity='{ "wrapAround": true }'>
+                    <div id="Slideslide-1"
+                         class=" Slideshow__Slide Carousel__Cell is-selected"
+                         style="visibility: visible"
+                         data-slide-index="0">
+                        <div id="animation_1" class="Slideshow__ImageContainer   hidden-tablet-and-up"
+                             style=" background-image: url(/Assets/images/Home/ANVI-APRIL-ARRIVAL-Cover_1800x.jpeg)">
+                            <img class="Slideshow__Image Image--lazyLoad"
+                                 src="~/Assets/images/Home/ANVI-APRIL-ARRIVAL-Cover_1800x.jpeg"
+                                 alt="" />
+                        </div>
+                        <!-- <div class="Slideshow__ImageContainer   hidden-phone"
+                          style=" background-image: url(//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-APRIL-ARRIVAL-Cover_1x1.jpeg.jpg?v=1554252660)"
+                        >
+                          <img class="Slideshow__Image Image--lazyLoad hide-no-js"
+                            data-src="//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-APRIL-ARRIVAL-Cover_{width}x.jpeg?v=1554252660"
+                            data-optimumx="1.2"
+                            data-widths="[400, 600, 800, 1000, 1200, 1400, 1600, 1800]"
+                            data-sizes="auto"
+                            alt=""
+                          />
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                        </div> -->
+                        <!--文字框-->   <div class="s1 Slideshow__Content Slideshow__Content--middleLeft">
+                            <header class="SectionHeader">
+                                <h3 class="SectionHeader__SubHeading Heading u-h6">
+                                    金屬的光芒與鋯石的耀眼，簡約經典卻又與眾不同
+                                </h3>
+                                <h2 class="SectionHeader__Heading SectionHeader__Heading--emphasize Heading u-h1">
+                                    Monthly New Arrival
+                                </h2>
+                                <div class="SectionHeader__ButtonWrapper">
+                                    <div class="ButtonGroup ButtonGroup--spacingSmall ">
+                                        <a href="/collections/new-arrival"
+                                           class="ButtonGroup__Item Button">前往新品</a>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                    <div id="Slideslide-2"
+                         class=" Slideshow__Slide Carousel__Cell "
+                         data-slide-index="1">
+                        <div id="animation_2" class=" Slideshow__ImageContainer   hidden-tablet-and-up"
+                             style=" background-image: url(/Assets/images/Home/ANVI-APRIL-ARRIVAL-Cover-Mobile_1800x.jpeg)">
+                            <img class=" Slideshow__Image Image--lazyLoad"
+                                 src="~/Assets/images/Home/ANVI-APRIL-ARRIVAL-Cover-Mobile_1800x.jpeg"
+                                 @*data-src="//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-APRIL-ARRIVAL-Cover-2-Mobile_x800.jpeg?v=1554252655"*@
+                                 alt="" />
+                        </div>
+                        <!-- <div class="Slideshow__ImageContainer   hidden-phone"
+                          style=" background-image: url(//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-APRIL-ARRIVAL-Cover-Mobile_1x1.jpeg.jpg?v=1554252660)"
+                        >
+                          <img class="Slideshow__Image Image--lazyLoad hide-no-js"
+                            data-src="//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-APRIL-ARRIVAL-Cover-Mobile_{width}x.jpeg?v=1554252660"
+                            data-optimumx="1.2"
+                            data-widths="[400, 600, 800, 1000, 1200, 1400, 1600, 1800]"
+                            data-sizes="auto"
+                            alt=""
+                          />
+                        </div> -->
+                        <!--文字框-->
+
+                        <div class="Slideshow__Content Slideshow__Content--middleLeft">
+                            <header class="SectionHeader">
+                                <h3 class="SectionHeader__SubHeading Heading u-h6">
+                                    金屬的光芒與鋯石的耀眼，簡約經典卻又與眾不同
+                                </h3>
+                                <h2 class="SectionHeader__Heading SectionHeader__Heading--emphasize Heading u-h1">
+                                    Monthly New Arrival
+                                </h2>
+                                <div class="SectionHeader__ButtonWrapper">
+                                    <div class="ButtonGroup ButtonGroup--spacingSmall ">
+                                        <a href="/collections/new-arrival"
+                                           class="ButtonGroup__Item Button">前往新品</a>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                    <div id="Slideslide-3"
+                         class="Slideshow__Slide Carousel__Cell "
+                         data-slide-index="2">
+                        <div id="animation_3"
+                             class="Slideshow__ImageContainer   hidden-tablet-and-up"
+                             style=" background-image: url(/Assets/images/Home/ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg)">
+                            <img class="Slideshow__Image Image--lazyLoad"
+                                 src="~/Assets/images/Home/ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg"
+                                 data-src="//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_MobileHomeSlide1_x800.jpg?v=1548917929"
+                                 alt="" />
+
+                        </div>
+                        <!-- <div
+                          class="Slideshow__ImageContainer   hidden-phone"
+                          style=" background-image: url(//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1x1.jpg?v=1548917723)"
+                        >
+                          <img
+                            class="Slideshow__Image Image--lazyLoad hide-no-js"
+                            data-src="//cdn.shopify.com/s/files/1/2023/9563/files/ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_{width}x.jpg?v=1548917723"
+                            data-optimumx="1.2"
+                            data-widths="[400, 600, 800, 1000, 1200, 1400, 1600, 1800]"
+                            data-sizes="auto"
+                            alt=""
+                          />
+                        </div> -->
+                        <!--文字框-->
+                        <div class="Slideshow__Content Slideshow__Content--middleLeft">
+                            <header class="SectionHeader">
+                                <h3 class="SectionHeader__SubHeading Heading u-h6">
+                                    善用優美的格調，堅毅的自信，大膽開創自己的故事
+                                </h3>
+                                <h2 class="SectionHeader__Heading SectionHeader__Heading--emphasize Heading u-h1">
+                                    Graceful Adventure 系列
+                                </h2>
+                                <div class="SectionHeader__ButtonWrapper">
+                                    <div class="ButtonGroup ButtonGroup--spacingSmall ">
+                                        <a href="/blogs/press/graceful-adventure"
+                                           class="ButtonGroup__Item Button">探索系列</a>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+                <button data-href="#section-slideshow-end"
+                        class="Slideshow__ScrollButton RoundButton RoundButton--medium"
+                        aria-label="Scroll to content"
+                        data-animate-bottom>
+                    <svg class="Icon Icon--arrow-bottom"
+                         role="presentation"
+                         viewBox="0 0 21 11">
+                        <polyline fill="none"
+                                  stroke="currentColor"
+                                  points="0.5 0.5 10.5 10.5 20.5 0.5"
+                                  stroke-width="1.25"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <span id="section-slideshow-end" class="Anchor"></span>
+        </section>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
+</main>
