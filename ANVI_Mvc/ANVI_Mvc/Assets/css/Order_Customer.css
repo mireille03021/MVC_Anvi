@@ -439,7 +439,7 @@ a:hover {
 }
 
 .rightview {
-    width: 80%;
+    width: 75%;
     /* 記得補回去 */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -465,7 +465,7 @@ a:hover {
     -ms-flex-direction: column;
     flex-direction: column;
     padding-right: 6%;
-    width: 70%;
+    width: 80%;
     /* flex: 1 0 auto; */
 }
 
@@ -600,8 +600,8 @@ table {
 }
 
 .heading-3 {
-    font-weight: 900;
-    font-size: 1em;
+    font-weight: 1000;
+    font-size: 1.1em;
     line-height: 1.3em;
 }
 
