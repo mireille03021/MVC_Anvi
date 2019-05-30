@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+TC|Titillium+Web&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+html,
+body {
+    /* background-color: aquamarine; */
+    /* 改掉 */
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+   
+    
+}
+
+a:hover {
+    text-decoration: none;
+    color: #1c1b1b;
+    /* 要修 */
+}
+
+body {
+    font-family: Helvetica, "Helvetica Neue", Arial, "Lucida Grande", sans-serif;
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    line-height: 1.65;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+}
+
+.topnews {
+    background-color: #000000;
+    color: #ffffff;
+    position: relative;
+    top: 0px;
+    text-align: center;
+    font-size: 11px;
+    padding: 12px 15px;
+    letter-spacing: 0.2em;
+}
+
+.topnemu {
+    background-color: #ffffff;
+    position: sticky;
+    line-height: 23.1px;
+    color: #1C1B1B;
+    display: block;
+    /*0529*/
+    /* padding: 18px 50px 0px 50px; */
+    /*overflow: auto;*/
+    position: relative;
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+.LogoImage {
+    width: 140px;
+    height: 43.3px;
+}
+
+.lineonelist,
+.linetwolist {
+    list-style: none;
+}
+
+.topnemulineone {
+    display: flex;
+    justify-content: space-between;
+    /* 0529 */
+    /* margin-top: 4px; */
+    /*padding: 18px 50px 0px 50px;*/
+    padding: 18px 20px 0px 20px;
+}
+
+.topnemulinetwo {
+    width: 100%;
+    text-align: center;
+    left: 0;
+    display: block;
+    /* 0529 */
+    /* position: absolute; */
+    /* padding-bottom: 18px; */
+}
+
+    .topnemulinetwo ul {
+        background-color: #ffffff;
+        margin: -6px 0px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        border-bottom: #dddddd 1px solid;
+        /* position: relative; */
+    }
+
+
+/* 
+.lineonelist {}
+
+.linetwolist {} */
+
+.userlist {
+    width: 539px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.lineonelist li,
+.linetwolist li {
+    display: inline;
+    flex-direction: row;
+}
+
+.lineonelist li {
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+.linetwolist li {
+    position: static;
+    line-height: 23.1px;
+    font-size: 13px;
+    margin: 0px 21px;
+    display: inline-block;
+    position: relative;
+    /* border-bottom: transparent 2px solid; */
+}
+
+    .linetwolist li:after {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 0%;
+        border-bottom: 2px solid #000000;
+        transition: 0.3s;
+        /*記得取一個好的class*/
+    }
+
+    .linetwolist li:hover:after {
+        width: 100%;
+    }
+
+.listspan {
+    display: block;
+    content: " ";
+    height: 18px;
+    box-sizing: border-box;
+}
+
+.SocialList {
+    display: block;
+    width: 539px;
+}
+
+.SListItem {
+    display: inline;
+    margin-left: 26px;
+    color: #1c1b1b;
+}
+
+a {
+    text-decoration: none;
+    color: #1C1B1B;
+}
+
+.username a,
+.search a {
+    color: #6a6a6a;
+}
+
+.MegaMenu__Item {
+    display: block;
+}
+
+.MegaMenu__Item {
+    width: 320px;
+    margin: 20px 10px;
+}
+
+.MenuList {
+    z-index: 999;
+    background-color: white;
+    margin: 6px 0 0 0;
+    border-bottom: #dddddd 1px solid;
+    visibility: hidden;
+    /*0529*/
+    width: 100%;
+    position: absolute;
+}
+
+.topnemu a :hover .MenuList {
+    display: block;
+    /* 應該改成JS控制*/
+}
+
+.MegaMenu__ {
+    padding: 30px 40px;
+    margin: 0 20px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    /*0529*/
+    /*width: 100%;*/
+}
+
+.class {
+    display: block;
+    margin-bottom: 25px;
+}
+
+.MenuList ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.MenuList li {
+    margin-bottom: 15px;
+}
+
+.MegaMenu__Push {
+    text-align: center;
+}
+
+.MegaMenu__PushImageWrapper {
+    width: 320px;
+    height: 230px;
+    background-image: url("../images/header-image/ANVI-Nav_370x230@2x.png");
+    background-size: 100% 100%;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.MegaMenu__Item a {
+    color: #1C1B1B;
+}
+
+.MegaMenu__Item a:hover {
+        color: #6a6a6a;
+    }
+
+.MegaMenu__PushHeading {
+    margin: 10px 0;
+}
+/*0529*/
+.fixed {
+  
+    position: fixed;
+    top: 0;
+  
+    z-index: 999;
+    width: 100%;
+}
