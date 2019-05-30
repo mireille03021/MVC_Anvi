@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using ANVI_Mvc.Models;
 
-namespace PracMVC01.Repositories
+namespace ANVI_Mvc.Repositories
 {
     public class AnviRepository<T> where T : class
     {
