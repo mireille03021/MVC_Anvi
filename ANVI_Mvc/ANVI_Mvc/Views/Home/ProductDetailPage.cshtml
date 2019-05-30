@@ -49,7 +49,7 @@
                             <div id="P-Meta" class="ProductMeta">
                                 <h2 class="u-h6 Heading ProductMeta__Vendor">ANVI</h2>
                                 <h1 name="ProductName" class="u-h2 Heading">@Model.Product.ProductName</h1>
-                                <div name="UnitPrice" class="Heading ProductMeta__PriceList">$@Model.Product.UnitPrice TWD</div>
+                                <div name="UnitPrice" class="Heading ProductMeta__PriceList">$@Model.Product.UnitPrice.ToString("##,###") TWD</div>
                             </div>
                             <form action="" method="post" class="ProductForm">
                                 <div id="PF-V">

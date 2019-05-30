@@ -245,11 +245,11 @@ namespace ANVI_Mvc.Migrations
                 new Image() { ImgID = 52, PDID = "14-1", ImgName = "N_665dd2fb-a090-46dc-983f-798a8a74f875_900x.jpg" },
                 new Image() { ImgID = 53, PDID = "14-1", ImgName = "N1_c10bc736-4f7c-447a-b8cb-a15bc87091ae_900x.jpg" },
                 new Image() { ImgID = 54, PDID = "14-1", ImgName = "N2_a5f65891-1eec-4d28-af49-446b7c646807_900x.jpg" },
-                new Image() { ImgID = 55, PDID = "15-1", ImgName = "B19403_600x.jpg" },
-                new Image() { ImgID = 56, PDID = "15-1", ImgName = "C_1000x.jpg	" },
-                new Image() { ImgID = 57, PDID = "15-1", ImgName = "C_3_1000x.jpg" },
-                new Image() { ImgID = 58, PDID = "15-1", ImgName = "C_2_1000x.jpg" },
-                new Image() { ImgID = 59, PDID = "15-1", ImgName = "B19403-1_1000x.jpg" },
+                new Image() { ImgID = 55, PDID = "15-1", ImgName = "B19403_900x.jpg" },
+                new Image() { ImgID = 56, PDID = "15-1", ImgName = "C_900x.jpg	" },
+                new Image() { ImgID = 57, PDID = "15-1", ImgName = "C_3_900x.jpg" },
+                new Image() { ImgID = 58, PDID = "15-1", ImgName = "C_2_900x.jpg" },
+                new Image() { ImgID = 59, PDID = "15-1", ImgName = "B19403-1_900x.jpg" },
                 new Image() { ImgID = 60, PDID = "16-1", ImgName = "E19403S_600x.jpg" },
                 new Image() { ImgID = 61, PDID = "16-1", ImgName = "E19403S-1_1000x.jpg" },
                 new Image() { ImgID = 62, PDID = "16-1", ImgName = "S_c13dd082-9ddd-4e3d-95de-1b427f0bc827_1000x.jpg" },
@@ -280,7 +280,12 @@ namespace ANVI_Mvc.Migrations
             context.OrderDetails.AddOrUpdate(
                 x => x.OrderID,
                 new OrderDetail() { OrderID = 1, PDID = "4-1", Price = 1700, Quantity = 1 }
-                );
+            );
+            context.AspNetRoles.AddOrUpdate(
+                x => x.Id,
+                new AspNetRole() { Id = "ANR1", Name = "Root" },
+                new AspNetRole() { Id = "ANR2", Name = "User" }
+            );
         }
     }
 }

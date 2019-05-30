@@ -10,6 +10,8 @@
     }
     var stocks = (int[])ViewBag.Stocks;
     var images = (string[])ViewBag.Images;
+    var JsonStock = Json.Encode(ViewBag.Stocks);
+    var JsonCheckStock = Json.Encode(ViewBag.CheckStocks);
 }
 @section topCSS
 {
@@ -25,7 +27,7 @@
         </header>
 
         <div class="PageContent">
-            <form action="/cart?locale=zh"
+            <form action="/Cart/SubmitOrder"
                   method="POST"
                   class="Cart Cart--expanded"
                   novalidate>
@@ -105,11 +107,11 @@
                                                 </svg>
                                             </a>
                                             <input type="text"
-                                                   name=""
+                                                   name="Quantity"
                                                    id="Quantity_@i"
                                                    class="QuantitySelector__CurrentQuantity"
                                                    pattern="[0-9]*"
-                                                   value="@cartItem.Quantity" />
+                                                   value="@cartItem.Quantity" readonly="readonly" />
                                             <a id="add_@i"
                                                class="QuantitySelector__Button Link Link--primary"
                                                title="增加數量"
@@ -126,7 +128,6 @@
                                                     </g>
                                                 </svg>
                                             </a>
-                                            <div id="Stock_@i" value="@stocks[i]" style="display: none"></div>
                                         </div>
                                     </div>
                                     <a href="/cart/change?quantity=0&id=13339254456343:20c4ad971c16ff4d76408e716f513255"
@@ -162,7 +163,7 @@
                             </span>
                         </span>
                         <span class="Cart__Taxes Text--subdued">運費將於結帳時計算</span>
-                        <button type="submit"
+                        <button type="submit" id="checkout"
                                 name="checkout"
                                 class="Cart__Checkout Button Button--primary Button--full">
                             前往結帳
@@ -242,12 +243,22 @@
 {
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
     <script>
+        var stocks = @JsonStock;
+        var CheckStock = @JsonCheckStock;
+
+        if (!CheckStock) {
+            alert("庫存不足，請修正數量");
+        }
+        if ($(".CartItem").length == 0) {
+            $("#checkout").attr('disabled','disabled');
+        }
+
         for (var i = 0; i < @currentCart.Count; i++) {
             $("#add_" + i).on('click', function doAdd() {
                 var controlNumber = this.getAttribute('aria-valuenow');
                 var PDID = $("#CartItem_" + controlNumber).attr('value');
                 var quantity = $("#Quantity_" + controlNumber).val();
-                var stock = parseInt($("#Stock_" + controlNumber).attr('value'));
+                var stock = stocks[controlNumber];
                 if (quantity < stock) {
                     $("#Quantity_" + controlNumber).val(parseInt(quantity) + 1); //畫面的更新
                     //資料的更新，避免下次在點進來時還是1
@@ -266,7 +277,7 @@
                 var controlNumber = this.getAttribute('aria-valuenow');
                 var PDID = $("#CartItem_" + controlNumber).attr('value');
                 var quantity = $("#Quantity_" + controlNumber).val();
-                var stock = parseInt($("#Stock_" + controlNumber).attr('value'));
+                var stock = stocks[controlNumber];
                 if (quantity > 1) {
                     $("#Quantity_" + controlNumber).val(parseInt(quantity) - 1);
                     $.ajax({

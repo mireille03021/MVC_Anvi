@@ -206,12 +206,13 @@
     <Compile Include="Models\Shipper.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AnviRepository.cs" />
+    <Compile Include="Repositories\AnviRepository.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\MultiButtonAttribute.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\OrderCustomerViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="ViewModels\ProductPageViewModel.cs" />
@@ -220,6 +221,7 @@
   <ItemGroup>
     <Content Include="Assets\css\Account.css" />
     <Content Include="Assets\css\header-styles.css" />
+    <Content Include="Assets\css\Home__Slideshow.css" />
     <Content Include="Assets\css\Login.css" />
     <Content Include="Assets\css\Order_Check.css" />
     <Content Include="Assets\css\Order_Customerclone.css" />
@@ -234,18 +236,19 @@
     <Content Include="Assets\images\Bracelets\3_18536ee1-d9ad-490e-9755-ae6b03dab5ab_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_2_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_3_900x.jpg" />
-    <Content Include="Assets\images\Bracelets\3_ebcf859e-215d-4b14-8a01-6ad2535e40a2_600x.jpg" />
+    <Content Include="Assets\images\Bracelets\3_ebcf859e-215d-4b14-8a01-6ad2535e40a2_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_eccab948-1084-4916-9f4c-b1171d0c9683_900x.jpg" />
     <Content Include="Assets\images\Bracelets\4_970e215a-18c2-4afb-826f-0c5b3835757b_900x.jpg" />
     <Content Include="Assets\images\Bracelets\a13293119f9023188859b28658db52c5_900x.jpg" />
-    <Content Include="Assets\images\Bracelets\B19401_400x.jpg" />
+    <Content Include="Assets\images\Bracelets\B19401_900x.jpg" />
     <Content Include="Assets\images\Bracelets\B19402S_900x.jpg" />
-    <Content Include="Assets\images\Bracelets\B19403-1_1000x.jpg" />
-    <Content Include="Assets\images\Bracelets\B19403_600x.jpg" />
+    <Content Include="Assets\images\Bracelets\B19403-1_900x.jpg" />
+    <Content Include="Assets\images\Bracelets\B19403_900x.jpg" />
     <Content Include="Assets\images\Bracelets\B19404_900x.jpg" />
-    <Content Include="Assets\images\Bracelets\C_1000x.jpg" />
-    <Content Include="Assets\images\Bracelets\C_2_1000x.jpg" />
-    <Content Include="Assets\images\Bracelets\C_3_1000x.jpg" />
+    <Content Include="Assets\images\Bracelets\C_2_900x.jpg" />
+    <Content Include="Assets\images\Bracelets\C_3_900x.jpg" />
+    <Content Include="Assets\images\Bracelets\C_900x.jpg" />
+    <Content Include="Assets\images\Bracelets\f5251328ce40a7a02253945753c430e6_900x.jpg" />
     <Content Include="Assets\images\Color\18k-Gold.png" />
     <Content Include="Assets\images\EarRings\3_ebcf859e-215d-4b14-8a01-6ad2535e40a2_900x.jpg" />
     <Content Include="Assets\images\EarRings\4_970e215a-18c2-4afb-826f-0c5b3835757b_900x.jpg" />
@@ -261,6 +264,9 @@
     <Content Include="Assets\images\EarRings\G_900x.jpg" />
     <Content Include="Assets\images\EarRings\S2_b7105dbe-3ff4-4485-971e-fe5209408ec6_1000x.jpg" />
     <Content Include="Assets\images\EarRings\S_c13dd082-9ddd-4e3d-95de-1b427f0bc827_1000x.jpg" />
+    <Content Include="Assets\images\Home\ANVI-APRIL-ARRIVAL-Cover-Mobile_1800x.jpeg" />
+    <Content Include="Assets\images\Home\ANVI-APRIL-ARRIVAL-Cover_1800x.jpeg" />
+    <Content Include="Assets\images\Home\ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x %281%29.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x.png" />
@@ -333,6 +339,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\ANVIMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -387,6 +394,8 @@
     <Content Include="Views\Shared\_Layout_ANVI.cshtml" />
     <Content Include="Views\Cart\ShoppingCart.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Account\ListAllCustomersOrder.cshtml" />
+    <Content Include="Views\Home\AccountPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

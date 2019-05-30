@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ANVI_Mvc.Models;
+using ANVI_Mvc.Repositories;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -17,9 +18,11 @@ namespace ANVI_Mvc.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        protected AnviModel db;
 
         public AccountController()
         {
+            db = new AnviModel();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -151,19 +154,32 @@ namespace ANVI_Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var nextUserID = "IDU" + db.AspNetUsers.Count() + 1;
+                var nextCustomerID = db.Customers.Count() + 1;
+                var user = new ApplicationUser { Id = nextUserID, UserName = model.UserName, Email = model.Email, CustomerID = nextCustomerID - 1, PhoneNumber = model.PhoneNumber };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    AnviRepository<Customer> c_repo = new AnviRepository<Customer>(db);
+                    Customer c = new Customer()
+                    {
+                        CustomerID = nextCustomerID,
+                        CustomerName = user.UserName,
+                        Email = user.Email,
+                        Phone = user.PhoneNumber
+                    };
+                    c_repo.Create(c);
+                    db.SaveChanges();
+
                     // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
                     // 傳送包含此連結的電子郵件
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ListAllCustomersOrder", "Account", c);
                 }
                 AddErrors(result);
             }
@@ -481,5 +497,10 @@ namespace ANVI_Mvc.Controllers
             }
         }
         #endregion
+
+        public ActionResult ListAllCustomersOrder()
+        {
+            return View(db.AspNetUsers.ToList());
+        }
     }
 }

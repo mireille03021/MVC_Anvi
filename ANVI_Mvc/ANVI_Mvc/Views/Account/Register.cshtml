@@ -21,8 +21,10 @@
 
                     <div class="F-Item">
                         @*有此畫面但資料庫目前無欄位Last name，可先無視*@
-                        <input type="text" name="customer[last_name]" id="" placeholder="Name" class="F-Input">
-                        <label for="" class="F-FLabel">Name</label>
+                        @Html.LabelFor(m => m.UserName, new { @class = "F-FLabel" })
+                        @*<input type="text" name="customer[last_name]" id="" placeholder="Name" class="F-Input">*@
+                        @Html.TextBoxFor(m => m.UserName, new { @name = "customer[userName]", @placeholder = "Name", @class = "F-Input" })
+                        @*<label for="" class="F-FLabel">Name</label>*@
                     </div>
 
                     <div class="F-Item">
@@ -40,20 +42,27 @@
                     </div>
 
                     //再次確認密碼，畫面無此部分。
-                    <div class="form-group">
-                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "F-FLabel" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.ConfirmPassword, new {  @name = "customer[chickPssword]", @placeholder = "Chick Password", @class = "F-Input" })
-                            </div>
+                    <div class="F-Item">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "F-FLabel" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @name = "customer[chickPssword]", @placeholder = "Chick Password", @class = "F-Input" })
                         </div>
+                    </div>
+
+                    <div class="F-Item">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "F-FLabel" })
+                        @*<input type="password" name="customer[password]" id="" placeholder="Password" class="F-Input">*@
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @name = "customer[phoneNumber]", @placeholder = "PhoneNumber", @class = "F-Input" })
+                        @*<label for="" class="F-FLabel">Password</label>*@
+                    </div>
 
                     <button type="submit" class="F-Sub Btn-full Btn Btn-pmy" value="註冊">Create my account</button>
 
                     @*<div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" class="btn btn-default" value="註冊" />
-                            </div>
-                        </div>*@
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="註冊" />
+                </div>
+            </div>*@
                 }
 
             </div>

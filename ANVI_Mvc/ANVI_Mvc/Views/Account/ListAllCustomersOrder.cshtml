@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "ListAllCustomersOrder";
+}
+
+<h2>ListAllCustomersOrder</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.Address)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.Address)
+        </td>
+    </tr>
+}
+
+</table>
