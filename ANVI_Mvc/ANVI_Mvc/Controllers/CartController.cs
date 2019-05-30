@@ -27,37 +27,18 @@ namespace ANVI_Mvc.Controllers
 
         public ActionResult AddToCart(string id)
         {
-            //var currentCart = CartService.GetCurrentCart();
             currentCart.AddCartItem(id);
-            //if (currentCart.AddCartItem(id))
-            //{
-            //    currentCart = CartService.GetCurrentCart();
-            //    int count = currentCart.Count;
-            //    var stocks = new int[count];
-            //    for (var i = 0; i < currentCart.Count; i++)
-            //    {
-            //        foreach (var item in db.ProductDetails)
-            //        {
-            //            if (item.PDID == currentCart.cartItems[i].PDID)
-            //            {
-            //                stocks[i] = item.Stock;
-            //            }
-            //        }
-            //    }
-            //    ViewBag.Stocks = stocks;
-            //}
-            //return View("ShoppingCart");  //上方可省略，使用下方導向ActionResult
-            return RedirectToAction("ShoppingCart", "Cart");  //導向ActionResult RedirectToAction("ActionName","Controller")，讓重複的程式碼給ShoppingCart()去執行
+            return RedirectToAction("ShoppingCart", "Cart");
         }
         public ActionResult ShoppingCart()  //購物車頁面
         {
             if (CartService.GetCurrentCart() != null)
             {
-                //var currentCart = CartService.GetCurrentCart();
                 var stocks = CartService.getEachProductStocks(db);
                 var images = CartService.getEachProductImages(db);
-                ViewBag.Stocks = stocks; //因為只是要給JQuery用，等到Jquery寫完再考慮需不需要改用Json就好
+                ViewBag.Stocks = stocks;
                 ViewBag.Images = images;
+                ViewBag.CheckStocks = true;
             }
             return View();
         }
@@ -72,6 +53,24 @@ namespace ANVI_Mvc.Controllers
         {
             currentCart.ReduceQuantity(pdid);
             return RedirectToAction("ShoppingCart", "Cart");
+        }
+
+        [HttpPost]
+        public ActionResult SubmitOrder()
+        {
+            var stocks = CartService.getEachProductStocks(db);
+            for (int i = 0; i < currentCart.Count; i++)
+            {
+                if (stocks[i] < currentCart.cartItems[i].Quantity)
+                {
+                    var images = CartService.getEachProductImages(db);
+                    ViewBag.Stocks = stocks;
+                    ViewBag.Images = images;
+                    ViewBag.CheckStocks = false;
+                    return View("ShoppingCart");
+                }
+            }
+            return RedirectToAction("Order_Customer", "Home");
         }
     }
 }
