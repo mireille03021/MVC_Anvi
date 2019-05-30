@@ -65,6 +65,10 @@ namespace ANVI_Mvc.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "姓名")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
@@ -79,6 +83,11 @@ namespace ANVI_Mvc.Models
         [Display(Name = "確認密碼")]
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "電話號碼")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -280,7 +280,12 @@ namespace ANVI_Mvc.Migrations
             context.OrderDetails.AddOrUpdate(
                 x => x.OrderID,
                 new OrderDetail() { OrderID = 1, PDID = "4-1", Price = 1700, Quantity = 1 }
-                );
+            );
+            context.AspNetRoles.AddOrUpdate(
+                x => x.Id,
+                new AspNetRole() { Id = "ANR1", Name = "Root" },
+                new AspNetRole() { Id = "ANR2", Name = "User" }
+            );
         }
     }
 }
