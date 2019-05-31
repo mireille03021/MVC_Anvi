@@ -220,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\Account.css" />
+    <Content Include="Assets\css\header-styles-index.css" />
     <Content Include="Assets\css\header-styles.css" />
     <Content Include="Assets\css\Home__Slideshow.css" />
     <Content Include="Assets\css\Login.css" />
@@ -273,6 +274,10 @@
     <Content Include="Assets\images\Layout\ANVI-Logo-White_140x%402x.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-White_140x.png" />
     <Content Include="Assets\images\Layout\ANVI-Nav_370x230%402x.png" />
+    <Content Include="Assets\images\Logo\ANVI-Logo-Black_140x%402x.png" />
+    <Content Include="Assets\images\Logo\ANVI-Logo-Black_140x.png" />
+    <Content Include="Assets\images\Logo\ANVI-Logo-White_140x%402x.png" />
+    <Content Include="Assets\images\Logo\ANVI-Logo-White_140x.png" />
     <Content Include="Assets\images\Necklaces\3_0f400335-81ef-4b14-b646-481183164d3a_900x.jpg" />
     <Content Include="Assets\images\Necklaces\3_3_2e459b5c-083d-4682-9861-2718a9292092_900x.jpg" />
     <Content Include="Assets\images\Necklaces\3_c4bfb307-ddd3-43b2-b5bf-0bc9eb854216_900x.jpg" />
@@ -322,9 +327,11 @@
     <Content Include="Assets\images\Rings\R_LOVE_G_2_900x.jpg" />
     <Content Include="Assets\images\Rings\R_LOVE_S_1_900x.jpg" />
     <Content Include="Assets\images\Rings\R_LOVE_S_2_900x.jpg" />
+    <Content Include="Assets\js\header-js.js" />
     <Content Include="Assets\js\jquery-3.3.1.js" />
     <Content Include="Assets\js\Order_Check.js" />
     <Content Include="Assets\js\Order_Customer.js" />
+    <Content Include="Assets\js\Order_pay.js" />
     <Content Include="Assets\js\ProductPage.js" />
     <Content Include="Assets\js\ProductDetailPage.js" />
     <Content Include="Assets\js\ShoppingCart.js" />
@@ -399,7 +406,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\images\Logo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

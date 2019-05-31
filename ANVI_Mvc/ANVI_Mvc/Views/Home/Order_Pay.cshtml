@@ -13,6 +13,7 @@
 @section endJS
 {
     <script src="~/Assets/js/Order_Customer.js"></script>
+    <script src="~/Assets/js/Order_pay.js"></script>
 }
 <div class="content">
     <div class="wrap">
@@ -61,8 +62,9 @@
                                                     <div class="review-block__label">Ship&nbspto</div>
                                                     <div class="review-block__content">
                                                         <address class="address address--tight">
-                                                           @ViewData["Address"]</address>
-                                                            <!-- 不知道原本這邊為啥會有一個地址元素?不懂 -->
+                                                            @ViewData["Address"]
+                                                        </address>
+                                                        <!-- 不知道原本這邊為啥會有一個地址元素?不懂 -->
                                                     </div>
                                                 </div>
                                                 <div class="review-block__link">
@@ -150,7 +152,7 @@
                                             <div class="radio-wrapper content-box__row">
 
 
-                                                <div class="radio__input" >
+                                                <div class="radio__input">
                                                     <input value="true" type="radio" id="checkout_different_billing_address__true" class="input-radio" aria-label="FREE SHIPPING" name="Order_Pay_Radio">
                                                 </div>
 
@@ -160,7 +162,7 @@
 
                                             </div>
                                             <div id="section--billing-address__different" class="radio-group__row content-box__row content-box__row--secondary">
-                          <div class="fieldset">
+                                                <div class="fieldset">
 
                                                     <div class="field ">
                                                         <div class="field__input-wrapper">
@@ -207,11 +209,11 @@
                                                             </div>
                                                         </div>
                                                         <!-- <div class="field field--half-city">
-                <div class="field__input-wrapper">
-                    <label class="field__label">城市</label>
-                    <input type="text" class="field__input" id="checkout_shipping_address_city" placeholder="城市" size="30" name="checkout[shipping_address][city]">
-                </div>
-            </div> -->
+                                                            <div class="field__input-wrapper">
+                                                                <label class="field__label">城市</label>
+                                                                <input type="text" class="field__input" id="checkout_shipping_address_city" placeholder="城市" size="30" name="checkout[shipping_address][city]">
+                                                            </div>
+                                                        </div> -->
                                                         <div class="field field--half-zip">
                                                             <div class="field__input-wrapper">
                                                                 <!-- <label class="field__label">郵遞區號</label> -->
@@ -231,9 +233,9 @@
                                                             <input type="text" class="field__input" id="checkout_shipping_address_phone" placeholder="電話" size="30" name="Bill_Phone" value="@ViewData["Bill_Phone"]">
                                                             <div id="phone_tooltip" class="field__icon">
                                                                 <!-- <span id="tooltip-for-phone" class="tooltip">
-                        In case we need to contact you about your order.
-                    </span>
-                    <i class="fas fa-question-circle"></i> -->
+                                                                    In case we need to contact you about your order.
+                                                                </span>
+                                                                <i class="fas fa-question-circle"></i> -->
 
                                                                 <div class="field__icon-svg" data-toggle="tooltip" data-placement="top" title=' In case we need to contact you about your order.'>
 

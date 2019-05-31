@@ -3,10 +3,13 @@
 }
 @section topCSS
 {
+    <link href="~/Assets/css/header-styles-index.css" rel="stylesheet" />
     <link href="~/Assets/css/Home__Slideshow.css" rel="stylesheet" />
 }
 @section endJS
 {
+    <script src="~/Assets/js/jquery-3.3.1.js"></script>
+    <script src="~/Assets/js/header-js.js"></script>
     <script type="text/javascript" src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
 }
 @*<div class="jumbotron">
@@ -36,6 +39,7 @@
             <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
         </div>
     </div>*@
+<div class="pot"></div>
 <main id="main" role="main">
     <!-- BEGIN content_for_index -->
     <div id="shopify-section-slideshow"
@@ -191,3 +195,69 @@
 
 
 </main>
+
+
+<script>
+    $(function () {
+        $(".shop").hover(function () {
+            $(".MenuList").css("visibility", "visible");
+        });
+    });
+
+    $(function () {
+        $(".new").hover(function () {
+            $(".MenuList").css("visibility", "hidden");
+        });
+    });
+    $(function () {
+        $(".about_us").hover(function () {
+            $(".MenuList").css("visibility", "hidden");
+        });
+    });
+
+    $(function () {
+        $(".MenuList").hover(function () {
+            $(".MenuList").css("visibility", "visible");
+        }, function () {
+            $(".MenuList").css("visibility", "hidden");
+        });
+    });
+    $(function () {
+        $(".topnemu").hover(function () {
+
+        }, function () {
+            $(".MenuList").css("visibility", "hidden");
+        });
+    });
+    //應該要寫一個語法合併上面
+
+    //這邊下面寫滾動卷軸動作
+    $(function () {
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 15) {
+                $('#header').addClass('fixed');
+
+                //$('.topnemulinetwo ul').css({
+                //    "background- color": "rgba(255, 255, 255, 0)",
+                //    "color": "#ffffff"
+
+                //});
+                //$('.topnemu').css({
+                //    "background- color": "rgba(255, 255, 255, 0)"
+                //    ,"color": "#ffffff"
+                //});
+
+            } else {
+                $('#header').removeClass('fixed');
+                //$('.topnemu').css({
+                //    "background- color": "#ffffff"
+                //    , "color": "#1C1B1B"
+                //});
+
+            }
+        });
+    });
+
+</script>

@@ -8,9 +8,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anvi</title>
+    <title>Document</title>
 
-    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
+    @*
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
     <!-- bootstrap 4.2.1 -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Titillium+Web" rel="stylesheet"> -->
     <!-- google字體 -->
@@ -18,7 +19,6 @@
     <!-- fontawesome -->
     <link href="~/Assets/css/header-styles.css" rel="stylesheet" />
     <!-- CSS檔引入 -->
-
     @RenderSection("topCSS", false)
     @RenderSection("topJS", false)
 </head>
@@ -40,7 +40,13 @@
                     </li>
                 </ul>
 
+<<<<<<< HEAD
+                <div class="LogoImage LogoImage--primaty" src="" alt="#"></div>
+=======
+                <a href="~/Home/Index">
                 <img class="LogoImage LogoImage--primaty" src="https://cdn.shopify.com/s/files/1/2023/9563/files/ANVI-Logo-Black_140x.png?v=1554253253" alt="#">
+                </a>
+>>>>>>> ff14c0b983345f2544b1173735d5ea99033aaa2c
                 <!-- 圖片記得改響應式 -->
                 <div class="userlist">
 
@@ -61,66 +67,67 @@
                     <li class="about_us"><a href="#">About<div class="listspan"></div><span class="lineofselect"></span></a></li>
                 </ul>
             </nav>
-        </div>
-        <div class="MenuList" >
-            @* <<暫時先忽略 *@
-            <div class="MegaMenu__">
-                <div class="MegaMenu__Item">
-                    <a href="#" class="class">全部</a>
-                    <ul class="">
-                        <li class="">
-                            <a href="#" class="">發燒新品</a>
-                        </li>
-                        <li class="">
-                            <a href="#" class="">人氣商品</a>
-                        </li>
-                        <li class="">
-                            <a href="#" class="">SALE</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="MegaMenu__Item">
-                    <a href="#" class="class">類別</a>
-                    <ul class="">
-                        <li class="">
-                            <a href="#" class="">手環</a>
-                        </li>
-                        <li class="">
-                            <a href="#" class="">耳環</a>
-                        </li>
-                        <li class="">
-                            <a href="#" class="">項鍊</a>
-                        </li>
-                        <li class="">
-                            <a href="#" class="">戒指</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="MegaMenu__Item">
-
-                    <div class="MegaMenu__Push ">
-                        <div class="MegaMenu__PushImageWrapper AspectRatio">
-
-                        </div>
-                        <span class="Image__Loader"></span>
-                        <p class="MegaMenu__PushHeading h6">ANVI GIRL 摩登，經典，優雅的存在</p>
+            <div class="MenuList">
+                @* <<暫時先忽略 *@
+                <div class="MegaMenu__">
+                    <div class="MegaMenu__Item">
+                        <a href="#" class="class">全部</a>
+                        <ul class="">
+                            <li class="">
+                                <a href="#" class="">發燒新品</a>
+                            </li>
+                            <li class="">
+                                <a href="#" class="">人氣商品</a>
+                            </li>
+                            <li class="">
+                                <a href="#" class="">SALE</a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="MegaMenu__Item">
+                    <div class="MegaMenu__Item">
+                        <a href="#" class="class">類別</a>
+                        <ul class="">
+                            <li class="">
+                                <a href="#" class="">手環</a>
+                            </li>
+                            <li class="">
+                                <a href="#" class="">耳環</a>
+                            </li>
+                            <li class="">
+                                <a href="#" class="">項鍊</a>
+                            </li>
+                            <li class="">
+                                <a href="#" class="">戒指</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                    <div class="MegaMenu__Push ">
-                        <div class="MegaMenu__PushImageWrapper AspectRatio">
+                    <div class="MegaMenu__Item">
 
+                        <div class="MegaMenu__Push ">
+                            <div class="MegaMenu__PushImageWrapper AspectRatio">
+
+                            </div>
+                            <span class="Image__Loader"></span>
+                            <p class="MegaMenu__PushHeading h6">ANVI GIRL 摩登，經典，優雅的存在</p>
                         </div>
-                        <span class="Image__Loader"></span>
-                        <p class="MegaMenu__PushHeading h6">ANVI GIRL 摩登，經典，優雅的存在</p>
+                    </div>
+                    <div class="MegaMenu__Item">
+
+                        <div class="MegaMenu__Push ">
+                            <div class="MegaMenu__PushImageWrapper AspectRatio">
+
+                            </div>
+                            <span class="Image__Loader"></span>
+                            <p class="MegaMenu__PushHeading h6">ANVI GIRL 摩登，經典，優雅的存在</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+       
     </div>
-  
+
     @RenderBody()
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -128,50 +135,50 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
         $(function () {
-    $(".shop").hover(function () {
-        $(".MenuList").css("visibility", "visible");
-    });
-});
+            $(".shop").hover(function () {
+                $(".MenuList").css("visibility", "visible");
+            });
+        });
 
         $(function () {
             $(".new").hover(function () {
                 $(".MenuList").css("visibility", "hidden");
             });
-        });   
+        });
         $(function () {
             $(".about_us").hover(function () {
                 $(".MenuList").css("visibility", "hidden");
             });
         });
 
-$(function () {
-    $(".MenuList").hover(function () {
-        $(".MenuList").css("visibility", "visible");
-    }, function () {
-            $(".MenuList").css("visibility", "hidden");
-    });
-});
+        $(function () {
+            $(".MenuList").hover(function () {
+                $(".MenuList").css("visibility", "visible");
+            }, function () {
+                $(".MenuList").css("visibility", "hidden");
+            });
+        });
         $(function () {
             $(".topnemu").hover(function () {
-    
+
             }, function () {
                 $(".MenuList").css("visibility", "hidden");
             });
         });
         //應該要寫一個語法合併上面
-        
+
         //這邊下面寫滾動卷軸動作
         $(function () {
             $(window).scroll(function () {
                 var scroll = $(window).scrollTop();
 
-                if (scroll >= 5) {
+                if (scroll >= 15) {
                     $('#header').addClass('fixed');
 
                     //$('.topnemulinetwo ul').css({
                     //    "background- color": "rgba(255, 255, 255, 0)",
                     //    "color": "#ffffff"
-                       
+
                     //});
                     //$('.topnemu').css({
                     //    "background- color": "rgba(255, 255, 255, 0)"
@@ -184,7 +191,7 @@ $(function () {
                     //    "background- color": "#ffffff"
                     //    , "color": "#1C1B1B"
                     //});
-                   
+
                 }
             });
         });
