@@ -72,5 +72,11 @@ namespace ANVI_Mvc.Controllers
             }
             return RedirectToAction("Order_Customer", "Home");
         }
+
+        public ActionResult DeleteCartItem(string pdid)
+        {
+
+            return View("ShoppingCart");
+        }
     }
 }
