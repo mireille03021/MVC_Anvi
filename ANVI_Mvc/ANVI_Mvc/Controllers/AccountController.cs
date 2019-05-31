@@ -439,6 +439,10 @@ namespace ANVI_Mvc.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult ListAllCustomersOrder()
+        {
+            return View(db.AspNetUsers.ToList());
+        }
         #region Helper
         // 新增外部登入時用來當做 XSRF 保護
         private const string XsrfKey = "XsrfId";
@@ -498,9 +502,5 @@ namespace ANVI_Mvc.Controllers
         }
         #endregion
 
-        public ActionResult ListAllCustomersOrder()
-        {
-            return View(db.AspNetUsers.ToList());
-        }
     }
 }
