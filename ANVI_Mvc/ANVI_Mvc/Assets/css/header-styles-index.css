@@ -70,6 +70,7 @@ body {
     width: 140px;
     height: 43.3px;
     background-image: url("/Assets/images/Logo/ANVI-Logo-White_140x@2x.png");
+    background-repeat: no-repeat;
     background-size: contain;
 }
 
