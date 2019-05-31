@@ -42,16 +42,22 @@
 <div class="pot"></div>
 <main id="main" role="main">
     <!-- BEGIN content_for_index -->
-    <div id="shopify-section-slideshow"
-         class="shopify-section shopify-section--slideshow">
+    <div id="shopify-section-slideshow" class="shopify-section shopify-section--slideshow">
         <section id="section-slideshow"
                  data-section-id="slideshow"
                  data-section-type="slideshow">
             <div class="Slideshow Slideshow--fullscreen">
                 <div class="Slideshow__Carousel Slideshow__Carousel--withScrollButton Carousel Carousel--fadeIn Carousel--fixed Carousel--insideDots"
-                     data-flickity='{ "wrapAround": true }'>
+                     data-flickity='{
+                      "prevNextButton": false,
+                      "setGallerySize": false,
+                      "wrapAround": true,
+                      "pauseAutoPlayOnHover": false,
+                      "autoPlay": 5000,
+                      "pageDots": true
+                    }'>
                     <div id="Slideslide-1"
-                         class=" Slideshow__Slide Carousel__Cell is-selected"
+                         class=" Slideshow__Slide Carousel__Cell"
                          style="visibility: visible"
                          data-slide-index="0">
                         <div id="animation_1" class="Slideshow__ImageContainer   hidden-tablet-and-up"
@@ -72,7 +78,9 @@
                           />
 
                         </div> -->
-                        <!--文字框-->   <div class="s1 Slideshow__Content Slideshow__Content--middleLeft">
+
+                        <!--文字框-->   
+                        <div class="s1 Slideshow__Content Slideshow__Content--middleLeft">
                             <header class="SectionHeader">
                                 <h3 class="SectionHeader__SubHeading Heading u-h6">
                                     金屬的光芒與鋯石的耀眼，簡約經典卻又與眾不同
@@ -111,7 +119,6 @@
                           />
                         </div> -->
                         <!--文字框-->
-
                         <div class="Slideshow__Content Slideshow__Content--middleLeft">
                             <header class="SectionHeader">
                                 <h3 class="SectionHeader__SubHeading Heading u-h6">
@@ -129,6 +136,7 @@
                             </header>
                         </div>
                     </div>
+
                     <div id="Slideslide-3"
                          class="Slideshow__Slide Carousel__Cell "
                          data-slide-index="2">
@@ -177,23 +185,15 @@
                         class="Slideshow__ScrollButton RoundButton RoundButton--medium"
                         aria-label="Scroll to content"
                         data-animate-bottom>
-                    <svg class="Icon Icon--arrow-bottom"
-                         role="presentation"
-                         viewBox="0 0 21 11">
-                        <polyline fill="none"
-                                  stroke="currentColor"
-                                  points="0.5 0.5 10.5 10.5 20.5 0.5"
-                                  stroke-width="1.25"></polyline>
+                    <svg class="Icon Icon--arrow-bottom" role="presentation" viewBox="0 0 21 11">
+                        <polyline fill="none" stroke="currentColor" points="0.5 0.5 10.5 10.5 20.5 0.5" stroke-width="1.25"></polyline>
                     </svg>
                 </button>
             </div>
 
             <span id="section-slideshow-end" class="Anchor"></span>
         </section>
-
     </div>
-
-
 </main>
 
 
