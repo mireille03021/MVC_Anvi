@@ -20,38 +20,50 @@ namespace ANVI_Mvc.Controllers
             db = new AnviModel();
             currentCart = CartService.GetCurrentCart();
         }
-        public ActionResult GetCart()
-        {
-            return View("ShoppingCart");
-        }
 
-        public ActionResult AddToCart(string id)
+        public ActionResult AddToCart(string pdid)
         {
-            currentCart.AddCartItem(id);
+            currentCart.AddCartItem(pdid);
             return RedirectToAction("ShoppingCart", "Cart");
         }
+
         public ActionResult ShoppingCart()  //購物車頁面
         {
             if (CartService.GetCurrentCart() != null)
             {
                 var stocks = CartService.getEachProductStocks(db);
-                var images = CartService.getEachProductImages(db);
                 ViewBag.Stocks = stocks;
-                ViewBag.Images = images;
                 ViewBag.CheckStocks = true;
             }
             return View();
         }
+
+        public ActionResult GetCartItem()
+        {
+            var images = CartService.getEachProductImages(db);
+            CartViewModel CVM = new CartViewModel(){ Cart = currentCart,Images = images};
+            ViewBag.Images = images;
+            return PartialView("_CartItemPartial",CVM);
+        }
+
         [HttpPost]
         public ActionResult AddQuantity(string pdid)  //PDID指定物品用
         {
             currentCart.AddQuantity(pdid);
             return RedirectToAction("ShoppingCart", "Cart");
         }
+
         [HttpPost]
         public ActionResult ReduceQuantity(string pdid)  //指定物品用
         {
             currentCart.ReduceQuantity(pdid);
+            return RedirectToAction("ShoppingCart", "Cart");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCartItem(string pdid)
+        {
+            currentCart.DeleCartItem(pdid);
             return RedirectToAction("ShoppingCart", "Cart");
         }
 
@@ -71,12 +83,6 @@ namespace ANVI_Mvc.Controllers
                 }
             }
             return RedirectToAction("Order_Customer", "Home");
-        }
-
-        public ActionResult DeleteCartItem(string pdid)
-        {
-
-            return View("ShoppingCart");
         }
     }
 }

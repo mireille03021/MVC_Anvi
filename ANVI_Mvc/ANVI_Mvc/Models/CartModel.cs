@@ -83,6 +83,9 @@ namespace ANVI_Mvc.Models
             }
             return true;
         }
+        //刪除一筆CartItem
+        
+
         //新增一筆CartItem
         private bool AddCartItem(CartItemViewModel cartItem)
         {
@@ -103,13 +106,18 @@ namespace ANVI_Mvc.Models
             return true;
         }
 
-        public void AddQuantity(string PDID)
+        internal void AddQuantity(string PDID)
         {
             cartItems.First(x => x.PDID == PDID).Quantity += 1;
         }
-        public void ReduceQuantity(string PDID)
+        internal void ReduceQuantity(string PDID)
         {
             cartItems.First(x => x.PDID == PDID).Quantity -= 1;
+        }
+        internal void DeleCartItem(string pdid)
+        {
+            var item = cartItems.Find(x => x.PDID == pdid);
+            cartItems.Remove(item);
         }
 
         public IEnumerator<CartItemViewModel> GetEnumerator()
