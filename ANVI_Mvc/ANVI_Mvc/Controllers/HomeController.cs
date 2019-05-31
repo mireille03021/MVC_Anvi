@@ -11,7 +11,7 @@ using ANVI_Mvc.ViewModels;
 
 namespace ANVI_Mvc.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class HomeController : Controller
     {
         protected AnviModel db;
@@ -20,10 +20,12 @@ namespace ANVI_Mvc.Controllers
         {
             db = new AnviModel();
         }
+        [AllowAnonymous]
         public ActionResult Index()   //主頁面
         {
             return View();
         }
+        [AllowAnonymous]
         public ActionResult ProductsPage() //商品頁面
         {
             List<Product> products = db.Products.ToList();
@@ -48,6 +50,7 @@ namespace ANVI_Mvc.Controllers
         }
         //---------------------單一商品頁面-----------------------
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult ProductDetailPage(int id)  //單一商品頁面 Get
         {
             ProductViewModelService service = new ProductViewModelService(db, id);
@@ -61,6 +64,7 @@ namespace ANVI_Mvc.Controllers
         }
         [MultiButton("ChangeColor")]
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult ChangeColor(int id, string DropDownList_Color)  //單一商品頁面Post
         {
             ProductViewModelService service = new ProductViewModelService(db, id);
@@ -74,6 +78,7 @@ namespace ANVI_Mvc.Controllers
         }
         [MultiButton("BuyItNow")]
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult ProductDetailPage()  //單一商品頁面 Get
         {
             return View("Order_Customer");
@@ -81,6 +86,7 @@ namespace ANVI_Mvc.Controllers
         //-----------------------------------------------------------------
         //----------------------------下單-----------------------------
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Order_Customer()  //下單-客戶頁面(填入收件人)!沒有HEADER跟FOOTER
         {
             if (Session["Order_Session"] != null)
@@ -97,6 +103,7 @@ namespace ANVI_Mvc.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Order_Customer(OrderCustomerViewModel OCVM)
         {
             Session["Order_Session"] = OCVM;
@@ -110,6 +117,7 @@ namespace ANVI_Mvc.Controllers
             return View("Order_Ship");
         }
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Order_Ship()  //下單-運送頁面!沒有HEADER跟FOOTER
         {
             var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
@@ -120,6 +128,7 @@ namespace ANVI_Mvc.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Order_Ship(string Nothing)  //下單-運送頁面!沒有HEADER跟FOOTER
         {
             var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
@@ -134,6 +143,7 @@ namespace ANVI_Mvc.Controllers
             return View("Order_Pay");
         }
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Order_Pay()  //下單-付費頁面!沒有HEADER跟FOOTER
         {
             //var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
@@ -145,6 +155,7 @@ namespace ANVI_Mvc.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Order_Pay(OrderCustomerViewModel Bill_OCVM, bool Order_Pay_Radio)  //下單-付費頁面!沒有HEADER跟FOOTER
         {
             var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
@@ -167,11 +178,13 @@ namespace ANVI_Mvc.Controllers
             return View("Order_Check");
         }
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Order_Check()  //下單-確認頁面!沒有HEADER跟FOOTER
         { 
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Order_Check(bool Order_Pay_Radio)  //下單-確認頁面!沒有HEADER跟FOOTER
         {
             var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
@@ -195,7 +208,7 @@ namespace ANVI_Mvc.Controllers
             }
             return View();
         }
-
+        //[Authorize]
         public ActionResult AccountPage()   //主頁面
         {
             return View();
