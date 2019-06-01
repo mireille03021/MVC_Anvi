@@ -21,6 +21,7 @@ namespace ANVI_Mvc.Controllers
             currentCart = CartService.GetCurrentCart();
         }
 
+        [HttpPost]
         public ActionResult AddToCart(string pdid)
         {
             currentCart.AddCartItem(pdid);

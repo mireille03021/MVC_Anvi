@@ -117,7 +117,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <button type="submit" class="ProductForm__AddToCart Button Button--secondary Button--full" name="ToCart">
+                                <button class="ProductForm__AddToCart Button Button--secondary Button--full" id="AddToCart">
                                     <span>Add to cart</span>
                                     <span class="Button__SeparatorDot"></span>
                                     <span name="UnitPrice">$@Model.Product.UnitPrice.ToString("##,###") TWD</span>
@@ -402,6 +402,7 @@
 </main>
 @section endJS
 {
+    <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
     <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
 
     <script>
@@ -535,77 +536,105 @@
     <script>
 
         /*價錢、規格  尺寸選擇*/
-        var pickColor = $("#PFON").text();
-
-        var pvm = @Html.Raw(ViewBag.JsonPVM);
-        //console.log(pvm);
-        //console.log(pickColor);
-        $(".HorizontalList__Item").on('click', PF_Invt_text);
-        $(".HorizontalList__Item").click();
-        if (!$(".HorizontalList__Item").exists) {
-            PF_Invt_text();
-        }
-        function PF_Invt_text() {
-            console.log("1");
-            var size;
-            var product = {};
-
-            if (this == window) {
-                size = $("input[name=option-1]:first").val();
-            } else {
-                size = $("input[name=option-1]:checked").val();
+        $(function() {
+            var pickColor = $("#PFON").text();
+            var PDID = "";  //給加入購物車按鈕用的
+            console.log(pickColor);
+            var pvm = @Html.Raw(ViewBag.JsonPVM);
+            console.log(pvm);
+            //console.log(pickColor);
+            $(".HorizontalList__Item").on('click', PF_Invt_text);
+            $(".HorizontalList__Item").click();
+            if (!$(".HorizontalList__Item").exists) {
+                PF_Invt_text();
             }
-            console.log(size);
-            pvm.forEach(function(element) {
-                if (element["ColorName"] == pickColor && element["SizeContext"] == size) {
-                    product["ColorName"] = pickColor;
-                    product["Stock"] = element["Stock"];
-                    return;
-                } else if(element["ColorName"] == pickColor && size==null) {
-                    product["ColorName"] = pickColor;
-                    product["Stock"] = element["Stock"];
+            function PF_Invt_text() {
+                console.log("1");
+                var product =
+                {
+                    "ColorName": "",
+                    "Stock": "",
+                    "PDID": ""
+                };
+                var size;
+                if (this == window) {
+                    size = $("input[name=option-1]:first").val();
+                } else {
+                    size = $("input[name=option-1]:checked").val();
                 }
-            });
-            //console.log(product);
+                console.log(size);
+                pvm.forEach(function(element) {
+                    if (element["ColorName"] == pickColor && element["SizeContext"] == size) {
+                        console.log(pickColor);
+                        product["ColorName"] = pickColor;
+                        product["Stock"] = element["Stock"];
+                        product["PDID"] = element["PDID"];
+                        return 0;
+                    } else if(element["ColorName"] == pickColor && size == null) {
+                        product["ColorName"] = pickColor;
+                        product["Stock"] = element["Stock"];
+                        product["PDID"] = element["PDID"];
+                        return 0;
+                    }
+                });
+                console.log(product["PDID"]);
+                PDID = product["PDID"];
+                @*var dataUser = "@Model.ProductDetailViewModels.Where(x => x.Color.ColorName == ColorName)";
+                var reg = new RegExp("&quot;", "g"); //创建正则RegExp对象
+                var data = JSON.parse(dataUser.replace(reg, '"'));
 
-            @*var dataUser = "@Model.ProductDetailViewModels.Where(x => x.Color.ColorName == ColorName)";
-            var reg = new RegExp("&quot;", "g"); //创建正则RegExp对象
-            var data = JSON.parse(dataUser.replace(reg, '"'));
+                console.log(data);*@
+                @{
+                    var price = Math.Floor((decimal)Model.Product.UnitPrice).ToString(); //為了讓它顯示千位逗號
+                }
+                if (@price.Length > 3) {
+                    var addcartext = "<span>Add to cart</span>" +
+                        "<span class='Button__SeparatorDot'>.</span>" +
+                        "<span>$" +
+                        "@price.Insert(price.Length-3,",")" +
+                        " TWD</span>";
+                } else {
+                    var addcartext = "<span>Add to cart</span>" +
+                        "<span class='Button__SeparatorDot'>.</span>" +
+                        "<span>$" +
+                        "@price" +
+                        " TWD</span>";
+                }
 
-            console.log(data);*@
-            @{
-                var price = Math.Floor((decimal)Model.Product.UnitPrice).ToString(); //為了讓它顯示千位逗號
+                if (product["Stock"] == 0) {
+                    $(".ProductForm__Option:last-child").attr('style', 'display:none');
+                    //document.getElementsByClassName("ProductForm__Option")[2].setAttribute("style","display: none"); /*消失*/
+                    console.log(document.getElementsByClassName("ProductForm__Option")[2]);
+                    document.getElementsByClassName("shopify-payment-button")[0].style.display = "none";
+                    document.getElementsByClassName("ProductForm__AddToCart")[0].setAttribute("disabled", "disabled");
+                    document.getElementsByClassName("ProductForm__AddToCart")[0].innerHTML = "Sold Out";
+                } else {
+                    document.getElementsByClassName("ProductForm__AddToCart")[0].innerHTML = addcartext;
+                    document.getElementsByClassName("shopify-payment-button")[0].style = "";
+                    $(".ProductForm__Option:last-child").attr('style', "");
+                    //document.getElementsByClassName("ProductForm__Option")[2].style = "";
+                }
+                //console.log(document.getElementsByClassName("shopify-payment-button")[0]);
+                document.getElementById("Stock").innerHTML = product["Stock"];
             }
-            if (@price.Length > 3) {
-                var addcartext = "<span>Add to cart</span>" +
-                    "<span class='Button__SeparatorDot'>.</span>" +
-                    "<span>$" +
-                    "@price.Insert(price.Length-3,",")" +
-                    " TWD</span>";
-            } else {
-                var addcartext = "<span>Add to cart</span>" +
-                    "<span class='Button__SeparatorDot'>.</span>" +
-                    "<span>$" +
-                    "@price" +
-                    " TWD</span>";
+            $("#AddToCart").on('click', AddCartItem);
+            function AddCartItem() {
+                var url = "/Cart/AddToCart/";
+                $.ajax({
+                    url: url,
+                    method: "POST",
+                    data: {
+                        pdid: PDID
+                    },
+                    success: function() {
+                        history.go(0);
+                    },
+                    error: function() {
+                        alert("庫存不足");
+                        history.go(0);
+                    }
+                });
             }
-
-
-            if (product["Stock"] == 0) {
-                $(".ProductForm__Option:last-child").attr('style', 'display:none');
-                //document.getElementsByClassName("ProductForm__Option")[2].setAttribute("style","display: none"); /*消失*/
-                console.log(document.getElementsByClassName("ProductForm__Option")[2]);
-                document.getElementsByClassName("shopify-payment-button")[0].style.display = "none";
-                document.getElementsByClassName("ProductForm__AddToCart")[0].setAttribute("disabled", "disabled");
-                document.getElementsByClassName("ProductForm__AddToCart")[0].innerHTML = "Sold Out";
-            } else {
-                document.getElementsByClassName("ProductForm__AddToCart")[0].innerHTML = addcartext;
-                document.getElementsByClassName("shopify-payment-button")[0].style = "";
-                $(".ProductForm__Option:last-child").attr('style', "");
-                //document.getElementsByClassName("ProductForm__Option")[2].style = "";
-            }
-            //console.log(document.getElementsByClassName("shopify-payment-button")[0]);
-            document.getElementById("Stock").innerHTML = product["Stock"];
-        }
+        });
     </script>
 }
