@@ -1,15 +1,7 @@
 ﻿@using ANVI_Mvc.Services
 @{
     ViewBag.Title = "Cart";
-    bool something = false;
-    var currentCart = new CartModel();
-    if (CartService.GetCurrentCart() != null)
-    {
-        something = true;
-        currentCart = CartService.GetCurrentCart();
-    }
-    var stocks = (int[])ViewBag.Stocks;
-    var images = (string[])ViewBag.Images;
+    var currentCart = CartService.GetCurrentCart();
     var JsonStock = Json.Encode(ViewBag.Stocks);
     var JsonCheckStock = Json.Encode(ViewBag.CheckStocks);
 }
@@ -38,113 +30,7 @@
                        name="attributes[collection_desktop_items_per_row]"
                        value="" />
                 <div class="Cart_ItemList">
-                    <div class="Cart_Head hidden-phone">
-                        <span class="Cart__HeadItem Heading Text--subdued u-h7">
-                            商品
-                        </span>
-                        <span class="Cart__HeadItem"> </span>
-                        <span class="Cart__HeadItem Heading Text--subdued u-h7"
-                              style="text-align: center">
-                            數量
-                        </span>
-                        <span class="Cart__HeadItem Heading Text--subdued u-h7"
-                              style="text-align: right">
-                            金額
-                        </span>
-                    </div>
-                    @if (something)
-                    {
-                        var i = 0;
-                        foreach (var cartItem in currentCart)
-                        {
-                            <div id="CartItem_@i" class="CartItem" value="@cartItem.PDID">
-                                <div class="CartItem__ImageWrapper AspectRatio">
-                                    <div class="AspectRatio" style="--aspect-ratio: 1.0">
-                                        <!----aspect-ratio: 1.0-->
-                                        <img class="Cart_Image"
-                                             src="~/Assets/images/@cartItem.CategoryName/@images[i]"
-                                             alt="@cartItem.ProductName" />
-                                    </div>
-                                </div>
-
-                                <div class="CartItem__Info">
-                                    <h2 class="CartItem__Title Heading">
-                                        <a href="//www.anvistudios.com/products/bae-earring-silver?variant=13339254456343">@cartItem.ProductName</a>
-                                    </h2>
-                                    <div class="CartItem__Meta Heading Text_subdued">
-                                        <p class="CartItem__Variant">
-                                            @cartItem.ColorName / @cartItem.SizeContext
-                                        </p>
-                                        <ul class="CartItem__PropertyList"></ul>
-                                        <!--空白區塊-->
-                                        <div class="CartItem__PriceList">
-                                            <span class="CartItem__Price Price"
-                                                  data-money-convertible>
-                                                <span id="UnitPrice_@i" value="@cartItem.UnitPrice">
-                                                    $@(cartItem.UnitPrice.ToString("##,###")) TWD
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="CartItem__Actions Heading Text--subdued"
-                                     style="text-align: center">
-                                    <div class="CartItem__QuantitySelector">
-                                        <div class="QuantitySelector">
-                                            <a id="cut_@i"
-                                               class="QuantitySelector__Button Link Link--primary"
-                                               title="減少數量"
-                                               data-quantity="0" aria-valuenow="@i">
-                                                <svg class="Icon Icon--minus"
-                                                     role="presentation"
-                                                     viewBox="0 0 16 2">
-                                                    <path d="M1,1 L15,1"
-                                                          stroke="currentColor"
-                                                          fill="none"
-                                                          fill-rule="evenodd"
-                                                          stroke-linecap="square"></path>
-                                                </svg>
-                                            </a>
-                                            <input type="text"
-                                                   name="Quantity"
-                                                   id="Quantity_@i"
-                                                   class="QuantitySelector__CurrentQuantity"
-                                                   pattern="[0-9]*"
-                                                   value="@cartItem.Quantity" readonly="readonly" />
-                                            <a id="add_@i"
-                                               class="QuantitySelector__Button Link Link--primary"
-                                               title="增加數量"
-                                               data-quantity="2" aria-valuenow="@i">
-                                                <svg class="Icon Icon--plus"
-                                                     role="presentation"
-                                                     viewBox="0 0 16 16">
-                                                    <g stroke="currentColor"
-                                                       fill="none"
-                                                       fill-rule="evenodd"
-                                                       stroke-linecap="square">
-                                                        <path d="M8,1 L8,15"></path>
-                                                        <path d="M1,8 L15,8"></path>
-                                                    </g>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="/cart/change?quantity=0&id=13339254456343:20c4ad971c16ff4d76408e716f513255"
-                                       style="text-decoration:none;"
-                                       class="CartItem__Remove Link Link--underline"
-                                       data-quantity="0"
-                                       data-action="remove-item">移除</a>
-                                </div>
-                                <span id="pc"
-                                      class="CartItem__LinePrice Price Heading Text--subdued u-h7"
-                                      style="text-align: right">
-                                    <span id="">$@cartItem.UnitPrice.ToString("##,###") TWD</span>
-                                </span>
-                            </div>
-                            i++;
-                        }
-                    }
+                    @Html.Action("GetCartItem", "Cart")
                 </div>
                 <footer class="Cart__Footer">
                     <div class="Cart__NoteContainer">
@@ -159,7 +45,7 @@
                         <span class="Cart__Total Heading u-h6">
                             總額:
                             <span data-money-convertible>
-                                <span id="Amount">$@currentCart.TotalAmount.ToString("##,###") TWD</span>
+                                <span id="Amount"></span>
                             </span>
                         </span>
                         <span class="Cart__Taxes Text--subdued">運費將於結帳時計算</span>
@@ -250,46 +136,86 @@
             alert("庫存不足，請修正數量");
         }
         if ($(".CartItem").length == 0) {
-            $("#checkout").attr('disabled','disabled');
+            $("#checkout").attr('disabled', 'disabled');
         }
 
         for (var i = 0; i < @currentCart.Count; i++) {
-            $("#add_" + i).on('click', function doAdd() {
-                var controlNumber = this.getAttribute('aria-valuenow');
-                var PDID = $("#CartItem_" + controlNumber).attr('value');
-                var quantity = $("#Quantity_" + controlNumber).val();
-                var stock = stocks[controlNumber];
-                if (quantity < stock) {
-                    $("#Quantity_" + controlNumber).val(parseInt(quantity) + 1); //畫面的更新
-                    //資料的更新，避免下次在點進來時還是1
+            $("#add_" + i).on('click',doAdd);
+            $("#cut_" + i).on('click',doCut);
+        }
+        //點擊移除
+        $(".CartItem__Remove").on('click', function() {
+            var url = "/Cart/DeleteCartItem/";
+            var PDID = this.getAttribute('data-PDID');
+            var controlNumber = this.getAttribute('aria-valuenow');
+            $(document).ready(function() {
+                $.ajax({
+                    url: url,
+                    method:"POST",
+                    data: {
+                        pdid:PDID
+                    },
+                    success: function () {
+                        //使用load來重讀中間購物商品的區塊(CartItemPartial)
+                        $(".Cart_ItemList").load("/Cart/GetCartItem", function() {
+                            stocks.splice(controlNumber, 1);
+                            @{  //更新Cart內容
+                            currentCart = CartService.GetCurrentCart();
+                            }
+                            //重新覆上移除事件
+                            for (var i = 0; i < @currentCart.Count; i++) {
+                                $("#add_" + i).on('click',doAdd);
+                                $("#cut_" + i).on('click', doCut);
+                            }
+                            //更新價格
+                            ChangeAmount();
+                        });
+                    },
+                    error: function() {
+                        alert("移除失敗，請重新來過");
+                    }
+                });
+            });
+        });
+        function doAdd() {
+            var controlNumber = this.getAttribute('aria-valuenow');
+            var PDID = $("#CartItem_" + controlNumber).attr('value');
+            var quantity = $("#Quantity_" + controlNumber).val();
+            var stock = stocks[controlNumber];
+            if (quantity < stock) {
+                $("#Quantity_" + controlNumber).val(parseInt(quantity) + 1); //畫面的更新
+                //資料的更新，避免下次在點進來時還是1
+                $(document).ready(function() {
                     $.ajax({
                         //讓ajax可以去執行我的CartController的AddQuantity方法
-                        url: "/Cart/AddQuantity/", 
+                        url: "/Cart/AddQuantity/",
                         method: "POST",
                         data: {
-                            pdid:PDID
+                            pdid: PDID
                         }
                     });
                     ChangeAmount();
-                }
-            });
-            $("#cut_" + i).on('click', function doCut() {
-                var controlNumber = this.getAttribute('aria-valuenow');
-                var PDID = $("#CartItem_" + controlNumber).attr('value');
-                var quantity = $("#Quantity_" + controlNumber).val();
-                var stock = stocks[controlNumber];
-                if (quantity > 1) {
-                    $("#Quantity_" + controlNumber).val(parseInt(quantity) - 1);
+                });
+            }
+        }
+        function doCut() {
+            var controlNumber = this.getAttribute('aria-valuenow');
+            var PDID = $("#CartItem_" + controlNumber).attr('value');
+            var quantity = $("#Quantity_" + controlNumber).val();
+            var stock = stocks[controlNumber];
+            if (quantity > 1) {
+                $("#Quantity_" + controlNumber).val(parseInt(quantity) - 1);
+                $(document).ready(function() {
                     $.ajax({
-                        url: "/Cart/ReduceQuantity/",  
+                        url: "/Cart/ReduceQuantity/",
                         method: "POST",
                         data: {
-                            pdid:PDID
+                            pdid: PDID
                         }
                     });
-                    ChangeAmount();
-                }
-            });
+                });
+                ChangeAmount();
+            }
         }
         //畫面上的總金額需要更新
         function ChangeAmount() {
@@ -304,5 +230,8 @@
             var AmountText = Amount.toString().replace(pattern,"$1,$2");
             $("#Amount").text("$"+ AmountText + "TWD");
         }
+
+        ChangeAmount();
+
     </script>
 }

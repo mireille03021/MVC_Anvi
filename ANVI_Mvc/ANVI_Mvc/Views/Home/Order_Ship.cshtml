@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Order_Pay";
     Layout = "~/Views/Shared/_Layout_ANVI.cshtml";
+    var CartToHere = (bool) ViewBag.CartToHere;
 }
 @section topCSS
 {
@@ -22,9 +23,12 @@
                     </a>
                     <!-- <h1 class="">客戶資訊</h1> -->
                     <ul class="bread-crumb">
-                        <li class="breadcrumb__item">
-                            <a href="/cart" class="breadcrumb__link">購物車</a><i class="fas fa-chevron-right"></i>
-                        </li>
+                        @if (CartToHere)
+                        {
+                            <li class="breadcrumb__item">
+                                <a href="/cart" class="breadcrumb__link">購物車</a><i class="fas fa-chevron-right"></i>
+                            </li>
+                        }
                         <li class="breadcrumb__item"><span class="breadcrumb__text">客戶資訊</span><i class="fas fa-chevron-right"></i></li>
                         <li class="breadcrumb__item"><span class="breadcrumb__text">運送方式</span><i class="fas fa-chevron-right"></i></li>
                         <li class="breadcrumb__item"><span class="breadcrumb__text">付款方式</span></li>
@@ -47,7 +51,7 @@
                                                 </div>
 
                                                 <div class="review-block__link">
-                                                    <a href="" class="link--small">
+                                                    <a href="~/Views/Home/Order_Customer.cshtml" class="link--small">
                                                         <span aria-hidden="true">Cange</span>
                                                         <span class="visually-hidden">Change contact information</span>
                                                     </a>
@@ -65,7 +69,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="review-block__link">
-                                                    <a href="" class="link--small">
+                                                    <a href="~/Views/Home/Order_Customer.cshtml" class="link--small">
                                                         <span aria-hidden="true">Cange</span>
                                                         <span class="visually-hidden">Change contact information</span>
                                                     </a>
