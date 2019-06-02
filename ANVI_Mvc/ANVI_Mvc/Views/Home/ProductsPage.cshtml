@@ -1,11 +1,6 @@
-﻿@using System.Web.UI.WebControls
-@using Image = ANVI_Mvc.Models.Image
-@model List<Product>
+﻿@model List<ProductPageViewModel>
 @{
     ViewBag.Title = "ProductsPage";
-    List<Product> products = (List<Product>)ViewBag.products;
-    List<Image> images = (List<Image>)ViewBag.Images;
-    List<ProductPageViewModel> pdTmps = (List<ProductPageViewModel>)ViewBag.productDetails;
 }
 
 @section topCSS
@@ -26,27 +21,22 @@
 <div class="CollectionMain">
     <div class="ProductItemListWrapper">
         <div class="ProductItemList ">
-            @for (int i = 0; i < products.Count(); i++)
+            @for (int i = 0; i < Model.GroupBy(x => x.ProductID).Select(x => x.Key).Count(); i++)
             {
+                var images = Model
+                    .Where(x => x.ImgName != null && x.ProductID == (i + 1))
+                    .Select((x) => new { CategoryName = x.CategoryName, ProductID = x.ProductID, ImgName = x.ImgName }).ToList();
                 <div id="i@(i+1)" class="Grid__Cell animated-block">
                     <div class="ProductItem">
-                        <a src="" href="/Home/ProductDetailPage/@products[i].ProductID">
-                            @foreach (var item in pdTmps)
-                            {
-                                if (products[i].ProductID == item.ProductID)
-                                {
-                                    var imgList = images.Where(x => x.PDID == item.PDID).Select(x => x.ImgName).ToList();
-                                    <img class="img_bottom" src="~/Assets/images/@item.CategoryName/@imgList[1]" alt="" />
-                                    <img id="#S@(i + 1)" src="~/Assets/images/@item.CategoryName/@imgList[0]" alt="" />
-                                    break;
-                                }
-                            }
+                        <a src="" href="/Home/ProductDetailPage/@Model[i].ProductID">
+                            <img class="img_bottom" src="~/Assets/images/@images[1].CategoryName/@images[1].ImgName" alt="" />
+                            <img id="#S@(i + 1)" src="~/Assets/images/@images[0].CategoryName/@images[0].ImgName" alt="" />
                         </a>
                         <div class="ProductItem_Info ">
-                            <h2 class="ProductItem_Title Heading">@products[i].ProductName</h2>
+                            <h2 class="ProductItem_Title Heading">@Model[i].ProductName</h2>
                             <div class="ProductItem_PriceList Heading">
                                 <span class="ProductItem_Price">
-                                    <span>$@Math.Floor((decimal)products[i].UnitPrice)TWD</span>
+                                    <span>$@Math.Floor(Model[i].UnitPrice)TWD</span>
                                 </span>
                             </div>
                             @*<div class="ProductItem_ColorSwatchList">

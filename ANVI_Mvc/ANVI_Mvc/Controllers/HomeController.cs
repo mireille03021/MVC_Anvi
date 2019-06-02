@@ -32,23 +32,8 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult ProductsPage() //商品頁面
         {
-            List<Product> products = db.Products.ToList();
-
-            ViewBag.products = products;
-
-            var list = from cat in db.Categories
-                join p in db.Products on cat.CategoryID equals p.CategoryID
-                join pd in db.ProductDetails on p.ProductID equals pd.ProductID
-                select new ProductPageViewModel
-                {
-                    ProductID = p.ProductID,
-                    PDID = pd.PDID,
-                    ColorID = pd.ColorID,
-                    CategoryName = cat.CategoryName
-                };
-            ViewBag.productDetails = list.ToList();
-            ViewBag.Images = db.Images.ToList();
-            ViewBag.Colors = db.Colors.ToList();
+            ProductsService service = new ProductsService(db);
+            ViewData.Model = service.getPageOfProducts();
 
             return View();
         }
