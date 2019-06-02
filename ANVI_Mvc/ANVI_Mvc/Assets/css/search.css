@@ -1,0 +1,76 @@
+body {
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    line-height: 1.65;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+main,
+section {
+    display: block;
+}
+
+.EmptyState {
+    margin: 250px 0;
+    text-align: center;
+    /* 有RWD之後有空可以做 */
+}
+
+.container {
+    padding: 0 80px;
+    margin: 0 auto;
+}
+
+.u-h5 {
+    font-size: 14px;
+}
+
+.Heading {
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    transition: color 0.2s ease-in-out;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.EmptyState__Action {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.Form {
+    width: 100%;
+}
+
+.Form__Input {
+    -webkit-appearance: none;
+    display: block;
+    padding: 12px 14px;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    /* width: 100%; */
+    line-height: normal;
+    resize: none;
+    transition: border-color 0.1s ease-in-out;
+    background: transparent;
+    resize: none;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
