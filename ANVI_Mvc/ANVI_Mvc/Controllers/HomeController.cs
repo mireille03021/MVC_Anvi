@@ -80,17 +80,11 @@ namespace ANVI_Mvc.Controllers
             ViewData["ColorName"] = DropDownList_Color;
             return View("ProductDetailPage");
         }
-        //[MultiButton("BuyItNow")]
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public ActionResult ProductDetailPage()  //單一商品頁面 Get
-        //{
-        //    return View("Order_Customer");
-        //}
+
         [MultiButton("BuyItNow")]
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult BuyItNow(string pdid)
+        public ActionResult BuyItNow(string pdid)  //偷偷練一下Dapper，讓我寫Search錢可以上手 by逢xD
         {
             var connectionString = ConfigurationManager.ConnectionStrings["AnviConnection"].ConnectionString;
             string queryString = "select " +
