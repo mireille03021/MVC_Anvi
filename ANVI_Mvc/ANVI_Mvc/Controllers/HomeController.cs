@@ -87,7 +87,7 @@ namespace ANVI_Mvc.Controllers
         //----------------------------下單-----------------------------
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Order_Customer()  //下單-客戶頁面(填入收件人)!沒有HEADER跟FOOTER
+        public ActionResult Order_Customer(string CartToHere)  //下單-客戶頁面(填入收件人)!沒有HEADER跟FOOTER
         {
             if (Session["Order_Session"] != null)
             {
@@ -99,6 +99,8 @@ namespace ANVI_Mvc.Controllers
                 ViewData["Phone"] = OCVM.Phone;
                 ViewData["Email"] = OCVM.Email;
             }
+
+            ViewBag.CartToHere = Session["CartToHere"];
             return View();
         }
 
@@ -113,7 +115,7 @@ namespace ANVI_Mvc.Controllers
             ViewData["Address"] = OCVM.Address;
             ViewData["Phone"] = OCVM.Phone;
             ViewData["Email"] = OCVM.Email;
-
+            ViewBag.CartToHere = Session["CartToHere"];
             return View("Order_Ship");
         }
         [HttpGet]
@@ -138,6 +140,7 @@ namespace ANVI_Mvc.Controllers
             ViewData["Address"] = OCVM.Address;
             ViewData["Phone"] = OCVM.Phone;
             ViewData["Email"] = OCVM.Email;
+            ViewBag.CartToHere = Session["CartToHere"];
             ViewData.Model = OCVM;
 
             return View("Order_Pay");

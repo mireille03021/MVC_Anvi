@@ -83,6 +83,7 @@ namespace ANVI_Mvc.Controllers
                     return View("ShoppingCart");
                 }
             }
+            Session["CartToHere"] = true;
             return RedirectToAction("Order_Customer", "Home");
         }
     }
