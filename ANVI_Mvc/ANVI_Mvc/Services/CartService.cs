@@ -30,7 +30,7 @@ namespace ANVI_Mvc.Services
             }
             else
             {
-                throw new InvalidOperationException("System.web.HttpContext.Current為空，請檢察");
+                throw new InvalidOperationException("System.web.HttpContext.Current為空，請檢查");
             }
         }
 

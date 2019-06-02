@@ -1,7 +1,17 @@
-﻿
+﻿@using ANVI_Mvc.Services
+
 @{
     ViewBag.Title = "Order_Customer";
     Layout = "~/Views/Shared/_Layout_ANVI.cshtml";
+
+    bool GetSomthing = false;
+    var currentCart = new CartModel(); //取得目前購物車資料
+    if(CartService.GetCurrentCart() != null) //判斷是否有東西
+    {
+        GetSomthing = true;
+        currentCart = CartService.GetCurrentCart();
+    }
+    var Img = (string)ViewBag.Img;
 }
 
 @section topCSS
@@ -255,31 +265,40 @@
 
 
                                             <tbody>
-                                                <tr class="product">
-                                                    <td class="product__image">
-                                                        <div class="product-thumbnail">
-                                                            <div class="product-thumbnail__wrapper">
-                                                                <img src="../ANVI/images/2_c6e0228b-9fef-409e-a0a0-1f791a63bb48_400x.jpg" class="product-thumbnail_image" />
+                                                @if(GetSomthing)
+                                                {
+
+                                                    foreach (var item in currentCart)
+                                                    {
 
 
+                                                    <tr class="product">
+                                                        <td class="product__image">
+                                                            <div class="product-thumbnail">
+                                                                <div class="product-thumbnail__wrapper">
+                                                                    <img src="../ANVI/images/@Img" class="product-thumbnail_image" />
+
+
+                                                                </div>
+                                                                <span class="product-thumbnail__quantity">1</span>
                                                             </div>
-                                                            <span class="product-thumbnail__quantity">1</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="product__description">
-                                                        <span class="product_description_name order-summary__emphasis">
-                                                            金屬面側編浩石耳環(MINI)
-                                                        </span>
-                                                        <span class="product_description_variant order-summary__small-text">
-                                                            Silver
-                                                        </span>
+                                                        </td>
+                                                        <td class="product__description">
+                                                            <span class="product_description_name order-summary__emphasis">
+                                                                @item.ProductName
+                                                            </span>
+                                                            <span class="product_description_variant order-summary__small-text">
+                                                                @item.ColorName
+                                                            </span>
 
-                                                    </td>
-                                                    <!--有一個TD序號 -->
-                                                    <td class="product__price">
-                                                        <span class=" .order-summary__emphasis">$1,185.01 TWD</span>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                        <!--有一個TD序號 -->
+                                                        <td class="product__price">
+                                                            <span class=" .order-summary__emphasis">@item.UnitPrice</span>
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                                }
 
 
                                                 <tr class="product">

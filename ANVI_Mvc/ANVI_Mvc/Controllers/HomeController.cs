@@ -83,6 +83,9 @@ namespace ANVI_Mvc.Controllers
         [HttpGet]
         public ActionResult Order_Customer()  //下單-客戶頁面(填入收件人)!沒有HEADER跟FOOTER
         {
+            var Img = CartService.getEachProductImages(db);
+            ViewBag.Img = Img;
+
             if (Session["Order_Session"] != null)
             {
                 var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
