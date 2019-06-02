@@ -124,7 +124,8 @@
                                 </button>
                                 <div id="S-pay-Btn" class="shopify-payment-button">
                                     <div>
-                                        <button class="shopify-payment-button__button shopify-payment-button__button--unbranded">
+                                        <input id="pdid" name="pdid" hidden="hidden" value="" />
+                                        <button type="submit" name="BuyItNow" class="shopify-payment-button__button shopify-payment-button__button--unbranded">
                                             BUY IT NOW
                                         </button>
                                     </div>
@@ -579,6 +580,7 @@
                 });
                 console.log(product["PDID"]);
                 PDID = product["PDID"];
+                $("#pdid").val(PDID);
                 @*var dataUser = "@Model.ProductDetailViewModels.Where(x => x.Color.ColorName == ColorName)";
                 var reg = new RegExp("&quot;", "g"); //创建正则RegExp对象
                 var data = JSON.parse(dataUser.replace(reg, '"'));

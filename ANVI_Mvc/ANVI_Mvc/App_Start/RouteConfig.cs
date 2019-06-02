@@ -14,9 +14,14 @@ namespace ANVI_Mvc
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "ControlPDID",
+                name: "Cart",
                 url: "Cart/{action}/{pdid}",
                 defaults: new { controller = "Cart", action = "AddToCart", pdid = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "BuyItNow",
+                url: "Home/BuyItNow/{pdid}",
+                defaults: new { controller = "Home", action = "BuyItNow", pdid = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Default",
