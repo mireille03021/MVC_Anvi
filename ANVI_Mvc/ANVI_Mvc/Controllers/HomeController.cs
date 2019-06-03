@@ -30,18 +30,21 @@ namespace ANVI_Mvc.Controllers
             return View();
         }
         [AllowAnonymous]
-        public ActionResult ProductsPage() //商品頁面
+        public ActionResult ProductsPage(int page) //商品頁面
         {
+            ViewData.Model = db.Products.ToList();
             ViewBag.Title = "PRODUCTS";
             ViewBag.ActionName = "GetProducts";
             ViewBag.Controller = "Home";
+            ViewBag.Page = page;
             return View();
         }
         [AllowAnonymous]
-        public ActionResult GetProducts()
+        public ActionResult GetProducts(int page)
         {
+            var ProductNumber = 8;
             ProductsService service = new ProductsService(db);
-            ViewData.Model = service.getPageOfProducts()/*.Where(x => x.CategoryName == "Necklaces").ToList()*/;
+            ViewData.Model = service.getPageOfProducts().Where(x=>x.ProductID > (page-1)* ProductNumber && x.ProductID <= (page* ProductNumber)).ToList();
             return PartialView("_ProductsPartial");
         }
         //---------------------單一商品頁面-----------------------
