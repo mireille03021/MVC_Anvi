@@ -408,8 +408,9 @@
     <Content Include="Views\Account\ListAllCustomersOrder.cshtml" />
     <Content Include="Views\Home\AccountPage.cshtml" />
     <Content Include="Views\Shared\_CartItemPartial.cshtml" />
-    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\SearchIndex.cshtml" />
     <Content Include="Views\Shared\_ProductsPartial.cshtml" />
+    <Content Include="Views\Search\SearchedProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
