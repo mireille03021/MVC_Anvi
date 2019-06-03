@@ -423,9 +423,8 @@ template {
 }
 
 .ProductItemListWrapper .ProductItemList {
-  width: 100%;
   height: 100%;
-  padding: 0 50px 0 0;
+  padding: 0 30px 0 0;
 }
 
 .ProductItemListWrapper .Grid__Cell {
@@ -691,6 +690,84 @@ button, input, optgroup, select, textarea {
   transition: opacity 0.25s ease-in-out;
 }
 
+.Popover[aria-hidden="false"] {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  visibility: visible;
+}
+
+.Popover {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  z-index: 10;
+  -webkit-box-shadow: 0 -2px 10px rgba(54, 54, 54, 0.2);
+          box-shadow: 0 -2px 10px rgba(54, 54, 54, 0.2);
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  visibility: hidden;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.Popover__Header {
+  position: relative;
+  padding: 13px 20px;
+  border-bottom: 1px solid rgba(221, 221, 221, 0.4);
+  text-align: center;
+}
+
+.Popover__Close {
+  position: absolute;
+  left: 20px;
+  top: calc(50% - 7px);
+  line-height: 0;
+}
+
+.Icon-Wrapper--clickable {
+  position: relative;
+  background: transparent;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+}
+
+.Popover__Close svg {
+  stroke-width: 1.1px;
+}
+
+.Popover__ValueList {
+  list-style: none;
+  max-height: 385px;
+  padding: 18px 0;
+  overflow: auto;
+}
+
+.Popover__Value {
+  display: block;
+  padding: 12px 20px;
+  width: 100%;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #6a6a6a;
+  text-align: center;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+#collection-sort-popover {
+  bottom: 70px;
+  right: 151px;
+}
+
 @media screen and (min-width: 641px) {
   .Pagination {
     margin: 80px 0;
@@ -754,6 +831,62 @@ button, input, optgroup, select, textarea {
 @media screen and (min-width: 641px) {
   .hidden-tablet-and-up {
     display: none !important;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Popover[aria-hidden="false"] {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Popover {
+    -webkit-transform: none;
+            transform: none;
+    width: auto;
+    bottom: auto;
+    left: auto;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Popover--positionTop::before {
+    top: 100%;
+    border-width: 10px 10px 0 10px;
+    border-color: #fff transparent transparent transparent;
+    -webkit-filter: drop-shadow(0 2px 2px rgba(54, 54, 54, 0.2));
+            filter: drop-shadow(0 2px 2px rgba(54, 54, 54, 0.2));
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Popover::before {
+    content: '';
+    position: absolute;
+    right: 40px;
+    width: 10px;
+    height: 10px;
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Popover__Header {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Popover__Value {
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: right;
   }
 }
 /*# sourceMappingURL=styles.css.map */
