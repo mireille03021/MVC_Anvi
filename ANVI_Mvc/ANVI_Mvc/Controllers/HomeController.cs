@@ -254,7 +254,7 @@ namespace ANVI_Mvc.Controllers
             }
             return View();
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult AccountPage()   //主頁面
         {
             return View();

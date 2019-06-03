@@ -18,15 +18,6 @@
                         <p>Please fill in the information below:</p>
                     </header>
                     @Html.ValidationSummary("", new { @class = "text-danger" })
-
-                    <div class="F-Item">
-                        @*有此畫面但資料庫目前無欄位Last name，可先無視*@
-                        @Html.LabelFor(m => m.UserName, new { @class = "F-FLabel" })
-                        @*<input type="text" name="customer[last_name]" id="" placeholder="Name" class="F-Input">*@
-                        @Html.TextBoxFor(m => m.UserName, new { @name = "customer[userName]", @placeholder = "Name", @class = "F-Input" })
-                        @*<label for="" class="F-FLabel">Name</label>*@
-                    </div>
-
                     <div class="F-Item">
                         @Html.LabelFor(m => m.Email, new { @class = "F-FLabel" })
                         @*<input type="email" name="customer[email]" id="" placeholder="Email" class="F-Input">*@
