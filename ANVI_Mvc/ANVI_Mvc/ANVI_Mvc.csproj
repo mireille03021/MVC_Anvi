@@ -176,6 +176,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,6 +210,7 @@
     <Compile Include="Repositories\AnviRepository.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\MultiButtonAttribute.cs" />
+    <Compile Include="Services\ProductsService.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
@@ -230,6 +232,7 @@
     <Content Include="Assets\css\Order_Customer.css" />
     <Content Include="Assets\css\Order_Pay.css" />
     <Content Include="Assets\css\Register.css" />
+    <Content Include="Assets\css\search.css" />
     <Content Include="Assets\css\ShoppingCart_CSS.css" />
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\css\ProductDetailPage.css" />
@@ -405,6 +408,8 @@
     <Content Include="Views\Account\ListAllCustomersOrder.cshtml" />
     <Content Include="Views\Home\AccountPage.cshtml" />
     <Content Include="Views\Shared\_CartItemPartial.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Shared\_ProductsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

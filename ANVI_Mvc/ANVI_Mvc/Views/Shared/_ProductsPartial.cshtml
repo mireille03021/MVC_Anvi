@@ -1,0 +1,43 @@
+﻿@model List<ProductPageViewModel>
+@{
+    Layout = null;
+    //因為分類過濾後的產品ID都是用跳的，所以這裡先取產品ID來給圖片過濾用
+    var productIDs = Model.GroupBy(x => x.ProductID).Select(x => x.Key).ToList();
+}
+
+@for (int i = 0; i < productIDs.Count; i++)
+{
+    
+    var images = Model
+        .Where(x => x.ImgName != null && x.ProductID == productIDs[i])
+        .Select((x) => new { CategoryName = x.CategoryName, ProductID = x.ProductID, ImgName = x.ImgName }).ToList();
+    <div id="i@(i + 1)" class="Grid__Cell animated-block">
+        <div class="ProductItem">
+            <a src="" href="/Home/ProductDetailPage/@Model[i].ProductID">
+                <img class="img_bottom" src="~/Assets/images/@images[1].CategoryName/@images[1].ImgName" alt="" />
+                <img id="#S@(i + 1)" src="~/Assets/images/@images[0].CategoryName/@images[0].ImgName" alt="" />
+            </a>
+            <div class="ProductItem_Info ">
+                <h2 class="ProductItem_Title Heading">@Model[i].ProductName</h2>
+                <div class="ProductItem_PriceList Heading">
+                    <span class="ProductItem_Price">
+                        <span>$@Math.Floor(Model[i].UnitPrice)TWD</span>
+                    </span>
+                </div>
+                @*<div class="ProductItem_ColorSwatchList">
+                        <div class="ProductItem_ColorSwatchItem">
+                            <div class="ColorSwatchItem">
+                                <label class="ColorSwatch ColorSwatch-small Cl" check="#S1" value="1" src="image/1.jpeg"></label>
+                            </div>
+                            <div class="ColorSwatchItem">
+                                <label class="ColorSwatch ColorSwatch-small Cl" check="#S1" value="2" src="image/2.jpeg"> </label>
+                            </div>
+                            <div class="ColorSwatchItem">
+                                <label class="ColorSwatch ColorSwatch-small Cl" check="#S1" value="3" src="image/3.jpg"> </label>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+}

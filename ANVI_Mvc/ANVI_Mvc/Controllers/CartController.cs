@@ -21,6 +21,7 @@ namespace ANVI_Mvc.Controllers
             currentCart = CartService.GetCurrentCart();
         }
 
+        [HttpPost]
         public ActionResult AddToCart(string pdid)
         {
             currentCart.AddCartItem(pdid);
@@ -41,8 +42,7 @@ namespace ANVI_Mvc.Controllers
         public ActionResult GetCartItem()
         {
             var images = CartService.getEachProductImages(db);
-            CartViewModel CVM = new CartViewModel(){ Cart = currentCart,Images = images};
-            ViewBag.Images = images;
+            CartViewModel CVM = new CartViewModel() {Cart = currentCart, Images = images};
             return PartialView("_CartItemPartial",CVM);
         }
 
@@ -82,6 +82,7 @@ namespace ANVI_Mvc.Controllers
                     return View("ShoppingCart");
                 }
             }
+            Session["CartToHere"] = true;
             return RedirectToAction("Order_Customer", "Home");
         }
     }

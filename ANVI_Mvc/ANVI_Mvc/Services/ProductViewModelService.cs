@@ -67,6 +67,7 @@ namespace ANVI_Mvc.Services
                            select new ProductDetailViewModel
                            {
                                ProductID = pd.ProductID,
+                               PDID = pd.PDID,
                                Stock = pd.Stock,
                                ColorID = c.ColorID,
                                ColorName = c.ColorName,

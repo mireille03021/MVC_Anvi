@@ -1,10 +1,7 @@
-﻿@using ANVI_Mvc.Services
-
+﻿@model CartViewModel
 @{
     Layout = null;
     var i = 0;
-    var currentCart = CartService.GetCurrentCart();
-    var images = (string[])ViewBag.Images;
 }
 <div class="Cart_Head hidden-phone">
     <span class="Cart__HeadItem Heading Text--subdued u-h7">
@@ -20,21 +17,21 @@
         金額
     </span>
 </div>
-@foreach (var cartItem in currentCart)
+@foreach (var cartItem in Model.Cart)
 {
     <div id="CartItem_@i" class="CartItem" value="@cartItem.PDID">
         <div class="CartItem__ImageWrapper AspectRatio">
             <div class="AspectRatio" style="--aspect-ratio: 1.0">
                 <!----aspect-ratio: 1.0-->
                 <img class="Cart_Image"
-                     src="~/Assets/images/@cartItem.CategoryName/@images[i]"
+                     src="~/Assets/images/@cartItem.CategoryName/@Model.Images[i]"
                      alt="@cartItem.ProductName" />
             </div>
         </div>
 
         <div class="CartItem__Info">
             <h2 class="CartItem__Title Heading">
-                <a href="//www.anvistudios.com/products/bae-earring-silver?variant=13339254456343">@cartItem.ProductName</a>
+                <a href="/Home/ProductDetailPage/@cartItem.ProductID">@cartItem.ProductName</a>
             </h2>
             <div class="CartItem__Meta Heading Text_subdued">
                 <p class="CartItem__Variant">
