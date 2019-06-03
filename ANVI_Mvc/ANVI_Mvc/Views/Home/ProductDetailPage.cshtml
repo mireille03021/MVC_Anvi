@@ -8,11 +8,20 @@
 {
     <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
     <link href="~/Assets/css/ProductDetailPage.css" rel="stylesheet" />
+
+    <style>
+    </style>
+
+
 }
 @section topJS
 {
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
 }
+
+<!--浮動視窗的黑色半透明背景-->
+<div id="PageOverBlack" class="PageOverlay"></div>
+
 <main id="main" role="main">
     <div id="shopify-section-product-template" class="shopify-section shopify-section--bordered">
         <section class="Product Product--medium">
@@ -406,37 +415,27 @@
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
     <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
 
+    <!--html的scroll-->
     <script>
-        browser_window();
-        window.addEventListener("resize", browser_window);
+        var htmlpart = document.getElementsByTagName("html")[0];
 
-        function browser_window() {
-            document.documentElement.style.setProperty("--window-height", window.innerHeight + "px");
-
-            /* document.documentElement.style.setProperty("--announcement-bar-height", document.getElementById("shopify-section-announcement").offsetHeight + "px"); */
-
-            /* document.documentElement.style.setProperty("--header-height", document.getElementById("shopify-section-header").offsetHeight + "px"); */
-
-            document.getElementsByClassName("flickity-viewport")[0].style.setProperty("height", document.getElementsByClassName("flickity-viewport")[0].clientWidth + "px");
-
-            var F_view_height = document.getElementsByClassName("flickity-viewport")[0].style.height;
-
-            console.log(F_view_height);
+        function html_no_scroll() {
+            htmlpart.className = ("no-scroll");
         }
+
+        function html_scroll() {
+            htmlpart.className = ("");
+        }
+
     </script>
 
-    < !--隨螢幕寬調整圖片高 -->
+    <!--隨螢幕寬調整圖片高-flickity-viewport-->
     <script>
-        /* 隨螢幕寬調整圖片高 */
-        browser_window();
-        window.addEventListener("resize", browser_window);
+        /* 隨螢幕寬調整圖片高-flickity-viewport */
+        pic_flickity_viewport_window();
+        window.addEventListener("resize", pic_flickity_viewport_window);
 
-        function browser_window() {
-            document.documentElement.style.setProperty("--window-height", window.innerHeight + "px");
-
-            document.documentElement.style.setProperty("--announcement-bar-height", document.getElementsByClassName("topnews")[0].offsetHeight + "px");
-
-            document.documentElement.style.setProperty("--header-height", document.getElementById("header").offsetHeight + "px");
+        function pic_flickity_viewport_window() {
 
             document.getElementsByClassName("flickity-viewport")[0].style.setProperty("height", document.getElementsByClassName("flickity-viewport")[0].clientWidth + "px");
 
@@ -451,17 +450,31 @@
     <script>
 
         /*顏色選擇區塊顯示*/
+        var PageOverBlack = document.getElementById("PageOverBlack");
         var color_part = document.getElementsByClassName("ProductForm__Item")[0];
+
         color_part.onclick = open_color_select;
         function open_color_select() {
             document.getElementById("colorselect_part").setAttribute("aria-hidden", "false");
             document.getElementById("colorselect_part").setAttribute("tabindex", "-1");
+            //PageOverBlack.classList.add("is-visible");
+            PageOverBlack.className = ("PageOverlay is-visible");
+            html_no_scroll();
         }
 
         document.getElementsByClassName("VariantSelector__Button Button Button--primary Button--full")[0].onclick = close_color_select;
         function close_color_select() {
             document.getElementById("colorselect_part").setAttribute("aria-hidden", "true");
             document.getElementById("colorselect_part").tabindex = "";
+            PageOverBlack.classList.remove("is-visible");
+            htmlpart.className = ("");
+            html_scroll();
+        }
+
+        window.onclick = function (event) {
+            if (event.target == PageOverBlack) {
+                close_color_select();
+            }
         }
     </script>
 
@@ -475,12 +488,14 @@
         function open_modal() {
             document.getElementById("modal-size-chart").setAttribute("aria-hidden", "false");
             document.getElementById("modal-size-chart").setAttribute("tabindex", "-1");
+            html_no_scroll();
         }
 
         document.getElementsByClassName("Modal__Close RoundButton RoundButton--large")[0].onclick = close_modal;
         function close_modal() {
             document.getElementById("modal-size-chart").setAttribute("aria-hidden", "true");
             document.getElementById("modal-size-chart").tabindex = "";
+            html_scroll();
         }
     </script>
 
