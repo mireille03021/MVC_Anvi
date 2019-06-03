@@ -16,6 +16,6 @@ namespace ANVI_Mvc.Models
         [Required]
         public string SubTitle { get; set; }
 
-        public virtual Product Products { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

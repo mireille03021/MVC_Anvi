@@ -263,8 +263,9 @@ namespace ANVI_Mvc.Controllers
             return PartialView("_OrderPartial");
         }
 
-        [Authorize]
-        public ActionResult AccountPage()   //主頁面
+        //[Authorize]
+        [AllowAnonymous]
+        public ActionResult AccountPage()   //帳戶主頁面
         {
             return View();
         }

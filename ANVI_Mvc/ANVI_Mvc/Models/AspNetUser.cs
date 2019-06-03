@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace ANVI_Mvc.Models
 {
     using System;
@@ -13,6 +15,7 @@ namespace ANVI_Mvc.Models
         {
             AspNetUserClaims = new HashSet<AspNetUserClaim>();
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
+            Orders = new HashSet<Order>();
             AspNetRoles = new HashSet<AspNetRole>();
         }
 
@@ -43,16 +46,40 @@ namespace ANVI_Mvc.Models
         [StringLength(256)]
         public string UserName { get; set; }
 
-        public int CustomerID { get; set; }
+        [Required]
+        [StringLength(30)]
+        public string Name { get; set; }
 
+        [StringLength(15)]
+        public string City { get; set; }
+
+        [StringLength(15)]
+        public string Country { get; set; }
+
+        public string Address { get; set; }
+
+        [StringLength(10)]
+        public string ZipCode { get; set; }
+
+        [StringLength(20)]
+        public string BankAccount { get; set; }
+
+        [StringLength(10)]
+        public string CreditCard { get; set; }
+
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
 
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
 
-        public virtual Customer Customers { get; set; }
+        [JsonIgnore]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
 
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }

@@ -263,29 +263,29 @@ namespace ANVI_Mvc.Migrations
                 new Image() { ImgID = 70, PDID = "18-1", ImgName = "3_3_900x.jpg" },
                 new Image() { ImgID = 71, PDID = "18-1", ImgName = "3_2_900x.jpg" }
             );
-            context.Customers.AddOrUpdate(
-                x => x.CustomerID,
-                new Customer() { CustomerID = 1, CustomerName = "Anvi", Phone = "0900-000-123", Country = "Taiwan", City = "Taipei", Email = "anvi@gmail.com", Address = "5F., Aly. 4, Ln. 2, Dalong St., Datong Dist., Taipei City", ZipCode = "103" },
-                new Customer() { CustomerID = 2, CustomerName = "中華大學", Phone = "03-563-1988", Country = "Taiwan", City = "新竹", Email = "chu@chu.edu.tw", Address = "新竹市香山區五福路二段707號", ZipCode = "300" }
-            );
-            context.Shippers.AddOrUpdate(
-                x => x.ShipperID,
-                new Shipper() { ShipperID = 1, ShippName = "黑貓", Phone = "02-321-5523" },
-                new Shipper() { ShipperID = 2, ShippName = "郵局", Phone = "02-123-5529" }
-            );
-            context.Orders.AddOrUpdate(
-                x => x.OrderID,
-                new Order() { OrderID = 1, CustomerID = 1, ShippingID = 1, RecipientName = "Hu", RecipientAddressee = "桃園市中壢區", RecipientZipCod = "320", RecipientCity = "桃園", RecipientPhone = "0967-890-000", Payment = "超商取貨", OrderDate = new DateTime(2019, 03, 20, 0, 12, 10, 927), Remaeks = "一天內出貨", ShipDate = new DateTime(2019, 03, 21, 0, 12, 10, 927) }
-            );
-            context.OrderDetails.AddOrUpdate(
-                x => x.OrderID,
-                new OrderDetail() { OrderID = 1, PDID = "4-1", Price = 1700, Quantity = 1 }
-            );
-            context.AspNetRoles.AddOrUpdate(
-                x => x.Id,
-                new AspNetRole() { Id = "ANR1", Name = "Root" },
-                new AspNetRole() { Id = "ANR2", Name = "User" }
-            );
+            //context.Customers.AddOrUpdate(
+            //    x => x.CustomerID,
+            //    new Customer() { CustomerID = 1, CustomerName = "Anvi", Phone = "0900-000-123", Country = "Taiwan", City = "Taipei", Email = "anvi@gmail.com", Address = "5F., Aly. 4, Ln. 2, Dalong St., Datong Dist., Taipei City", ZipCode = "103" },
+            //    new Customer() { CustomerID = 2, CustomerName = "中華大學", Phone = "03-563-1988", Country = "Taiwan", City = "新竹", Email = "chu@chu.edu.tw", Address = "新竹市香山區五福路二段707號", ZipCode = "300" }
+            //);
+            //context.Shippers.AddOrUpdate(
+            //    x => x.ShipperID,
+            //    new Shipper() { ShipperID = 1, ShippName = "黑貓", Phone = "02-321-5523" },
+            //    new Shipper() { ShipperID = 2, ShippName = "郵局", Phone = "02-123-5529" }
+            //);
+            //context.Orders.AddOrUpdate(
+            //    x => x.OrderID,
+            //    new Order() { OrderID = 1, CustomerID = 1, ShippingID = 1, RecipientName = "Hu", RecipientAddressee = "桃園市中壢區", RecipientZipCod = "320", RecipientCity = "桃園", RecipientPhone = "0967-890-000", Payment = "超商取貨", OrderDate = new DateTime(2019, 03, 20, 0, 12, 10, 927), Remaeks = "一天內出貨", ShipDate = new DateTime(2019, 03, 21, 0, 12, 10, 927) }
+            //);
+            //context.OrderDetails.AddOrUpdate(
+            //    x => x.OrderID,
+            //    new OrderDetail() { OrderID = 1, PDID = "4-1", Price = 1700, Quantity = 1 }
+            //);
+            //context.AspNetRoles.AddOrUpdate(
+            //    x => x.Id,
+            //    new AspNetRole() { Id = "ANR1", Name = "Root" },
+            //    new AspNetRole() { Id = "ANR2", Name = "User" }
+            //);
         }
     }
 }

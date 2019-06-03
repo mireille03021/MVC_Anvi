@@ -151,6 +151,7 @@ namespace ANVI_Mvc.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        //-----------------------------------------此處需要修改-----------------------------------------
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -158,26 +159,26 @@ namespace ANVI_Mvc.Controllers
                 var userCount = db.AspNetUsers.Count() + 1;
 
                 var nextUserID = "IDU" + userCount.ToString("0000");
-                var nextCustomerID = db.Customers.Count() + 1;
-                var user = new ApplicationUser { Id = nextUserID, UserName = model.Email, Email = model.Email, CustomerID = nextCustomerID - 1, PhoneNumber = model.PhoneNumber };
+                var nextCustomerID = db.AspNetUsers.Count() + 1;  //原本是db.Customers
+                var user = new ApplicationUser { Id = nextUserID, UserName = model.Email, Email = model.Email, /*CustomerID = nextCustomerID - 1,*/ PhoneNumber = model.PhoneNumber };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    AnviRepository<Customer> c_repo = new AnviRepository<Customer>(db);
-                    Customer c = new Customer()
+                    AnviRepository<AspNetUser> c_repo = new AnviRepository<AspNetUser>(db);
+                    AspNetUser c = new AspNetUser()
                     {
-                        CustomerID = nextCustomerID,
-                        CustomerName = user.UserName,
+                        Id = nextCustomerID.ToString(),  //原本是CustomerID = nextCustomerID;
+                        UserName = user.UserName,
                         Email = user.Email,
-                        Phone = user.PhoneNumber
+                        PhoneNumber = user.PhoneNumber  //原本是Phone = user.PhoneNumber;
                     };
                     c_repo.Create(c);
                     db.SaveChanges();
 
                     var currerUser =  db.AspNetUsers.Find(user.Id);
-                    currerUser.CustomerID = nextCustomerID;
+                    //currerUser.CustomerID = nextCustomerID;
                     db.SaveChanges();
 
                     // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771

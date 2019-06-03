@@ -180,9 +180,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905281201067_initialDB.cs" />
-    <Compile Include="Migrations\201905281201067_initialDB.Designer.cs">
-      <DependentUpon>201905281201067_initialDB.cs</DependentUpon>
+    <Compile Include="Migrations\201906031151179_initialDB.cs" />
+    <Compile Include="Migrations\201906031151179_initialDB.Designer.cs">
+      <DependentUpon>201906031151179_initialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -194,7 +194,6 @@
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Color.cs" />
-    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DesDetail.cs" />
     <Compile Include="Models\DesSubTitle.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -430,8 +429,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905281201067_initialDB.resx">
-      <DependentUpon>201905281201067_initialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906031151179_initialDB.resx">
+      <DependentUpon>201906031151179_initialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

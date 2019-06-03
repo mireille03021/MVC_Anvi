@@ -32,11 +32,15 @@ namespace ANVI_Mvc.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
-                        CustomerID = c.Int(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 30, fixedLength: true),
+                        City = c.String(maxLength: 15, fixedLength: true),
+                        Country = c.String(maxLength: 15, fixedLength: true),
+                        Address = c.String(),
+                        ZipCode = c.String(maxLength: 10, fixedLength: true),
+                        BankAccount = c.String(maxLength: 20, fixedLength: true),
+                        CreditCard = c.String(maxLength: 10, fixedLength: true),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Customers", t => t.CustomerID)
-                .Index(t => t.CustomerID);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -64,28 +68,11 @@ namespace ANVI_Mvc.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.Customers",
-                c => new
-                    {
-                        CustomerID = c.Int(nullable: false),
-                        CustomerName = c.String(nullable: false, maxLength: 20),
-                        Phone = c.String(nullable: false, maxLength: 20),
-                        Country = c.String(maxLength: 15),
-                        City = c.String(maxLength: 15),
-                        Email = c.String(nullable: false, maxLength: 50),
-                        Address = c.String(),
-                        ZipCode = c.String(maxLength: 10),
-                        BankAccount = c.String(maxLength: 20),
-                        CreditCard = c.String(maxLength: 10, fixedLength: true),
-                    })
-                .PrimaryKey(t => t.CustomerID);
-            
-            CreateTable(
                 "dbo.Orders",
                 c => new
                     {
                         OrderID = c.Int(nullable: false),
-                        CustomerID = c.Int(nullable: false),
+                        UserID = c.String(nullable: false, maxLength: 128),
                         ShippingID = c.Int(),
                         RecipientName = c.String(nullable: false, maxLength: 15),
                         RecipientAddressee = c.String(nullable: false, maxLength: 30),
@@ -99,8 +86,8 @@ namespace ANVI_Mvc.Migrations
                     })
                 .PrimaryKey(t => t.OrderID)
                 .ForeignKey("dbo.Shippers", t => t.ShippingID)
-                .ForeignKey("dbo.Customers", t => t.CustomerID)
-                .Index(t => t.CustomerID)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserID)
+                .Index(t => t.UserID)
                 .Index(t => t.ShippingID);
             
             CreateTable(
@@ -243,7 +230,7 @@ namespace ANVI_Mvc.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Orders", "CustomerID", "dbo.Customers");
+            DropForeignKey("dbo.Orders", "UserID", "dbo.AspNetUsers");
             DropForeignKey("dbo.Orders", "ShippingID", "dbo.Shippers");
             DropForeignKey("dbo.OrderDetails", "OrderID", "dbo.Orders");
             DropForeignKey("dbo.ProductDetails", "SizeID", "dbo.Sizes");
@@ -254,7 +241,6 @@ namespace ANVI_Mvc.Migrations
             DropForeignKey("dbo.OrderDetails", "PDID", "dbo.ProductDetails");
             DropForeignKey("dbo.Images", "PDID", "dbo.ProductDetails");
             DropForeignKey("dbo.ProductDetails", "ColorID", "dbo.Colors");
-            DropForeignKey("dbo.AspNetUsers", "CustomerID", "dbo.Customers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -269,10 +255,9 @@ namespace ANVI_Mvc.Migrations
             DropIndex("dbo.OrderDetails", new[] { "OrderID" });
             DropIndex("dbo.OrderDetails", new[] { "PDID" });
             DropIndex("dbo.Orders", new[] { "ShippingID" });
-            DropIndex("dbo.Orders", new[] { "CustomerID" });
+            DropIndex("dbo.Orders", new[] { "UserID" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", new[] { "CustomerID" });
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.Shippers");
             DropTable("dbo.Sizes");
@@ -285,7 +270,6 @@ namespace ANVI_Mvc.Migrations
             DropTable("dbo.ProductDetails");
             DropTable("dbo.OrderDetails");
             DropTable("dbo.Orders");
-            DropTable("dbo.Customers");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");

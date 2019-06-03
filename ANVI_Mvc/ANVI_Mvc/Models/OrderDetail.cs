@@ -27,8 +27,8 @@ namespace ANVI_Mvc.Models
         [Column(TypeName = "money")]
         public decimal? Discount { get; set; }
 
-        public virtual Order Orders { get; set; }
+        public virtual Order Order { get; set; }
 
-        public virtual ProductDetail ProductDetails { get; set; }
+        public virtual ProductDetail ProductDetail { get; set; }
     }
 }
