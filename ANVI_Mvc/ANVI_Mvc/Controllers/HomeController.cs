@@ -76,7 +76,7 @@ namespace ANVI_Mvc.Controllers
         [MultiButton("BuyItNow")]
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult BuyItNow(string pdid)  //偷偷練一下Dapper，讓我寫Search前可以上手 by逢xD
+        public ActionResult BuyItNow(string pdid)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["AnviConnection"].ConnectionString;
             string queryString = "select " +

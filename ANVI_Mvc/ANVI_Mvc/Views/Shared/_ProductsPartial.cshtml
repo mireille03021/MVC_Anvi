@@ -1,14 +1,15 @@
 ﻿@model List<ProductPageViewModel>
 @{
     Layout = null;
-    var products = Model.GroupBy(x => x.ProductID).Select(x => x.Key).ToList();
+    //因為分類過濾後的產品ID都是用跳的，所以這裡先取產品ID來給圖片過濾用
+    var productIDs = Model.GroupBy(x => x.ProductID).Select(x => x.Key).ToList();
 }
 
-@for (int i = 0; i < products.Count; i++)
+@for (int i = 0; i < productIDs.Count; i++)
 {
-    var productID = products[i];
+    
     var images = Model
-        .Where(x => x.ImgName != null && x.ProductID == productID)
+        .Where(x => x.ImgName != null && x.ProductID == productIDs[i])
         .Select((x) => new { CategoryName = x.CategoryName, ProductID = x.ProductID, ImgName = x.ImgName }).ToList();
     <div id="i@(i + 1)" class="Grid__Cell animated-block">
         <div class="ProductItem">
