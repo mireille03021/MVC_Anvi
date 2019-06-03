@@ -24,6 +24,11 @@ namespace ANVI_Mvc
                 defaults: new { controller = "Home", action = "BuyItNow", pdid = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "ProductDetailPage",
+                url: "Home/ProductDetailPage/{pid}",
+                defaults: new { controller = "Home", action = "ProductDetailPage", pid = 1 }
+            );
+            routes.MapRoute(
                 name: "ProductsPage",
                 url: "Home/{action}/{page}",
                 defaults: new { controller = "Home", action = "ProductsPage", page = 1 }

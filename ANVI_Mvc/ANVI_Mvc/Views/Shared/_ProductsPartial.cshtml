@@ -13,7 +13,7 @@
         .Select((x) => new { CategoryName = x.CategoryName, ProductID = x.ProductID, ImgName = x.ImgName }).ToList();
     <div id="i@(i + 1)" class="Grid__Cell animated-block">
         <div class="ProductItem">
-            <a src="" href="/Home/ProductDetailPage/@Model[i].ProductID">
+            <a src="" href="/Home/ProductDetailPage/@products[i].ProductID">
                 <img class="img_bottom" src="~/Assets/images/@images[1].CategoryName/@images[1].ImgName" alt="" />
                 <img id="#S@(i + 1)" src="~/Assets/images/@images[0].CategoryName/@images[0].ImgName" alt="" />
             </a>

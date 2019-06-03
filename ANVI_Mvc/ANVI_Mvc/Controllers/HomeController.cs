@@ -50,9 +50,9 @@ namespace ANVI_Mvc.Controllers
         //---------------------單一商品頁面-----------------------
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult ProductDetailPage(int id)  //單一商品頁面 Get
+        public ActionResult ProductDetailPage(int pid)  //單一商品頁面 Get
         {
-            ProductViewModelService service = new ProductViewModelService(db, id);
+            ProductViewModelService service = new ProductViewModelService(db, pid);
             var sPVM = service.PVM;
             ViewData.Model = sPVM;
             ViewBag.ColorList = db.Colors.ToList();
@@ -64,9 +64,9 @@ namespace ANVI_Mvc.Controllers
         [MultiButton("ChangeColor")]
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult ChangeColor(int id, string DropDownList_Color)  //單一商品頁面Post
+        public ActionResult ChangeColor(int pid, string DropDownList_Color)  //單一商品頁面Post
         {
-            ProductViewModelService service = new ProductViewModelService(db, id);
+            ProductViewModelService service = new ProductViewModelService(db, pid);
             var sPVM = service.PVM;
             ViewData.Model = sPVM;
             ViewBag.ColorList = db.Colors.ToList();
