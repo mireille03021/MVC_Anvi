@@ -6,7 +6,7 @@
 
     bool GetSomthing = false;
     var currentCart = new CartModel(); //取得目前購物車資料
-    if(CartService.GetCurrentCart() != null) //判斷是否有東西
+    if (CartService.GetCurrentCart() != null) //判斷是否有東西
     {
         GetSomthing = true;
         currentCart = CartService.GetCurrentCart();
@@ -43,8 +43,8 @@
                     </ul>
                 </div>
                 <div class="main__content">
-                        <form action="/Home/Order_Customer" class="edit_checkout" method="post">
-                    <div class="step">
+                    <form action="/Home/Order_Customer" class="edit_checkout" method="post">
+                        <div class="step">
                             <div class="step__sections">
                                 <div class="section">
                                     <div class="section__header">
@@ -61,19 +61,19 @@
 
                                     <!-- 會員登入後的樣子 -->
                                     <!--
-                        <input value="XXXXXX@gmail.com" size="30" type="hidden" name="checkout[email]" id="checkout_email">
-                        <div class="logged-in-customer-information">
-                            <div class="logged-in-customer-information__avatar-wrapper">
-                                <div class="logged-in-customer-information__avatar gravatar"></div>
-                            </div>
+                                    <input value="XXXXXX@gmail.com" size="30" type="hidden" name="checkout[email]" id="checkout_email">
+                                    <div class="logged-in-customer-information">
+                                        <div class="logged-in-customer-information__avatar-wrapper">
+                                            <div class="logged-in-customer-information__avatar gravatar"></div>
+                                        </div>
 
-                            <p class="logged-in-customer-information__paragraph">
-                                <span class="page-main__emphasis">哭 碼</span>
-                                <span>(XXXXXX@gmail.com)</span>
-                                <br>
-                                <a href="#">登出</a>
-                            </p>
-                        </div> -->
+                                        <p class="logged-in-customer-information__paragraph">
+                                            <span class="page-main__emphasis">哭 碼</span>
+                                            <span>(XXXXXX@gmail.com)</span>
+                                            <br>
+                                            <a href="#">登出</a>
+                                        </p>
+                                    </div> -->
                                     <!-- 登入前的樣子 -->
                                     <div class="fieldset">
                                         <div class="field">
@@ -99,15 +99,15 @@
                                 </div>
                                 <div class="section__content">
                                     <div class="fieldset">
-                                        
-                                            <div class="field ">
-                                                <div class="field__input-wrapper">
-                                                    <!-- <label class="field__label" for="checkout_shipping_address_last_name">姓氏</label> -->
-                                                    <input type="text" class="field__input" placeholder="姓名" size="30" name="CustomerName" value="@ViewData["CustomerName"]" id="checkout_shipping_address_name">
-                                                </div>
+
+                                        <div class="field ">
+                                            <div class="field__input-wrapper">
+                                                <!-- <label class="field__label" for="checkout_shipping_address_last_name">姓氏</label> -->
+                                                <input type="text" class="field__input" placeholder="姓名" size="30" name="CustomerName" value="@ViewData["CustomerName"]" id="checkout_shipping_address_name">
                                             </div>
-                            
-                                        
+                                        </div>
+
+
                                         <div class="half-to">
                                             <div class="field field--required field--half-city field--show-floating-label" data-address-field="city" data-autocomplete-field-container="true">
 
@@ -145,11 +145,11 @@
                                                 </div>
                                             </div>
                                             <!-- <div class="field field--half-city">
-                                    <div class="field__input-wrapper">
-                                        <label class="field__label">城市</label>
-                                        <input type="text" class="field__input" id="checkout_shipping_address_city" placeholder="城市" size="30" name="checkout[shipping_address][city]">
-                                    </div>
-                                </div> -->
+                                                <div class="field__input-wrapper">
+                                                    <label class="field__label">城市</label>
+                                                    <input type="text" class="field__input" id="checkout_shipping_address_city" placeholder="城市" size="30" name="checkout[shipping_address][city]">
+                                                </div>
+                                            </div> -->
                                             <div class="field field--half-zip">
                                                 <div class="field__input-wrapper">
                                                     <!-- <label class="field__label">郵遞區號</label> -->
@@ -169,9 +169,9 @@
                                                 <input type="text" class="field__input" id="checkout_shipping_address_phone" placeholder="電話" size="30" name="Phone" value="@ViewData["Phone"]">
                                                 <div id="phone_tooltip" class="field__icon">
                                                     <!-- <span id="tooltip-for-phone" class="tooltip">
-                                            In case we need to contact you about your order.
-                                        </span>
-                                        <i class="fas fa-question-circle"></i> -->
+                                                        In case we need to contact you about your order.
+                                                    </span>
+                                                    <i class="fas fa-question-circle"></i> -->
 
                                                     <div class="field__icon-svg" data-toggle="tooltip" data-placement="top" title=' In case we need to contact you about your order.'>
 
@@ -202,17 +202,17 @@
                                 </div>
 
                             </div>
-                    </div>
-                    <div class="step__footer">
-                        <button id="continue_button" class="step__footer__continue-btn btn" type="submit" name="button">
-                            <!-- loading ICON -->
-                            <span class="btn__content">前往運送資訊</span>
-                        </button>
-                        <a href="/Cart/ShoppingCart" class="step__footer__previous-link">
-                            <i class="fas fa-chevron-left"></i><span class="step__footer__previous-link__content">回到購物車</span>
-                        </a>
-                    </div>
-                        </form>
+                        </div>
+                        <div class="step__footer">
+                            <button id="continue_button" class="step__footer__continue-btn btn" type="submit" name="button">
+                                <!-- loading ICON -->
+                                <span class="btn__content">前往運送資訊</span>
+                            </button>
+                            <a href="/Cart/ShoppingCart" class="step__footer__previous-link">
+                                <i class="fas fa-chevron-left"></i><span class="step__footer__previous-link__content">回到購物車</span>
+                            </a>
+                        </div>
+                    </form>
                 </div>
 
                 <!-- 一堆SPAN -->
@@ -254,76 +254,78 @@
                                 <div class="order-summary__section order-summary__section--product-list">
                                     <div class="order-summary__section_content">
                                         <table class="product-table">
-                                            <!-- <thead class="producy-table__header">
                                             <tr>
-                                                <th><span>Product images</span></th>
-                                                <th><span>資訊</span></th>
-                                                <th><span>數量</span></th>
-                                                <th><span>金額</span></th>
-                                            </tr>
-                                            </thead> -->
+                                                <!-- <thead class="producy-table__header">
+                                                    <th><span>Product images</span></th>
+                                                    <th><span>資訊</span></th>
+                                                    <th><span>數量</span></th>
+                                                    <th><span>金額</span></th>
+                                                </tr>
+                                                </thead> -->
 
 
                                             <tbody>
-                                                @if(GetSomthing)
+                                                @* @Html.Action("getOrderPartial","Home")*@
+                                                @if (GetSomthing)
                                                 {
-
+                                                    var i = 0;
                                                     foreach (var item in currentCart)
                                                     {
 
 
-                                                    <tr class="product">
+                                                        <tr class="product">
+                                                            <td class="product__image">
+                                                                <div class="product-thumbnail">
+                                                                    <div class="product-thumbnail__wrapper">
+                                                                        <img src="~/Assets/images/@item.CategoryName/@Img[i]"class="product-thumbnail_image" />
+                                                                    </div>
+                                                                    <span class="product-thumbnail__quantity" id="Quantity">@item.Quantity</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="product__description">
+                                                                <span class="product_description_name order-summary__emphasis">
+                                                                    @item.ProductName
+                                                                </span>
+                                                                <span class="product_description_variant order-summary__small-text">
+                                                                    @item.ColorName/@item.SizeContext
+                                                                </span>
+
+                                                            </td>
+                                                            有一個TD序號
+                                                            <td class="product__price">
+                                                                <span class=" .order-summary__emphasis">$@item.UnitPrice.ToString("##,###") TWD</span>
+                                                            </td>
+                                                        </tr>
+                                                        i++;
+                                                    }
+                                                }
+
+
+                                                @*<tr class="product">
                                                         <td class="product__image">
                                                             <div class="product-thumbnail">
                                                                 <div class="product-thumbnail__wrapper">
-                                                                    <img src="~/Assets/images/@item.CategoryName/@Img[0]" class="product-thumbnail_image" />
+                                                                    <img src="~/Assets/images/otherphoto/2_c6e0228b-9fef-409e-a0a0-1f791a63bb48_400x.jpg" class="product-thumbnail_image"/>
+
+
                                                                 </div>
                                                                 <span class="product-thumbnail__quantity">1</span>
                                                             </div>
                                                         </td>
                                                         <td class="product__description">
                                                             <span class="product_description_name order-summary__emphasis">
-                                                                @item.ProductName
+                                                                金屬面側編浩石耳環(MINI)
                                                             </span>
                                                             <span class="product_description_variant order-summary__small-text">
-                                                                @item.ColorName
+                                                                Silver
                                                             </span>
 
                                                         </td>
-                                                        <!--有一個TD序號 -->
+                                                        有一個TD序號
                                                         <td class="product__price">
-                                                            <span class=" .order-summary__emphasis">@item.UnitPrice</span>
+                                                            <span class=" .order-summary__emphasis">$1,185.01 TWD</span>
                                                         </td>
-                                                    </tr>
-                                                    }
-                                                }
-
-
-                                                @*<tr class="product">
-                                                    <td class="product__image">
-                                                        <div class="product-thumbnail">
-                                                            <div class="product-thumbnail__wrapper">
-                                                                <img src="~/Assets/images/otherphoto/2_c6e0228b-9fef-409e-a0a0-1f791a63bb48_400x.jpg" class="product-thumbnail_image"/>
-
-
-                                                            </div>
-                                                            <span class="product-thumbnail__quantity">1</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="product__description">
-                                                        <span class="product_description_name order-summary__emphasis">
-                                                            金屬面側編浩石耳環(MINI)
-                                                        </span>
-                                                        <span class="product_description_variant order-summary__small-text">
-                                                            Silver
-                                                        </span>
-
-                                                    </td>
-                                                    有一個TD序號 
-                                                    <td class="product__price">
-                                                        <span class=" .order-summary__emphasis">$1,185.01 TWD</span>
-                                                    </td>
-                                                </tr>*@
+                                                    </tr>*@
 
 
                                             </tbody>
@@ -365,7 +367,7 @@
                                             <tr class="total-line total-line--subtotal">
                                                 <th class="total-line__name" scope="row">小計</th>
                                                 <td class="total-line__price">
-                                                    <span class="order-summary__emphasis">$1,185.01 TWD</span>
+                                                    <span class="order-summary__emphasis id='SubTotal'"></span>
                                                 </td>
                                             </tr>
                                             <tr class="total-line total-line--shipping">
@@ -413,6 +415,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 

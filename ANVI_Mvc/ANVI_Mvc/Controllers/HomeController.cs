@@ -257,6 +257,12 @@ namespace ANVI_Mvc.Controllers
             }
             return View();
         }
+
+        public ActionResult getOrderPartial()   //導向Partial
+        {
+            return PartialView("_OrderPartial");
+        }
+
         [Authorize]
         public ActionResult AccountPage()   //主頁面
         {
