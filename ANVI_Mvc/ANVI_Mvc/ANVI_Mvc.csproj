@@ -232,6 +232,7 @@
     <Content Include="Assets\css\Order_Customer.css" />
     <Content Include="Assets\css\Order_Pay.css" />
     <Content Include="Assets\css\Register.css" />
+    <Content Include="Assets\css\searched.css" />
     <Content Include="Assets\css\search.css" />
     <Content Include="Assets\css\ShoppingCart_CSS.css" />
     <Content Include="Assets\css\site.css" />
