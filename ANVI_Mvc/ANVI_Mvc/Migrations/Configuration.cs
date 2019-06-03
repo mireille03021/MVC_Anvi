@@ -44,7 +44,9 @@ namespace ANVI_Mvc.Migrations
                 new Size() { SizeID = 11, SizeTitle = "尺寸", SizeContext = "7" },
                 new Size() { SizeID = 12, SizeTitle = "尺寸", SizeContext = "7" },
                 new Size() { SizeID = 13, SizeTitle = "鍊長", SizeContext = "40" },
-                new Size() { SizeID = 14, SizeTitle = "尺寸", SizeContext = "單一尺寸(可調整)" }
+                new Size() { SizeID = 14, SizeTitle = "尺寸", SizeContext = "單一尺寸(可調整)" },
+                new Size() { SizeID = 15, SizeTitle = "鍊長", SizeContext = "50/55 cm（可調整）" },
+                new Size() { SizeID = 16, SizeTitle = "鍊長", SizeContext = "40/44 cm（可調整）" }
             );
             context.Products.AddOrUpdate(
                 x => x.ProductID,
@@ -65,7 +67,11 @@ namespace ANVI_Mvc.Migrations
                 new Product() { ProductID = 15, ProductName = "經典開口設計手環", CategoryID = 1, UnitPrice = 3300 },
                 new Product() { ProductID = 16, ProductName = "金屬純銀耳扣", CategoryID = 2, UnitPrice = 1180 },
                 new Product() { ProductID = 17, ProductName = "雙圈閃耀細錐純銀手鍊", CategoryID = 1, UnitPrice = 1800 },
-                new Product() { ProductID = 18, ProductName = "細珠層次純銀手鍊", CategoryID = 1, UnitPrice = 1850 }
+                new Product() { ProductID = 18, ProductName = "細珠層次純銀手鍊", CategoryID = 1, UnitPrice = 1850 },
+                new Product() { ProductID = 19, ProductName = "八芒星圓片吊飾純銀項鍊", CategoryID = 3, UnitPrice = 3050 },
+                new Product() { ProductID = 20, ProductName = "五顆鋯石戒指", CategoryID = 4, UnitPrice = 1100 },
+                new Product() { ProductID = 21, ProductName = "LOVE字樣項鍊", CategoryID = 3, UnitPrice = 2600 }
+
             );
             context.ProductDetails.AddOrUpdate(
             x => x.PDID,
@@ -100,8 +106,15 @@ namespace ANVI_Mvc.Migrations
             new ProductDetail() { PDID = "15-1", ProductID = 15, Stock = 12, SizeID = 14, ColorID = 1, },
             new ProductDetail() { PDID = "16-1", ProductID = 16, Stock = 20, SizeID = 4, ColorID = 3, },
             new ProductDetail() { PDID = "17-1", ProductID = 17, Stock = 5, SizeID = 13, ColorID = 1 },
-            new ProductDetail() { PDID = "18-1", ProductID = 18, Stock = 8, SizeID = 13, ColorID = 3 }
-        );
+            new ProductDetail() { PDID = "18-1", ProductID = 18, Stock = 8, SizeID = 13, ColorID = 3 },
+            new ProductDetail() { PDID = "19-1", ProductID = 19, Stock = 3, SizeID = 15, ColorID = 1 },
+            new ProductDetail() { PDID = "20-1", ProductID = 20, Stock = 0, SizeID = 9, ColorID = 1 },
+            new ProductDetail() { PDID = "20-2", ProductID = 20, Stock = 7, SizeID = 10, ColorID = 1 },
+            new ProductDetail() { PDID = "20-3", ProductID = 20, Stock = 12, SizeID = 11, ColorID = 1 },
+            new ProductDetail() { PDID = "21-1", ProductID = 21, Stock = 1, SizeID = 16, ColorID = 1 }
+
+
+            );
             context.DesSubTitles.AddOrUpdate(
                 x => x.DSTID,
                 new DesSubTitle() { DSTID = 1, ProductID = 1, SubTitle = "將簡約而質感主義貫徹於日常穿搭中，細緻的做工、純粹的造型飾品，擁有絕佳搭配性與優雅迷人韻味" },
@@ -122,7 +135,10 @@ namespace ANVI_Mvc.Migrations
                 new DesSubTitle() { DSTID = 16, ProductID = 15, SubTitle = "將簡約而質感主義貫徹於日常穿搭中，細緻的做工、純粹的造型飾品， 擁有絕佳搭配性與優雅迷人韻味。" },
                 new DesSubTitle() { DSTID = 17, ProductID = 16, SubTitle = "潮流型女絕不能錯過的個性耳扣，無須耳洞直接掛上耳骨，為雙耳添上時髦魅力。" },
                 new DesSubTitle() { DSTID = 18, ProductID = 17, SubTitle = "將簡約而質感主義貫徹於日常穿搭中，細緻的做工、純粹的造型飾品，擁有絕佳搭配性與優雅迷人韻味" },
-                new DesSubTitle() { DSTID = 19, ProductID = 18, SubTitle = "將簡約而質感主義貫徹於日常穿搭中，細緻的做工、純粹的造型飾品，擁有絕佳搭配性與優雅迷人韻味" }
+                new DesSubTitle() { DSTID = 19, ProductID = 18, SubTitle = "將簡約而質感主義貫徹於日常穿搭中，細緻的做工、純粹的造型飾品，擁有絕佳搭配性與優雅迷人韻味" },
+                new DesSubTitle() { DSTID = 20, ProductID = 19, SubTitle = "金屬圓片的存在為胸口抓出重點，簡約大方又不失優雅，與其他款式做多層次穿搭，帶來新舊元素的完美結合。" },
+                new DesSubTitle() { DSTID = 21, ProductID = 20, SubTitle = "對於字母情有獨鍾的妳絕不能錯過此款，獨特的鋯石閃耀穿插於金屬面之間， 獨特的款式獻給熱愛質感，獨一無二的妳。" },
+                new DesSubTitle() { DSTID = 22, ProductID = 21, SubTitle = "對於字母情有獨鍾的妳絕不能錯過此款，獨特的鋯石閃耀穿插於金屬面之間， 獨特的款式獻給熱愛質感，獨一無二的妳。" }
 
             );
             context.DesDetails.AddOrUpdate(
@@ -186,8 +202,21 @@ namespace ANVI_Mvc.Migrations
                 new DesDetail() { DDID = 57, ProductID = 17, Detail = "鏈長：14/15.5/17 cm（可調整）" },
                 new DesDetail() { DDID = 58, ProductID = 18, Detail = "材質：純銀" },
                 new DesDetail() { DDID = 59, ProductID = 18, Detail = "顏色：白k金層" },
-                new DesDetail() { DDID = 60, ProductID = 18, Detail = "鏈長：14/15.5/17 cm（可調整）" }
-            );
+                new DesDetail() { DDID = 60, ProductID = 18, Detail = "鏈長：14/15.5/17 cm（可調整）" },
+                new DesDetail() { DDID = 61, ProductID = 19, Detail = "材質：純銀、3mm手工精鑲鋯石" },
+                new DesDetail() { DDID = 62, ProductID = 19, Detail = "顏色：18k金層" },
+                new DesDetail() { DDID = 63, ProductID = 19, Detail = "鏈長：50/55 cm（可調整）" },
+                new DesDetail() { DDID = 64, ProductID = 20, Detail = "純銀材質" },
+                new DesDetail() { DDID = 65, ProductID = 20, Detail = "18k金層" },
+                new DesDetail() { DDID = 66, ProductID = 20, Detail = "1mm 手工精鑲鋯石" },
+                new DesDetail() { DDID = 67, ProductID = 20, Detail = "尺寸：5 / 6 /7" },
+                new DesDetail() { DDID = 68, ProductID = 21, Detail = "純銀材質" },
+                new DesDetail() { DDID = 69, ProductID = 21, Detail = "18k金層" },
+                new DesDetail() { DDID = 70, ProductID = 21, Detail = "1mm 手工精鑲鋯石" },
+                new DesDetail() { DDID = 71, ProductID = 21, Detail = "鏈長：40/44 cm（可調整）" }
+
+
+                );
             context.Images.AddOrUpdate(
                 x => x.ImgID,
                 new Image() { ImgID = 1, PDID = "1-1", ImgName = "B19401_900x.jpg" },
@@ -261,7 +290,24 @@ namespace ANVI_Mvc.Migrations
                 new Image() { ImgID = 68, PDID = "18-1", ImgName = "B19402S_900x.jpg" },
                 new Image() { ImgID = 69, PDID = "18-1", ImgName = "3_18536ee1-d9ad-490e-9755-ae6b03dab5ab_900x.jpg" },
                 new Image() { ImgID = 70, PDID = "18-1", ImgName = "3_3_900x.jpg" },
-                new Image() { ImgID = 71, PDID = "18-1", ImgName = "3_2_900x.jpg" }
+                new Image() { ImgID = 71, PDID = "18-1", ImgName = "3_2_900x.jpg" },
+                new Image() { ImgID = 72, PDID = "19-1", ImgName = "N19403_900x.jpg" },
+                new Image() { ImgID = 73, PDID = "19-1", ImgName = "4_5400f2af-b2e2-4fc0-9d7a-14cd08bec319_900x.jpg" },
+                new Image() { ImgID = 74, PDID = "19-1", ImgName = "6ef07f1f9494e9d76ef6d1014f774d11_900x.jpg" },
+                new Image() { ImgID = 75, PDID = "19-1", ImgName = "5_7ba6197b-e2cf-41a3-a305-e8680c26db5e_900x.jpg" },
+                new Image() { ImgID = 76, PDID = "20-1", ImgName = "R19303_900x.jpg" },
+                new Image() { ImgID = 77, PDID = "20-1", ImgName = "R_5_1_900x.jpg" },
+                new Image() { ImgID = 78, PDID = "20-1", ImgName = "R_5_2_900x.jpg" },
+                new Image() { ImgID = 79, PDID = "21-1", ImgName = "N19303-1G_900x.png" },
+                new Image() { ImgID = 80, PDID = "21-1", ImgName = "N_LOVE_G_1_900x.jpg" },
+                new Image() { ImgID = 81, PDID = "21-1", ImgName = "N_LOVE_G_1_1ca71db9-f27d-4e75-9a41-14a6f13390e0_900x.jpg" },
+                new Image() { ImgID = 81, PDID = "21-1", ImgName = "NECKLACE-BACK-G_900x.jpg" }
+
+
+
+
+
+
             );
             //context.Customers.AddOrUpdate(
             //    x => x.CustomerID,

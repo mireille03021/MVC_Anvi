@@ -58,27 +58,27 @@ button, input, optgroup, select, textarea {
     margin: 0;
 }
 
-button, input[type="submit"] {
-    padding: 0px;
-    overflow: visible;
-    background: transparent none repeat scroll 0% 0%;
-    border: medium none;
-    border-radius: 0px;
-}
+    button, input[type="submit"] {
+        padding: 0px;
+        overflow: visible;
+        background: transparent none repeat scroll 0% 0%;
+        border: medium none;
+        border-radius: 0px;
+    }
 
-button, input[type="submit"] {
-    padding: 0;
-    overflow: visible;
-    background: none;
-    border: none;
-    border-radius: 0;
-    -webkit-appearance: none;
-}
+    button, input[type="submit"] {
+        padding: 0;
+        overflow: visible;
+        background: none;
+        border: none;
+        border-radius: 0;
+        -webkit-appearance: none;
+    }
 
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-    -webkit-appearance: button;
-    cursor: pointer;
-}
+    button, html input[type="button"], input[type="reset"], input[type="submit"] {
+        -webkit-appearance: button;
+        cursor: pointer;
+    }
 
 button, input, optgroup, select, textarea {
     color: inherit;
@@ -217,6 +217,31 @@ p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:las
     position: relative;
     margin: 0 auto 50px auto;
 }
+
+/*浮動視窗*/
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.PageOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    background: #363636;
+    -webkit-transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+    .PageOverlay.is-visible {
+        opacity: 0.5;
+        visibility: visible;
+    }
 
 /*區塊--產品圖*/
 .Product__Gallery {
@@ -384,33 +409,33 @@ body:not(.is-tabbing) .flickity-enabled:focus {
     line-height: 1;
 }
 
-.flickity-page-dots .dot {
-    position: relative;
-    display: inline-block;
-    width: 9px;
-    height: 9px;
-    margin: 0 6px;
-    border-radius: 50%;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #ddd;
-    -webkit-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
-    transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
-}
+    .flickity-page-dots .dot {
+        position: relative;
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        margin: 0 6px;
+        border-radius: 50%;
+        cursor: pointer;
+        background: transparent;
+        border: 1px solid #ddd;
+        -webkit-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+        transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+    }
 
-.flickity-page-dots .dot.is-selected {
-    background: currentColor;
-    border-color: currentColor;
-}
+        .flickity-page-dots .dot.is-selected {
+            background: currentColor;
+            border-color: currentColor;
+        }
 
-.flickity-page-dots .dot::before {
-    position: absolute;
-    content: '';
-    top: -6px;
-    right: -6px;
-    left: -6px;
-    bottom: -6px;
-}
+        .flickity-page-dots .dot::before {
+            position: absolute;
+            content: '';
+            top: -6px;
+            right: -6px;
+            left: -6px;
+            bottom: -6px;
+        }
 
 /*價錢、規格*/
 .Product__Info {
