@@ -52,6 +52,7 @@ namespace ANVI_Mvc.Models
         [Display(Name = "電子郵件")]
         [EmailAddress]
         public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,10 +65,6 @@ namespace ANVI_Mvc.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "姓名")]
-        public string UserName { get; set; }
-
         [Required]
         [EmailAddress]
         [Display(Name = "電子郵件")]

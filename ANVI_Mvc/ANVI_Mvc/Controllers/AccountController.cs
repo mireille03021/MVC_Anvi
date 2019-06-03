@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ANVI_Mvc.Models;
 using ANVI_Mvc.Repositories;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -154,9 +155,11 @@ namespace ANVI_Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var nextUserID = "IDU" + db.AspNetUsers.Count() + 1;
+                var userCount = db.AspNetUsers.Count() + 1;
+
+                var nextUserID = "IDU" + userCount.ToString("0000");
                 var nextCustomerID = db.Customers.Count() + 1;
-                var user = new ApplicationUser { Id = nextUserID, UserName = model.UserName, Email = model.Email, CustomerID = nextCustomerID - 1, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { Id = nextUserID, UserName = model.Email, Email = model.Email, CustomerID = nextCustomerID - 1, PhoneNumber = model.PhoneNumber };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -171,6 +174,10 @@ namespace ANVI_Mvc.Controllers
                         Phone = user.PhoneNumber
                     };
                     c_repo.Create(c);
+                    db.SaveChanges();
+
+                    var currerUser =  db.AspNetUsers.Find(user.Id);
+                    currerUser.CustomerID = nextCustomerID;
                     db.SaveChanges();
 
                     // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771

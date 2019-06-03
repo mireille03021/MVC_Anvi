@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "AccountPage";
 }
@@ -20,6 +20,17 @@
                 <h1 class="SectionHeader__Heading Heading u-h1">My account</h1>
                 <p class="SectionHeader__Description">Welcome back, Zeng!</p>
             </div>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
+            </ul>
+            }
         </header>
         <div class="PageLayout PageLayout--breakLap">
             <div class="PageLayout__Section">
