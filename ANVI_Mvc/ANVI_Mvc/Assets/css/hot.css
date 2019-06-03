@@ -1,0 +1,263 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Noto+Serif+TC|Titillium+Web&display=swap");
+
+*,
+::before,
+::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box !important;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    line-height: 1.65;
+}
+
+main,
+section,
+figure,
+header {
+    display: block;
+}
+
+p:last-child,
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+    margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    font-size: inherit;
+    line-height: 1em;
+    font-weight: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-style: none;
+    vertical-align: top;
+}
+
+.shopify-section--border + .shopify-section--border {
+    border-top: 1px solid #ddd;
+}
+
+.shopify-section--border > .Section--spacingNormal {
+    padding: 80px 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.SectionHeader:not(:only-child) {
+    margin-bottom: 70px;
+}
+
+.SectionHeader--center {
+    text-align: center;
+}
+
+.Container {
+    padding: 0 80px;
+    margin: 0 auto;
+}
+
+.SectionHeader__Heading {
+    margin-top: -0.325em;
+}
+
+.u-h1,
+Rte h1 {
+    font-size: 22px;
+}
+
+.Heading {
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    transition: color 0.2s ease-in-out;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.ShopTheLook {
+    min-width: 1480px;
+    margin: 0 auto;
+    padding: 0 130px;
+    z-index: 2;
+}
+
+.Carousel {
+    position: relative;
+}
+
+.flickity-enabled {
+    position: relative;
+}
+
+.flickity-viewport {
+    overflow: hidden;
+    position: relative;
+    height: auto;
+}
+
+.flickity-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.ShopTheLook__Item.is-selected {
+    z-index: 1;
+}
+
+.ShopTheLook__Item {
+    width: 100%;
+    padding: 0;
+    transition: ease-in-out 0.3s opacity;
+}
+
+.Carousel__Cell {
+    display: block;
+    width: 100%;
+}
+
+.ShopTheLook__Inner {
+    display: flex;
+    -webkit-box-pack: center;
+    min-height: 550px;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-align: center;
+}
+
+.ShopTheLook__ImageWrapper {
+    width: 413px;
+    background: url(/Assets/images/otherphoto/IMG_0734_1200x.progressive.jpg);
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+    position: relative;
+    max-width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.AspectRatio--withFallback {
+    padding-bottom: 0 !important;
+}
+
+.AspectRatio {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+}
+
+    .AspectRatio > img,
+    .no-js .AspectRatio > noscript img {
+        /* position: absolute; */
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+.Image--lazyLoaded.Image--fadeIn {
+    opacity: 1;
+}
+
+
+/* .AspectRatio--withFallback>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+} */
+
+.AspectRatio > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.ShopTheLook__Image {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.Image--fadeIn {
+    opacity: 0;
+    -webkit-transition: ease 0.3s opacity;
+    transition: ease-in-out 0.3s opacity;
+}
+
+.ShopTheLook__Dot {
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    background: #ffffff;
+    border-radius: 100%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 1;
+    transform: scale(1);
+    transition: ease-in-out transform 0.2s, ease-in-out -webkit-transform 0.25s;
+}
+
+    .ShopTheLook__Dot::after {
+        position: absolute;
+        content: " ";
+        width: 40px;
+        height: 40px;
+        left: -12px;
+        top: -12px;
+        border-radius: 100%;
+        background: rgba(255, 255, 255, 0.4);
+        animation: 1.4s shopTheLookDotKeyframe ease-in-out infinite;
+    }
+
+@keyframes shopTheLookDotKeyframe {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+
+/* .ShopTheLook__Dot.is-active,
+.supports-hover .ShopTheLook__Dot:hover {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+} */
+
+.ShopTheLook__Dot.is--active,
+.ShopTheLook__Dot:hover {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+}
