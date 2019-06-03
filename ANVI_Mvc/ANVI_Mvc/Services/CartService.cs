@@ -54,7 +54,7 @@ namespace ANVI_Mvc.Services
             return stocks;
         }
 
-        internal static string[] getEachProductImages(AnviModel db)
+        public static string[] getEachProductImages(AnviModel db)
         {
             var currentCart = GetCurrentCart();
             int count = currentCart.Count;

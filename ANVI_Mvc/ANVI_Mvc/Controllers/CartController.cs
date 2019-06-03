@@ -42,8 +42,7 @@ namespace ANVI_Mvc.Controllers
         public ActionResult GetCartItem()
         {
             var images = CartService.getEachProductImages(db);
-            CartViewModel CVM = new CartViewModel(){ Cart = currentCart,Images = images};
-            ViewBag.Images = images;
+            CartViewModel CVM = new CartViewModel() {Cart = currentCart, Images = images};
             return PartialView("_CartItemPartial",CVM);
         }
 

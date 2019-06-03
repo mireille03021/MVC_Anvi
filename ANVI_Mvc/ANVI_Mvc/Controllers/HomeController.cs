@@ -32,25 +32,17 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult ProductsPage() //商品頁面
         {
-            List<Product> products = db.Products.ToList();
-
-            ViewBag.products = products;
-
-            var list = from cat in db.Categories
-                join p in db.Products on cat.CategoryID equals p.CategoryID
-                join pd in db.ProductDetails on p.ProductID equals pd.ProductID
-                select new ProductPageViewModel
-                {
-                    ProductID = p.ProductID,
-                    PDID = pd.PDID,
-                    ColorID = pd.ColorID,
-                    CategoryName = cat.CategoryName
-                };
-            ViewBag.productDetails = list.ToList();
-            ViewBag.Images = db.Images.ToList();
-            ViewBag.Colors = db.Colors.ToList();
-
+            ViewBag.Title = "PRODUCTS";
+            ViewBag.ActionName = "GetProducts";
+            ViewBag.Controller = "Home";
             return View();
+        }
+        [AllowAnonymous]
+        public ActionResult GetProducts()
+        {
+            ProductsService service = new ProductsService(db);
+            ViewData.Model = service.getPageOfProducts()/*.Where(x => x.CategoryName == "Necklaces").ToList()*/;
+            return PartialView("_ProductsPartial");
         }
         //---------------------單一商品頁面-----------------------
         [HttpGet]
@@ -84,7 +76,7 @@ namespace ANVI_Mvc.Controllers
         [MultiButton("BuyItNow")]
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult BuyItNow(string pdid)  //偷偷練一下Dapper，讓我寫Search前可以上手 by逢xD
+        public ActionResult BuyItNow(string pdid)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["AnviConnection"].ConnectionString;
             string queryString = "select " +
@@ -265,7 +257,7 @@ namespace ANVI_Mvc.Controllers
             }
             return View();
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult AccountPage()   //主頁面
         {
             return View();

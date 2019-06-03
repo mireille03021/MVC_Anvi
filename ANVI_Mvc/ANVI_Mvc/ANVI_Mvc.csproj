@@ -210,6 +210,7 @@
     <Compile Include="Repositories\AnviRepository.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\MultiButtonAttribute.cs" />
+    <Compile Include="Services\ProductsService.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
@@ -408,6 +409,7 @@
     <Content Include="Views\Home\AccountPage.cshtml" />
     <Content Include="Views\Shared\_CartItemPartial.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Shared\_ProductsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
