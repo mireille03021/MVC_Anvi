@@ -18,7 +18,7 @@ namespace ANVI_Mvc.Services
         {
             this.db = db;
         }
-        public List<ProductPageViewModel> getPageOfProducts()
+        public IEnumerable<ProductPageViewModel> getPageOfProducts()
         {
             string queryString = "select " +
                                  "cat.CategoryName, " +
@@ -38,20 +38,8 @@ namespace ANVI_Mvc.Services
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 var pList = conn.Query<ProductPageViewModel>(queryString);
-                return pList.ToList();
+                return pList;
             }
-            //var list = from cat in db.Categories
-            //    join p in db.Products on cat.CategoryID equals p.CategoryID
-            //    join pd in db.ProductDetails on p.ProductID equals pd.ProductID
-            //    select new ProductPageViewModel
-            //    {
-            //        ProductID = p.ProductID,
-            //        ProductName = p.ProductName,
-            //        PDID = pd.PDID,
-            //        ColorID = pd.ColorID,
-            //        CategoryName = cat.CategoryName
-            //    };
-            //return list.ToList();
         }
     }
 }

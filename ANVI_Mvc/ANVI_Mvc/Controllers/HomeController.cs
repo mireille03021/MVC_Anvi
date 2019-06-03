@@ -32,10 +32,17 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult ProductsPage() //商品頁面
         {
-            ProductsService service = new ProductsService(db);
-            ViewData.Model = service.getPageOfProducts();
-
+            ViewBag.Title = "PRODUCTS";
+            ViewBag.ActionName = "GetProducts";
+            ViewBag.Controller = "Home";
             return View();
+        }
+        [AllowAnonymous]
+        public ActionResult GetProducts()
+        {
+            ProductsService service = new ProductsService(db);
+            ViewData.Model = service.getPageOfProducts()/*.Where(x => x.CategoryName == "Necklaces").ToList()*/;
+            return PartialView("_ProductsPartial");
         }
         //---------------------單一商品頁面-----------------------
         [HttpGet]
