@@ -1,24 +1,31 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Search";
+    bool SearchResult = true;
+    if (ViewBag.SearchResult != null)
+    {
+        SearchResult = (bool) ViewBag.SearchResult;
+    }
 }
 @section topCSS
 {
     <link href="~/Assets/css/search.css" rel="stylesheet" />
-  
 }
-
 <main id="searchmain">
     <section>
         <div class="EmptyState">
             <div class="container">
+
                 <h1 class="EmptyState__Title Heading u-h5">Search</h1>
                 <p>Enter a word to search our producys:</p>
                 <div class="EmptyState__Action">
-                    <form action="/search" class="Form">
-                        <input type="text" class="Form__Input" name="q" aria-label="Search..." placeholder="Search...">
+                    <form action="/Search/SearchedProducts" method="get" class="Form">
+                        <input type="text" class="Form__Input" name="Context" aria-label="Search..." placeholder="Search...">
                     </form>
                 </div>
+                @if (!SearchResult)
+                {
+                    <p>搜尋不到物品</p>
+                }
             </div>
         </div>
     </section>

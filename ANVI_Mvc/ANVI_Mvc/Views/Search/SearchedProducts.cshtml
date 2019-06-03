@@ -1,0 +1,38 @@
+﻿@model List<ProductPageViewModel>
+@{
+    ViewBag.Title = "SearchedProducts";
+}
+@section topCSS
+{
+
+    <link href="~/Assets/css/ProductPage.css" rel="stylesheet" />
+    <link href="~/Assets/css/search.css" rel="stylesheet" />
+    <link href="~/Assets/css/searched.css" rel="stylesheet" />
+}
+@section endJS
+{
+    <script type="text/javascript" src="~/Assets/js/ProductPage.js"></script>
+}
+<main id="searchmain">
+    <section>
+        <div class="EmptyState">
+            <div class="container">
+                <h1 class="EmptyState__Title Heading u-h5">Search</h1>
+                <div class="SectionHeader__Description"> <p>"@ViewBag.Context" 搜尋到 @Model.GroupBy(x => x.ProductID).Count() 個物品</p></div>
+
+
+
+                <div class="CollectionMain">
+                    <div class="ProductItemListWrapper">
+                        <div class="ProductItemList ">
+                            @Html.Partial("_ProductsPartial")
+                            <div class="Grid__Cell animated-block" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+

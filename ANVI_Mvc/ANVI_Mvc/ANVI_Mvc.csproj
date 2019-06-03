@@ -232,6 +232,7 @@
     <Content Include="Assets\css\Order_Customer.css" />
     <Content Include="Assets\css\Order_Pay.css" />
     <Content Include="Assets\css\Register.css" />
+    <Content Include="Assets\css\searched.css" />
     <Content Include="Assets\css\search.css" />
     <Content Include="Assets\css\ShoppingCart_CSS.css" />
     <Content Include="Assets\css\site.css" />
@@ -408,9 +409,9 @@
     <Content Include="Views\Account\ListAllCustomersOrder.cshtml" />
     <Content Include="Views\Home\AccountPage.cshtml" />
     <Content Include="Views\Shared\_CartItemPartial.cshtml" />
-    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\SearchIndex.cshtml" />
     <Content Include="Views\Shared\_ProductsPartial.cshtml" />
-    <Content Include="Views\Shared\_OrderPartial.cshtml" />
+    <Content Include="Views\Search\SearchedProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

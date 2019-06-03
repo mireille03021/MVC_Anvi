@@ -1,15 +1,15 @@
-﻿@model List<ProductPageViewModel>
+﻿@using ANVI_Mvc.Services
+@model List<ProductPageViewModel>
 @{
     Layout = null;
     //因為分類過濾後的產品ID都是用跳的，所以這裡先取產品ID來給圖片過濾用
-    var productIDs = Model.GroupBy(x => x.ProductID).Select(x => x.Key).ToList();
+    var products = Model.GroupBy(x => new {ProductID=x.ProductID,ProductName=x.ProductName,UnitPrice=x.UnitPrice}).Select(x => x.Key).ToList();
 }
 
-@for (int i = 0; i < productIDs.Count; i++)
+@for (int i = 0; i < products.Count; i++)
 {
-    
     var images = Model
-        .Where(x => x.ImgName != null && x.ProductID == productIDs[i])
+        .Where(x => x.ImgName != null && x.ProductID == products[i].ProductID)
         .Select((x) => new { CategoryName = x.CategoryName, ProductID = x.ProductID, ImgName = x.ImgName }).ToList();
     <div id="i@(i + 1)" class="Grid__Cell animated-block">
         <div class="ProductItem">
@@ -18,10 +18,10 @@
                 <img id="#S@(i + 1)" src="~/Assets/images/@images[0].CategoryName/@images[0].ImgName" alt="" />
             </a>
             <div class="ProductItem_Info ">
-                <h2 class="ProductItem_Title Heading">@Model[i].ProductName</h2>
+                <h2 class="ProductItem_Title Heading">@products[i].ProductName</h2>
                 <div class="ProductItem_PriceList Heading">
                     <span class="ProductItem_Price">
-                        <span>$@Math.Floor(Model[i].UnitPrice)TWD</span>
+                        <span>$@Math.Floor(products[i].UnitPrice)TWD</span>
                     </span>
                 </div>
                 @*<div class="ProductItem_ColorSwatchList">
