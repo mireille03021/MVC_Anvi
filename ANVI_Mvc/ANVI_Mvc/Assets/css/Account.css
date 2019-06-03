@@ -553,6 +553,124 @@ img {
   height: 100%;
 }
 
+td .Segment__ButtonWrapper {
+  text-align: center;
+}
+
+td .Segment__ButtonWrapper a:nth-child(2) {
+  margin-left: 20px;
+}
+
+.Modal__Header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.Modal__Description {
+  margin-bottom: 0;
+}
+
+.Form {
+  width: 100%;
+}
+
+.Form--spacingTight .Form__Item {
+  margin-bottom: 15px;
+}
+
+.Form__Item {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.Form__Input, .spr-form-input-text, #shopify-product-reviews .spr-form-input-email, #shopify-product-reviews .spr-form-input-textarea, .Form__Textarea {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 0;
+  border: 1px solid #ddd;
+  width: 100%;
+  line-height: normal;
+  resize: none;
+  -webkit-transition: border-color 0.1s ease-in-out;
+  transition: border-color 0.1s ease-in-out;
+  background: transparent;
+}
+
+.Form__FloatingLabel {
+  position: absolute;
+  bottom: calc(100% - 8px);
+  left: 10px;
+  padding: 0 5px;
+  line-height: normal;
+  color: #6a6a6a;
+  font-size: 12px;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0);
+  pointer-events: none;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+.Form__Checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.Form__Checkbox:checked ~ svg {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.Form__Checkbox ~ svg {
+  position: absolute;
+  top: 6px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  transition: -webkit-transform 0.2s ease-in-out;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  will-change: transform;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.Form__Checkbox:checked ~ label::before {
+  border-color: #1c1b1b;
+}
+
+.Form__Checkbox ~ label::before {
+  display: inline-block;
+  content: '';
+  width: 1em;
+  height: 1em;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  vertical-align: -2px;
+}
+
+.Form__Submit {
+  display: block;
+  margin-top: 20px;
+}
+
+.Button--full {
+  width: 100%;
+}
+
 @media screen and (min-width: 641px) {
   .Cart--expanded .Cart__ItemList {
     display: table;
@@ -656,6 +774,9 @@ img {
   }
   .u-h5 {
     font-size: 14px;
+  }
+  .u-h2 {
+    font-size: 20px;
   }
 }
 
@@ -823,6 +944,18 @@ img {
     -ms-flex-preferred-size: 235px;
         flex-basis: 235px;
     max-width: 235px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .Form__Item, .Form__Alert {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .Modal:not(.Modal--pageContent) {
+    padding: 35px 40px 40px 40px;
   }
 }
 /*# sourceMappingURL=Account.css.map */
