@@ -23,7 +23,7 @@
 
                     <div class="F-Item">
                         @Html.LabelFor(m => m.Email, new { @class = "F-FLabel" })
-                        @*<input type="email" name="customer[email]" id="" placeholder="Email" class="F-Input">*@
+                        @*<input type="email" n.ame="customer[email]" id="" placeholder="Email" class="F-Input">*@
                         @Html.TextBoxFor(m => m.Email, new { @name = "customer[Email]", @placeholder = "Email", @class = "F-Input" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         @*<label for="" class="F-FLabel">Email</label>*@

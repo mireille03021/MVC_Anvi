@@ -29,5 +29,6 @@ namespace ANVI_Mvc.Models
         {
             return new ApplicationDbContext();
         }
+        
     }
 }
