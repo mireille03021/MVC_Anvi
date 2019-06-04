@@ -174,7 +174,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CatrgoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -213,6 +212,7 @@
     <Compile Include="Services\ProductsService.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BuyOneModel.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
@@ -427,8 +427,7 @@
     <Content Include="Views\Search\SearchIndex.cshtml" />
     <Content Include="Views\Shared\_ProductsPartial.cshtml" />
     <Content Include="Views\Search\SearchedProducts.cshtml" />
-    <Content Include="Views\Catrgory\BraceletsProductsPage.cshtml" />
-    <Content Include="Views\Catrgory\RingsProductsPage.cshtml" />
+    <Content Include="Views\Shared\_OrderPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
