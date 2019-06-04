@@ -78,7 +78,7 @@
 <div class="CollectionMain">
     <div class="ProductItemListWrapper">
         <div class="ProductItemList ">
-            @Html.Action(ActionName, ControllerName, new { page = CurrentPage })
+            @Html.Action(ActionName, ControllerName, new { page = CurrentPage,AllProducts = Model })
             <div class="Grid__Cell animated-block" style="display: none;"></div>
         </div>
     </div>
