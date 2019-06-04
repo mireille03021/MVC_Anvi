@@ -70,6 +70,11 @@ namespace ANVI_Mvc
             //    defaults: new { controller = "Catrgory", action = "RingsProductsPage", page = "Rings" }
             //);
 
+            routes.MapRoute(
+                name: "SortAndFilter",
+                url: "SortAndFilter/{action}/{page}",
+                defaults: new { controller = "SortAndFilter", action = "PriceLowToHigh", page = 1 }
+            );
 
             routes.MapRoute(
                 name: "Default",
