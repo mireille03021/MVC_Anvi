@@ -1,77 +1,110 @@
 ﻿@using ANVI_Mvc.Services
 
 @{
-    bool GetSomthing = false;
-    var currentCart = new CartModel(); //取得目前購物車資料
-    if (CartService.GetCurrentCart() != null) //判斷是否有東西
+    bool CartToHere = (bool)ViewBag.CartToHere;
+    var currentCart = new CartModel();
+    var Cart = new BuyOneViewModel();
+    if (CartToHere)
     {
-        GetSomthing = true;
         currentCart = CartService.GetCurrentCart();
     }
+    else
+    {
+        Cart = (BuyOneViewModel)Session["BuyItNow"];
+    }
     var Img = ViewBag.Img;
+
 }
 
 
 
-    @if (GetSomthing)
+@if (CartToHere)
+{
+
+    foreach (var item in currentCart)
     {
 
-        foreach (var item in currentCart)
-        {
 
-
-            <tr class="product">
-                <td class="product__image">
-                    <div class="product-thumbnail">
-                        <div class="product-thumbnail__wrapper">
-                            <img src="~/Assets/images/@item.CategoryName/@Img[0]" class="product-thumbnail_image" />
-                        </div>
-                        <span class="product-thumbnail__quantity" id="Quantity">@item.Quantity</span>
-                    </div>
-                </td>
-                <td class="product__description">
-                    <span class="product_description_name order-summary__emphasis">
-                        @item.ProductName
-                    </span>
-                    <span class="product_description_variant order-summary__small-text">
-                        @item.ColorName/@item.SizeContext
-                    </span>
-
-                </td>
-                <!--有一個TD序號 -->
-                <td class="product__price">
-                    <span class=" .order-summary__emphasis">$@item.UnitPrice.ToString("##,###") TWD</span>
-                </td>
-            </tr>
-        }
-    }
-
-
-    @*<tr class="product">
+        <tr class="product">
             <td class="product__image">
                 <div class="product-thumbnail">
                     <div class="product-thumbnail__wrapper">
-                        <img src="~/Assets/images/otherphoto/2_c6e0228b-9fef-409e-a0a0-1f791a63bb48_400x.jpg" class="product-thumbnail_image"/>
-
-
+                        <img src="~/Assets/images/@item.CategoryName/@Img[0]" class="product-thumbnail_image" />
                     </div>
-                    <span class="product-thumbnail__quantity">1</span>
+                    <span class="product-thumbnail__quantity" id="Quantity">@item.Quantity</span>
                 </div>
             </td>
             <td class="product__description">
                 <span class="product_description_name order-summary__emphasis">
-                    金屬面側編浩石耳環(MINI)
+                    @item.ProductName
                 </span>
                 <span class="product_description_variant order-summary__small-text">
-                    Silver
+                    @item.ColorName/@item.SizeContext
                 </span>
 
             </td>
-            有一個TD序號
+            <!--有一個TD序號 -->
             <td class="product__price">
-                <span class=" .order-summary__emphasis">$1,185.01 TWD</span>
+                <span class=" .order-summary__emphasis">$@item.UnitPrice.ToString("##,###") TWD</span>
             </td>
-        </tr>*@
+        </tr>
+    }
+}
+else
+{
+    <tr class="product">
+        <td class="product__image">
+            <div class="product-thumbnail">
+                <div class="product-thumbnail__wrapper">
+                    <img src="~/Assets/images/@Cart.CartItem.CategoryName/@Cart.Image" class="product-thumbnail_image" />
+                </div>
+                <span class="product-thumbnail__quantity" id="Quantity">@Cart.CartItem.Quantity</span>
+            </div>
+        </td>
+        <td class="product__description">
+            <span class="product_description_name order-summary__emphasis">
+                @Cart.CartItem.ProductName
+            </span>
+            <span class="product_description_variant order-summary__small-text">
+                @Cart.CartItem.ColorName/@Cart.CartItem.SizeContext
+            </span>
+
+        </td>
+        <!--有一個TD序號 -->
+        <td class="product__price">
+            <span class=" .order-summary__emphasis">
+                $@Cart.CartItem.UnitPrice.ToString("##,###") TWD
+
+            </span>
+        </td>
+    </tr>
+
+
+@*<tr class="product">
+        <td class="product__image">
+            <div class="product-thumbnail">
+                <div class="product-thumbnail__wrapper">
+                    <img src="~/Assets/images/otherphoto/2_c6e0228b-9fef-409e-a0a0-1f791a63bb48_400x.jpg" class="product-thumbnail_image"/>
+
+
+                </div>
+                <span class="product-thumbnail__quantity">1</span>
+            </div>
+        </td>
+        <td class="product__description">
+            <span class="product_description_name order-summary__emphasis">
+                金屬面側編浩石耳環(MINI)
+            </span>
+            <span class="product_description_variant order-summary__small-text">
+                Silver
+            </span>
+
+        </td>
+        有一個TD序號
+        <td class="product__price">
+            <span class=" .order-summary__emphasis">$1,185.01 TWD</span>
+        </td>
+    </tr>*@
 
 
 

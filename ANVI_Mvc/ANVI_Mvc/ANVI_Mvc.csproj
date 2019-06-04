@@ -212,6 +212,7 @@
     <Compile Include="Services\ProductsService.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BuyOneModel.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
