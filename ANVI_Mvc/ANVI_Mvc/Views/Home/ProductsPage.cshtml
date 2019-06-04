@@ -94,7 +94,7 @@
                     <a class="Pagination__NavItem Link Link--primary"
                        rel="prev"
                        title="Previous page"
-                       href="/Home/ProductsPage/@(CurrentPage-1)">
+                       href="/@ViewBag.mainController.ToString()/@ViewBag.mainActionName.ToString()/@(CurrentPage-1)">
                         <svg class="Icon Icon--select-arrow-left"
                              role="presentation"
                              viewBox="0 0 11 18">
@@ -124,7 +124,7 @@
                     }
                     else
                     {
-                        <a href="/Home/ProductsPage/@i"
+                        <a href="/@ViewBag.mainController.ToString()/@ViewBag.mainActionName.ToString()/@i"
                            class="Pagination__NavItem Link Link--primary"
                            title="Navigate to page @i">@i</a>
                     }
@@ -134,7 +134,7 @@
                     <a class="Pagination__NavItem Link Link--primary"
                        rel="next"
                        title="Next page"
-                       href="/Home/ProductsPage/@(CurrentPage+1)">
+                       href="/@ViewBag.mainController.ToString()/@ViewBag.mainActionName.ToString()/@(CurrentPage+1)">
                         <svg class="Icon Icon--select-arrow-right"
                              role="presentation"
                              viewBox="0 0 11 18">

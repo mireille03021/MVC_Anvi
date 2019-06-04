@@ -34,6 +34,12 @@ namespace ANVI_Mvc.Controllers
         {
             //取得此頁面是用什麼做分類的，因為這為總商品頁，所以不做分類
             ViewData.Model = db.Products/*.Where(x => x.CategoryID == 3)*/.ToList();
+
+            //給上一頁下一頁按鈕使用
+            ViewBag.mainController = "Home";
+            ViewBag.mainActionName = "ProductsPage";
+
+            //給@Html.Action使用，取得HomeController的GetProducts方法
             ViewBag.Title = "PRODUCTS";
             ViewBag.ActionName = "GetProducts";
             ViewBag.Controller = "Home";
