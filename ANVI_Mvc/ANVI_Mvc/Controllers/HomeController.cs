@@ -220,10 +220,10 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult Order_Pay()  //下單-付費頁面!沒有HEADER跟FOOTER
         {
-            //var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
-            //ViewData["Email"] = OCVM.Email;
-            //ViewData["Address"] = OCVM.Address;
-            //ViewData.Model = OCVM;
+            var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
+            ViewData["Email"] = OCVM.Email;
+            ViewData["Address"] = OCVM.Address;
+            ViewData.Model = OCVM;
 
             return View();
         }
@@ -286,9 +286,12 @@ namespace ANVI_Mvc.Controllers
             
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult getOrderPartial()   //導向Partial
         {
+            var Img = CartService.getEachProductImages(db);
+            ViewBag.Img = Img;
+
             return PartialView("_OrderPartial");
         }
 
