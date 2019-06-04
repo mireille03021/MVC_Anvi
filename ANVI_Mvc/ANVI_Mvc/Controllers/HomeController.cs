@@ -153,6 +153,7 @@ namespace ANVI_Mvc.Controllers
                 }
 
                 Session["CartToHere"] = false;
+                Session["BuyItNow"] = new BuyOneViewModel() {CartItem = product, Image = image};
                 //這是傳給HttpGet喔！
                 return RedirectToAction("Order_Customer", "Home"/*, new {product = product, image = image}*/);
             }

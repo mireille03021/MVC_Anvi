@@ -1,12 +1,24 @@
 ﻿@using ANVI_Mvc.Services
 
 @{
-    bool GetSomthing = false;
-    var currentCart = new CartModel(); //取得目前購物車資料
-    if (CartService.GetCurrentCart() != null) //判斷是否有東西
+
+    bool CartToHere = false;
+    if (Session["CartToHere"] != null) //不使用 && 因為怕Session["CartToHere"]是null轉不過來
     {
-        GetSomthing = true;
+        if ((bool) Session["CartToHere"])
+        {
+            CartToHere = true;
+        }
+    }
+    var currentCart = new CartModel(); //取得目前購物車資料
+    var BuyOneProduct = new BuyOneViewModel();
+    if (CartToHere) //判斷是否從購物車按鈕來的
+    {
         currentCart = CartService.GetCurrentCart();
+    }
+    else //從BuyItNow按鈕來的
+    {
+        BuyOneProduct = (BuyOneViewModel)Session["BuyItNow"];
     }
     var Img = ViewBag.Img;
 
@@ -22,7 +34,7 @@
                     <tr>
 
                     <tbody>
-                        @if (GetSomthing)
+                        @if (CartToHere)
                         {
                             var i = 0;
 
