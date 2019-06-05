@@ -258,13 +258,14 @@ namespace ANVI_Mvc.Controllers
             }
 
             //購買完成，清除購物車
-            CartService.ClearCart();
+         
             return View("Order_Check");
         }
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Order_Check()  //下單-確認頁面!沒有HEADER跟FOOTER
         {
+            var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
             return View();
         }
         [HttpPost]
@@ -290,6 +291,7 @@ namespace ANVI_Mvc.Controllers
                 ViewData["Bill_Phone"] = Bill_OCVM.Bill_Phone;
 
             }
+            CartService.ClearCart();
             return View();
         }
         [AllowAnonymous]

@@ -72,6 +72,35 @@
                                 i++;
                             }
                         }
+                        else
+                        {
+                                <tr class="product">
+                                    <td class="product__image">
+                                        <div class="product-thumbnail">
+                                            <div class="product-thumbnail__wrapper">
+                                                <img src="~/Assets/images/@BuyOneProduct.CartItem.CategoryName/@BuyOneProduct.Image" class="product-thumbnail_image" />
+                                            </div>
+                                            <span class="product-thumbnail__quantity" id="Quantity">@BuyOneProduct.CartItem.Quantity</span>
+                                        </div>
+                                    </td>
+                                    <td class="product__description">
+                                        <span class="product_description_name order-summary__emphasis">
+                                            @BuyOneProduct.CartItem.ProductName
+                                        </span>
+                                        <span class="product_description_variant order-summary__small-text">
+                                            @BuyOneProduct.CartItem.ColorName/@BuyOneProduct.CartItem.SizeContext
+                                        </span>
+
+                                    </td>
+                                    @*有一個TD序號*@ 
+                                    <td class="product__price">
+                                        <span class=" .order-summary__emphasis">
+                                            $@BuyOneProduct.CartItem.UnitPrice.ToString("##,###") TWD
+
+                                        </span>
+                                    </td>
+                                </tr>
+                        }
                     </tbody>
 
                 </table>
@@ -112,7 +141,16 @@
                         <th class="total-line__name" scope="row">小計</th>
                         <td class="total-line__price">
                             <span class="order-summary__emphasis id='SubTotal'">
-                                $@currentCart.TotalAmount.ToString("##,###")TWD
+                                $
+                                @if(CartToHere)
+                                {
+                                    @currentCart.TotalAmount.ToString("##,###");
+                                }
+                                else
+                                {
+                                    @BuyOneProduct.CartItem.Amount.ToString("##,###")
+                                }
+                                TWD
                             </span>
                         </td>
                     </tr>
@@ -144,7 +182,16 @@
                         <td class="total-line__price payment-due">
 
                             <span class="payment-due__price">
-                                $@currentCart.TotalAmount.ToString("##,###")TWD
+                                $
+                                @if (CartToHere)
+                                {
+                                    @currentCart.TotalAmount.ToString("##,###");
+                                }
+                                else
+                                {
+                                    @BuyOneProduct.CartItem.Amount.ToString("##,###")
+                                }
+                                TWD
                             </span>
                         </td>
                     </tr>
