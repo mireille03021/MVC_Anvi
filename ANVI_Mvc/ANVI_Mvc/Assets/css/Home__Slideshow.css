@@ -624,7 +624,7 @@ ul, ol {
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
 }
 
-.dot .is-selected {
+.dot.is-selected {
   background: currentColor;
   opacity: 1;
 }
@@ -980,8 +980,6 @@ margin: 0;
 
 @media not all, (hover: hover) {
   .Button:not([disabled])::before {
-    color: #363636;
-    background-color: #ffffff;
     -webkit-transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);

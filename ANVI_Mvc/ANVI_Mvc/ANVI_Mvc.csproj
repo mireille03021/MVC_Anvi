@@ -250,6 +250,7 @@
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\css\ProductDetailPage.css" />
     <Content Include="Assets\css\ProductPage.css" />
+    <Content Include="Assets\css\index_bottom.css" />
     <Content Include="Assets\images\Bracelets\2_fae8f255-1152-4a34-8c7b-54b8f3033a87_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_18536ee1-d9ad-490e-9755-ae6b03dab5ab_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_2_900x.jpg" />
@@ -288,6 +289,27 @@
     <Content Include="Assets\images\Home\ANVI-APRIL-ARRIVAL-Cover_1800x.jpeg" />
     <Content Include="Assets\images\Home\ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg" />
     <Content Include="Assets\images\Home\HP2_1800x.jpg" />
+    <Content Include="Assets\images\index_bottom\57221566_141912496866202_320419068760551931_n.jpg" />
+    <Content Include="Assets\images\index_bottom\58408948_454008248680096_3075348323372611661_n.jpg" />
+    <Content Include="Assets\images\index_bottom\58410931_2085402001760137_5850707032441569529_n.jpg" />
+    <Content Include="Assets\images\index_bottom\58812226_373646163255905_1459855121401741577_n.jpg" />
+    <Content Include="Assets\images\index_bottom\58909981_615250318884765_3879079712409729360_n.jpg" />
+    <Content Include="Assets\images\index_bottom\59376457_1128080244046256_5008202893211186296_n.jpg" />
+    <Content Include="Assets\images\index_bottom\59408301_2462332100464480_8043971554256638990_n.jpg" />
+    <Content Include="Assets\images\index_bottom\59431663_596585474176924_7880266255657363150_n.jpg" />
+    <Content Include="Assets\images\index_bottom\59464622_1621652931299924_7870368738737294946_n.jpg" />
+    <Content Include="Assets\images\index_bottom\59650179_2439365032949750_6589394156664737210_n.jpg" />
+    <Content Include="Assets\images\index_bottom\59679354_487267032013846_2197648158506025267_n.jpg" />
+    <Content Include="Assets\images\index_bottom\60033714_2357110181232742_3713466801030861898_n.jpg" />
+    <Content Include="Assets\images\index_bottom\60153947_2859554490753679_8177139773378900992_n.jpg" />
+    <Content Include="Assets\images\index_bottom\60174975_423542388486826_2442621513737242742_n.jpg" />
+    <Content Include="Assets\images\index_bottom\60314896_154708188907678_462440897522592306_n.jpg" />
+    <Content Include="Assets\images\index_bottom\60496820_912492132415702_4235203656358370411_n.jpg" />
+    <Content Include="Assets\images\index_bottom\60586131_2403364846655572_500143579958144463_n.jpg" />
+    <Content Include="Assets\images\index_bottom\60610567_183151959269242_6008507028196976423_n.jpg" />
+    <Content Include="Assets\images\index_bottom\61367989_640350909710062_3988902943564961800_n.jpg" />
+    <Content Include="Assets\images\index_bottom\61493875_314104312823980_2226569064217964948_n.jpg" />
+    <Content Include="Assets\images\index_bottom\ANVI-Store_1500x.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x %281%29.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x.png" />
@@ -451,6 +473,7 @@
     <Content Include="Views\Category\EarRings.cshtml" />
     <Content Include="Views\Category\Necklaces.cshtml" />
     <Content Include="Views\Category\Rings.cshtml" />
+    <Content Include="Views\Shared\_ChatBot.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
