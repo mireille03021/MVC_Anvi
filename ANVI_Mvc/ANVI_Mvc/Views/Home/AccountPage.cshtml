@@ -1,6 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "AccountPage";
+    AnviModel db = new AnviModel();
+    var thisUser = db.AspNetUsers.FirstOrDefault(x => x.Id == User.Identity.GetUserId());
 }
 @section topCSS
 {
@@ -14,21 +16,28 @@
     <main id="main" role="main">
         <div class="Container Container--narrow">
             <header class="PageHeader">
-                <a href="/account/logout"
+                @*<a href="/account/logout"
                    class="PageHeader__Back Heading Text--subdued Link Link--primary u-h7">Logout</a>
                 <div class="SectionHeader">
                     <h1 class="SectionHeader__Heading Heading u-h1">My account</h1>
                     <p class="SectionHeader__Description">Welcome back, Zeng!</p>
-                </div>
+                </div>*@
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                 {
                     @Html.AntiForgeryToken()
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            <a href="javascript:document.getElementById('logoutForm').submit()"
+                               class="PageHeader__Back Heading Text--subdued Link Link--primary u-h7">Logout</a>
                         </li>
-                        <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
+                        <li><h1 class="SectionHeader__Heading Heading u-h1">My account</h1></li>
+                        <li>
+                            <p class="SectionHeader__Description">Welcome back,
+                                @Html.ActionLink( thisUser.Name @*User.Identity.GetUserName()*@, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                !
+                            </p>
+                        </li>
                     </ul>
                 }
             </header>
