@@ -37,33 +37,10 @@ namespace ANVI_Mvc
             //預設的產品分類位置
             routes.MapRoute(
                 name: "CategoryProducts",
-                url: "Category/{action}/{cat}",
-                defaults: new { controller = "Home", action = "ProductsPage" }
+                url: "Category/{action}/{page}",
+                defaults: new { controller = "Category", action = "Bracelets", page = 1}
             );
-            //產品分類:手鍊
-            routes.MapRoute(
-                name: "BraceletsProducts",
-                url: "Category/{action}/{cat}",
-                defaults: new { controller = "Category", action = "Bracelets", cat = 1 }
-            );
-            //產品分類:耳環
-            routes.MapRoute(
-                name: "EarRingsProducts",
-                url: "Category/{action}/{cat}",
-                defaults: new { controller = "CatEgory", action = "EarRings", cat = 1 }
-            );
-            //產品分類:項鍊
-            routes.MapRoute(
-                name: "NecklacesProducts",
-                url: "Products/Catrgory/{page}",
-                defaults: new { controller = "Category", action = "Necklaces", cat = 1 }
-            );
-            //產品分類:戒指
-            routes.MapRoute(
-                name: "RingsProducts",
-                url: "Products/Catrgory/{page}",
-                defaults: new { controller = "Category", action = "Rings", cat = 1 }
-            );
+            
 
             routes.MapRoute(
                 name: "SortAndFilter",

@@ -256,7 +256,8 @@ namespace ANVI_Mvc.Controllers
                 ViewData["Bill_Address"] = Bill_OCVM.Bill_Address;
                 ViewData["Bill_Phone"] = Bill_OCVM.Bill_Phone;
             }
-
+            ViewData.Model = CartService.GetCurrentCart();
+            ViewBag.Img = CartService.getEachProductImages(db);
             //購買完成，清除購物車
          
             return View("Order_Check");
@@ -295,11 +296,15 @@ namespace ANVI_Mvc.Controllers
             return View();
         }
         [AllowAnonymous]
-        public ActionResult getOrderPartial()   //導向Partial
+        public ActionResult getOrderPartial(CartModel currentCart,string[] images)   //導向Partial
         {
             var Img = CartService.getEachProductImages(db);
             ViewBag.Img = Img;
-
+            if(currentCart.Count != 0)
+            {
+                ViewBag.Img = images;
+                ViewData.Model = currentCart;
+            }
             return PartialView("_OrderPartial");
         }
 
