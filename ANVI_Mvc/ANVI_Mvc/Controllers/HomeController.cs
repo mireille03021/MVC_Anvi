@@ -12,6 +12,7 @@ using ANVI_Mvc.Models;
 using ANVI_Mvc.Services;
 using ANVI_Mvc.ViewModels;
 using Dapper;
+using Microsoft.AspNet.Identity;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -27,6 +28,8 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult Index()   //主頁面
         {
+            //var Userid = User.Identity.GetUserId();
+            //var user = db.AspNetUsers.FirstOrDefault(x => x.Id == Userid);
             return View();
         }
         [AllowAnonymous]
