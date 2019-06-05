@@ -174,9 +174,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SortAndFilterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -430,9 +432,15 @@
     <Content Include="Views\Shared\_ProductsPartial.cshtml" />
     <Content Include="Views\Search\SearchedProducts.cshtml" />
     <Content Include="Views\Shared\_OrderPartial.cshtml" />
+    <Content Include="Views\Category\Bracelets.cshtml" />
+    <Content Include="Views\Category\EarRingsProductsPage.cshtml" />
+    <Content Include="Views\Category\EarRings.cshtml" />
+    <Content Include="Views\Category\Necklaces.cshtml" />
+    <Content Include="Views\Category\Rings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SortAndFilter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

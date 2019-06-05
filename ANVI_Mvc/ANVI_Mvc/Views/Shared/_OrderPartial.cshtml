@@ -1,110 +1,210 @@
 ﻿@using ANVI_Mvc.Services
-
+@model CartModel
 @{
-    bool CartToHere = (bool)ViewBag.CartToHere;
-    var currentCart = new CartModel();
-    var Cart = new BuyOneViewModel();
-    if (CartToHere)
+
+    bool CartToHere = false;
+    if (Session["CartToHere"] != null) //不使用 && 因為怕Session["CartToHere"]是null轉不過來
+    {
+        if ((bool) Session["CartToHere"])
+        {
+            CartToHere = true;
+        }
+    }
+    var currentCart = new CartModel(); //取得目前購物車資料
+    var BuyOneProduct = new BuyOneViewModel();
+    if (CartToHere) //判斷是否從購物車按鈕來的
     {
         currentCart = CartService.GetCurrentCart();
+        //如果取得購物車後還是空的，代表到Check那一頁了，在Pay按鈕按下後就會清除購物車。
+        if(currentCart.Count == 0)
+        {
+            currentCart = ViewData.Model;
+        }
     }
-    else
+    else //從BuyItNow按鈕來的
     {
-        Cart = (BuyOneViewModel)Session["BuyItNow"];
+        BuyOneProduct = (BuyOneViewModel)Session["BuyItNow"];
     }
     var Img = ViewBag.Img;
 
+
 }
 
 
+<div id="order-summary" class="order-summary">
+    <div class="order-summary__sections">
+        <div class="order-summary__section order-summary__section--product-list">
+            <div class="order-summary__section_content">
+                <table class="product-table">
+                    <tr>
 
-@if (CartToHere)
-{
+                    <tbody>
+                        @if (CartToHere)
+                        {
+                            var i = 0;
 
-    foreach (var item in currentCart)
-    {
+                            foreach (var item in currentCart)
+                            {
 
 
-        <tr class="product">
-            <td class="product__image">
-                <div class="product-thumbnail">
-                    <div class="product-thumbnail__wrapper">
-                        <img src="~/Assets/images/@item.CategoryName/@Img[0]" class="product-thumbnail_image" />
+                                <tr class="product">
+                                    <td class="product__image">
+                                        <div class="product-thumbnail">
+                                            <div class="product-thumbnail__wrapper">
+                                                <img src="~/Assets/images/@item.CategoryName/@Img[i]" class="product-thumbnail_image" />
+                                            </div>
+                                            <span class="product-thumbnail__quantity" id="Quantity">@item.Quantity</span>
+                                        </div>
+                                    </td>
+                                    <td class="product__description">
+                                        <span class="product_description_name order-summary__emphasis">
+                                            @item.ProductName
+                                        </span>
+                                        <span class="product_description_variant order-summary__small-text">
+                                            @item.ColorName/@item.SizeContext
+                                        </span>
+
+                                    </td>
+                                    <!--有一個TD序號 -->
+                                    <td class="product__price">
+                                        <span class=" .order-summary__emphasis">
+                                            $@item.UnitPrice.ToString("##,###") TWD
+
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                                <tr class="product">
+                                    <td class="product__image">
+                                        <div class="product-thumbnail">
+                                            <div class="product-thumbnail__wrapper">
+                                                <img src="~/Assets/images/@BuyOneProduct.CartItem.CategoryName/@BuyOneProduct.Image" class="product-thumbnail_image" />
+                                            </div>
+                                            <span class="product-thumbnail__quantity" id="Quantity">@BuyOneProduct.CartItem.Quantity</span>
+                                        </div>
+                                    </td>
+                                    <td class="product__description">
+                                        <span class="product_description_name order-summary__emphasis">
+                                            @BuyOneProduct.CartItem.ProductName
+                                        </span>
+                                        <span class="product_description_variant order-summary__small-text">
+                                            @BuyOneProduct.CartItem.ColorName/@BuyOneProduct.CartItem.SizeContext
+                                        </span>
+
+                                    </td>
+                                    @*有一個TD序號*@ 
+                                    <td class="product__price">
+                                        <span class=" .order-summary__emphasis">
+                                            $@BuyOneProduct.CartItem.UnitPrice.ToString("##,###") TWD
+
+                                        </span>
+                                    </td>
+                                </tr>
+                        }
+                    </tbody>
+
+                </table>
+                <!-- 查看更多 -->
+            </div>
+        </div>
+
+
+        <div class="order-summary__section order-summary__section--discount">
+
+            <!-- 禮品或折扣代碼 -->
+
+            <form action="" class="edit__checkout">
+                <div class="fieldset">
+                    <div class="field">
+                        <div class="field__input-btn-wrapper">
+                            <div class="field__input-wrapper">
+                                <input class="field__input" type="text" id="checkout_reduction_code" placeholder="禮卡 或 折扣代碼" size="30" name="checkout[reduction_code]">
+                            </div>
+                            <button class="btn field__input-btn btn--disabled" name="button" type="submit" disabled="disabled">
+                                <!-- 應該寫JS控制 -->
+                                <span class="btn__content">Apply</span>
+                                <!-- loadingicon -->
+                            </button>
+                        </div>
+
                     </div>
-                    <span class="product-thumbnail__quantity" id="Quantity">@item.Quantity</span>
                 </div>
-            </td>
-            <td class="product__description">
-                <span class="product_description_name order-summary__emphasis">
-                    @item.ProductName
-                </span>
-                <span class="product_description_variant order-summary__small-text">
-                    @item.ColorName/@item.SizeContext
-                </span>
+            </form>
 
-            </td>
-            <!--有一個TD序號 -->
-            <td class="product__price">
-                <span class=" .order-summary__emphasis">$@item.UnitPrice.ToString("##,###") TWD</span>
-            </td>
-        </tr>
-    }
-}
-else
-{
-    <tr class="product">
-        <td class="product__image">
-            <div class="product-thumbnail">
-                <div class="product-thumbnail__wrapper">
-                    <img src="~/Assets/images/@Cart.CartItem.CategoryName/@Cart.Image" class="product-thumbnail_image" />
-                </div>
-                <span class="product-thumbnail__quantity" id="Quantity">@Cart.CartItem.Quantity</span>
-            </div>
-        </td>
-        <td class="product__description">
-            <span class="product_description_name order-summary__emphasis">
-                @Cart.CartItem.ProductName
-            </span>
-            <span class="product_description_variant order-summary__small-text">
-                @Cart.CartItem.ColorName/@Cart.CartItem.SizeContext
-            </span>
+        </div>
+        <div class="order-summary__section">
+            <table class="total-line-table">
+                <thead></thead>
+                <tbody class="total-line-table__tbody">
 
-        </td>
-        <!--有一個TD序號 -->
-        <td class="product__price">
-            <span class=" .order-summary__emphasis">
-                $@Cart.CartItem.UnitPrice.ToString("##,###") TWD
+                    <tr class="total-line total-line--subtotal">
+                        <th class="total-line__name" scope="row">小計</th>
+                        <td class="total-line__price">
+                            <span class="order-summary__emphasis id='SubTotal'">
+                                $
+                                @if(CartToHere)
+                                {
+                                    @currentCart.TotalAmount.ToString("##,###");
+                                }
+                                else
+                                {
+                                    @BuyOneProduct.CartItem.Amount.ToString("##,###")
+                                }
+                                TWD
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="total-line total-line--shipping">
+                        <th class="total-line__name" scope="row">
+                            運費
 
-            </span>
-        </td>
-    </tr>
+                        </th>
+                        <td class="total-line__price">
+                            <span class="order-summary__small-text">
+                                免費
+                            </span>
+                        </td>
 
+                    </tr>
+                </tbody>
+                <tfoot class="total-line-table__footer">
+                    <tr class="total-line">
+                        <th class="total-line_name payment-sue-label" scope="row">
+                            <span class="payment-due-label__total">
+                                總計
 
-@*<tr class="product">
-        <td class="product__image">
-            <div class="product-thumbnail">
-                <div class="product-thumbnail__wrapper">
-                    <img src="~/Assets/images/otherphoto/2_c6e0228b-9fef-409e-a0a0-1f791a63bb48_400x.jpg" class="product-thumbnail_image"/>
+                            </span>
+                            <!-- <span class="payment-due-label__taxes order-summary__small-text">
+                            稅:
+                            <span>$56.43 TWD</span>
+                                </span> -->
+                        </th>
+                        <td class="total-line__price payment-due">
 
+                            <span class="payment-due__price">
+                                $
+                                @if (CartToHere)
+                                {
+                                    @currentCart.TotalAmount.ToString("##,###");
+                                }
+                                else
+                                {
+                                    @BuyOneProduct.CartItem.Amount.ToString("##,###")
+                                }
+                                TWD
+                            </span>
+                        </td>
+                    </tr>
 
-                </div>
-                <span class="product-thumbnail__quantity">1</span>
-            </div>
-        </td>
-        <td class="product__description">
-            <span class="product_description_name order-summary__emphasis">
-                金屬面側編浩石耳環(MINI)
-            </span>
-            <span class="product_description_variant order-summary__small-text">
-                Silver
-            </span>
-
-        </td>
-        有一個TD序號
-        <td class="product__price">
-            <span class=" .order-summary__emphasis">$1,185.01 TWD</span>
-        </td>
-    </tr>*@
-
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
 
 
