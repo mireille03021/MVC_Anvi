@@ -19,10 +19,10 @@ namespace ANVI_Mvc.Models
         public int OrderID { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Quantity { get; set; }
+        public decimal Quantity { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Discount { get; set; }

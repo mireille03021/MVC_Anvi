@@ -53,7 +53,7 @@ namespace ANVI_Mvc.Models
         [StringLength(50)]
         public string Remaeks { get; set; }
 
-        public DateTime ShipDate { get; set; }
+        public DateTime? ShipDate { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
 
