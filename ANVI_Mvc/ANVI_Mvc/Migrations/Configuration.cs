@@ -42,11 +42,9 @@ namespace ANVI_Mvc.Migrations
                 new Size() { SizeID = 9, SizeTitle = "尺寸", SizeContext = "5" },
                 new Size() { SizeID = 10, SizeTitle = "尺寸", SizeContext = "6" },
                 new Size() { SizeID = 11, SizeTitle = "尺寸", SizeContext = "7" },
-                new Size() { SizeID = 12, SizeTitle = "尺寸", SizeContext = "7" },
-                new Size() { SizeID = 13, SizeTitle = "鍊長", SizeContext = "40" },
-                new Size() { SizeID = 14, SizeTitle = "尺寸", SizeContext = "單一尺寸(可調整)" },
-                new Size() { SizeID = 15, SizeTitle = "鍊長", SizeContext = "50/55 cm（可調整）" },
-                new Size() { SizeID = 16, SizeTitle = "鍊長", SizeContext = "40/44 cm（可調整）" }
+                new Size() { SizeID = 12, SizeTitle = "鏈長", SizeContext = "40" },
+                new Size() { SizeID = 13, SizeTitle = "鏈長", SizeContext = "(可調整)" },
+                new Size() { SizeID = 14, SizeTitle = "尺寸", SizeContext = "單一尺寸(可調整)" }
             );
             context.Products.AddOrUpdate(
                 x => x.ProductID,
@@ -107,11 +105,11 @@ namespace ANVI_Mvc.Migrations
             new ProductDetail() { PDID = "16-1", ProductID = 16, Stock = 20, SizeID = 4, ColorID = 3, },
             new ProductDetail() { PDID = "17-1", ProductID = 17, Stock = 5, SizeID = 13, ColorID = 1 },
             new ProductDetail() { PDID = "18-1", ProductID = 18, Stock = 8, SizeID = 13, ColorID = 3 },
-            new ProductDetail() { PDID = "19-1", ProductID = 19, Stock = 3, SizeID = 15, ColorID = 1 },
+            new ProductDetail() { PDID = "19-1", ProductID = 19, Stock = 3, SizeID = 13, ColorID = 1 },
             new ProductDetail() { PDID = "20-1", ProductID = 20, Stock = 0, SizeID = 9, ColorID = 1 },
             new ProductDetail() { PDID = "20-2", ProductID = 20, Stock = 7, SizeID = 10, ColorID = 1 },
             new ProductDetail() { PDID = "20-3", ProductID = 20, Stock = 12, SizeID = 11, ColorID = 1 },
-            new ProductDetail() { PDID = "21-1", ProductID = 21, Stock = 1, SizeID = 16, ColorID = 1 }
+            new ProductDetail() { PDID = "21-1", ProductID = 21, Stock = 1, SizeID = 13, ColorID = 1 }
 
 
             );
