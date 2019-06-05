@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -438,6 +438,24 @@ template {
   width: 100%;
   margin-left: 0;
   margin-right: 0;
+}
+
+.ProductItemListWrapper .two__ProductItemList {
+    height: 100%;
+    padding: 0 0 0 75px;
+}
+
+.ProductItemListWrapper .two__Grid__Cell {
+    display: inline-block;
+    padding-left: 60px;
+    margin-bottom: 50px;
+    width: 40%;
+}
+
+.ProductItemListWrapper .two__ProductItem {
+    width: 40%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .ProductItemListWrapper a {

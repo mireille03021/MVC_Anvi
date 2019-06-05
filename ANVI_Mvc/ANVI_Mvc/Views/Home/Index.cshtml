@@ -53,7 +53,7 @@
             <div class="Slideshow Slideshow--fullscreen">
                 <div class="Slideshow__Carousel Slideshow__Carousel--withScrollButton Carousel Carousel--fadeIn Carousel--fixed Carousel--insideDots"
                      data-flickity='{
-                        "prevNextButton": false,
+                        "prevNextButtons": false,
                         "setGallerySize": false,
                         "wrapAround": true,
                         "pauseAutoPlayOnHover": false,
@@ -184,7 +184,8 @@
                         </div>
                     </div>
                 </div>
-                <button data-href="#section-slideshow-end"
+                <button id="section-end"
+                        data-href="#section-slideshow-end"
                         class="Slideshow__ScrollButton RoundButton RoundButton--medium"
                         aria-label="Scroll to content"
                         data-animate-bottom>
@@ -199,7 +200,9 @@
     </div>
 
 
-    <div id="shopify-section-ahop-the-look" class="shopify-section shopify-section--bordered">
+
+
+    <div id="shopify-section-ahop-the-look" class="shopify-section shopify-section--bordered" >
         <section class="Section Section--spacingNormal">
             <header class="SectionHeader SectionHeader--center">
                 <div class="Containe">
@@ -291,8 +294,8 @@
                                         VIEW THIS PRODUCT
                                     </a>
                                     <ol class="flickity-page-dots">
-                                        <li class="dot is-selected"></li>
-                                        <li class="dot "></li>
+                                        <li class="dottodot is-selected"></li>
+                                        <li class="dottodot "></li>
                                     </ol>
                                 </div>
 
@@ -300,6 +303,8 @@
 
                             </div>
                         </div>
+
+
                         <!-- ID跟內容都要補 -->
 
 
@@ -332,6 +337,9 @@
 
 
 <script>
+
+ 
+
     $(function () {
         $(".shop").hover(function () {
             $(".MenuList").css("visibility", "visible");

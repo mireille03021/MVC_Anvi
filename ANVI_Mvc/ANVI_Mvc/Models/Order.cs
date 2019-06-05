@@ -16,7 +16,7 @@ namespace ANVI_Mvc.Models
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int OrderID { get; set; }
 
         [Required]

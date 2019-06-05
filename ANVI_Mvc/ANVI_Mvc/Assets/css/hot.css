@@ -467,12 +467,12 @@ Rte h1 {
     line-height: 1;
 }
 
-    .flickity-page-dots .dot.is-selected {
+    .flickity-page-dots .dottodot.is-selected {
         background: currentColor;
         border-color: currentColor;
     }
 
-    .flickity-page-dots .dot {
+    .flickity-page-dots .dottodot {
         width: 10px;
         height: 10px;
         margin: 0 7px;
@@ -488,12 +488,12 @@ Rte h1 {
     }
 
 .ShopTheLook .flickity-prev-next-button.previous {
-    left: 15%;
+    left: 10%;
     opacity: 1 !important;
 }
 
 .ShopTheLook .flickity-prev-next-button.next {
-    right: 15%;
+    right: 10%;
     opacity: 1 !important;
 }
 
@@ -515,6 +515,7 @@ Rte h1 {
 }
 
 .ShopTheLook .flickity-prev-next-button {
+    position: absolute;
     top: cale(50%- (45px/2));
     top: 49%;
 }
