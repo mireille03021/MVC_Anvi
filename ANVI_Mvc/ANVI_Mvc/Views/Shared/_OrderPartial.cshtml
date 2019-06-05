@@ -1,5 +1,5 @@
 ﻿@using ANVI_Mvc.Services
-
+@model CartModel
 @{
 
     bool CartToHere = false;
@@ -15,6 +15,11 @@
     if (CartToHere) //判斷是否從購物車按鈕來的
     {
         currentCart = CartService.GetCurrentCart();
+        //如果取得購物車後還是空的，代表到Check那一頁了，在Pay按鈕按下後就會清除購物車。
+        if(currentCart.Count == 0)
+        {
+            currentCart = ViewData.Model;
+        }
     }
     else //從BuyItNow按鈕來的
     {
