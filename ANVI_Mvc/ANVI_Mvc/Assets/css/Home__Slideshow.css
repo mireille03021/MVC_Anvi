@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -839,7 +839,7 @@ a:active, a:hover {
 }
 
 @media not all, (hover: hover) {
-  .RoundButton:hover, .flickity-prev-next-button:hover {
+  .RoundButton:hover {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
   }
