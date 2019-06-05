@@ -286,6 +286,7 @@
     <Content Include="Assets\images\Home\ANVI-APRIL-ARRIVAL-Cover-Mobile_1800x.jpeg" />
     <Content Include="Assets\images\Home\ANVI-APRIL-ARRIVAL-Cover_1800x.jpeg" />
     <Content Include="Assets\images\Home\ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg" />
+    <Content Include="Assets\images\Home\HP2_1800x.jpg" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x %281%29.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x%402x.png" />
     <Content Include="Assets\images\Layout\ANVI-Logo-Black_140x.png" />
@@ -360,6 +361,7 @@
     <Content Include="Assets\images\Rings\R_LOVE_S_1_900x.jpg" />
     <Content Include="Assets\images\Rings\R_LOVE_S_2_900x.jpg" />
     <Content Include="Assets\js\header-js.js" />
+    <Content Include="Assets\js\Home.js" />
     <Content Include="Assets\js\jquery-3.3.1.js" />
     <Content Include="Assets\js\Order_Check.js" />
     <Content Include="Assets\js\Order_Customer.js" />
