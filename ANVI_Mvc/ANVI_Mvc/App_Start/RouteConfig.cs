@@ -38,37 +38,32 @@ namespace ANVI_Mvc
             routes.MapRoute(
                 name: "CategoryProducts",
                 url: "Category/{action}/{cat}",
-                defaults: new { controller = "Home", action = "ProductsPage"}
+                defaults: new { controller = "Home", action = "ProductsPage" }
             );
             //產品分類:手鍊
             routes.MapRoute(
                 name: "BraceletsProducts",
                 url: "Category/{action}/{cat}",
-                defaults: new { controller = "Catrgory", action = "BraceletsProductsPage", page = 1 }
+                defaults: new { controller = "Category", action = "Bracelets", cat = 1 }
             );
+            //產品分類:耳環
             routes.MapRoute(
-                name: "GetBraceletsProducts",
+                name: "EarRingsProducts",
                 url: "Category/{action}/{cat}",
-                defaults: new { controller = "Catrgory", action = "GetBraceletsProductsPage", cat = "Bracelets" }
+                defaults: new { controller = "CatEgory", action = "EarRings", cat = 1 }
             );
-            ////產品分類:耳環
-            //routes.MapRoute(
-            //    name: "BraceletsProducts",
-            //    url: "Products/Catrgory/{page}",
-            //    defaults: new { controller = "Catrgory", action = "EarRingsProductsPage", page = "EarRings" }
-            //);
-            ////產品分類:項鍊
-            //routes.MapRoute(
-            //    name: "NecklacesProducts",
-            //    url: "Products/Catrgory/{page}",
-            //    defaults: new { controller = "Catrgory", action = "NecklacesProductsPage", page = "Necklaces" }
-            //);
-            ////產品分類:戒指
-            //routes.MapRoute(
-            //    name: "RingsProducts",
-            //    url: "Products/Catrgory/{page}",
-            //    defaults: new { controller = "Catrgory", action = "RingsProductsPage", page = "Rings" }
-            //);
+            //產品分類:項鍊
+            routes.MapRoute(
+                name: "NecklacesProducts",
+                url: "Products/Catrgory/{page}",
+                defaults: new { controller = "Category", action = "Necklaces", cat = 1 }
+            );
+            //產品分類:戒指
+            routes.MapRoute(
+                name: "RingsProducts",
+                url: "Products/Catrgory/{page}",
+                defaults: new { controller = "Category", action = "Rings", cat = 1 }
+            );
 
             routes.MapRoute(
                 name: "SortAndFilter",
