@@ -32,7 +32,14 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult ProductsPage(int page) //商品頁面
         {
-            ViewData.Model = db.Products.ToList();
+            //取得此頁面是用什麼做分類的，因為這為總商品頁，所以不做分類
+            ViewData.Model = db.Products/*.Where(x => x.CategoryID == 3)*/.ToList();
+
+            //給上一頁下一頁按鈕使用
+            ViewBag.mainController = "Home";
+            ViewBag.mainActionName = "ProductsPage";
+
+            //給@Html.Action使用，取得HomeController的GetProducts方法
             ViewBag.Title = "PRODUCTS";
             ViewBag.ActionName = "GetProducts";
             ViewBag.Controller = "Home";
@@ -40,11 +47,32 @@ namespace ANVI_Mvc.Controllers
             return View();
         }
         [AllowAnonymous]
-        public ActionResult GetProducts(int page)
+        public ActionResult GetProducts(int page,List<Product> AllProducts)
         {
-            var ProductNumber = 8;
+            //每八個一頁
+            var ProductNumber = 8;  
+            //取得目前頁所需要顯示的物品
+            var pList = AllProducts.Skip((page-1)* ProductNumber).Take(page* ProductNumber).ToList();
+            
+            //建立全部商品
             ProductsService service = new ProductsService(db);
-            ViewData.Model = service.getPageOfProducts().Where(x=>x.ProductID > (page-1)* ProductNumber && x.ProductID <= (page* ProductNumber)).ToList();
+            var AllProductDetails = service.getPageOfProducts();
+            var Model = new List<ProductPageViewModel>();
+
+            for (var i = 0; i < pList.Count; i++)
+            {
+                //避免超出範圍，雖然不一定會用到
+                if (i % 8 == 0 && i != 0) break;
+
+                //取得此產品ID所有的PDID，並加進List<ProductPageViewModel> Model中
+                var NowPid = pList[i].ProductID;
+                var FilterList = AllProductDetails.Where(x => x.ProductID == NowPid);
+                foreach(var item in FilterList)
+                {
+                    Model.Add(item);
+                }
+            }
+            ViewData.Model = Model;
             return PartialView("_ProductsPartial");
         }
         //---------------------單一商品頁面-----------------------
@@ -125,6 +153,7 @@ namespace ANVI_Mvc.Controllers
                 }
 
                 Session["CartToHere"] = false;
+                Session["BuyItNow"] = new BuyOneViewModel() {CartItem = product, Image = image};
                 //這是傳給HttpGet喔！
                 return RedirectToAction("Order_Customer", "Home"/*, new {product = product, image = image}*/);
             }
@@ -198,10 +227,10 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult Order_Pay()  //下單-付費頁面!沒有HEADER跟FOOTER
         {
-            //var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
-            //ViewData["Email"] = OCVM.Email;
-            //ViewData["Address"] = OCVM.Address;
-            //ViewData.Model = OCVM;
+            var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
+            ViewData["Email"] = OCVM.Email;
+            ViewData["Address"] = OCVM.Address;
+            ViewData.Model = OCVM;
 
             return View();
         }
@@ -227,12 +256,17 @@ namespace ANVI_Mvc.Controllers
                 ViewData["Bill_Address"] = Bill_OCVM.Bill_Address;
                 ViewData["Bill_Phone"] = Bill_OCVM.Bill_Phone;
             }
+            ViewData.Model = CartService.GetCurrentCart();
+            ViewBag.Img = CartService.getEachProductImages(db);
+            //購買完成，清除購物車
+            CartService.ClearCart();
             return View("Order_Check");
         }
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Order_Check()  //下單-確認頁面!沒有HEADER跟FOOTER
-        { 
+        {
+            var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
             return View();
         }
         [HttpPost]
@@ -260,9 +294,16 @@ namespace ANVI_Mvc.Controllers
             }
             return View();
         }
-
-        public ActionResult getOrderPartial()   //導向Partial
+        [AllowAnonymous]
+        public ActionResult getOrderPartial(CartModel currentCart,string[] images)   //導向Partial
         {
+            var Img = CartService.getEachProductImages(db);
+            ViewBag.Img = Img;
+            if(currentCart.Count != 0)
+            {
+                ViewBag.Img = images;
+                ViewData.Model = currentCart;
+            }
             return PartialView("_OrderPartial");
         }
 

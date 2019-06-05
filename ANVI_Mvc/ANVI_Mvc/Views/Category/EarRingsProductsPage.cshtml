@@ -1,4 +1,5 @@
-﻿@model List<Product>
+﻿
+@model List<Product>
 @{
     string ActionName = ViewBag.ActionName.ToString();
     string ControllerName = ViewBag.Controller.ToString();
@@ -77,8 +78,8 @@
 
 <div class="CollectionMain">
     <div class="ProductItemListWrapper">
-        <div id="PIL" class="ProductItemList ">
-            @Html.Action(ActionName, ControllerName, new { page = CurrentPage,AllProducts = Model })
+        <div class="ProductItemList ">
+            @Html.Action(ActionName, ControllerName, new { page = CurrentPage })
             <div class="Grid__Cell animated-block" style="display: none;"></div>
         </div>
     </div>
@@ -94,7 +95,7 @@
                     <a class="Pagination__NavItem Link Link--primary"
                        rel="prev"
                        title="Previous page"
-                       href="/@ViewBag.mainController.ToString()/@ViewBag.mainActionName.ToString()/@(CurrentPage-1)">
+                       href="/Home/ProductsPage/@(CurrentPage-1)">
                         <svg class="Icon Icon--select-arrow-left"
                              role="presentation"
                              viewBox="0 0 11 18">
@@ -124,7 +125,7 @@
                     }
                     else
                     {
-                        <a href="/@ViewBag.mainController.ToString()/@ViewBag.mainActionName.ToString()/@i"
+                        <a href="/Home/ProductsPage/@i"
                            class="Pagination__NavItem Link Link--primary"
                            title="Navigate to page @i">@i</a>
                     }
@@ -134,7 +135,7 @@
                     <a class="Pagination__NavItem Link Link--primary"
                        rel="next"
                        title="Next page"
-                       href="/@ViewBag.mainController.ToString()/@ViewBag.mainActionName.ToString()/@(CurrentPage+1)">
+                       href="/Home/ProductsPage/@(CurrentPage+1)">
                         <svg class="Icon Icon--select-arrow-right"
                              role="presentation"
                              viewBox="0 0 11 18">
@@ -206,7 +207,6 @@
 
             <div class="CollectionToolbar__LayoutSwitch hidden-phone">
                 <button aria-label="Show two products per row"
-                         id="twoproducts"
                         class="CollectionToolbar__LayoutType "
                         data-action="change-layout-mode"
                         data-grid-type="desktop"
@@ -219,7 +219,6 @@
                     </svg>
                 </button>
                 <button aria-label="Show four products per row"
-                        id="fourproducts"
                         class="CollectionToolbar__LayoutType is-active"
                         data-action="change-layout-mode"
                         data-grid-type="desktop"
@@ -236,3 +235,6 @@
     </div>
 
 </div>
+
+
+

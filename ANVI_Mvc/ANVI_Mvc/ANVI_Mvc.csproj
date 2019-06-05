@@ -174,9 +174,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SortAndFilterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -212,6 +214,7 @@
     <Compile Include="Services\ProductsService.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BuyOneModel.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
@@ -256,6 +259,8 @@
     <Content Include="Assets\images\Bracelets\C_900x.jpg" />
     <Content Include="Assets\images\Bracelets\f5251328ce40a7a02253945753c430e6_900x.jpg" />
     <Content Include="Assets\images\Color\18k-Gold.png" />
+    <Content Include="Assets\images\Color\Rose Gold.png" />
+    <Content Include="Assets\images\Color\Silver.png" />
     <Content Include="Assets\images\EarRings\3_ebcf859e-215d-4b14-8a01-6ad2535e40a2_900x.jpg" />
     <Content Include="Assets\images\EarRings\4_970e215a-18c2-4afb-826f-0c5b3835757b_900x.jpg" />
     <Content Include="Assets\images\EarRings\B19401_900x.jpg" />
@@ -426,9 +431,16 @@
     <Content Include="Views\Search\SearchIndex.cshtml" />
     <Content Include="Views\Shared\_ProductsPartial.cshtml" />
     <Content Include="Views\Search\SearchedProducts.cshtml" />
+    <Content Include="Views\Shared\_OrderPartial.cshtml" />
+    <Content Include="Views\Category\Bracelets.cshtml" />
+    <Content Include="Views\Category\EarRingsProductsPage.cshtml" />
+    <Content Include="Views\Category\EarRings.cshtml" />
+    <Content Include="Views\Category\Necklaces.cshtml" />
+    <Content Include="Views\Category\Rings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SortAndFilter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

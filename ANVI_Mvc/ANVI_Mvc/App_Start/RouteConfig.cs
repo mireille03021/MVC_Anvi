@@ -33,12 +33,27 @@ namespace ANVI_Mvc
                 url: "Home/{action}/{page}",
                 defaults: new { controller = "Home", action = "ProductsPage", page = 1 }
             );
+
+            //預設的產品分類位置
+            routes.MapRoute(
+                name: "CategoryProducts",
+                url: "Category/{action}/{page}",
+                defaults: new { controller = "Category", action = "Bracelets", page = 1}
+            );
+            
+
+            routes.MapRoute(
+                name: "SortAndFilter",
+                url: "SortAndFilter/{action}/{page}",
+                defaults: new { controller = "SortAndFilter", action = "PriceLowToHigh", page = 1 }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            
+          
         }
     }
 }
