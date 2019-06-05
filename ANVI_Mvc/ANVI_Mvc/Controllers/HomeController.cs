@@ -50,13 +50,13 @@ namespace ANVI_Mvc.Controllers
             return View();
         }
         [AllowAnonymous]
-        public ActionResult GetProducts(int page,List<Product> AllProducts)
+        public ActionResult GetProducts(int page, List<Product> AllProducts)
         {
             //每八個一頁
-            var ProductNumber = 8;  
+            var ProductNumber = 8;
             //取得目前頁所需要顯示的物品
-            var pList = AllProducts.Skip((page-1)* ProductNumber).Take(page* ProductNumber).ToList();
-            
+            var pList = AllProducts.Skip((page - 1) * ProductNumber).Take(page * ProductNumber).ToList();
+
             //建立全部商品
             ProductsService service = new ProductsService(db);
             var AllProductDetails = service.getPageOfProducts();
@@ -70,7 +70,7 @@ namespace ANVI_Mvc.Controllers
                 //取得此產品ID所有的PDID，並加進List<ProductPageViewModel> Model中
                 var NowPid = pList[i].ProductID;
                 var FilterList = AllProductDetails.Where(x => x.ProductID == NowPid);
-                foreach(var item in FilterList)
+                foreach (var item in FilterList)
                 {
                     Model.Add(item);
                 }
@@ -117,7 +117,7 @@ namespace ANVI_Mvc.Controllers
                                  "cat.CategoryName, " +
                                  "p.ProductID, " +
                                  "p.ProductName, " +
-                                 "p.UnitPrice, "+
+                                 "p.UnitPrice, " +
                                  "s.SizeContext, " +
                                  "c.ColorID, " +
                                  "c.ColorName, " +
@@ -127,7 +127,7 @@ namespace ANVI_Mvc.Controllers
                                  "inner join Sizes s on pd.SizeID = s.SizeID " +
                                  "inner join Colors c on pd.ColorID = c.ColorID " +
                                  "inner join Categories cat on p.CategoryID = cat.CategoryID " +
-                                 "where pd.PDID = " + "'"+ pdid +"'";
+                                 "where pd.PDID = " + "'" + pdid + "'";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 CartItemViewModel product = conn.QueryFirstOrDefault<CartItemViewModel>(queryString);
@@ -156,7 +156,7 @@ namespace ANVI_Mvc.Controllers
                 }
 
                 Session["CartToHere"] = false;
-                Session["BuyItNow"] = new BuyOneViewModel() {CartItem = product, Image = image};
+                Session["BuyItNow"] = new BuyOneViewModel() { CartItem = product, Image = image };
                 //這是傳給HttpGet喔！
                 return RedirectToAction("Order_Customer", "Home"/*, new {product = product, image = image}*/);
             }
@@ -250,7 +250,7 @@ namespace ANVI_Mvc.Controllers
             ViewData["Phone"] = OCVM.Phone;
             ViewData["Email"] = OCVM.Email;
 
-            if(Order_Pay_Radio)
+            if (Order_Pay_Radio)
             {
                 Session["Bill_Order_Seccion"] = Bill_OCVM;
                 ViewData["Bill_CustomerName"] = Bill_OCVM.Bill_CustomerName;
@@ -265,24 +265,49 @@ namespace ANVI_Mvc.Controllers
             var REPO_O = new Repositories.AnviRepository<Order>(db);
             var REPO_OD = new Repositories.AnviRepository<OrderDetail>(db);
             var O = new Order();
-            var OD = new OrderDetail();
 
+            // 存到Order資料庫
             O.RecipientName = OCVM.CustomerName;
             O.RecipientCity = OCVM.City;
             O.RecipientZipCod = OCVM.ZipCode;
             O.RecipientAddressee = OCVM.Address;
             O.RecipientPhone = OCVM.Phone;
-            
+
+            O.UserID = "IDU0007";
+            O.Payment = "銀行轉帳";
+            O.Remaeks = "嗨嗨1小時內寄來";
+            O.OrderDate = DateTime.Now;
+            O.ShipDate = DateTime.Now.AddHours(1);
+
+            REPO_O.Create(O);
+            db.SaveChanges();
+            var OrderList = db.Orders.ToList();
+            var OrderID = OrderList.Last().OrderID;
 
             if ((bool)Session["CartToHere"])
             {
                 var currentCart = CartService.GetCurrentCart();
                 foreach (var item in currentCart)
                 {
-                    
+                    var OD = new OrderDetail();
+                    OD.PDID = item.PDID;
+                    OD.OrderID = OrderID;
+                    OD.Price = item.UnitPrice;
+                    OD.Quantity = item.Quantity;
+                    db.OrderDetails.Add(OD);
                 }
             }
-
+            else // BuyItNow
+            {
+                var OD = new OrderDetail();
+                var BuyItNow = (BuyOneViewModel)Session["BuyItNow"];
+                OD.PDID = BuyItNow.CartItem.PDID;
+                OD.OrderID = OrderID;
+                OD.Price = BuyItNow.CartItem.UnitPrice;
+                OD.Quantity = BuyItNow.CartItem.Quantity;
+                REPO_OD.Create(OD);
+            }
+            db.SaveChanges();
 
             ViewData.Model = CartService.GetCurrentCart();
             ViewBag.Img = CartService.getEachProductImages(db);
@@ -309,7 +334,7 @@ namespace ANVI_Mvc.Controllers
             ViewData["Phone"] = OCVM.Phone;
             ViewData["Email"] = OCVM.Email;
 
-            if(Order_Pay_Radio)
+            if (Order_Pay_Radio)
             {
 
                 var Bill_OCVM = (OrderCustomerViewModel)Session["Bill_Order_Seccion"];
@@ -323,11 +348,11 @@ namespace ANVI_Mvc.Controllers
             return View();
         }
         [AllowAnonymous]
-        public ActionResult getOrderPartial(CartModel currentCart,string[] images)   //導向Partial
+        public ActionResult getOrderPartial(CartModel currentCart, string[] images)   //導向Partial
         {
             var Img = CartService.getEachProductImages(db);
             ViewBag.Img = Img;
-            if(currentCart.Count != 0)
+            if (currentCart.Count != 0)
             {
                 ViewBag.Img = images;
                 ViewData.Model = currentCart;
