@@ -45,7 +45,7 @@
                 </div>
                 <div class="main__content">
                     <form action="/Home/Order_Customer" class="edit_checkout" method="post">
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.ValidationSummary(true, "", new { @style = "color:#FF3333" })
                         <div class="step">
                             <div class="step__sections">
                                 <div class="section">
@@ -82,7 +82,7 @@
                                             <!-- <div class="field__input"><label for="" class="field__label">電子郵件</label> -->
                                             @*<input id="checkout_email" class="field__input" type="email" size="30" name="Email" value="@ViewData["Email"]" data-val="true" placeholder="電子郵件">*@
                                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "checkout_email",@class = "field__input", @size = "30", @Value = @ViewData["Email"], @placeholder="電子郵件" } })
-                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:#FF3333" })
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                                 <!-- <label class="field__label" for="checkout_shipping_address_last_name">姓氏</label> -->
                                                 @*<input type="text" class="field__input" placeholder="姓名" size="30" name="CustomerName" value="@ViewData["CustomerName"]" id="checkout_shipping_address_name">*@
                                                 @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @id = "checkout_shipping_address_name",@class = "field__input", @size = "30", @Value = @ViewData["CustomerName"], @placeholder="姓名" } })
-                                                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                                                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @style= "color:#FF3333" })
                                             </div>
                                         </div>
 
@@ -161,7 +161,7 @@
                                                     <!-- <label class="field__label">郵遞區號</label> -->
                                                     @*<input type="text" class="field__input" id="checkout_shipping_address_zip" placeholder="郵遞區號" size="30" name="ZipCOde" value="@ViewData["ZipCode"]">*@
                                                     @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @id = "checkout_shipping_address_zip",@class = "field__input", @size = "30", @Value = @ViewData["ZipCode"], @placeholder="郵遞區號" } })
-                                                    @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+                                                    @Html.ValidationMessageFor(model => model.ZipCode, "", new { @style = "color:#FF3333" })
                                                 </div>
                                             </div>
                                         </div>
@@ -170,7 +170,7 @@
                                                 <!-- <label class="field__label">地址</label> -->
                                                 @*<input type="text" class="field__input" id="checkout_shipping_address_address" placeholder="地址" size="30" name="Address" value="@ViewData["Address"]">*@
                                                 @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @id = "checkout_shipping_address_address",@class = "field__input", @size = "30", @Value = @ViewData["Address"], @placeholder="地址" } })
-                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @style = "color:#FF3333" })
                                             </div>
                                         </div>
                                         <div class="field">
@@ -178,7 +178,7 @@
                                                 <!-- <label class="field__label">電話</label> -->
                                                 @*<input type="text" class="field__input" id="checkout_shipping_address_phone" placeholder="電話" size="30" name="Phone" value="@ViewData["Phone"]">*@
                                                 @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @id = "checkout_shipping_address_phone", @class = "field__input", @size = "30", @Value = @ViewData["Phone"], @placeholder = "電話" } })
-                                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                                @Html.ValidationMessageFor(model => model.Phone, "", new { @style = "color:#FF3333" })
                                                 <div id="phone_tooltip" class="field__icon">
                                                     <!-- <span id="tooltip-for-phone" class="tooltip">
             In case we need to contact you about your order.
