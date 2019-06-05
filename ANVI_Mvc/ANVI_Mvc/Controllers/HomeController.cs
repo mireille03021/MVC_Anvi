@@ -259,7 +259,7 @@ namespace ANVI_Mvc.Controllers
             ViewData.Model = CartService.GetCurrentCart();
             ViewBag.Img = CartService.getEachProductImages(db);
             //購買完成，清除購物車
-         
+            CartService.ClearCart();
             return View("Order_Check");
         }
         [HttpGet]
@@ -292,7 +292,6 @@ namespace ANVI_Mvc.Controllers
                 ViewData["Bill_Phone"] = Bill_OCVM.Bill_Phone;
 
             }
-            CartService.ClearCart();
             return View();
         }
         [AllowAnonymous]
