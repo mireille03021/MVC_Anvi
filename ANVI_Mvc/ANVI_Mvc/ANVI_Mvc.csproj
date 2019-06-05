@@ -469,6 +469,7 @@
     <Content Include="Views\Category\EarRings.cshtml" />
     <Content Include="Views\Category\Necklaces.cshtml" />
     <Content Include="Views\Category\Rings.cshtml" />
+    <Content Include="Views\Shared\_ChatBot.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
