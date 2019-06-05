@@ -1,0 +1,642 @@
+﻿@charset "UTF-8";
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #1c1b1b;
+  background: #fff;
+  line-height: 1.65;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: inherit;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button, input[type="submit"] {
+  padding: 0;
+  overflow: visible;
+  background: none;
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+:active {
+  outline: none;
+}
+
+.Button, .shopify-payment-button__button--unbranded {
+  /*.Button, .shopify-payment-button__button--unbranded, #shopify-product-reviews .spr-summary-actions-newreview, #shopify-product-reviews .spr-button-primary:not(input), #shopify-product-reviews input.spr-button-primary, #shopify-product-reviews .spr-pagination-prev>a, #shopify-product-reviews .spr-pagination-next>a*/
+  position: relative;
+  display: inline-block;
+  padding: 14px 28px;
+  line-height: normal;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: transparent;
+  -webkit-transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  z-index: 1;
+  -webkit-tap-highlight-color: initial;
+}
+
+.Button::before, .shopify-payment-button__button--unbranded::before {
+  /*.Button::before, .shopify-payment-button__button--unbranded::before, #shopify-product-reviews .spr-summary-actions-newreview::before, #shopify-product-reviews .spr-button-primary:not(input)::before, #shopify-product-reviews input.spr-button-primary::before, #shopify-product-reviews .spr-pagination-prev>a::before, #shopify-product-reviews .spr-pagination-next>a::before*/
+  position: absolute;
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  z-index: -1;
+}
+
+.Heading {
+  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #1c1b1b;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.u-h1, .Rte h1 {
+  font-size: 22px;
+}
+
+.u-h6, .Rte h6 {
+  font-size: 13px;
+}
+
+p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+  margin-bottom: 0;
+}
+
+.Rte p:last-child, .Rte blockquote:last-child, .Rte ul:last-child, .Rte ol:last-child, .Rte h1:last-child, .Rte h2:last-child, .Rte h3:last-child, .Rte h4:last-child, .Rte h5:last-child, .Rte h6:last-child {
+  margin-bottom: 0;
+}
+
+/*地點*/
+.shopify-section--bordered + .shopify-section--bordered {
+  border-top: 1px solid #ddd;
+}
+
+.Section--spacingNormal {
+  margin: 50px 0;
+}
+
+.shopify-section--bordered > .Section--spacingNormal {
+  padding: 50px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.Container {
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.FeaturedMap {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.Image--fadeIn {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.FeaturedMap__MapContainer {
+  position: relative;
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+}
+
+.Image--lazyLoaded.Image--fadeIn {
+  opacity: 1;
+}
+
+.FeaturedMap__GMap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.FeaturedMap__Info {
+  position: relative;
+  margin: 0 auto;
+  background: #fff;
+  text-align: left;
+  z-index: 1;
+  padding: 40px 0 0 0;
+}
+
+.Image--lazyLoaded.Image--fadeIn {
+  opacity: 1;
+}
+
+.FeaturedMap__Store {
+  display: block;
+  margin-bottom: 1.2em;
+  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.FeaturedMap__Address {
+  margin-bottom: 1.2em;
+}
+
+.Rte::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.Button--primary, .shopify-payment-button__button--unbranded {
+  /*.Button--primary, .shopify-payment-button__button--unbranded, #shopify-product-reviews .spr-summary-actions-newreview, #shopify-product-reviews .spr-button-primary:not(input)*/
+  color: #fff;
+  border-color: #1c1b1b;
+}
+
+.FeaturedMap__Location {
+  margin-top: 2.7em;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+.Button--primary::before, .shopify-payment-button__button--unbranded::before {
+  /*.Button--primary::before, .shopify-payment-button__button--unbranded::before, #shopify-product-reviews .spr-summary-actions-newreview::before, #shopify-product-reviews .spr-button-primary:not(input)::before*/
+  background-color: #1c1b1b;
+}
+
+/*最下面IG的輪播*/
+.SectionHeader__Heading.SectionHeader__Heading { /*.SectionHeader__Heading.SectionHeader__Heading, .SectionHeader__SubHeading.SectionHeader__SubHeading*/
+    margin-top: -0.325em;
+}
+
+.shopify-section--bordered + .shopify-section--bordered {
+  border-top: 1px solid #ddd;
+}
+
+article, aside, details, figcaption, figure, footer, header, main, nav, section, summary {
+  display: block;
+}
+
+.Section--spacingNormal {
+  margin: 50px 0;
+}
+
+.shopify-section--bordered > .Section--spacingNormal {
+  padding: 50px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.SectionHeader--center {
+  text-align: center;
+}
+
+.SectionHeader:not(:only-child) {
+  margin-bottom: 40px;
+}
+
+.Container {
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.flickity-enabled {
+  position: relative;
+}
+
+.flickity-enabled {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.Carousel {
+  position: relative;
+}
+
+.Carousel--fixed, .Carousel--fixed .flickity-viewport, .Carousel--fixed .Carousel__Cell {
+  height: 100%;
+}
+
+.Instafeed {
+  height: 250px;
+}
+
+.flickity-enabled.is-draggable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body:not(.is-tabbing) .flickity-enabled:focus {
+  outline: none;
+}
+
+.flickity-viewport {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.Carousel__Cell {
+  display: block;
+  width: 100%;
+}
+
+.Instafeed__Cell {
+  width: 250px;
+  margin: 0 5px;
+  overflow: hidden;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+.Image--zoomOut {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  opacity: 0;
+  -webkit-transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.Instafeed__Image {
+  position: relative;
+  display: block;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+.Image--lazyLoaded.Image--zoomOut {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.Instafeed__Overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  background: #1c1b1b;
+  color: #fff;
+  text-align: left;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.Instafeed__LikeCount {
+  font-size: 13px;
+}
+
+.Icon {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+  stroke-width: 1px;
+  background: none;
+  pointer-events: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.Instafeed__LikeCount svg {
+  margin-right: 8px;
+  width: 17px;
+  height: 15px;
+  vertical-align: sub;
+}
+
+.Instafeed__Caption {
+  position: relative;
+  height: 6.6em;
+  margin: 20px 0;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.Instafeed__Caption::after {
+  position: absolute;
+  content: '';
+  right: 0;
+  bottom: 0;
+  width: 70%;
+  height: 1.6em;
+  text-align: right;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(28, 27, 27, 0)), color-stop(50%, #1c1b1b));
+  background: linear-gradient(to right, rgba(28, 27, 27, 0), #1c1b1b 50%);
+}
+
+.Instafeed__Date {
+  position: absolute;
+  bottom: 18px;
+  color: inherit;
+  text-transform: uppercase;
+}
+
+.RoundButton, .flickity-prev-next-button {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #1c1b1b;
+  cursor: pointer;
+  text-align: center;
+  z-index: 1;
+  -webkit-box-shadow: 0 2px 10px rgba(54, 54, 54, 0.15);
+  box-shadow: 0 2px 10px rgba(54, 54, 54, 0.15);
+  vertical-align: middle;
+  line-height: 0;
+  -webkit-transform: scale(1.001);
+  transform: scale(1.001);
+  -webkit-transition: background 0.15s ease-in-out, opacity 0.15s ease-in-out, color 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: background 0.15s ease-in-out, opacity 0.15s ease-in-out, color 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: background 0.15s ease-in-out, opacity 0.15s ease-in-out, transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background 0.15s ease-in-out, opacity 0.15s ease-in-out, transform 0.2s ease-in-out, color 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.flickity-prev-next-button {
+  position: absolute;
+}
+
+body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(.is-tabbing) select:focus, body:not(.is-tabbing) textarea:focus {
+  outline: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.RoundButton svg, .flickity-prev-next-button svg {
+  height: 15px;
+  width: 15px;
+  fill: currentColor;
+}
+
+.flickity-prev-next-button svg {
+  width: auto;
+  height: 18px;
+  stroke-width: 1.5px;
+  stroke: currentColor;
+}
+
+.SectionFooter {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.Button--primary, .shopify-payment-button__button--unbranded {
+  /*.Button--primary, .shopify-payment-button__button--unbranded, #shopify-product-reviews .spr-summary-actions-newreview, #shopify-product-reviews .spr-button-primary:not(input)*/
+  color: #fff;
+  border-color: #1c1b1b;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+.Button--primary::before, .shopify-payment-button__button--unbranded::before, #shopify-product-reviews .spr-summary-actions-newreview::before, #shopify-product-reviews .spr-button-primary:not(input)::before {
+  background-color: #1c1b1b;
+}
+
+/*其他*/
+.SectionHeader__SubHeading + .SectionHeader__Heading { /*.SectionHeader__SubHeading + .SectionHeader__Heading, .SectionHeader__SubHeading + .SectionHeader__TabList, .SectionHeader__Description*/
+    margin-top: 16px;
+}
+
+@media not all, (hover: hover) {
+  .Instafeed__Cell:hover .Instafeed__Overlay {
+    opacity: 1;
+  }
+  .RoundButton:hover, .flickity-prev-next-button:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .RoundButton:not([aria-expanded="true"]):hover, .flickity-prev-next-button:not([aria-expanded="true"]):hover {
+    color: #1c1b1b;
+  }
+  .RoundButton[data-animate-left]:hover svg, [data-animate-left].flickity-prev-next-button:hover svg, .flickity-prev-next-button.previous:hover svg {
+    -webkit-animation: buttonFromRightToLeft 0.5s ease-in-out forwards;
+    animation: buttonFromRightToLeft 0.5s ease-in-out forwards;
+  }
+  .RoundButton[data-animate-right]:hover svg, [data-animate-right].flickity-prev-next-button:hover svg, .flickity-prev-next-button.next:hover svg {
+    -webkit-animation: buttonFromLeftToRight 0.5s ease-in-out forwards;
+    animation: buttonFromLeftToRight 0.5s ease-in-out forwards;
+  }
+  .Button--primary:not([disabled]):hover, .shopify-payment-button__button--unbranded:not([disabled]):hover {
+    /*.Button--primary:not([disabled]):hover, .shopify-payment-button__button--unbranded:not([disabled]):hover, #shopify-product-reviews .spr-summary-actions-newreview:not([disabled]):hover, #shopify-product-reviews .spr-button-primary:not([disabled]):hover:not(input)*/
+    color: #1c1b1b;
+    background-color: transparent;
+  }
+  .Button:not([disabled])::before, .shopify-payment-button__button--unbranded:not([disabled])::before {
+    /*.Button:not([disabled])::before, .shopify-payment-button__button--unbranded:not([disabled])::before, #shopify-product-reviews .spr-summary-actions-newreview:not([disabled])::before, #shopify-product-reviews .spr-button-primary:not(input):not([disabled])::before, #shopify-product-reviews input.spr-button-primary:not([disabled])::before, #shopify-product-reviews .spr-pagination-prev>a:not([disabled])::before, #shopify-product-reviews .spr-pagination-next>a:not([disabled])::before*/
+    -webkit-transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+  .Button:not([disabled]):hover::before, .shopify-payment-button__button--unbranded:not([disabled]):hover::before {
+    /*.Button:not([disabled]):hover::before, .shopify-payment-button__button--unbranded:not([disabled]):hover::before, #shopify-product-reviews .spr-summary-actions-newreview:not([disabled]):hover::before, #shopify-product-reviews .spr-button-primary:not(input):not([disabled]):hover::before, #shopify-product-reviews input.spr-button-primary:not([disabled]):hover::before, #shopify-product-reviews .spr-pagination-prev>a:not([disabled]):hover::before, #shopify-product-reviews .spr-pagination-next>a:not([disabled]):hover::before*/
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .u-h1, .Rte h1 {
+    font-size: 22px;
+  }
+  .u-h6, .Rte h6 {
+    font-size: 13px;
+  }
+  .Container {
+    padding: 0 50px;
+  }
+  /*地圖*/
+  .FeaturedMap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    padding-top: 0;
+    height: 550px;
+  }
+  .FeaturedMap__MapContainer {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    height: 100%;
+  }
+  .FeaturedMap__Info {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    min-width: 370px;
+    width: 370px;
+    padding: 50px 60px;
+  }
+  /*下面的IG輪播*/
+  .Instafeed {
+    height: calc(100vw / 2 - 70px);
+  }
+  .Instafeed__Cell {
+    width: calc(100vw / 2 - 70px);
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .Section--spacingNormal {
+    margin: 80px 0;
+  }
+  .shopify-section--bordered > .Section--spacingNormal {
+    padding: 80px 0;
+  }
+  .SectionHeader:not(:only-child) {
+    margin-bottom: 70px;
+  }
+  .Instafeed {
+    height: calc(100vw / 3 - 60px);
+  }
+  .Instafeed__Cell {
+    width: calc(100vw / 3 - 60px);
+  }
+  .Instafeed .flickity-prev-next-button.previous {
+    top: calc(50% - (45px / 2));
+    left: 25px;
+  }
+  .Instafeed .flickity-prev-next-button.next {
+    top: calc(50% - (45px / 2));
+    right: 25px;
+  }
+  .SectionFooter {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .Container {
+    padding: 0 80px;
+  }
+  .Instafeed {
+    height: calc(100vw / 3 - 180px);
+  }
+  .Instafeed__Cell {
+    width: calc(100vw / 3 - 180px);
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .Instafeed__Caption {
+    height: 9.9em;
+  }
+}
+
+@media screen and (max-width: 1007px) {
+  .Instafeed .flickity-prev-next-button {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style_BIG_foot_2.css.map */
