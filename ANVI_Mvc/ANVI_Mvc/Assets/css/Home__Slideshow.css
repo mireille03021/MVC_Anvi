@@ -757,6 +757,191 @@ a:active, a:hover {
   pointer-events: none;
 }
 
+
+/*商品分類*/
+.fadeInUp {
+-webkit-animation-name: fadeInUp;
+animation-name: fadeInUp;
+}
+
+.animated {
+-webkit-animation-duration: 1s;
+animation-duration: 1s;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+}
+
+.run {
+-webkit-animation-delay: 3s;
+animation-delay: 3s;
+}
+
+.Container {
+margin: 0 auto;
+padding: 0 80px;
+}
+
+.Heading {
+font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+font-weight: 400;
+font-style: normal;
+color: #1c1b1b;
+-webkit-transition: color 0.2s ease-in-out;
+transition: color 0.2s ease-in-out;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+}
+
+.PageHeader {
+margin: 80px 0 50px;
+text-align: center;
+}
+
+.PageHeader h1 {
+    font-size: 22px;
+    letter-spacing: 0.2em;
+}
+
+.ProductItemListWrapper {
+width: 100%;
+height: 100%;
+padding: 0;
+margin: 0;
+}
+
+.ProductItemListWrapper .ProductItemList {
+    height: 100%;
+    padding: 0 0 0 55px;
+}
+
+.ProductItemListWrapper .Grid__Cell {
+    display: inline-block;
+    padding-left: 50px;
+    margin-bottom: 50px;
+    width: 23%;
+}
+
+.ProductItemListWrapper .ProductItem {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ProductItemListWrapper .two__ProductItemList {
+    height: 100%;
+    padding: 0 0 0 45px;
+}
+
+.ProductItemListWrapper .two__Grid__Cell {
+    display: inline-block;
+    padding-left: 60px;
+    margin-bottom: 50px;
+    width: 40%;
+}
+
+.ProductItemListWrapper .two__ProductItem {
+    width: 40%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ProductItemListWrapper a {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+    .ProductItemListWrapper a img {
+        width: 100%;
+        /* CSS3淡出淡入效果,1秒 */
+        -webkit-transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out;
+        background-color: #ffffff;
+    }
+
+    .ProductItemListWrapper a .img_bottom {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        /* CSS3淡出淡入效果,1秒 */
+        -webkit-transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out;
+        z-index: -1;
+    }
+
+    .ProductItemListWrapper a img:nth-of-type(2):hover {
+        opacity: 0;
+        /*滑鼠滑入時，透明度變0*/
+    }
+
+.ProductItemListWrapper .Heading {
+    text-align: center;
+    font-size: 12px;
+    color: black;
+    letter-spacing: 0.2em;
+}
+
+.ProductItemListWrapper .ProductItem_Info {
+    margin-top: 20px;
+}
+
+    .ProductItemListWrapper .ProductItem_Info .ProductItem_Title {
+        margin-bottom: 5px;
+    }
+
+    .ProductItemListWrapper .ProductItem_Info .ProductItem_PriceList {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        color: #6a6a6a;
+    }
+
+    .ProductItemListWrapper .ProductItem_Info .ProductItem_ColorSwatchList {
+        margin: auto;
+        width: 100%;
+        height: 100%;
+    }
+
+        .ProductItemListWrapper .ProductItem_Info .ProductItem_ColorSwatchList .ProductItem_ColorSwatchItem {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+            .ProductItemListWrapper .ProductItem_Info .ProductItem_ColorSwatchList .ProductItem_ColorSwatchItem .ColorSwatchItem {
+                margin: auto 2px;
+            }
+
+                .ProductItemListWrapper .ProductItem_Info .ProductItem_ColorSwatchList .ProductItem_ColorSwatchItem .ColorSwatchItem :hover {
+                    outline: 1px solid #929292;
+                }
+
+                .ProductItemListWrapper .ProductItem_Info .ProductItem_ColorSwatchList .ProductItem_ColorSwatchItem .ColorSwatchItem ::after {
+                    outline: 1px solid #000000;
+                }
+
+            .ProductItemListWrapper .ProductItem_Info .ProductItem_ColorSwatchList .ProductItem_ColorSwatchItem .ColorSwatch {
+                text-align: center;
+                display: inline-block;
+                background-image: url(/image/18k-gold.png);
+                width: 16px;
+                height: 16px;
+                margin: 2px;
+                cursor: pointer;
+                background-size: cover;
+            }
+
 @media screen and (min-width: 1008px) {
   .Slideshow__Content--middleLeft {
     text-align: left;
@@ -842,5 +1027,11 @@ a:active, a:hover {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
   }
+}
+
+@media screen and (min-width: 1008px) {
+    .Slideshow__Content--middleRight, .Slideshow__Content--bottomRight {
+        text-align: right;
+    }
 }
 /*# sourceMappingURL=Home__Slideshow.css.map */
