@@ -11,7 +11,7 @@
     <title>Anvi</title>
 
     @*
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
     <!-- bootstrap 4.2.1 -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Titillium+Web" rel="stylesheet"> -->
     <!-- google字體 -->
@@ -19,6 +19,7 @@
     <!-- fontawesome -->
     <link href="~/Assets/css/header-styles.css" rel="stylesheet" />
     <!-- CSS檔引入 -->
+    <link rel="shortcut icon" href="~/Assets/images/Logo/ANVI_FAVICON_32x32.png" type="image/png">
     @RenderSection("topCSS", false)
     @RenderSection("topJS", false)
 </head>
@@ -40,9 +41,9 @@
                     </li>
                 </ul>
 
-
-                <div class="LogoImage LogoImage--primaty" src="" alt="#"></div>
-
+                <a href="/Home/index">
+                    <div class="LogoImage LogoImage--primaty" src=""  ></div>
+                </a>
 
                 <!-- 圖片記得改響應式 -->
                 <div class="userlist">
@@ -85,16 +86,16 @@
                         <a href="#" class="class">類別</a>
                         <ul class="">
                             <li class="">
-                                <a href="/Category/Bracelets" class="">手環</a>
+                                <a href="/Category/Bracelets" class="bra">手環</a>
                             </li>
                             <li class="">
-                                <a href="/Category/EarRings" class="">耳環</a>
+                                <a href="/Category/EarRings" class="ear">耳環</a>
                             </li>
                             <li class="">
-                                <a href="/Category/Necklaces" class="">項鍊</a>
+                                <a href="/Category/Necklaces" class="neck">項鍊</a>
                             </li>
                             <li class="">
-                                <a href="/Category/Rings" class="">戒指</a>
+                                <a href="/Category/Rings" class="rain">戒指</a>
                             </li>
                         </ul>
                     </div>
@@ -102,11 +103,11 @@
                     <div class="MegaMenu__Item">
 
                         <div class="MegaMenu__Push ">
-                            <div class="MegaMenu__PushImageWrapper AspectRatio">
+                            <div class="MegaMenu__PushImageWrapper product__categories AspectRatio">
 
                             </div>
                             <span class="Image__Loader"></span>
-                            <p class="MegaMenu__PushHeading h6">ANVI GIRL 摩登，經典，優雅的存在</p>
+                            @*<p class="MegaMenu__PushHeading h6 product__h6">手鍊</p>*@
                         </div>
                     </div>
                     <div class="MegaMenu__Item">
@@ -164,32 +165,42 @@
                 $(".MenuList").css("visibility", "hidden");
             });
         });
+
+        $(function () {
+            $(".bra").hover(function () {
+                $(".product__categories").css("background-image", "url(/Assets/images/Bracelets/2_fae8f255-1152-4a34-8c7b-54b8f3033a87_900x.jpg)");
+            });
+        });
+        $(function () {
+            $(".ear").hover(function () {
+                $(".product__categories").css("background-image", "url(/Assets/images/EarRings/G3_a94660c7-92de-46e5-966d-617f55f9d59e_900x.jpg)");
+            });
+        });
+        $(function () {
+            $(".neck").hover(function () {
+                $(".product__categories").css("background-image", "url(/Assets/images/Necklaces/3_3_2e459b5c-083d-4682-9861-2718a9292092_900x.jpg)");
+            });
+        });
+        $(function () {
+            $(".rain").hover(function () {
+                $(".product__categories").css("background-image", "url(/Assets/images/Rings/1_0fe82ab3-bb99-4711-96c4-b47f2b1d25ac_900x.jpg)");
+            });
+        });
         //應該要寫一個語法合併上面
 
         //這邊下面寫滾動卷軸動作
         $(function () {
             $(window).scroll(function () {
                 var scroll = $(window).scrollTop();
-
+              
                 if (scroll >= 15) {
                     $('#header').addClass('fixed');
 
-                    //$('.topnemulinetwo ul').css({
-                    //    "background- color": "rgba(255, 255, 255, 0)",
-                    //    "color": "#ffffff"
-
-                    //});
-                    //$('.topnemu').css({
-                    //    "background- color": "rgba(255, 255, 255, 0)"
-                    //    ,"color": "#ffffff"
-                    //});
+                   
 
                 } else {
                     $('#header').removeClass('fixed');
-                    //$('.topnemu').css({
-                    //    "background- color": "#ffffff"
-                    //    , "color": "#1C1B1B"
-                    //});
+                    
 
                 }
             });

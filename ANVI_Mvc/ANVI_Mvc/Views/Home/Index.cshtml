@@ -3,10 +3,11 @@
 }
 @section topCSS
 {
+    <link href="~/Assets/css/header-styles.css" rel="stylesheet" />
     <link href="~/Assets/css/header-styles-index.css" rel="stylesheet" />
     <link href="~/Assets/css/hot.css" rel="stylesheet" />
     <link href="~/Assets/css/Home__Slideshow.css" rel="stylesheet" />
-
+    <link href="~/Assets/css/footer.css" rel="stylesheet" />
 
 
 }
@@ -17,6 +18,8 @@
     <script type="text/javascript" src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="~/Assets/js/Home.js"></script>
+    <script type="text/javascript" src="~/Assets/js/headerjava.js"></script>
+
 }
 @*<div class="jumbotron">
         <h1>ASP.NET</h1>
@@ -492,55 +495,123 @@
 
 
 
-    <div id="shopify-section-footer"
-         class="shopify-section shopify-section--footer">
-        <footer id="section-footer" class="Footer  " role="contentinfo">
-            <div class="Container">
-                <div class="Footer__Block Footer__Block--text">
-                    <h2 class="Footer__Title Heading u-h6">關於ANVI</h2>
-                    <div class="Footer__Content Rte">
-                        <p>
-                            ANVI
-                            Studios為新創銀飾品牌，專為對於品味與時尚有所追求的女性，打造極簡、質感、富含女性魅力的精緻飾品。
-                        </p>
-                        <p>
-                            ANVI相信每位女性都有天生魅力、個人風格，而表態就該由天天配戴的飾品開始。ANVI
-                            Studios承襲多年的精品工藝，擅長製作頂尖質感，揉合現代設計風格與時尚外型，為女人畫龍點睛，高貴飾品不該只放在展間，應以合理售價取得並作為日常不可或缺的單品。
-                        </p>
-                        <p>ANVI Girl為摩登、經典、優雅的代名詞。</p>
+    @* <div id="shopify-section-footer"
+             class="shopify-section shopify-section--footer">
+            <footer id="section-footer" class="Footer  " role="contentinfo">
+                <div class="Container">
+                    <div class="Footer__Block Footer__Block--text">
+                        <h2 class="Footer__Title Heading u-h6">關於ANVI</h2>
+                        <div class="Footer__Content Rte">
+                            <p>
+                                ANVI
+                                Studios為新創銀飾品牌，專為對於品味與時尚有所追求的女性，打造極簡、質感、富含女性魅力的精緻飾品。
+                            </p>
+                            <p>
+                                ANVI相信每位女性都有天生魅力、個人風格，而表態就該由天天配戴的飾品開始。ANVI
+                                Studios承襲多年的精品工藝，擅長製作頂尖質感，揉合現代設計風格與時尚外型，為女人畫龍點睛，高貴飾品不該只放在展間，應以合理售價取得並作為日常不可或缺的單品。
+                            </p>
+                            <p>ANVI Girl為摩登、經典、優雅的代名詞。</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="Footer__Block Footer__Block--links">
-                <div class="Container">
-                    <h2 class="Footer__Title Heading u-h6">Main Footer menu</h2>
+                <div class="Footer__Block Footer__Block--links">
+                    <div class="Container">
+                        <h2 class="Footer__Title Heading u-h6">Main Footer menu</h2>
 
-                    <ul class="Linklist">
-                        <li class="Linklist__Item">
-                            <a href="/pages/shipping" class="Link Link--primary">運送須知</a>
-                        </li>
-                        <li class="Linklist__Item">
-                            <a href="/pages/returns" class="Link Link--primary">退/換貨須知</a>
-                        </li>
-                        <li class="Linklist__Item">
-                            <a href="/pages/privacy" class="Link Link--primary">隱私政策</a>
-                        </li>
-                        <li class="Linklist__Item">
-                            <a href="/pages/terms-and-conditions"
-                               class="Link Link--primary">服務條款</a>
-                        </li>
-                        <li class="Linklist__Item">
-                            <a href="/pages/contact" class="Link Link--primary">聯絡我們</a>
-                        </li>
-                    </ul>
+                        <ul class="Linklist">
+                            <li class="Linklist__Item">
+                                <a href="/pages/shipping" class="Link Link--primary">運送須知</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/returns" class="Link Link--primary">退/換貨須知</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/privacy" class="Link Link--primary">隱私政策</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/terms-and-conditions"
+                                   class="Link Link--primary">服務條款</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/contact" class="Link Link--primary">聯絡我們</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+            </footer>
+            <div class="Footer__end">
+                <a href="https://www.anvistudios.com"
+                   class="Footer__StoreName Heading u-h7 Link Link--secondary">© ANVI | 日常輕珠寶成就女性迷人魅力</a>
             </div>
-        </footer>
-        <div class="Footer__end">
-            <a href="https://www.anvistudios.com"
-               class="Footer__StoreName Heading u-h7 Link Link--secondary">© ANVI | 日常輕珠寶成就女性迷人魅力</a>
+        </div>*@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="./stylesheets/footer.css">
+    </head>
+
+    <body>
+
+
+        <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
+            <footer id="section-footer" class="Footer  " role="contentinfo">
+                <div class="Container">
+                    <div class="Footer__Block Footer__Block--text">
+                        <h2 class="Footer__Title Heading u-h6">關於ANVI</h2>
+                        <div class="Footer__Content Rte">
+                            <p>
+                                ANVI Studios為新創銀飾品牌，專為對於品味與時尚有所追求的女性，打造極簡、質感、富含女性魅力的精緻飾品。
+                            </p>
+                            <p>
+                                ANVI相信每位女性都有天生魅力、個人風格，而表態就該由天天配戴的飾品開始。ANVI Studios承襲多年的精品工藝，擅長製作頂尖質感，揉合現代設計風格與時尚外型，為女人畫龍點睛，高貴飾品不該只放在展間，應以合理售價取得並作為日常不可或缺的單品。
+                            </p>
+                            <p>ANVI Girl為摩登、經典、優雅的代名詞。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="Footer__Block Footer__Block--links">
+                    <div class="Container">
+
+                        <h2 class="Footer__Title Heading u-h6">Main Footer menu</h2>
+
+                        <ul class="Linklist">
+                            <li class="Linklist__Item">
+                                <a href="/pages/shipping" class="Link Link--primary">運送須知</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/returns" class="Link Link--primary">退/換貨須知</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/privacy" class="Link Link--primary">隱私政策</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/terms-and-conditions" class="Link Link--primary">服務條款</a>
+                            </li>
+                            <li class="Linklist__Item">
+                                <a href="/pages/contact" class="Link Link--primary">聯絡我們</a>
+                            </li>
+                        </ul>
+                        <div class="linebot__text">
+                            <h2 class="Footer__Title Heading u-h6">  加入我們LINE得知更多小道消息吧!</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="Footer__end">
+                <a href="https://www.anvistudios.com" class="Footer__StoreName Heading u-h7 Link Link--secondary">© ANVI | 日常輕珠寶成就女性迷人魅力</a>
+            </div>
         </div>
-    </div>
+</main>
+</body>
+
+</html>
 </main>
 
 
@@ -555,67 +626,81 @@
 
 
 
-    $(function () {
-        $(".shop").hover(function () {
-            $(".MenuList").css("visibility", "visible");
-        });
-    });
+    //$(function () {
+    //    $(".shop").hover(function () {
+    //        $(".MenuList").css("visibility", "visible");
+    //    });
+    //});
 
-    $(function () {
-        $(".new").hover(function () {
-            $(".MenuList").css("visibility", "hidden");
-        });
-    });
-    $(function () {
-        $(".about_us").hover(function () {
-            $(".MenuList").css("visibility", "hidden");
-        });
-    });
+    //$(function () {
+    //    $(".new").hover(function () {
+    //        $(".MenuList").css("visibility", "hidden");
+    //    });
+    //});
+    //$(function () {
+    //    $(".about_us").hover(function () {
+    //        $(".MenuList").css("visibility", "hidden");
+    //    });
+    //});
 
-    $(function () {
-        $(".MenuList").hover(function () {
-            $(".MenuList").css("visibility", "visible");
-        }, function () {
-            $(".MenuList").css("visibility", "hidden");
-        });
-    });
-    $(function () {
-        $(".topnemu").hover(function () {
+    //$(function () {
+    //    $(".MenuList").hover(function () {
+    //        $(".MenuList").css("visibility", "visible");
+    //    }, function () {
+    //        $(".MenuList").css("visibility", "hidden");
+    //    });
+    //});
+    //$(function () {
+    //    $(".topnemu").hover(function () {
 
-        }, function () {
-            $(".MenuList").css("visibility", "hidden");
-        });
-    });
-    //應該要寫一個語法合併上面
+    //    }, function () {
+    //        $(".MenuList").css("visibility", "hidden");
+    //    });
+    //});
+    ////應該要寫一個語法合併上面
 
-    //這邊下面寫滾動卷軸動作
-    $(function () {
-        $(window).scroll(function () {
-            var scroll = $(window).scrollTop();
 
-            if (scroll >= 15) {
-                $('#header').addClass('fixed');
 
-                //$('.topnemulinetwo ul').css({
-                //    "background- color": "rgba(255, 255, 255, 0)",
-                //    "color": "#ffffff"
 
-                //});
-                //$('.topnemu').css({
-                //    "background- color": "rgba(255, 255, 255, 0)"
-                //    ,"color": "#ffffff"
-                //});
+    //$(window).scroll(function () {
+    //    var scroll = $(window).scrollTop();
 
-            } else {
-                $('#header').removeClass('fixed');
-                //$('.topnemu').css({
-                //    "background- color": "#ffffff"
-                //    , "color": "#1C1B1B"
-                //});
+    //    if (scroll >= 15) {
+    //        $('#header').addClass('fixed');
 
-            }
-        });
-    });
+    //        $(".topnemu").css("background-color", "#ffffff");
+    //        $(".topnemu").css("color", "#1C1B1B");
+    //        $(".SListItem").css("color", "#1C1B1B");
+    //        $(".username a").css("color", "#1C1B1B");
+    //        $(".search a").css("color", "#1C1B1B");
+    //        $(".topnemu a").css("color", "#1C1B1B");
+    //        $(".topnemulinetwo ul").css("border-bottom", "#dddddd 1px solid");
+    //        $(".LogoImage").css("background-image", "url('/Assets/images/Logo/ANVI-Logo-Black_140x@2x.png')");
+
+
+    //    } else if (scroll == 0) {
+    //        $('#header').removeClass('fixed');
+
+    //        $(".topnemu").css("background-color", "transparent");
+    //        $(".topnemu").css("color", "#ffffff");
+    //        $(".SListItem").css("color", "#ffffff");
+    //        $(".username a").css("color", "#ffffff");
+    //        $(".search a").css("color", "#ffffff");
+    //        $(".topnemu a").css("color", "#ffffff");
+    //        $(".topnemulinetwo ul").css("border-bottom", "#ffffff 1px solid");
+    //        $(".LogoImage").css("background-image", "url('/Assets/images/Logo/ANVI-Logo-White_140x@2x.png')");
+
+
+
+    //    } else {
+    //        $('#header').removeClass('fixed');
+
+    //    }
+
+    //});
+   
+
+
 
 
 </script>

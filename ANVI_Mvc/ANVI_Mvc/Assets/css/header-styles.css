@@ -233,6 +233,7 @@ a {
     margin-bottom: 15px;
 }
 
+
 .MegaMenu__Push {
     text-align: center;
 }
@@ -240,12 +241,27 @@ a {
 .MegaMenu__PushImageWrapper {
     width: 320px;
     height: 230px;
-    background-image: url("");
+    background-image: url(/Assets/images/otherphoto/ANVI-Nav_370x230@2x.png);
     background-size: 100% 100%;
     text-indent: 100%;
     overflow: hidden;
     white-space: nowrap;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+
+    .MegaMenu__PushImageWrapper.product__categories {
+        width: 320px;
+        height: 230px;
+        background-image: url(/Assets/images/Bracelets/2_fae8f255-1152-4a34-8c7b-54b8f3033a87_900x.jpg);
+        background-size: 100% 100%;
+        text-indent: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    
 
 .MegaMenu__Item a {
     color: #1C1B1B;

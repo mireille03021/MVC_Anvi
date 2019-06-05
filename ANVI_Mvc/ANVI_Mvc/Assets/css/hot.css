@@ -67,10 +67,13 @@ img {
     border-style: none;
     vertical-align: top;
 }
-
-.shopify-section--border + .shopify-section--border {
+.shopify-section--bordered {
     border-top: 1px solid #ddd;
 }
+.Section--spacingNormal {
+    padding: 80px 0;
+}
+
 
 .shopify-section--border > .Section--spacingNormal {
     padding: 80px 0;
