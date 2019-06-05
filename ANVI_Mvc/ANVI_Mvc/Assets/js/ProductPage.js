@@ -66,6 +66,36 @@ $(document).ready(function () {
         $("#change").attr("src", imgsrc);
     }
     
+    });
+
+var card = $(".Grid__Cell").length;
+console.log(card);
+
+
+$("#twoproducts").click(function () {
+    $("#fourproducts").removeClass("is-active");
+    $(this).addClass("is-active");
+    for (var y = 1; y < card; y++) {
+
+        $($("#i" + y)).addClass("two__Grid__Cell");
+        $($("#i" + y)).addClass("two__ProductItem");
+    }
+
+    $("#PIL").addClass("two__ProductItemList");
+
+
+});
+
+$("#fourproducts").click(function () {
+    $("#twoproducts").removeClass("is-active");
+    $(this).addClass("is-active");
+    for (var y = 1; y < card; y++) {
+        $($("#i" + y)).removeClass("two__Grid__Cell");
+        $($("#i" + y)).removeClass("two__ProductItem");
+    }
+
+    $("#PIL").removeClass("two__ProductItemList");
+
 });
 
 

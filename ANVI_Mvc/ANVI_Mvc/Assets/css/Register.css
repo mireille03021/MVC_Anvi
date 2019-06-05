@@ -318,6 +318,10 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   color: #6a6a6a;
 }
 
+.Text-red {
+    color: red;
+}
+
 @media not all, (hover: hover) {
   .Btn:not([disabled])::before, .shopify-payment-button__button--unbranded:not([disabled])::before {
     /*.Button:not([disabled])::before, .shopify-payment-button__button--unbranded:not([disabled])::before, #shopify-product-reviews .spr-summary-actions-newreview:not([disabled])::before, #shopify-product-reviews .spr-button-primary:not(input):not([disabled])::before, #shopify-product-reviews input.spr-button-primary:not([disabled])::before, #shopify-product-reviews .spr-pagination-prev>a:not([disabled])::before, #shopify-product-reviews .spr-pagination-next>a:not([disabled])::before*/

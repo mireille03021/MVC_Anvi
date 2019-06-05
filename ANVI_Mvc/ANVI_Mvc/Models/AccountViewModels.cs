@@ -66,6 +66,10 @@ namespace ANVI_Mvc.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "姓名")]
+        public string Name { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
