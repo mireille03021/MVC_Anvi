@@ -256,6 +256,31 @@ namespace ANVI_Mvc.Controllers
                 ViewData["Bill_Address"] = Bill_OCVM.Bill_Address;
                 ViewData["Bill_Phone"] = Bill_OCVM.Bill_Phone;
             }
+
+            //SQL
+
+            var REPO_O = new Repositories.AnviRepository<Order>(db);
+            var REPO_OD = new Repositories.AnviRepository<OrderDetail>(db);
+            var O = new Order();
+            var OD = new OrderDetail();
+
+            O.RecipientName = OCVM.CustomerName;
+            O.RecipientCity = OCVM.City;
+            O.RecipientZipCod = OCVM.ZipCode;
+            O.RecipientAddressee = OCVM.Address;
+            O.RecipientPhone = OCVM.Phone;
+            
+
+            if ((bool)Session["CartToHere"])
+            {
+                var currentCart = CartService.GetCurrentCart();
+                foreach (var item in currentCart)
+                {
+                    
+                }
+            }
+
+
             ViewData.Model = CartService.GetCurrentCart();
             ViewBag.Img = CartService.getEachProductImages(db);
             //購買完成，清除購物車
