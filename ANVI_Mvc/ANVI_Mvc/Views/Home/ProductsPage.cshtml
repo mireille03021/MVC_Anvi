@@ -78,7 +78,7 @@
 <div class="CollectionMain">
     <div class="ProductItemListWrapper">
         <div id="PIL" class="ProductItemList ">
-            @Html.Action(ActionName, ControllerName, new { page = CurrentPage,AllProducts = Model })
+            @Html.Action(ActionName, ControllerName, new { page = CurrentPage, AllProducts = Model })
             <div class="Grid__Cell animated-block" style="display: none;"></div>
         </div>
     </div>
@@ -206,7 +206,7 @@
 
             <div class="CollectionToolbar__LayoutSwitch hidden-phone">
                 <button aria-label="Show two products per row"
-                         id="twoproducts"
+                        id="twoproducts"
                         class="CollectionToolbar__LayoutType "
                         data-action="change-layout-mode"
                         data-grid-type="desktop"
@@ -236,3 +236,5 @@
     </div>
 
 </div>
+
+@Html.Action("getChatBot", "Home")
