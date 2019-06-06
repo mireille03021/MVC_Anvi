@@ -65,7 +65,7 @@
                                 {
                                     foreach(var item in Model.Orders)
                                     {
-                                        <tr>
+                                        <tr >
                                             <td scope="row">
                                                 @Model.Orders.IndexOf(item).ToString()
                                             </td>
@@ -195,7 +195,7 @@
                                 @if(Model.OrderDetails != null)
                                 {
                                     <thead>
-                                        <tr>
+                                        <tr class="text-center">
                                             <th scope="col">
                                                 @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Images.First().ImgName)
                                             </th>
@@ -230,7 +230,7 @@
                                         }
                                         @foreach (var item in thisOrderDetails)
                                         {
-                                            <tr>
+                                            <tr class="text-center">
                                                 <td>
                                                     @{
                                                         endIndext = item.PDID.IndexOf("-");
@@ -242,22 +242,22 @@
                                                         </a>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="vertical-align: middle;">
                                                     @Html.DisplayFor(modelItem => item.ProductDetail.Product.ProductName)
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="vertical-align: middle;">
                                                     @Html.DisplayFor(modelItem => item.PDID)
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="vertical-align: middle;">
                                                     @Html.DisplayFor(modelItem => item.ProductDetail.Color.ColorName)
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="vertical-align: middle;">
                                                     @Html.DisplayFor(modelItem => item.ProductDetail.Size.SizeContext)
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="vertical-align: middle;">
                                                     @Html.DisplayFor(modelItem => item.Quantity)
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="vertical-align: middle;">
                                                     @Html.DisplayFor(modelItem => item.Price)
                                                 </td>
                                             </tr>

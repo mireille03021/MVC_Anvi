@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 .Container {
   /*將預設樣式 改成 none*/
   margin: 0;
@@ -543,9 +543,13 @@ h6:last-child {
   margin-left: 80px;
 }
 
+.table tbody tr td {
+    vertical-align: middle;
+}
+
 .Chimg {
-  width: 200px;
-  height: 200px;
+    width: 150px;
+    margin: 0 auto;
 }
 
 img {

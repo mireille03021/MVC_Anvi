@@ -711,7 +711,7 @@ button, input, optgroup, select, textarea {
 .Popover[aria-hidden="false"] {
   -webkit-transform: translateY(0);
           transform: translateY(0);
-  visibility: visible;
+  visibility: hidden;
 }
 
 .Popover {
@@ -854,7 +854,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 @media screen and (min-width: 1008px) {
   .Popover[aria-hidden="false"] {
-    opacity: 1;
+    opacity: 1;   
     -webkit-transform: none;
             transform: none;
   }
