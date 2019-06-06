@@ -14,6 +14,7 @@ using ANVI_Mvc.ViewModels;
 using Dapper;
 using Microsoft.AspNet.Identity;
 using ANVI_Mvc.Helpers;
+using System.Data.Entity;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -165,7 +166,7 @@ namespace ANVI_Mvc.Controllers
         //-----------------------------------------------------------------
         //----------------------------下單-----------------------------
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Order_Customer(/*CartItemViewModel product,string image*/)  //下單-客戶頁面(填入收件人)!沒有HEADER跟FOOTER
         {
             var Img = CartService.getEachProductImages(db);
@@ -400,11 +401,18 @@ namespace ANVI_Mvc.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         //[AllowAnonymous]
-        public ActionResult AccountPage(AccountPageViewModel model)   //帳戶主頁面
+        public ActionResult AccountPage([Bind(Include = "Id, Name, Email, PhoneNumber, City, Address, ZipCode")] AccountPageViewModel model)   //帳戶主頁面
         {
-            
-            return View();
+            if (ModelState.IsValid)
+            {
+                db.Entry(model.User).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AccountPage");
+            }
+            ViewBag.City = new SelectList(ConstantData.citys, model.User.City);
+            return View(model);
         }
     }
 }
