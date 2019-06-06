@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 .Container {
   /*將預設樣式 改成 none*/
   margin: 0;
@@ -914,6 +914,7 @@ svg:not(:root) {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    flex-direction:row-reverse;
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
   }
