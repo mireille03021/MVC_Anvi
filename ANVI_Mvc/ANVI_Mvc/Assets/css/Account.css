@@ -918,6 +918,7 @@ svg:not(:root) {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    flex-direction:row-reverse;
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
   }
