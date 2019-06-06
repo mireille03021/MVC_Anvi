@@ -388,6 +388,7 @@
     <Content Include="Assets\images\Rings\R_LOVE_G_2_900x.jpg" />
     <Content Include="Assets\images\Rings\R_LOVE_S_1_900x.jpg" />
     <Content Include="Assets\images\Rings\R_LOVE_S_2_900x.jpg" />
+    <Content Include="Assets\js\ChatBot.js" />
     <Content Include="Assets\js\header-js.js" />
     <Content Include="Assets\js\headerjava.js" />
     <Content Include="Assets\js\Home.js" />
@@ -476,7 +477,6 @@
     <Content Include="Views\Category\EarRings.cshtml" />
     <Content Include="Views\Category\Necklaces.cshtml" />
     <Content Include="Views\Category\Rings.cshtml" />
-    <Content Include="Views\Shared\_ChatBot.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -361,13 +361,6 @@ namespace ANVI_Mvc.Controllers
             return PartialView("_OrderPartial");
         }
 
-
-        //[AllowAnonymous]
-        //public ActionResult getChatBot()   //導向ChatBot頁面
-        //{
-        //    return PartialView("_ChatBot");
-        //}
-
         [HttpGet]
         [Authorize]
         //[AllowAnonymous]
