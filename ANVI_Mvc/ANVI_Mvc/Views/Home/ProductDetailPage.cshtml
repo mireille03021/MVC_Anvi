@@ -125,14 +125,16 @@
                                     <span class="Button__SeparatorDot"></span>
                                     <span name="UnitPrice">$@Model.Product.UnitPrice.ToString("##,###") TWD</span>
                                 </button>
-                                <div id="S-pay-Btn" class="shopify-payment-button">
+                            <div id="S-pay-Btn" class="shopify-payment-button">
+                                <form action="/Home/BuyItNow" method="post">
                                     <div>
                                         <input id="pdid" name="pdid" hidden="hidden" value="" />
                                         <button type="submit" name="BuyItNow" class="shopify-payment-button__button shopify-payment-button__button--unbranded">
                                             BUY IT NOW
                                         </button>
                                     </div>
-                                </div>
+                                </form>
+                            </div>
                             <div id="P-Meta-Des" class="ProductMeta__Description Rte">
                                 <p>
                                     <strong>商品描述與細節</strong>

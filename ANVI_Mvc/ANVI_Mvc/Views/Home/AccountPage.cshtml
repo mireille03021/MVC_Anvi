@@ -209,7 +209,7 @@
         <div class="modal fade" id="Account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content p-5">
-                    @using (Html.BeginForm(@*"AccountPage", "Home"*@ "#", "#", FormMethod.Post, new { @name = "fix_user_data", @class = "Form Form--spacingTight", role = "form" }))
+                    @using (Html.BeginForm("AccountPage", "Home", FormMethod.Post, new { @name = "fix_user_data", @class = "Form Form--spacingTight", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="modal-header mx-auto">
@@ -223,7 +223,7 @@
                             @Html.HiddenFor(model => model.User.Id)
                             <div class="Form__Item">
                                 @Html.LabelFor(model => model.User.Name, "Name", htmlAttributes: new { @class = "Form__FloatingLabel" })
-                                @Html.TextBoxFor(m => m.User.Name, new { @name = "user[nmae]", @placeholder = "Name", @class = "Form__Input" })
+                                @Html.TextBoxFor(m => m.User.Name, new { @Name = "Name",@placeholder = "Name", @class = "Form__Input" })
                                 @Html.ValidationMessageFor(model => model.User.Name, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Name" value="" placeholder="Name" aria-label="Name" autofocus>
                                   <label class="Form__FloatingLabel">Name</label>*@
@@ -231,7 +231,7 @@
 
                             <div class="Form__Item">
                                 @Html.LabelFor(model => model.User.Email, "Email", htmlAttributes: new { @class = "Form__FloatingLabel" })
-                                @Html.TextBoxFor(m => m.User.Email, new { @name = "user[emali]", @placeholder = "Email", @class = "Form__Input", @readonly = "readonly" })
+                                @Html.TextBoxFor(m => m.User.Email, new { @Name = "Email", @placeholder = "Email", @class = "Form__Input", @readonly = "readonly" })
                                 @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Email" value="" placeholder="Email" aria-label="Email">
                                   <label class="Form__FloatingLabel">Email</label>*@
@@ -239,7 +239,7 @@
 
                             <div class="Form__Item">
                                 @Html.LabelFor(model => model.User.PhoneNumber, "PhoneNumber", htmlAttributes: new { @class = "Form__FloatingLabel" })
-                                @Html.TextBoxFor(m => m.User.PhoneNumber, new { @name = "user[phone]", @placeholder = "Phone", @class = "Form__Input" })
+                                @Html.TextBoxFor(m => m.User.PhoneNumber, new { @Name = "PhoneNumber", @placeholder = "Phone", @class = "Form__Input" })
                                 @Html.ValidationMessageFor(model => model.User.PhoneNumber, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="phone" value="" placeholder="phone" aria-label="phone">
                                   <label class="Form__FloatingLabel">phone</label>*@
@@ -253,7 +253,14 @@
                                         </svg>
                                         @*@Model.user.City*@
                                         @Html.LabelFor(model => model.User.City, "City", htmlAttributes: new { @class = "Form__FloatingLabel" })
-                                        @Html.DropDownList("City", null, htmlAttributes: new { @class = "" })
+                                        @if (Model.User.City != null)
+                                        {
+                                            @Html.DropDownList("City", null,Model.User.City.Trim(), htmlAttributes: new { @class = "",@Value=Model.User.City.Trim() })
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownList("City", null,"", htmlAttributes: new { @class = "",@Value="" })
+                                        }
                                         @Html.ValidationMessageFor(model => model.User.City, "", new { @class = "text-danger" })
                                         @*<select name="City" title="City">
                                           <option value="台北市"> 台北市 </option>
@@ -285,7 +292,7 @@
 
                             <div class="Form__Item">
                                 @Html.LabelFor(model => model.User.Address, "Address", htmlAttributes: new { @class = "Form__FloatingLabel" })
-                                @Html.TextBoxFor(m => m.User.Address, new { @name = "user[address]", @placeholder = "Address", @class = "Form__Input" })
+                                @Html.TextBoxFor(m => m.User.Address, new { @Name = "Address", @placeholder = "Address", @class = "Form__Input" })
                                 @Html.ValidationMessageFor(model => model.User.Address, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Address" value="" placeholder="Address" aria-label="Address">
                                   <label class="Form__FloatingLabel">Address</label>*@
@@ -293,7 +300,7 @@
 
                             <div class="Form__Item">
                                 @Html.LabelFor(model => model.User.ZipCode, "ZipCode", htmlAttributes: new { @class = "Form__FloatingLabel" })
-                                @Html.TextBoxFor(m => m.User.ZipCode, new { @name = "user[zip code]", @placeholder = "Zip code", @class = "Form__Input" })
+                                @Html.TextBoxFor(m => m.User.ZipCode, new { @Name = "ZipCode", @placeholder = "Zip code", @class = "Form__Input" })
                                 @Html.ValidationMessageFor(model => model.User.ZipCode, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Zip code" value="" placeholder="Zip code" aria-label="Zip code">
                                   <label class="Form__FloatingLabel">Zip code</label>*@
