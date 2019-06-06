@@ -715,21 +715,21 @@ button, input, optgroup, select, textarea {
 }
 
 .Popover {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  background: #fff;
-  z-index: 10;
-  -webkit-box-shadow: 0 -2px 10px rgba(54, 54, 54, 0.2);
-          box-shadow: 0 -2px 10px rgba(54, 54, 54, 0.2);
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  visibility: hidden;
-  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 10;
+    -webkit-box-shadow: 0 -2px 10px rgba(54, 54, 54, 0.2);
+    box-shadow: 0 -2px 10px rgba(54, 54, 54, 0.2);
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    visibility: hidden;
+    -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .Popover__Header {
@@ -854,7 +854,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 @media screen and (min-width: 1008px) {
   .Popover[aria-hidden="false"] {
-    opacity: 1;
+    opacity: 1;   
     -webkit-transform: none;
             transform: none;
   }
@@ -883,7 +883,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   }
 }
 
-@media screen and (min-width: 1008px) {
+/*@media screen and (min-width: 1008px) {
   .Popover::before {
     content: '';
     position: absolute;
@@ -892,7 +892,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     height: 10px;
     border-style: solid;
   }
-}
+}*/
 
 @media screen and (min-width: 1008px) {
   .Popover__Header {

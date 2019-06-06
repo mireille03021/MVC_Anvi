@@ -543,9 +543,13 @@ h6:last-child {
   margin-left: 80px;
 }
 
+.table tbody tr td {
+    vertical-align: middle;
+}
+
 .Chimg {
-  width: 200px;
-  height: 200px;
+    width: 150px;
+    margin: 0 auto;
 }
 
 img {

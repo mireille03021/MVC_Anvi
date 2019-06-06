@@ -21,7 +21,7 @@
 </header>
 
 <!--SORT-->
-<div id="collection-sort-popover" class="Popover" aria-hidden="false">
+<div id="collection-sort-popover" class="Popover" aria-hidden="true">
     <header class="Popover__Header">
         <button class="Popover__Close Icon-Wrapper--clickable"
                 data-action="close-popover">
@@ -35,7 +35,7 @@
         <span class="Popover__Title Heading u-h4">Sort</span>
     </header>
 
-    <div class="Popover__Content" style="display: none;">
+    <div class="Popover__Content">
         <div class="Popover__ValueList" data-scrollable>
             <button class="Popover__Value  Heading Link Link--primary u-h6"
                     data-value="manual"
@@ -159,7 +159,7 @@
                     data-drawer-id="collection-filter-drawer"
                     aria-label="Show filters">
                 Filter
-            </button><button class="CollectionToolbar__Item CollectionToolbar__Item--sort Heading Text--subdued u-h6"
+            </button><button id="bnt" class="CollectionToolbar__Item CollectionToolbar__Item--sort Heading Text--subdued u-h6"
                              aria-label="Show sort by"
                              aria-haspopup="true"
                              aria-expanded="false"
@@ -237,4 +237,4 @@
 
 </div>
 
-@Html.Action("getChatBot", "Home")
+@*@Html.Action("getChatBot", "Home")*@

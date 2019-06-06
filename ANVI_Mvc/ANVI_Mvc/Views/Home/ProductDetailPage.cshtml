@@ -689,6 +689,7 @@
                     document.getElementsByClassName("ProductForm__AddToCart")[0].innerHTML = "Sold Out";
                 } else {
                     document.getElementsByClassName("ProductForm__AddToCart")[0].innerHTML = addcartext;
+                    document.getElementsByClassName("ProductForm__AddToCart")[0].removeAttribute("disabled");
                     document.getElementsByClassName("shopify-payment-button")[0].style = "";
                     $(".ProductForm__Option:last-child").attr('style', "");
                     //document.getElementsByClassName("ProductForm__Option")[2].style = "";
@@ -718,4 +719,4 @@
     </script>
 }
 
-@Html.Action("getChatBot", "Home")
+@*@Html.Action("getChatBot", "Home")*@
