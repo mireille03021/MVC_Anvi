@@ -505,10 +505,13 @@
         var flkty = new Flickity('.VariantSelector__Carousel.Carousel');
         var selcolval = document.getElementsByClassName("VariantSelector__ChoiceValue");
         document.getElementById("DropDownList_Color").setAttribute("value", selcolval[0].innerHTML);
-        //console.log(flkty);
+
+        flkty.on('select', function (index) {
+            console.log('Flickity select ' + index);
+            selcolimgtext(index);
+        });
 
         var selcolimg = document.getElementsByClassName("VariantSelector__Item Carousel__Cell");
-        //console.log(selcolimg);
         for (var i = 0; i < selcolimg.length; i++) {
             selcolimg[i].onclick = function () {
                 for (var j = 0; j < selcolimg.length; j++) {
@@ -522,9 +525,8 @@
         }
 
         function selcolimgtext(selnum) {
-            //console.log(selnum);
+
             var selcoltext = document.getElementsByClassName("VariantSelector__Choice");
-            //console.log(selcoltext);
 
             for (var i = 0; i < selcoltext.length; i++) {
                 if (i == selnum) {
