@@ -410,14 +410,7 @@ namespace ANVI_Mvc.Controllers
         //[AllowAnonymous]
         public ActionResult AccountPage(AccountPageViewModel model)   //帳戶主頁面
         {
-            var userID = User.Identity.GetUserId();
-            var thisUser = db.AspNetUsers.FirstOrDefault(x => x.Id == userID);
-            ViewBag.user = thisUser;
-            if (db.Orders.Any(x => x.UserID == userID))
-            {
-                List<Order> orders = db.Orders.Where(x => x.UserID == userID).ToList();
-                ViewData.Model = orders;
-            }
+            
             return View();
         }
     }
