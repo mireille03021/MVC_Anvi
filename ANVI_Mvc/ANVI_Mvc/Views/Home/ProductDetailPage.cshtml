@@ -55,7 +55,6 @@
                                 <h1 name="ProductName" class="u-h2 Heading">@Model.Product.ProductName</h1>
                                 <div name="UnitPrice" class="Heading ProductMeta__PriceList">$@Model.Product.UnitPrice.ToString("##,###") TWD</div>
                             </div>
-                            <form action="" method="post" class="ProductForm">
                                 <div id="PF-V">
                                     <div id="PF-O" class="ProductForm__Option ProductForm__Option--labelled">
                                         <span>COLOR：</span>
@@ -134,7 +133,6 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
                             <div id="P-Meta-Des" class="ProductMeta__Description Rte">
                                 <p>
                                     <strong>商品描述與細節</strong>
@@ -329,7 +327,8 @@
                         }
                     </div>
 
-                    <form action="" method="post" class="">
+                    <form action="/Home/ChangeColor" method="post" class="">
+                        <input hidden name="pid" id="pid" value="@Model.Product.ProductID" />
                         <input hidden name="DropDownList_Color" id="DropDownList_Color" value="" />
                         <button type="submit" value="確認顏色" class="VariantSelector__Button Button Button--primary Button--full" name="ChangeColor" data-action="select-variant">
                             Select this model
