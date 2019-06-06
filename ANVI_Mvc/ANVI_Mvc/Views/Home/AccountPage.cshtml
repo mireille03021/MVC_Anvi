@@ -209,7 +209,7 @@
         <div class="modal fade" id="Account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content p-5">
-                    @using (Html.BeginForm("AccountPage", "Home" @*"#", "#"*@, FormMethod.Post, new { @name = "fix_user_data", @class = "Form Form--spacingTight", role = "form" }))
+                    @using (Html.BeginForm(@*"AccountPage", "Home"*@ "#", "#", FormMethod.Post, new { @name = "fix_user_data", @class = "Form Form--spacingTight", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="modal-header mx-auto">
