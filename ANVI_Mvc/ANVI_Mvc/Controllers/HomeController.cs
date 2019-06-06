@@ -94,7 +94,6 @@ namespace ANVI_Mvc.Controllers
             ViewData["ColorName"] = sPVM.ProductDetailViewModels[0].ColorName;
             return View();
         }
-        [MultiButton("ChangeColor")]
         [HttpPost]
         [AllowAnonymous]
         public ActionResult ChangeColor(int pid, string DropDownList_Color)  //單一商品頁面Post
