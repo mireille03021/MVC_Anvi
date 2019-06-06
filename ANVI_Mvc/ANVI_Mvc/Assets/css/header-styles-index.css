@@ -263,7 +263,8 @@ body {
 }
 /*0529*/
 .fixed {
-    position: fixed;
+    position: fixed !important;
+    ;
     top: 0;
     z-index: 8;
     width: 100%;
