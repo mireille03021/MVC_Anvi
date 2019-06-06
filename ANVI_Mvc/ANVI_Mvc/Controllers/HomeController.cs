@@ -195,10 +195,6 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult Order_Customer(OrderCustomerViewModel OCVM)
         {
-            //var Userid = User.Identity.GetUserId();
-            //var user = db.AspNetUsers.FirstOrDefault(x => x.Id == Userid);
-            //OCVM.Email = user.Email;
-
             Session["Order_Session"] = OCVM;
             ViewData["CustomerName"] = OCVM.CustomerName;
             ViewData["City"] = OCVM.City;
@@ -439,8 +435,6 @@ namespace ANVI_Mvc.Controllers
             }
             return RedirectToAction("AccountPage","Home");
 
-            ViewBag.City = new SelectList(ConstantData.citys, new AccountPageViewModel().User.City);
-            return View(model);
         }
     }
 }
