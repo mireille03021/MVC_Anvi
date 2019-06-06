@@ -61,109 +61,112 @@
                                 </tr>
                               </thead>*@ 
                             <tbody>
-                                @foreach(var item in Model.Orders)
+                                @if(Model.Orders != null)
                                 {
-                                    <tr>
-                                        <td scope="row">
-                                            @Model.Orders.IndexOf(item).ToString()
-                                        </td>
-                                        <td>
-                                            訂單編號 :
-                                            @Html.DisplayFor(modelItem => item.OrderID)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.RecipientName)
-                                        </td>
+                                    foreach(var item in Model.Orders)
+                                    {
+                                        <tr>
+                                            <td scope="row">
+                                                @Model.Orders.IndexOf(item).ToString()
+                                            </td>
+                                            <td>
+                                                訂單編號 :
+                                                @Html.DisplayFor(modelItem => item.OrderID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RecipientName)
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <div class="Segment__ButtonWrapper">
+                                                    <a id="@item.OrderID"
+                                                       href="/account/addresses"
+                                                       class="Button Button--primary "
+                                                       data-toggle="modal"
+                                                       data-target="#Dcn">Detail</a>
+                                                    <a id="@item.OrderID"
+                                                       href="/account/addresses"
+                                                       class="Button Button--primary "
+                                                       data-toggle="modal"
+                                                       data-target="#Del">delete</a>
+
+                                                    @*@Html.ActionLink("Detail", null, null, null,
+                                                                      new
+                                                                           {
+                                                                               @class = "Button Button--primary",
+                                                                            data_toggle = "modal",
+                                                                            data_target = "#Dcn"
+                                                                           })
+                                                    @Html.ActionLink("Delete", null, null, null,
+                                                                      new
+                                                                           {
+                                                                               @class = "Button Button--primary",
+                                                                            data_toggle = "modal",
+                                                                            data_target = "#Dcn"
+                                                                           })*@
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    @*<tr>
+                                        <th scope="row">1</th>
+                                        <td>訂單編號 : 9876543</td>
+                                        <td>Kevin</td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <div class="Segment__ButtonWrapper">
-                                                <a id="@item.OrderID"
-                                                   href="/account/addresses"
+                                                <a href="/account/addresses"
                                                    class="Button Button--primary "
                                                    data-toggle="modal"
                                                    data-target="#Dcn">Detail</a>
-                                                <a id="@item.OrderID"
-                                                   href="/account/addresses"
+                                                <a href="/account/addresses"
                                                    class="Button Button--primary "
                                                    data-toggle="modal"
                                                    data-target="#Del">delete</a>
-
-                                                @*@Html.ActionLink("Detail", null, null, null,
-                                                                  new
-                                                                       {
-                                                                           @class = "Button Button--primary",
-                                                                        data_toggle = "modal",
-                                                                        data_target = "#Dcn"
-                                                                       })
-                                                @Html.ActionLink("Delete", null, null, null,
-                                                                  new
-                                                                       {
-                                                                           @class = "Button Button--primary",
-                                                                        data_toggle = "modal",
-                                                                        data_target = "#Dcn"
-                                                                       })*@
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>訂單編號 : 8765432</td>
+                                        <td>Mary</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="Segment__ButtonWrapper">
+                                                <a href="/account/addresses"
+                                                   class="Button Button--primary"
+                                                   data-toggle="modal"
+                                                   data-target="#Dcn">Detail</a>
+                                                <a href="/account/addresses"
+                                                   class="Button Button--primary "
+                                                   data-toggle="modal"
+                                                   data-target="#Del">delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>訂單編號 : 2345654</td>
+                                        <td>Walter</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="Segment__ButtonWrapper">
+                                                <a href="/account/addresses"
+                                                   class="Button Button--primary"
+                                                   data-toggle="modal"
+                                                   data-target="#Dcn">Detail</a>
+                                                <a href="/account/addresses"
+                                                   class="Button Button--primary "
+                                                   data-toggle="modal"
+                                                   data-target="#Del">delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>*@
                                 }
-                                @*<tr>
-                                    <th scope="row">1</th>
-                                    <td>訂單編號 : 9876543</td>
-                                    <td>Kevin</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="Segment__ButtonWrapper">
-                                            <a href="/account/addresses"
-                                               class="Button Button--primary "
-                                               data-toggle="modal"
-                                               data-target="#Dcn">Detail</a>
-                                            <a href="/account/addresses"
-                                               class="Button Button--primary "
-                                               data-toggle="modal"
-                                               data-target="#Del">delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>訂單編號 : 8765432</td>
-                                    <td>Mary</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="Segment__ButtonWrapper">
-                                            <a href="/account/addresses"
-                                               class="Button Button--primary"
-                                               data-toggle="modal"
-                                               data-target="#Dcn">Detail</a>
-                                            <a href="/account/addresses"
-                                               class="Button Button--primary "
-                                               data-toggle="modal"
-                                               data-target="#Del">delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>訂單編號 : 2345654</td>
-                                    <td>Walter</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="Segment__ButtonWrapper">
-                                            <a href="/account/addresses"
-                                               class="Button Button--primary"
-                                               data-toggle="modal"
-                                               data-target="#Dcn">Detail</a>
-                                            <a href="/account/addresses"
-                                               class="Button Button--primary "
-                                               data-toggle="modal"
-                                               data-target="#Del">delete</a>
-                                        </div>
-                                    </td>
-                                </tr>*@
                             </tbody>
                         </table>
                     </div>
@@ -189,104 +192,107 @@
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">
-                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Images.First().ImgName)
-                                        </th>
-                                        <th scope="col">
-                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Product.ProductName)
-                                        </th>
-                                        <th scope="col">
-                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.PDID)
-                                        </th>
-                                        <th scope="col">
-                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Color.ColorName)
-                                        </th>
-                                        <th scope="col">
-                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Size.SizeContext)
-                                        </th>
-                                        <th scope="col">
-                                            @Html.DisplayNameFor(model => model.OrderDetails.First().Quantity)
-                                        </th>
-                                        <th scope="col">
-                                            @Html.DisplayNameFor(model => model.OrderDetails.First().Price)
-                                        </th>
-                                        @*<th scope="col">Img</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">UnitPrice</th>
-                                        <th scope="col">Recipient</th>*@
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{ 
-                                        thisOrderDetails = Model.OrderDetails.Where(x => x.OrderID == orderId).ToList();
-                                    }
-                                    @foreach (var item in thisOrderDetails)
-                                    {
+                                @if(Model.OrderDetails != null)
+                                {
+                                    <thead>
                                         <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Images.First().ImgName)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Product.ProductName)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.PDID)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Color.ColorName)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Size.SizeContext)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetails.First().Quantity)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetails.First().Price)
+                                            </th>
+                                            @*<th scope="col">Img</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">UnitPrice</th>
+                                            <th scope="col">Recipient</th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ 
+                                            thisOrderDetails = Model.OrderDetails.Where(x => x.OrderID == orderId).ToList();
+                                        }
+                                        @foreach (var item in thisOrderDetails)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @{
+                                                        endIndext = item.PDID.IndexOf("-");
+                                                        PDIDtoFindImg = item.PDID.Substring(0, endIndext) + "-1";
+                                                     }
+                                                    <div class="Chimg">
+                                                        <a src="" href="#">
+                                                            <img class="img_bottom" src="~/Assets/images/@item.ProductDetail.Product.Category.CategoryName/@Model.images.Find(x => x.PDID == PDIDtoFindImg).ImgName" alt=""/>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ProductDetail.Product.ProductName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PDID)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ProductDetail.Color.ColorName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ProductDetail.Size.SizeContext)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Price)
+                                                </td>
+                                            </tr>
+                                        }
+                                        @*<tr>
                                             <td>
-                                                @{
-                                                    endIndext = item.PDID.IndexOf("-");
-                                                    PDIDtoFindImg = item.PDID.Substring(0, endIndext) + "-1";
-                                                 }
                                                 <div class="Chimg">
                                                     <a src="" href="#">
-                                                        <img class="img_bottom" src="~/Assets/images/@item.ProductDetail.Product.Category.CategoryName/@Model.images.Find(x => x.PDID == PDIDtoFindImg).ImgName" alt=""/>
+                                                        <img class="img_bottom" src="~/Assets/images/Necklaces/3_c4bfb307-ddd3-43b2-b5bf-0bc9eb854216_900x.jpg" alt="" />
                                                     </a>
                                                 </div>
+
                                             </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.ProductDetail.Product.ProductName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PDID)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.ProductDetail.Color.ColorName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.ProductDetail.Size.SizeContext)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Quantity)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Price)
-                                            </td>
+                                            <td>ANVI ME 項鍊</td>
+                                            <td>1</td>
+                                            <td>$ 2359</td>
+                                            <td>Walter</td>
                                         </tr>
-                                    }
-                                    @*<tr>
-                                        <td>
-                                            <div class="Chimg">
-                                                <a src="" href="#">
-                                                    <img class="img_bottom" src="~/Assets/images/Necklaces/3_c4bfb307-ddd3-43b2-b5bf-0bc9eb854216_900x.jpg" alt="" />
-                                                </a>
-                                            </div>
+                                        <tr>
 
-                                        </td>
-                                        <td>ANVI ME 項鍊</td>
-                                        <td>1</td>
-                                        <td>$ 2359</td>
-                                        <td>Walter</td>
-                                    </tr>
-                                    <tr>
+                                            <td>
+                                                <div class="Chimg">
+                                                    <a src="" href="#">
+                                                        <img class="img_bottom" src="~/Assets/images/Necklaces/N1_32d18e09-7901-4eb4-b5ea-6bf038b7f300_900x.jpg" alt="" />
+                                                    </a>
+                                                </div>
 
-                                        <td>
-                                            <div class="Chimg">
-                                                <a src="" href="#">
-                                                    <img class="img_bottom" src="~/Assets/images/Necklaces/N1_32d18e09-7901-4eb4-b5ea-6bf038b7f300_900x.jpg" alt="" />
-                                                </a>
-                                            </div>
-
-                                        </td>
-                                        <td>BAE字樣不對稱耳環</td>
-                                        <td>3</td>
-                                        <td>$ 6600</td>
-                                        <td>Kevin</td>
-                                    </tr>*@
-                                </tbody>
+                                            </td>
+                                            <td>BAE字樣不對稱耳環</td>
+                                            <td>3</td>
+                                            <td>$ 6600</td>
+                                            <td>Kevin</td>
+                                        </tr>*@
+                                    </tbody>
+                                }
                             </table>
                         </div>
                     </div>
