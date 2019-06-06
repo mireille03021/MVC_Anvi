@@ -98,4 +98,17 @@ $("#fourproducts").click(function () {
 
 });
 
+var nb = 0;
+$("#bnt").click(function () {
+    nb++
+    if (nb % 2 == 1) {
+        $(this).attr("aria-expanded", "true");
+        $("#collection-sort-popover").attr("aria-hidden", "false");
+    }
+    if (nb % 2 == 0) {
+        $(this).attr("aria-expanded", "false");
+        $("#collection-sort-popover").attr("aria-hidden", "true");
+    }
+});
+
 
