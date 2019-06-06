@@ -13,6 +13,7 @@ using ANVI_Mvc.Services;
 using ANVI_Mvc.ViewModels;
 using Dapper;
 using Microsoft.AspNet.Identity;
+using ANVI_Mvc.Helpers;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -360,10 +361,56 @@ namespace ANVI_Mvc.Controllers
             return PartialView("_OrderPartial");
         }
 
+        [HttpGet]
         [Authorize]
         //[AllowAnonymous]
         public ActionResult AccountPage()   //帳戶主頁面
         {
+            AccountPageViewModel model = new AccountPageViewModel();
+            var userID = User.Identity.GetUserId();
+            model.User = db.AspNetUsers.FirstOrDefault(x => x.Id == userID);
+            if(db.Orders.Any(x => x.UserID == userID))
+            {
+                List<Order> orders = db.Orders.Where(x => x.UserID == userID).OrderByDescending(x => x.OrderID).ToList();
+                model.Orders = orders;
+                List<OrderDetail> orderDetails = new List<OrderDetail>();
+                List<Image> images = new List<Image>();
+                int endIndext = 0;
+                string PDIDtoFindImg = string.Empty;
+                foreach (var item in orders)
+                {
+                    var thisOrderDetails = db.OrderDetails.Where(x => x.OrderID == item.OrderID).ToList();
+                    foreach (var sonitem in thisOrderDetails)
+                    {
+                        orderDetails.Add(sonitem);
+                        endIndext = sonitem.PDID.IndexOf("-");
+                        PDIDtoFindImg = sonitem.PDID.Substring(0, endIndext) + "-1";
+                        if(!images.Any(x => x.PDID == PDIDtoFindImg))
+                        {
+                            images.Add(db.Images.First(x => x.PDID == PDIDtoFindImg));
+                        }
+                    }
+                }
+                model.OrderDetails = orderDetails;
+                model.images = images;
+            }
+            ViewBag.City = new SelectList(ConstantData.citys, model.User.City);
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        //[AllowAnonymous]
+        public ActionResult AccountPage(AccountPageViewModel model)   //帳戶主頁面
+        {
+            var userID = User.Identity.GetUserId();
+            var thisUser = db.AspNetUsers.FirstOrDefault(x => x.Id == userID);
+            ViewBag.user = thisUser;
+            if (db.Orders.Any(x => x.UserID == userID))
+            {
+                List<Order> orders = db.Orders.Where(x => x.UserID == userID).ToList();
+                ViewData.Model = orders;
+            }
             return View();
         }
     }

@@ -1,8 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
+@model AccountPageViewModel
 @{
     ViewBag.Title = "AccountPage";
-    AnviModel db = new AnviModel();
-    var thisUser = db.AspNetUsers.FirstOrDefault(x => x.Id == User.Identity.GetUserId());
+    List<OrderDetail> thisOrderDetails = new List<OrderDetail>();
+    int orderId = 15;
+    string PDIDtoFindImg = string.Empty;
+    int endIndext = 0;
 }
 @section topCSS
 {
@@ -34,8 +37,8 @@
                         <li><h1 class="SectionHeader__Heading Heading u-h1">My account</h1></li>
                         <li>
                             <p class="SectionHeader__Description">Welcome back,
-                                @Html.ActionLink( thisUser.Name @*User.Identity.GetUserName()*@, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                                !
+                                @Html.ActionLink( Model.User.Name  @*User.Identity.GetUserName()*@, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                <span>!</span>
                             </p>
                         </li>
                     </ul>
@@ -47,7 +50,7 @@
                     <div class="Segment__Content">
                         <!-- <p>You haven't placed any orders yet</p> -->
                         <table class="table">
-                            <!-- <thead>
+                             @*<thead>
                                 <tr>
                                   <th scope="col">#</th>
                                   <th scope="col">Order number</th>
@@ -56,9 +59,55 @@
                                   <th scope="col">Quantity</th>
                                   <th scope="col">Recipient</th>
                                 </tr>
-                              </thead> -->
+                              </thead>*@ 
                             <tbody>
-                                <tr>
+                                @foreach(var item in Model.Orders)
+                                {
+                                    <tr>
+                                        <td scope="row">
+                                            @Model.Orders.IndexOf(item).ToString()
+                                        </td>
+                                        <td>
+                                            訂單編號 :
+                                            @Html.DisplayFor(modelItem => item.OrderID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecipientName)
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="Segment__ButtonWrapper">
+                                                <a id="@item.OrderID"
+                                                   href="/account/addresses"
+                                                   class="Button Button--primary "
+                                                   data-toggle="modal"
+                                                   data-target="#Dcn">Detail</a>
+                                                <a id="@item.OrderID"
+                                                   href="/account/addresses"
+                                                   class="Button Button--primary "
+                                                   data-toggle="modal"
+                                                   data-target="#Del">delete</a>
+
+                                                @*@Html.ActionLink("Detail", null, null, null,
+                                                                  new
+                                                                       {
+                                                                           @class = "Button Button--primary",
+                                                                        data_toggle = "modal",
+                                                                        data_target = "#Dcn"
+                                                                       })
+                                                @Html.ActionLink("Delete", null, null, null,
+                                                                  new
+                                                                       {
+                                                                           @class = "Button Button--primary",
+                                                                        data_toggle = "modal",
+                                                                        data_target = "#Dcn"
+                                                                       })*@
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                @*<tr>
                                     <th scope="row">1</th>
                                     <td>訂單編號 : 9876543</td>
                                     <td>Kevin</td>
@@ -114,7 +163,7 @@
                                                data-target="#Del">delete</a>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr>*@
                             </tbody>
                         </table>
                     </div>
@@ -142,17 +191,73 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-
-                                        <th scope="col">Img</th>
+                                        <th scope="col">
+                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Images.First().ImgName)
+                                        </th>
+                                        <th scope="col">
+                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Product.ProductName)
+                                        </th>
+                                        <th scope="col">
+                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.PDID)
+                                        </th>
+                                        <th scope="col">
+                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Color.ColorName)
+                                        </th>
+                                        <th scope="col">
+                                            @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Size.SizeContext)
+                                        </th>
+                                        <th scope="col">
+                                            @Html.DisplayNameFor(model => model.OrderDetails.First().Quantity)
+                                        </th>
+                                        <th scope="col">
+                                            @Html.DisplayNameFor(model => model.OrderDetails.First().Price)
+                                        </th>
+                                        @*<th scope="col">Img</th>
                                         <th scope="col">Product</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">UnitPrice</th>
-                                        <th scope="col">Recipient</th>
+                                        <th scope="col">Recipient</th>*@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-
+                                    @{ 
+                                        thisOrderDetails = Model.OrderDetails.Where(x => x.OrderID == orderId).ToList();
+                                    }
+                                    @foreach (var item in thisOrderDetails)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @{
+                                                    endIndext = item.PDID.IndexOf("-");
+                                                    PDIDtoFindImg = item.PDID.Substring(0, endIndext) + "-1";
+                                                 }
+                                                <div class="Chimg">
+                                                    <a src="" href="#">
+                                                        <img class="img_bottom" src="~/Assets/images/@item.ProductDetail.Product.Category.CategoryName/@Model.images.Find(x => x.PDID == PDIDtoFindImg).ImgName" alt=""/>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ProductDetail.Product.ProductName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PDID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ProductDetail.Color.ColorName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ProductDetail.Size.SizeContext)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Quantity)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Price)
+                                            </td>
+                                        </tr>
+                                    }
+                                    @*<tr>
                                         <td>
                                             <div class="Chimg">
                                                 <a src="" href="#">
@@ -180,7 +285,7 @@
                                         <td>3</td>
                                         <td>$ 6600</td>
                                         <td>Kevin</td>
-                                    </tr>
+                                    </tr>*@
                                 </tbody>
                             </table>
                         </div>
@@ -195,28 +300,34 @@
         <div class="modal fade" id="Account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content p-5">
-                    <div class="modal-header mx-auto">
-                        <header class="Modal__Header">
-                            <h3 class="Modal__Title Heading u-h2">Check your information</h3>
-                            <p class="Modal__Description">Please fill in the information below:</p>
-                        </header>
-                    </div>
-                    <div class="Modal__Content">
-                        <form method="post" action="/account/addresses" id="address_form_new" accept-charset="UTF-8" class="Form Form--spacingTight">
+                    @using (Html.BeginForm(@*"AccountPage", "Home"*@ "#", "#", FormMethod.Post, new { @name = "fix_user_data", @class = "Form Form--spacingTight", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="modal-header mx-auto">
+                            <header class="Modal__Header">
+                                <h3 class="Modal__Title Heading u-h2">Check your information</h3>
+                                <p class="Modal__Description">Please fill in the information below:</p>
+                            </header>
+                        </div>
+                        <div class="Modal__Content">
+                            @Html.ValidationSummary("", new { @class = "Text-red"})
                             <input type="hidden" name="form_type" value="customer_address" /><input type="hidden" name="utf8" value="✓" />
                             <div class="Form__Item">
-                                <input type="text" class="Form__Input" name="Name" value="" placeholder="Name" aria-label="Name" autofocus>
-                                <label class="Form__FloatingLabel">Name</label>
+                                @Html.TextBoxFor(m => m.User.Name, new { @name = "user[nmae]", @placeholder = "Name", @class = "Form__Input"})
+                                @*<input type="text" class="Form__Input" name="Name" value="" placeholder="Name" aria-label="Name" autofocus>
+                                <label class="Form__FloatingLabel">Name</label>*@
                             </div>
 
                             <div class="Form__Item">
-                                <input type="text" class="Form__Input" name="Email" value="" placeholder="Email" aria-label="Email">
-                                <label class="Form__FloatingLabel">Email</label>
+                                @Html.TextBoxFor(m => m.User.Email, new { @name = "user[emali]", @placeholder = "Email", @class = "Form__Input" })
+                                @*<input type="text" class="Form__Input" name="Email" value="" placeholder="Email" aria-label="Email">
+                                <label class="Form__FloatingLabel">Email</label>*@
                             </div>
 
                             <div class="Form__Item">
-                                <input type="text" class="Form__Input" name="phone" value="" placeholder="phone" aria-label="phone">
-                                <label class="Form__FloatingLabel">phone</label>
+                                @Html.TextBoxFor(m => m.User.PhoneNumber, new { @name = "user[phone]", @placeholder = "Phone", @class = "Form__Input" })
+                                @*<input type="text" class="Form__Input" name="phone" value="" placeholder="phone" aria-label="phone">
+                                <label class="Form__FloatingLabel">phone</label>*@
                             </div>
 
                             <div class="Form__Group">
@@ -225,7 +336,9 @@
                                         <svg class="Icon Icon--select-arrow" role="presentation" viewBox="0 0 19 12">
                                             <polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2" fill-rule="evenodd" stroke-width="2" stroke-linecap="square"></polyline>
                                         </svg>
-                                        <select name="City" title="City">
+                                        @*@Model.user.City*@
+                                        @Html.DropDownList("City", null, htmlAttributes: new { @class = "" })
+                                        @*<select name="City" title="City">
                                             <option value="台北市"> 台北市 </option>
                                             <option value="基隆市"> 基隆市 </option>
                                             <option value="新北市"> 新北市 </option>
@@ -248,19 +361,21 @@
                                             <option value="花蓮縣"> 花蓮縣 </option>
                                             <option value="金門縣"> 金門縣 </option>
                                             <option value="連江縣"> 連江縣 </option>
-                                        </select>
+                                        </select>*@
                                     </div>
                                 </div>
                             </div>
 
                             <div class="Form__Item">
-                                <input type="text" class="Form__Input" name="Address" value="" placeholder="Address" aria-label="Address">
-                                <label class="Form__FloatingLabel">Address</label>
+                                @Html.TextBoxFor(m => m.User.Address, new { @name = "user[address]", @placeholder = "Address", @class = "Form__Input" })
+                                @*<input type="text" class="Form__Input" name="Address" value="" placeholder="Address" aria-label="Address">
+                                <label class="Form__FloatingLabel">Address</label>*@
                             </div>
 
                             <div class="Form__Item">
-                                <input type="text" class="Form__Input" name="Zip code" value="" placeholder="Zip code" aria-label="Zip code">
-                                <label class="Form__FloatingLabel">Zip code</label>
+                                @Html.TextBoxFor(m => m.User.ZipCode, new { @name = "user[zip code]", @placeholder = "Zip code", @class = "Form__Input" })
+                                @*<input type="text" class="Form__Input" name="Zip code" value="" placeholder="Zip code" aria-label="Zip code">
+                                <label class="Form__FloatingLabel">Zip code</label>*@
                             </div>
 
                             <div class="Form__Item Form__Select Select Select--primary" style="display: none">
@@ -280,10 +395,10 @@
                                     <label for="address-new[default]">Set as default</label>
                                 </div>
                             </div>
-
-                            <button class="Form__Submit Button Button--primary Button--full">change content</button>
-                        </form>
-                    </div>
+                            
+                            <button type="submit" class="Form__Submit Button Button--primary Button--full">change content</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -291,3 +406,6 @@
 
     </main>
 
+<script>
+
+</script>

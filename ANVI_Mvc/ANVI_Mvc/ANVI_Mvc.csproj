@@ -182,6 +182,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConstantData.cs" />
     <Compile Include="Migrations\201906031151179_initialDB.cs" />
     <Compile Include="Migrations\201906031151179_initialDB.Designer.cs">
       <DependentUpon>201906031151179_initialDB.cs</DependentUpon>
@@ -222,6 +223,7 @@
     <Compile Include="Services\ProductsService.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AccountPageViewModel.cs" />
     <Compile Include="ViewModels\BuyOneModel.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
