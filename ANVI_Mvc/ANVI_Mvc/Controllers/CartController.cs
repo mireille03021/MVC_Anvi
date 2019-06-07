@@ -68,7 +68,7 @@ namespace ANVI_Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitOrder()
+        public ActionResult SubmitOrder(string Remark)
         {
             var stocks = CartService.getEachProductStocks(db);
             for (int i = 0; i < currentCart.Count; i++)
@@ -82,6 +82,7 @@ namespace ANVI_Mvc.Controllers
                     return View("ShoppingCart");
                 }
             }
+            Session["Remark"] = Remark;
             Session["CartToHere"] = true;
             return RedirectToAction("Order_Customer", "Home");
         }
