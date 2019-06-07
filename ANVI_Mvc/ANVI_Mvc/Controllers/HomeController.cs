@@ -15,6 +15,7 @@ using Dapper;
 using Microsoft.AspNet.Identity;
 using ANVI_Mvc.Helpers;
 using System.Data.Entity;
+using ANVI_Mvc.Repositories;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -300,21 +301,31 @@ namespace ANVI_Mvc.Controllers
             var OrderList = db.Orders.ToList();
             var OrderID = OrderList.Last().OrderID;
 
+            var REPO_PD = new AnviRepository<ProductDetail>(db);
+            var PDs = db.ProductDetails.ToList();
             if ((bool)Session["CartToHere"])
             {
                 var currentCart = CartService.GetCurrentCart();
                 foreach (var item in currentCart)
                 {
+                    //新增訂單
                     var OD = new OrderDetail();
                     OD.PDID = item.PDID;
                     OD.OrderID = OrderID;
                     OD.Price = item.UnitPrice;
                     OD.Quantity = item.Quantity;
-                    db.OrderDetails.Add(OD);
+                    REPO_OD.Create(OD);
+
+                    //修正物品庫存量
+                    var pd = PDs.FirstOrDefault(x => x.PDID == OD.PDID);
+                    pd.Stock -= OD.Quantity;
+                    REPO_PD.Update(pd);
+                    
                 }
             }
             else // BuyItNow
             {
+                //新增訂單
                 var OD = new OrderDetail();
                 var BuyItNow = (BuyOneViewModel)Session["BuyItNow"];
                 OD.PDID = BuyItNow.CartItem.PDID;
@@ -322,8 +333,15 @@ namespace ANVI_Mvc.Controllers
                 OD.Price = BuyItNow.CartItem.UnitPrice;
                 OD.Quantity = BuyItNow.CartItem.Quantity;
                 REPO_OD.Create(OD);
+
+                //修正物品庫存量
+                var pd = PDs.FirstOrDefault(x => x.PDID == OD.PDID);
+                pd.Stock -= OD.Quantity;
+                REPO_PD.Update(pd);
             }
             db.SaveChanges();
+
+            //初始化
             Session["Remark"] = null;
             ViewData.Model = CartService.GetCurrentCart();
             ViewBag.Img = CartService.getEachProductImages(db);
