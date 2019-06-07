@@ -1,0 +1,65 @@
+﻿@model ANVI_Mvc.Models.OrderDetail
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDetail.PDID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDetail.PDID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

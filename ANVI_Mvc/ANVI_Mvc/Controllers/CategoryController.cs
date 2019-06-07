@@ -13,7 +13,6 @@ namespace ANVI_Mvc.Controllers
     {
         protected AnviModel db;
 
-
         public CategoryController()
         {
             db = new AnviModel();

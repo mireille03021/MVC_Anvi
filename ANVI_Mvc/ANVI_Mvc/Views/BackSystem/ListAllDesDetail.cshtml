@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.DesDetail>
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "DesDetail";
+}
+
+<h2>DesDetail</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "DesDetails")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DDID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DDID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Detail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "DesDetails", new { id = item.DDID }, new { @class = "" }) |
+            @Html.ActionLink("Details", "Details", "DesDetails", new { id = item.DDID }, new { @class = "" }) |
+            @Html.ActionLink("Delete", "Delete", "DesDetails", new { id = item.DDID }, new { @class = "" }) 
+        </td>
+    </tr>
+}
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{
+            int previous = (int)ViewData["PageActive"];
+            int next = (int)ViewData["PageActive"];
+            if ((int)ViewData["PageActive"] != 1)
+            {
+                --previous;
+            }
+            if((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            {
+                ++next;
+            }
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllDesDetail/@previous">Previous</a></li>
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllDesDetail/@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllDesDetail/@next">Next</a></li>
+    </ul>
+</nav>

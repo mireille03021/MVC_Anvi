@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.DesSubTitle>
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "LDesSubTitle";
+}
+
+<h2>DesSubTitle</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "DesSubTitles")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DSTID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubTitle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DSTID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubTitle)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "DesSubTitles", new { id = item.DSTID }, new { @class = "" }) |
+            @Html.ActionLink("Details", "Details", "DesSubTitles", new { id = item.DSTID }, new { @class = "" }) |
+            @Html.ActionLink("Delete", "Delete", "DesSubTitles", new { id = item.DSTID }, new { @class = "" })
+        </td>
+    </tr>
+}
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{
+            int previous = (int)ViewData["PageActive"];
+            int next = (int)ViewData["PageActive"];
+            if ((int)ViewData["PageActive"] != 1)
+            {
+                --previous;
+            }
+            if((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            {
+                ++next;
+            }
+         }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllDesSubTitle/@previous">Previous</a></li>
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllDesSubTitle/@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllDesSubTitle/@next">Next</a></li>
+    </ul>
+</nav>

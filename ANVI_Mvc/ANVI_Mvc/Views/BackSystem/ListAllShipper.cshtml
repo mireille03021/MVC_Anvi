@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.Shipper>
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "物流";
+}
+
+<h2>物流</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Shippers")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipperID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipperID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Shippers", new { id=item.ShipperID }, new { @class = "" }) |
+            @Html.ActionLink("Details", "Details", "Shippers", new { id=item.ShipperID }, new { @class = "" }) |
+            @Html.ActionLink("Delete", "Delete", "Shippers", new { id=item.ShipperID }, new { @class = "" })
+        </td>
+    </tr>
+}
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{
+            int previous = (int)ViewData["PageActive"];
+            int next = (int)ViewData["PageActive"];
+            if ((int)ViewData["PageActive"] != 1)
+            {
+                --previous;
+            }
+            if ((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            {
+                ++next;
+            }
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllShipper/@previous">Previous</a></li>
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllShipper/@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllShipper/@next">Next</a></li>
+    </ul>
+</nav>
