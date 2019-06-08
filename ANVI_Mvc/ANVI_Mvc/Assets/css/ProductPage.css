@@ -769,9 +769,9 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 .Popover__Value {
   display: block;
   padding: 12px 20px;
-  width: 100%;
   cursor: pointer;
-  -webkit-user-select: none;
+    /*width: 100%;*/
+    -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
