@@ -258,6 +258,7 @@
     <Content Include="Assets\css\footer.css" />
     <Content Include="Assets\css\header-styles-index.css" />
     <Content Include="Assets\css\header-styles.css" />
+    <Content Include="Assets\css\header_style_black.css" />
     <Content Include="Assets\css\Home__Slideshow.css" />
     <Content Include="Assets\css\hot.css" />
     <Content Include="Assets\css\Login.css" />
