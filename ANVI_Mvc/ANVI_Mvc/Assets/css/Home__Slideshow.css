@@ -1031,4 +1031,34 @@ margin: 0;
         text-align: right;
     }
 }
+
+
+/*RWD*/
+@media screen and (min-width: 400px) {
+    .Slideshow__Content {
+        padding: 0 60px 0 45px;
+        top: 70%;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .ProductItemListWrapper .ProductItemList {
+        padding: 0;
+    }
+
+    .ProductItemListWrapper .Grid__Cell {
+        display: block;
+        padding: 0 100px;
+        margin: 0 auto 50px;
+        margin-bottom: 50px;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .ProductItemListWrapper .Grid__Cell {
+       
+        width: 100%;
+    }
+}
 /*# sourceMappingURL=Home__Slideshow.css.map */
