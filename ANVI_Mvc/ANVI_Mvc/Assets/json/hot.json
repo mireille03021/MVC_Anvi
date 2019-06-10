@@ -1,0 +1,67 @@
+{
+  {
+    "ShopTheLook_P": [
+      {
+        "view": "IMG_0734_1200x.progressive.jpg",
+        "product1photo": [
+          "C_1000x.jpg",
+          "B19403_1000x.jpg"
+        ],
+        "product2photo": [
+          "4_5400f2af-b2e2-4fc0-9d7a-14cd08bec319_900x.jpg",
+          "N19403_900x.jpg"
+        ],
+        "product1nameprice": [
+          "經典開口設計手環",
+          "$3,300 TWD"
+        ],
+        "product2nameprice": [
+          "八芒星圓片吊飾純銀項鍊",
+          "$3,050 TWD"
+        ],
+        "productsrc": [
+          "/Home/ProductDetailPage/15",
+          "/Home/ProductDetailPage/19"
+        ],
+        "pickset1": [
+          "66%",
+          "37%"
+        ],
+        "pickset2": [
+          "73%",
+          "57%"
+        ]
+      },
+      {
+        "view": "123_1200x.progressive",
+        "product1photo": [
+          "R_2_254969e1-1c77-4080-97c5-2c01f726250b_900x.jpg",
+          "R19301_900x.jpg"
+        ],
+        "product2photo": [
+          "R_5_1_900x.jpg",
+          "R19303_900x.jpg"
+        ],
+        "product1nameprice": [
+          "雙圈純銀戒指",
+          "$1,800 TWD"
+        ],
+        "product2nameprice": [
+          "五顆鋯石戒指",
+          "$1,100 TWD"
+        ],
+        "productsrc": [
+          "/Home/ProductDetailPage/6",
+          "/Home/ProductDetailPage/20"
+        ],
+        "pickset1": [
+          "40%",
+          "66%"
+        ],
+        "pickset2": [
+          "57%",
+          "72%"
+        ]
+      }
+    ]
+  }
