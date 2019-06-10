@@ -56,26 +56,25 @@
                                 <div class="Collapsible__Inner">
                                     <div class="Collapsible__Content">
                                         <div class="Collapsible">
-                                            <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7"
-                                                    data-action="toggle-collapsible" aria-expanded="false">
+                                            <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7" data-action="toggle-collapsible" aria-expanded="false">
                                                 全部 <span class="Collapsible__Plus"></span>
                                             </button>
 
                                             <div class="Collapsible__Inner">
                                                 <div class="Collapsible__Content">
-                                                    <ul class="Linklist Linklist--bordered Linklist--spacingLoose">
-                                                        <li class="Linklist__Item">
-                                                            <a href="/collections/new-arrival"
+                                                    <ul class="Linklist_black Linklist--bordered Linklist--spacingLoose">
+                                                        <li class="Linklist__Item_black">
+                                                            <a href="#"
                                                                class="Text--subdued Link Link--primary">發燒新品</a>
                                                         </li>
-                                                        <li class="Linklist__Item">
-                                                            <a href="/collections/best-sellers"
+                                                        <li class="Linklist__Item_black">
+                                                            <a href="#"
                                                                class="Text--subdued Link Link--primary">人氣商品</a>
                                                         </li>
-                                                        <li class="Linklist__Item">
-                                                            <a href="/collections/sale"
-                                                               class="Text--subdued Link Link--primary">SALE</a>
-                                                        </li>
+                                                        @*<li class="Linklist__Item_black">
+            <a href="/collections/sale"
+               class="Text--subdued Link Link--primary">SALE</a>
+        </li>*@
                                                     </ul>
                                                 </div>
                                             </div>
@@ -88,51 +87,22 @@
 
                                             <div class="Collapsible__Inner">
                                                 <div class="Collapsible__Content">
-                                                    <ul class="Linklist Linklist--bordered Linklist--spacingLoose">
-                                                        <li class="Linklist__Item">
+                                                    <ul class="Linklist_black Linklist--bordered Linklist--spacingLoose">
+                                                        <li class="Linklist__Item_black">
                                                             <a href="/collections/bracelets"
                                                                class="Text--subdued Link Link--primary">手環</a>
                                                         </li>
-                                                        <li class="Linklist__Item">
+                                                        <li class="Linklist__Item_black">
                                                             <a href="/collections/earrings"
                                                                class="Text--subdued Link Link--primary">耳環</a>
                                                         </li>
-                                                        <li class="Linklist__Item">
+                                                        <li class="Linklist__Item_black">
                                                             <a href="/collections/necklaces"
                                                                class="Text--subdued Link Link--primary">項鍊</a>
                                                         </li>
-                                                        <li class="Linklist__Item">
+                                                        <li class="Linklist__Item_black">
                                                             <a href="/collections/rings"
                                                                class="Text--subdued Link Link--primary">戒指</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="Collapsible">
-                                            <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7"
-                                                    data-action="toggle-collapsible" aria-expanded="false">
-                                                客製化商品 <span class="Collapsible__Plus"></span>
-                                            </button>
-
-                                            <div class="Collapsible__Inner">
-                                                <div class="Collapsible__Content">
-                                                    <ul class="Linklist Linklist--bordered Linklist--spacingLoose">
-                                                        <li class="Linklist__Item">
-                                                            <a href="/products/anvi-me-bracelet"
-                                                               class="Text--subdued Link Link--primary">ANVI ME 手環</a>
-                                                        </li>
-                                                        <li class="Linklist__Item">
-                                                            <a href="/products/anvi-me-necklace"
-                                                               class="Text--subdued Link Link--primary">ANVI ME 項鍊</a>
-                                                        </li>
-                                                        <li class="Linklist__Item">
-                                                            <a href="/products/graceful-customize-single-leather-bracelet"
-                                                               class="Text--subdued Link Link--primary">客製化單圈皮手環</a>
-                                                        </li>
-                                                        <li class="Linklist__Item">
-                                                            <a href="/products/graceful-customize-double-leather-bracelet"
-                                                               class="Text--subdued Link Link--primary">客製化雙圈皮手環</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -201,12 +171,12 @@
                             </div>
                         </nav>
                         <nav class="SidebarMenu__Nav SidebarMenu__Nav--secondary">
-                            <ul class="Linklist Linklist--spacingLoose">
-                                <li class="Linklist__Item">
-                                    <a href="/account/login" class="Text--subdued Link Link--primary">Account</a>
+                            <ul class="Linklist_black Linklist--spacingLoose">
+                                <li class="Linklist__Item_black">
+                                    <a href="/Home/AccountPage" class="Text--subdued Link Link--primary">Account</a>
                                 </li>
-                                <li class="Linklist__Item">
-                                    <a href="/search" class="Text--subdued Link Link--primary" data-action="open-modal"
+                                <li class="Linklist__Item_black">
+                                    <a href="/Search/SearchIndex" class="Text--subdued Link Link--primary" data-action="open-modal"
                                        aria-controls="Search">Search</a>
                                 </li>
                             </ul>
@@ -305,7 +275,7 @@
                         </nav>
                     </div>
 
-                    <a href="/cart" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
+                    <a href="/Cart/ShoppingCart" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
                        data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="購物車">
                         <span class="hidden-tablet-and-up">
                             <svg class="Icon Icon--cart" role="presentation" viewBox="0 0 17 20">
@@ -399,7 +369,7 @@
 
     <div id="shopify-section-footer" class="shopify-section shopify-section--footer">
         <footer id="section-footer" class="Footer  " role="contentinfo">
-            <div class="Container">
+            <div class="footer__Container">
                 <div class="Footer__Block Footer__Block--text">
                     <h2 class="Footer__Title Heading u-h6">關於ANVI</h2>
                     <div class="Footer__Content Rte">
@@ -414,7 +384,7 @@
                 </div>
             </div>
             <div class="Footer__Block Footer__Block--links">
-                <div class="Container">
+                <div class="footer__Container">
 
                     <h2 class="Footer__Title Heading u-h6">Main Footer menu</h2>
 
