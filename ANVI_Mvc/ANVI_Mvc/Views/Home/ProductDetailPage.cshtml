@@ -14,9 +14,6 @@
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
 }
 
-<!--浮動視窗的黑色半透明背景-->
-<div id="PageOverBlack" class="PageOverlay"></div>
-
 <main id="main" role="main">
     <div id="shopify-section-product-template" class="shopify-section shopify-section--bordered">
         <section class="Product Product--medium">
@@ -167,7 +164,7 @@
                         <div id="tran" class="Collapsible Collapsible--large">
                             <button class="Collapsible__Button u-h6 Heading" aria-expanded="false">
                                 運送須知
-                                <span></span>
+                                <span class="Collapsible__Plus"></span>
                             </button>
                             <div id="CI_01" class="Collapsible__Inner">
                                 <div class="Collapsible__Content">
@@ -214,7 +211,7 @@
                             <button class="Collapsible__Button u-h6 Heading" aria-expanded="false">
                                 退/換貨須知
                                 <!--data-action="Collapsible_Btn_TF()" onclick="Collapsible_Btn_TF()"-->
-                                <span></span>
+                                <span class="Collapsible__Plus"></span>
                             </button>
                             <div class="Collapsible__Inner">
                                 <div class="Collapsible__Content">
@@ -568,7 +565,8 @@
     <script>
 
         /*運送、退貨*/
-        var Collapsible_Btn_OC = document.getElementsByClassName("Collapsible__Button");
+        var Collapsible_Btn_OC = document.getElementsByClassName("Collapsible Collapsible--large>Collapsible__Button");
+        console.log(Collapsible_Btn_OC);
         for (var i = 0; i < Collapsible_Btn_OC.length; i++) {
             Collapsible_Btn_OC[i].onclick = Collapsible_Btn_TF;
         }
