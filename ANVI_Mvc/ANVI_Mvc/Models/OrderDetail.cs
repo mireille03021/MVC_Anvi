@@ -21,8 +21,7 @@ namespace ANVI_Mvc.Models
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal Quantity { get; set; }
+        public int Quantity { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Discount { get; set; }

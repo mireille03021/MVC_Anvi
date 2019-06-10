@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.OrderDetail>
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "訂單明細";
+}
+
+<h2>訂單明細</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "OrderDetails")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDetail.PDID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDetail.PDID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "OrderDetails", new { orderid = item.OrderID, pdid = item.PDID }, new { @class = "" }) |
+            @Html.ActionLink("Details", "Details", "OrderDetails", new { orderid = item.OrderID, pdid = item.PDID  }, new { @class = "" }) |
+            @Html.ActionLink("Delete", "Delete", "OrderDetails", new { orderid = item.OrderID, pdid = item.PDID  }, new { @class = "" })
+        </td>
+    </tr>
+}
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{
+            int previous = (int)ViewData["PageActive"];
+            int next = (int)ViewData["PageActive"];
+            if ((int)ViewData["PageActive"] != 1)
+            {
+                --previous;
+            }
+            if ((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            {
+                ++next;
+            }
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllOrderDetail/@previous">Previous</a></li>
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllOrderDetail/@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllOrderDetail/@next">Next</a></li>
+    </ul>
+</nav>

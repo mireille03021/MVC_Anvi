@@ -85,10 +85,6 @@ namespace ANVI_Mvc.Models
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<OrderDetail>()
-                .Property(e => e.Quantity)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<OrderDetail>()
                 .Property(e => e.Discount)
                 .HasPrecision(19, 4);
 

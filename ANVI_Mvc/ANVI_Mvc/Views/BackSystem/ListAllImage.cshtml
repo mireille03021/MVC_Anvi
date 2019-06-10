@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.Image>
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "圖片";
+}
+
+<h2>ListAllImage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Images")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDetail.PDID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImgID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDetail.PDID)
+        </td>
+        <td>
+            <img src="~/Assets/images/@item.ProductDetail.Product.Category.CategoryName/@item.ImgName" style="width:100px; height:100px;" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Images", new { id=item.ImgID }, new { @class = ""}) |
+            @Html.ActionLink("Details", "Details", "Images", new { id=item.ImgID }, new { @class = ""}) |
+            @Html.ActionLink("Delete", "Delete", "Images", new { id=item.ImgID }, new { @class = ""})
+        </td>
+    </tr>
+}
+
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{int previous = (int)ViewData["PageActive"];
+            int next = (int)ViewData["PageActive"];
+            if ((int)ViewData["PageActive"] != 1)
+            {
+                --previous;
+            }
+            if((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            {
+                ++next;
+            }
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllImage/@previous">Previous</a></li>
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllImage/@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllImage/@next">Next</a></li>
+    </ul>
+</nav>

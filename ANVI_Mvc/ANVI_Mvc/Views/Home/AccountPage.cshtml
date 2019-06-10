@@ -39,7 +39,7 @@
                         <li><h1 class="SectionHeader__Heading Heading u-h1">My account</h1></li>
                         <li>
                             <p class="SectionHeader__Description">Welcome back,
-                                @Html.ActionLink( Model.User.Name  @*User.Identity.GetUserName()*@, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                @Model.User.Name
                                 <span>!</span>
                             </p>
                         </li>
@@ -104,10 +104,10 @@
                                                        class="Button Button--primary "
                                                        data-toggle="modal"
                                                        data-target="#@DcnName">Detail</a>
-                                                    <a href="/account/addresses"
+                                                    @*<a href="/account/addresses"
                                                        class="Button Button--primary "
                                                        data-toggle="modal"
-                                                       data-target="#@DelName">delete</a>
+                                                       data-target="#@DelName">delete</a>*@
 
                                                     <div id="@DcnName"
                                                          class="modal right fade bd-example-modal-xl"
@@ -200,9 +200,6 @@
                         </table>
                     </div>
                 </div>
-
-
-             
             </div>
         </div>
 
@@ -212,7 +209,7 @@
         <div class="modal fade" id="Account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content p-5">
-                    @using (Html.BeginForm(@*"AccountPage", "Home"*@ "#", "#", FormMethod.Post, new { @name = "fix_user_data", @class = "Form Form--spacingTight", role = "form" }))
+                    @using (Html.BeginForm("AccountPage", "Home", FormMethod.Post, new { @name = "fix_user_data", @class = "Form Form--spacingTight", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="modal-header mx-auto">
@@ -222,24 +219,30 @@
                             </header>
                         </div>
                         <div class="Modal__Content">
-                            @Html.ValidationSummary("", new { @class = "Text-red"})
-                            <input type="hidden" name="form_type" value="customer_address" /><input type="hidden" name="utf8" value="✓" />
+                            @Html.ValidationSummary("", new { @class = "Text-red" })
+                            @Html.HiddenFor(model => model.User.Id)
                             <div class="Form__Item">
-                                @Html.TextBoxFor(m => m.User.Name, new { @name = "user[nmae]", @placeholder = "Name", @class = "Form__Input"})
+                                @Html.LabelFor(model => model.User.Name, "Name", htmlAttributes: new { @class = "Form__FloatingLabel" })
+                                @Html.TextBoxFor(m => m.User.Name, new { @Name = "Name",@placeholder = "Name", @class = "Form__Input" })
+                                @Html.ValidationMessageFor(model => model.User.Name, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Name" value="" placeholder="Name" aria-label="Name" autofocus>
-                                <label class="Form__FloatingLabel">Name</label>*@
+                                  <label class="Form__FloatingLabel">Name</label>*@
                             </div>
 
                             <div class="Form__Item">
-                                @Html.TextBoxFor(m => m.User.Email, new { @name = "user[emali]", @placeholder = "Email", @class = "Form__Input" })
+                                @Html.LabelFor(model => model.User.Email, "Email", htmlAttributes: new { @class = "Form__FloatingLabel" })
+                                @Html.TextBoxFor(m => m.User.Email, new { @Name = "Email", @placeholder = "Email", @class = "Form__Input", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Email" value="" placeholder="Email" aria-label="Email">
-                                <label class="Form__FloatingLabel">Email</label>*@
+                                  <label class="Form__FloatingLabel">Email</label>*@
                             </div>
 
                             <div class="Form__Item">
-                                @Html.TextBoxFor(m => m.User.PhoneNumber, new { @name = "user[phone]", @placeholder = "Phone", @class = "Form__Input" })
+                                @Html.LabelFor(model => model.User.PhoneNumber, "PhoneNumber", htmlAttributes: new { @class = "Form__FloatingLabel" })
+                                @Html.TextBoxFor(m => m.User.PhoneNumber, new { @Name = "PhoneNumber", @placeholder = "Phone", @class = "Form__Input" })
+                                @Html.ValidationMessageFor(model => model.User.PhoneNumber, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="phone" value="" placeholder="phone" aria-label="phone">
-                                <label class="Form__FloatingLabel">phone</label>*@
+                                  <label class="Form__FloatingLabel">phone</label>*@
                             </div>
 
                             <div class="Form__Group">
@@ -249,45 +252,58 @@
                                             <polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2" fill-rule="evenodd" stroke-width="2" stroke-linecap="square"></polyline>
                                         </svg>
                                         @*@Model.user.City*@
-                                        @Html.DropDownList("City", null, htmlAttributes: new { @class = "" })
+                                        @Html.LabelFor(model => model.User.City, "City", htmlAttributes: new { @class = "Form__FloatingLabel" })
+                                        @if (Model.User.City != null)
+                                        {
+                                            @Html.DropDownList("City", null,Model.User.City.Trim(), htmlAttributes: new { @class = "",@Value=Model.User.City.Trim() })
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownList("City", null,"", htmlAttributes: new { @class = "",@Value="" })
+                                        }
+                                        @Html.ValidationMessageFor(model => model.User.City, "", new { @class = "text-danger" })
                                         @*<select name="City" title="City">
-                                            <option value="台北市"> 台北市 </option>
-                                            <option value="基隆市"> 基隆市 </option>
-                                            <option value="新北市"> 新北市 </option>
-                                            <option value="宜蘭縣"> 宜蘭縣 </option>
-                                            <option value="新竹市"> 新竹市 </option>
-                                            <option value="新竹縣"> 新竹縣 </option>
-                                            <option value="桃園縣"> 桃園縣 </option>
-                                            <option value="苗栗縣"> 苗栗縣 </option>
-                                            <option value="台中市"> 台中市 </option>
-                                            <option value="彰化縣"> 彰化縣 </option>
-                                            <option value="南投縣"> 南投縣 </option>
-                                            <option value="嘉義市"> 嘉義市 </option>
-                                            <option value="嘉義縣"> 嘉義縣 </option>
-                                            <option value="雲林縣"> 雲林縣 </option>
-                                            <option value="台南市"> 台南市 </option>
-                                            <option value="高雄市"> 高雄市 </option>
-                                            <option value="澎湖縣"> 澎湖縣 </option>
-                                            <option value="屏東縣"> 屏東縣 </option>
-                                            <option value="台東縣"> 台東縣 </option>
-                                            <option value="花蓮縣"> 花蓮縣 </option>
-                                            <option value="金門縣"> 金門縣 </option>
-                                            <option value="連江縣"> 連江縣 </option>
-                                        </select>*@
+                                          <option value="台北市"> 台北市 </option>
+                                          <option value="基隆市"> 基隆市 </option>
+                                          <option value="新北市"> 新北市 </option>
+                                          <option value="宜蘭縣"> 宜蘭縣 </option>
+                                          <option value="新竹市"> 新竹市 </option>
+                                          <option value="新竹縣"> 新竹縣 </option>
+                                          <option value="桃園縣"> 桃園縣 </option>
+                                          <option value="苗栗縣"> 苗栗縣 </option>
+                                          <option value="台中市"> 台中市 </option>
+                                          <option value="彰化縣"> 彰化縣 </option>
+                                          <option value="南投縣"> 南投縣 </option>
+                                          <option value="嘉義市"> 嘉義市 </option>
+                                          <option value="嘉義縣"> 嘉義縣 </option>
+                                          <option value="雲林縣"> 雲林縣 </option>
+                                          <option value="台南市"> 台南市 </option>
+                                          <option value="高雄市"> 高雄市 </option>
+                                          <option value="澎湖縣"> 澎湖縣 </option>
+                                          <option value="屏東縣"> 屏東縣 </option>
+                                          <option value="台東縣"> 台東縣 </option>
+                                          <option value="花蓮縣"> 花蓮縣 </option>
+                                          <option value="金門縣"> 金門縣 </option>
+                                          <option value="連江縣"> 連江縣 </option>
+                                          </select>*@
                                     </div>
                                 </div>
                             </div>
 
                             <div class="Form__Item">
-                                @Html.TextBoxFor(m => m.User.Address, new { @name = "user[address]", @placeholder = "Address", @class = "Form__Input" })
+                                @Html.LabelFor(model => model.User.Address, "Address", htmlAttributes: new { @class = "Form__FloatingLabel" })
+                                @Html.TextBoxFor(m => m.User.Address, new { @Name = "Address", @placeholder = "Address", @class = "Form__Input" })
+                                @Html.ValidationMessageFor(model => model.User.Address, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Address" value="" placeholder="Address" aria-label="Address">
-                                <label class="Form__FloatingLabel">Address</label>*@
+                                  <label class="Form__FloatingLabel">Address</label>*@
                             </div>
 
                             <div class="Form__Item">
-                                @Html.TextBoxFor(m => m.User.ZipCode, new { @name = "user[zip code]", @placeholder = "Zip code", @class = "Form__Input" })
+                                @Html.LabelFor(model => model.User.ZipCode, "ZipCode", htmlAttributes: new { @class = "Form__FloatingLabel" })
+                                @Html.TextBoxFor(m => m.User.ZipCode, new { @Name = "ZipCode", @placeholder = "Zip code", @class = "Form__Input" })
+                                @Html.ValidationMessageFor(model => model.User.ZipCode, "", new { @class = "text-danger" })
                                 @*<input type="text" class="Form__Input" name="Zip code" value="" placeholder="Zip code" aria-label="Zip code">
-                                <label class="Form__FloatingLabel">Zip code</label>*@
+                                  <label class="Form__FloatingLabel">Zip code</label>*@
                             </div>
 
                             <div class="Form__Item Form__Select Select Select--primary" style="display: none">
@@ -307,7 +323,7 @@
                                     <label for="address-new[default]">Set as default</label>
                                 </div>
                             </div>
-                            
+
                             <button type="submit" class="Form__Submit Button Button--primary Button--full">change content</button>
                         </div>
                     }

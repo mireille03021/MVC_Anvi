@@ -7,6 +7,8 @@ namespace ANVI_Mvc.Helpers
 {
     public class ConstantData
     {
+        public const int PageRows = 10;
+
         public static List<string> citys = new List<string>()
         {
             "台北市", "新北市", "基隆市", "桃園市", "新竹市",

@@ -1,0 +1,73 @@
+﻿@model List<SidebarItem>
+
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            @*@foreach (var item in Model)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active" href="@item.Url">
+                            <span class="fas fa-@item.Icon"></span>
+                            @item.Name<span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                }*@
+
+
+            @foreach (var item in Model)
+            {
+                //@Url.Action(item.Url, "Home")
+                string active = item.Id == (int)ViewData["SideActive"] ? "active" : "";
+
+                <li class="nav-item">
+                    <a class="nav-link @active" href="@item.Url">
+                        @item.Name
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>
+
+@*<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <span data-feather="home"></span>
+                        Dashboard <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="file"></span>
+                        Orders
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="shopping-cart"></span>
+                        Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="users"></span>
+                        Customers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="bar-chart-2"></span>
+                        Reports
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="layers"></span>
+                        Integrations
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>*@

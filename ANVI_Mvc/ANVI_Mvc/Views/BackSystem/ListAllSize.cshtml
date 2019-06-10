@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.Size>
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "尺寸";
+}
+
+<h2>ListAllSize</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Sizes")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SizeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SizeTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SizeContext)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SizeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SizeTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SizeContext)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Sizes", new { id=item.SizeID }, new { @class = ""}) |
+            @Html.ActionLink("Details", "Details", "Sizes", new { id=item.SizeID }, new { @class = ""}) |
+            @Html.ActionLink("Delete", "Delete", "Sizes", new { id=item.SizeID }, new { @class = ""})
+        </td>
+    </tr>
+}
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{
+            int previous = (int)ViewData["PageActive"];
+            int next = (int)ViewData["PageActive"];
+            if ((int)ViewData["PageActive"] != 1)
+            {
+                --previous;
+            }
+            if((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            {
+                ++next;
+            }
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllSize/@previous">Previous</a></li>
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllSize/@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllSize/@next">Next</a></li>
+    </ul>
+</nav>

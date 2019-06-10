@@ -1,4 +1,6 @@
 ﻿@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+TC|Titillium+Web&display=swap');
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -13,12 +15,12 @@ html {
 }
 
 body {
-  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #1c1b1b;
-  background: #fff;
-  line-height: 1.65;
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    background: #fff;
+    line-height: 1.65;
 }
 
 *, *:before, *:after {
@@ -69,25 +71,25 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .Button, .shopify-payment-button__button--unbranded {
-  /*.Button, .shopify-payment-button__button--unbranded, #shopify-product-reviews .spr-summary-actions-newreview, #shopify-product-reviews .spr-button-primary:not(input), #shopify-product-reviews input.spr-button-primary, #shopify-product-reviews .spr-pagination-prev>a, #shopify-product-reviews .spr-pagination-next>a*/
-  position: relative;
-  display: inline-block;
-  padding: 14px 28px;
-  line-height: normal;
-  border: 1px solid transparent;
-  border-radius: 0;
-  text-transform: uppercase;
-  font-size: 12px;
-  text-align: center;
-  letter-spacing: 0.2em;
-  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  background-color: transparent;
-  -webkit-transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  z-index: 1;
-  -webkit-tap-highlight-color: initial;
+    /*.Button, .shopify-payment-button__button--unbranded, #shopify-product-reviews .spr-summary-actions-newreview, #shopify-product-reviews .spr-button-primary:not(input), #shopify-product-reviews input.spr-button-primary, #shopify-product-reviews .spr-pagination-prev>a, #shopify-product-reviews .spr-pagination-next>a*/
+    position: relative;
+    display: inline-block;
+    padding: 14px 28px;
+    line-height: normal;
+    border: 1px solid transparent;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: transparent;
+    -webkit-transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    z-index: 1;
+    -webkit-tap-highlight-color: initial;
 }
 
 .Button::before, .shopify-payment-button__button--unbranded::before {
@@ -109,14 +111,14 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .Heading {
-  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #1c1b1b;
-  -webkit-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
 }
 
 .u-h1, .Rte h1 {
@@ -199,11 +201,11 @@ p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:las
 }
 
 .FeaturedMap__Store {
-  display: block;
-  margin-bottom: 1.2em;
-  font-family: Helvetica,"Helvetica Neue",Arial,"Lucida Grande",sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    display: block;
+    margin-bottom: 1.2em;
+    font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .FeaturedMap__Address {

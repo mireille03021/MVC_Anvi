@@ -14,6 +14,8 @@ using ANVI_Mvc.ViewModels;
 using Dapper;
 using Microsoft.AspNet.Identity;
 using ANVI_Mvc.Helpers;
+using System.Data.Entity;
+using ANVI_Mvc.Repositories;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -26,30 +28,76 @@ namespace ANVI_Mvc.Controllers
         {
             db = new AnviModel();
         }
+
         [AllowAnonymous]
         public ActionResult Index()   //主頁面
         {
-            //var Userid = User.Identity.GetUserId();
-            //var user = db.AspNetUsers.FirstOrDefault(x => x.Id == Userid);
             return View();
         }
+
         [AllowAnonymous]
-        public ActionResult ProductsPage(int page) //商品頁面
+        public ActionResult ProductsPage(string Category ,int page,string sortOrder) //商品頁面
         {
-            //取得此頁面是用什麼做分類的，因為這為總商品頁，所以不做分類
-            ViewData.Model = db.Products/*.Where(x => x.CategoryID == 3)*/.ToList();
+            var products = from p in db.Products select p;
+            //分類
+            switch (Category)
+            {
+                case "Bracelets":
+                    products = products.Where(x => x.CategoryID == 1);
+                    ViewBag.Title = "BRACELETS";
+                    ViewBag.Category = "Bracelets";
+                    break;
+                case "Ear Rings":
+                    products = products.Where(x => x.CategoryID == 2);
+                    ViewBag.Title = "EAR RINGS";
+                    ViewBag.Category = "Ear Rings";
+                    break;
+                case "Necklaces":
+                    products = products.Where(x => x.CategoryID == 3);
+                    ViewBag.Title = "NECKLACES";
+                    ViewBag.Category = "Necklaces";
+                    break;
+                case "Rings":
+                    products = products.Where(x => x.CategoryID == 4);
+                    ViewBag.Title = "RINGS";
+                    ViewBag.Category = "Rings";
+                    break;
+                default:
+                    ViewBag.Title = "PRODUCTS";
+                    ViewBag.Category = "All";
+                    break;
+            }
+            //排序
+            switch (sortOrder)
+            {
+                case "PriceHighToLow":
+                    products = products.OrderByDescending(x=>x.UnitPrice);
+                    ViewBag.SortOrder = "PriceHighToLow";
+                    break;
+                case "PriceLowToHigh":
+                    products = products.OrderBy(x => x.UnitPrice);
+                    ViewBag.SortOrder = "PriceLowToHigh";
+                    break;
+                case "Name":
+                    products = products.OrderBy(x => x.ProductName);
+                    ViewBag.SortOrder = "Name";
+                    break;
+                case "Name_desc":
+                    products = products.OrderByDescending(x => x.ProductName);
+                    ViewBag.SortOrder = "Name_desc";
+                    break;
+                default:
+                    ViewBag.SortOrder = "";
+                    break;
+            }
 
-            //給上一頁下一頁按鈕使用
-            ViewBag.mainController = "Home";
-            ViewBag.mainActionName = "ProductsPage";
+            ViewData.Model = products.ToList();
 
-            //給@Html.Action使用，取得HomeController的GetProducts方法
-            ViewBag.Title = "PRODUCTS";
-            ViewBag.ActionName = "GetProducts";
-            ViewBag.Controller = "Home";
             ViewBag.Page = page;
+
             return View();
         }
+
         [AllowAnonymous]
         public ActionResult GetProducts(int page, List<Product> AllProducts)
         {
@@ -69,8 +117,7 @@ namespace ANVI_Mvc.Controllers
                 if (i % 8 == 0 && i != 0) break;
 
                 //取得此產品ID所有的PDID，並加進List<ProductPageViewModel> Model中
-                var NowPid = pList[i].ProductID;
-                var FilterList = AllProductDetails.Where(x => x.ProductID == NowPid);
+                var FilterList = AllProductDetails.Where(x => x.ProductID == pList[i].ProductID);
                 foreach (var item in FilterList)
                 {
                     Model.Add(item);
@@ -79,6 +126,7 @@ namespace ANVI_Mvc.Controllers
             ViewData.Model = Model;
             return PartialView("_ProductsPartial");
         }
+
         //---------------------單一商品頁面-----------------------
         [HttpGet]
         [AllowAnonymous]
@@ -93,7 +141,7 @@ namespace ANVI_Mvc.Controllers
             ViewData["ColorName"] = sPVM.ProductDetailViewModels[0].ColorName;
             return View();
         }
-        [MultiButton("ChangeColor")]
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult ChangeColor(int pid, string DropDownList_Color)  //單一商品頁面Post
@@ -108,27 +156,26 @@ namespace ANVI_Mvc.Controllers
             return View("ProductDetailPage");
         }
 
-        [MultiButton("BuyItNow")]
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult BuyItNow(string pdid)
+        public ActionResult BuyItNow(string pdid)       //立即購買按鈕
         {
             var connectionString = ConfigurationManager.ConnectionStrings["AnviConnection"].ConnectionString;
-            string queryString = "select " +
-                                 "cat.CategoryName, " +
-                                 "p.ProductID, " +
-                                 "p.ProductName, " +
-                                 "p.UnitPrice, " +
-                                 "s.SizeContext, " +
-                                 "c.ColorID, " +
-                                 "c.ColorName, " +
-                                 "pd.PDID " +
-                                 "from Products p " +
-                                 "inner join ProductDetails pd on p.ProductID = pd.ProductID " +
-                                 "inner join Sizes s on pd.SizeID = s.SizeID " +
-                                 "inner join Colors c on pd.ColorID = c.ColorID " +
-                                 "inner join Categories cat on p.CategoryID = cat.CategoryID " +
-                                 "where pd.PDID = " + "'" + pdid + "'";
+            string queryString = @"select 
+                                 cat.CategoryName, 
+                                 p.ProductID, 
+                                 p.ProductName, 
+                                 p.UnitPrice, 
+                                 s.SizeContext, 
+                                 c.ColorID, 
+                                 c.ColorName, 
+                                 pd.PDID 
+                                 from Products p 
+                                 inner join ProductDetails pd on p.ProductID = pd.ProductID 
+                                 inner join Sizes s on pd.SizeID = s.SizeID 
+                                 inner join Colors c on pd.ColorID = c.ColorID 
+                                 inner join Categories cat on p.CategoryID = cat.CategoryID 
+                                 where pd.PDID = " + "'" + pdid + "'";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 CartItemViewModel product = conn.QueryFirstOrDefault<CartItemViewModel>(queryString);
@@ -165,7 +212,7 @@ namespace ANVI_Mvc.Controllers
         //-----------------------------------------------------------------
         //----------------------------下單-----------------------------
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Order_Customer(/*CartItemViewModel product,string image*/)  //下單-客戶頁面(填入收件人)!沒有HEADER跟FOOTER
         {
             var Img = CartService.getEachProductImages(db);
@@ -181,7 +228,10 @@ namespace ANVI_Mvc.Controllers
                 ViewData["Phone"] = OCVM.Phone;
                 ViewData["Email"] = OCVM.Email;
             }
-
+            var Userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.FirstOrDefault(x => x.Id == Userid);
+            ViewData["Email"] = user.Email;
+            ViewData["UserName"] = user.Name;
             ViewBag.CartToHere = Session["CartToHere"];
             return View();
         }
@@ -207,6 +257,7 @@ namespace ANVI_Mvc.Controllers
             var OCVM = (OrderCustomerViewModel)Session["Order_Session"];
             ViewData["Email"] = OCVM.Email;
             ViewData["Address"] = OCVM.Address;
+            ViewBag.CartToHere = Session["CartToHere"];
             ViewData.Model = OCVM;
             return View();
         }
@@ -235,7 +286,7 @@ namespace ANVI_Mvc.Controllers
             ViewData["Email"] = OCVM.Email;
             ViewData["Address"] = OCVM.Address;
             ViewData.Model = OCVM;
-
+            ViewBag.CartToHere = Session["CartToHere"];
             return View();
         }
 
@@ -274,32 +325,51 @@ namespace ANVI_Mvc.Controllers
             O.RecipientAddressee = OCVM.Address;
             O.RecipientPhone = OCVM.Phone;
 
-            O.UserID = "IDU0007";
+            var Userid = User.Identity.GetUserId();
+            O.UserID = Userid;
+            //因為目前只有轉帳功能
             O.Payment = "銀行轉帳";
-            O.Remaeks = "嗨嗨1小時內寄來";
+            if (Session["Remark"] == null)
+            {
+                O.Remaeks = null;
+            }
+            else
+            {
+                O.Remaeks = Session["Remark"].ToString();
+            }
             O.OrderDate = DateTime.Now;
-            O.ShipDate = DateTime.Now.AddHours(1);
+            //O.ShipDate = DateTime.Now.AddHours(1);
 
             REPO_O.Create(O);
             db.SaveChanges();
             var OrderList = db.Orders.ToList();
             var OrderID = OrderList.Last().OrderID;
 
+            var REPO_PD = new AnviRepository<ProductDetail>(db);
+            var PDs = db.ProductDetails.ToList();
             if ((bool)Session["CartToHere"])
             {
                 var currentCart = CartService.GetCurrentCart();
                 foreach (var item in currentCart)
                 {
+                    //新增訂單
                     var OD = new OrderDetail();
                     OD.PDID = item.PDID;
                     OD.OrderID = OrderID;
                     OD.Price = item.UnitPrice;
                     OD.Quantity = item.Quantity;
-                    db.OrderDetails.Add(OD);
+                    REPO_OD.Create(OD);
+
+                    //修正物品庫存量
+                    var pd = PDs.FirstOrDefault(x => x.PDID == OD.PDID);
+                    pd.Stock -= OD.Quantity;
+                    REPO_PD.Update(pd);
+                    
                 }
             }
             else // BuyItNow
             {
+                //新增訂單
                 var OD = new OrderDetail();
                 var BuyItNow = (BuyOneViewModel)Session["BuyItNow"];
                 OD.PDID = BuyItNow.CartItem.PDID;
@@ -307,9 +377,16 @@ namespace ANVI_Mvc.Controllers
                 OD.Price = BuyItNow.CartItem.UnitPrice;
                 OD.Quantity = BuyItNow.CartItem.Quantity;
                 REPO_OD.Create(OD);
+
+                //修正物品庫存量
+                var pd = PDs.FirstOrDefault(x => x.PDID == OD.PDID);
+                pd.Stock -= OD.Quantity;
+                REPO_PD.Update(pd);
             }
             db.SaveChanges();
 
+            //初始化
+            Session["Remark"] = null;
             ViewData.Model = CartService.GetCurrentCart();
             ViewBag.Img = CartService.getEachProductImages(db);
             //購買完成，清除購物車
@@ -400,11 +477,26 @@ namespace ANVI_Mvc.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         //[AllowAnonymous]
-        public ActionResult AccountPage(AccountPageViewModel model)   //帳戶主頁面
+        public ActionResult AccountPage([Bind(Include = "Name, Email, PhoneNumber, City, Address, ZipCode")] UserViewModel model)   //帳戶主頁面
         {
-            
-            return View();
+            if (ModelState.IsValid)
+            {
+                var Userid = User.Identity.GetUserId();
+                var user = db.AspNetUsers.FirstOrDefault(x => x.Id == Userid);
+                
+                user.Name = model.Name;
+                user.Email = model.Email;
+                user.PhoneNumber = model.PhoneNumber;
+                user.City = model.City;
+                user.Address = model.Address;
+                user.ZipCode = model.ZipCode;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("AccountPage","Home");
+
         }
     }
 }

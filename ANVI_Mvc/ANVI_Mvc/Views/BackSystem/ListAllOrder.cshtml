@@ -1,0 +1,136 @@
+﻿@model IEnumerable<ANVI_Mvc.Models.Order>
+
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "訂單";
+}
+
+<h2>訂單</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Orders")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientZipCod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientAddressee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shipper.ShippName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remaeks)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientZipCod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientAddressee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shipper.ShippName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remaeks)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Orders", new { id=item.OrderID }, new { @class = "" }) |
+            @Html.ActionLink("Details", "Details", "Orders", new { id=item.OrderID }, new { @class = "" }) |
+            @Html.ActionLink("Delete", "Delete", "Orders", new { id=item.OrderID }, new { @class = "" })
+        </td>
+    </tr>
+}
+
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{
+            int previous = (int)ViewData["PageActive"];
+            int next = (int)ViewData["PageActive"];
+            if ((int)ViewData["PageActive"] != 1)
+            {
+                --previous;
+            }
+            if ((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            {
+                ++next;
+            }
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllOrder/@previous">Previous</a></li>
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        {
+            string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllOrder/@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllOrder/@next">Next</a></li>
+    </ul>
+</nav>
