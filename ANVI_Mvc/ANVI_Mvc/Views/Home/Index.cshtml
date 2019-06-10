@@ -7,13 +7,7 @@
     <link href="~/Assets/css/header-styles-index.css" rel="stylesheet" />
     <link href="~/Assets/css/hot.css" rel="stylesheet" />
     <link href="~/Assets/css/Home__Slideshow.css" rel="stylesheet" />
-@*<<<<<<< HEAD*@
-    
-
-
-@*=======*@
     <link href="~/Assets/css/index_bottom.css" rel="stylesheet" />
-@*>>>>>>> 90794c9d9b6b5a8a50afa45c6d20628937a3c1e0*@
 }
 @section endJS
 {
@@ -22,7 +16,9 @@
     <script type="text/javascript" src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="~/Assets/js/Home.js"></script>
-    <script type="text/javascript" src="~/Assets/js/headerjava.js"></script>
+    <script src="~/Assets/js/headerjava.js"></script>
+    <script src="~/Assets/js/hot.js"></script>
+
 
 }
 @*<div class="jumbotron">
@@ -290,9 +286,9 @@
                                         <!-- 這邊有很多 -->
                                     </div>
                                     <!-- 記得點點要改位置或隱藏 -->
-                                    <span class="ShopTheLook__Dot ShopTheLook__Dot--light" style="left:73%;top:57%;">
+                                    <span id="ShopTheLook__Dot1" class="ShopTheLook__Dot ShopTheLook__Dot--light is--active" style="left:73%;top:57%;">
                                     </span>
-                                    <span class="ShopTheLook__Dot ShopTheLook__Dot--light is--active" style="left:66%;top:37%;">
+                                    <span id="ShopTheLook__Dot2" class="ShopTheLook__Dot ShopTheLook__Dot--light " style="left:66%;top:37%;">
                                     </span>
 
                                 </div>
@@ -304,7 +300,7 @@
                                                     <div class="ProductItem__Wrapper">
                                                         <a href="" class="ProductItem__ImageWrapper ProductItem__ImageWrapper--withAlternateImage ">
                                                             <!-- <div class="AspectRatio AspectRatio--withFallback" style="max-width:1050px;padding-bottom:100.0%;--aspcet-ratio:1.0;"> -->
-                                                            <img src="~/Assets/images/Necklaces/4_5400f2af-b2e2-4fc0-9d7a-14cd08bec319_900x.jpg" alt="八芒星圓片吊飾純銀項鍊" class="ProductItem__Image ProductItem__Image Image--fadeIn lazyautosizes Image--lazyLoaded" sizes="250px">
+                                                            <img src="~/Assets/images/Necklaces/4_5400f2af-b2e2-4fc0-9d7a-14cd08bec319_900x.jpg" alt="八芒星圓片吊飾純銀項鍊" class="ProductItem__Image Image--fadeIn lazyautosizes Image--lazyLoaded" sizes="250px">
                                                             <img src="~/Assets/images/Necklaces/N19403_900x.jpg" alt="八芒星圓片吊飾純銀項鍊" class="ProductItem__Image ProductItem__Image--alternate Image--fadeIn lazyautosizes Image--lazyLoaded" sizes="250px">
                                                             <span class="Image__Loader"></span>
                                                             <!-- </div> -->
@@ -363,8 +359,8 @@
                                         VIEW THIS PRODUCT
                                     </a>
                                     <ol class="flickity-page-dots">
-                                        <li class="dottodot is-selected"></li>
-                                        <li class="dottodot "></li>
+                                        <li id="dottodot1" class="dottodot is-selected"></li>
+                                        <li id="dottodot2" class="dottodot"></li>
                                     </ol>
                                 </div>
 
@@ -982,7 +978,7 @@
     //    }
 
     //});
-   
+
 
 
 
