@@ -1034,7 +1034,7 @@ input[type="radio"] {
 }
 
 .logged-in-customer-information {
-    display: table;
+    display: flex;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
@@ -1046,9 +1046,9 @@ input[type="radio"] {
         display: table;
     }
 
-.logged-in-customer-information__avatar-wrapper {
+/*.logged-in-customer-information__avatar-wrapper {
     display: table-cell;
-}
+}*/
 
 .logged-in-customer-information__avatar-wrapper {
     padding-right: 1em;

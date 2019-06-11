@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\OtherController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -2298,6 +2299,7 @@
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\css\ProductDetailPage.css" />
     <Content Include="Assets\css\index_bottom.css" />
+    <Content Include="Assets\css\word-text.css" />
     <Content Include="Assets\images\Bracelets\2_fae8f255-1152-4a34-8c7b-54b8f3033a87_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_18536ee1-d9ad-490e-9755-ae6b03dab5ab_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_2_900x.jpg" />
@@ -3245,6 +3247,10 @@
     <Content Include="Views\BackSystem\ListAllShipper.cshtml" />
     <Content Include="Views\BackSystem\ListAllIdentityModels.cshtml" />
     <Content Include="Views\BackSystem\BackSystemRegister.cshtml" />
+    <Content Include="Views\Other\Shipping.cshtml" />
+    <Content Include="Views\Other\Privacy.cshtml" />
+    <Content Include="Views\Other\TermsConditions.cshtml" />
+    <Content Include="Views\Other\Returns.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
