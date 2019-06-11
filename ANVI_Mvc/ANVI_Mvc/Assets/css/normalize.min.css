@@ -220,3 +220,8 @@ th {
     max-width: 800px;
     padding: 20px;
 }
+
+.container-title {
+    padding-top: 20px;
+    border-top: 1px solid;
+}
