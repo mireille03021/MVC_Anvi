@@ -27,6 +27,7 @@ namespace ANVI_Mvc.Models
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<ViewWord> ViewWords { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
