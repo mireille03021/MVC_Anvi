@@ -263,6 +263,14 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   transition: all 0.3s ease-in-out;
 }
 
+.F-Input:not(:placeholder-shown) ~ .F-FLabel, #shopify-product-reviews .spr-form-input-text:not(:placeholder-shown) ~ .F-FLabel, #shopify-product-reviews .spr-form-input-email:not(:placeholder-shown) ~ .F-FLabel, #shopify-product-reviews .spr-form-input-textarea:not(:placeholder-shown) ~ .F-FLabel, .Form__Textarea:not(:placeholder-shown) ~ .F-FLabel {
+    /*.Form__Input:not(:placeholder-shown) ~ .Form__FloatingLabel, #shopify-product-reviews .spr-form-input-text:not(:placeholder-shown) ~ .Form__FloatingLabel, #shopify-product-reviews .spr-form-input-email:not(:placeholder-shown) ~ .Form__FloatingLabel, #shopify-product-reviews .spr-form-input-textarea:not(:placeholder-shown) ~ .Form__FloatingLabel, .Form__Textarea:not(:placeholder-shown) ~ .Form__FloatingLabel*/
+    opacity: 1;
+    background: #fff;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
 .F-ItemSOS {
   /*Form__ItemHelp*/
   position: absolute;
