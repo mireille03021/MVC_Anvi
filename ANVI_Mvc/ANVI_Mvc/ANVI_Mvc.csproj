@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201906072055505_v3.Designer.cs">
       <DependentUpon>201906072055505_v3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906111314120_v4.cs" />
+    <Compile Include="Migrations\201906111314120_v4.Designer.cs">
+      <DependentUpon>201906111314120_v4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnviModel.cs" />
@@ -232,6 +236,7 @@
     <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Shipper.cs" />
+    <Compile Include="Models\ViewWord.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\SidebarItemViewModels.cs" />
     <Compile Include="Models\Size.cs" />
@@ -591,6 +596,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906072055505_v3.resx">
       <DependentUpon>201906072055505_v3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111314120_v4.resx">
+      <DependentUpon>201906111314120_v4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
