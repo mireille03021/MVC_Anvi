@@ -214,3 +214,9 @@ td,
 th {
     padding: 0
 }
+
+.container {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
