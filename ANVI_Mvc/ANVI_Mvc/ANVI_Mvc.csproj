@@ -2287,6 +2287,7 @@
     <Content Include="Assets\css\Home__Slideshow.css" />
     <Content Include="Assets\css\hot.css" />
     <Content Include="Assets\css\Login.css" />
+    <Content Include="Assets\css\normalize.min.css" />
     <Content Include="Assets\css\Order_Check.css" />
     <Content Include="Assets\css\Order_Customerclone.css" />
     <Content Include="Assets\css\Order_Customer.css" />
@@ -3251,6 +3252,9 @@
     <Content Include="Views\Other\Privacy.cshtml" />
     <Content Include="Views\Other\TermsConditions.cshtml" />
     <Content Include="Views\Other\Returns.cshtml" />
+    <Content Include="Views\Other\Refundpolicy.cshtml" />
+    <Content Include="Views\Other\Privacypolicy.cshtml" />
+    <Content Include="Views\Other\Termsofservice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

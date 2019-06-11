@@ -34,5 +34,20 @@ namespace ANVI_Mvc.Controllers
 
             return View();
         }
+        public ActionResult Refundpolicy()
+        {
+
+            return View();
+        }
+        public ActionResult Privacypolicy()
+        {
+
+            return View();
+        }
+        public ActionResult Termsofservice()
+        {
+
+            return View();
+        }
     }
 }
