@@ -2894,6 +2894,10 @@ header .form-inline .search-form.close {
   font-size: 36px;
   padding: 30px;
 }
+.dropdown-toggle {
+    white-space: nowrap;
+    display: flex;
+}
 
 .stat-widget-five .stat-content {
   margin-left: 100px;

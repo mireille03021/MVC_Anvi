@@ -1,4 +1,4 @@
-/* This css file is to over write bootstrap css
+﻿/* This css file is to over write bootstrap css
 --------------------------------------------------------- /
 * Theme Name: Sufee-Admin Admin Template
 * Theme URI: http://demos.jeweltheme.com/Sufee-Admin/
@@ -1487,10 +1487,14 @@ header .form-inline {
       font-size: 14px;
       line-height: 22px;
       padding: 5px 0; }
-  .user-area .user-avatar {
+.user-area .user-avatar {
     float: right;
-    margin-top: 4px;
-    width: 32px; }
+    /* margin-top: 4px; */
+    margin-right: 4px;
+    width: 32px;
+    height: 32px;
+}
+
   .user-area .user-info .name {
     color: #8c8c8c;
     font-size: 14px;
@@ -1511,8 +1515,9 @@ header .form-inline {
   .user-area .dropdown-toggle:after {
     display: none; }
 
-#menuToggle2 {
-  padding-left: 25px; }
+    #menuToggle2 {
+        padding-left: 25px;
+    }
 
 #language-select {
   color: #f1f2f7;
