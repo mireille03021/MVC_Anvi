@@ -196,6 +196,7 @@
     <Compile Include="Helpers\ConstantData.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\Site.cs" />
+    <Compile Include="Helpers\ViewWord.cs" />
     <Compile Include="Migrations\201906031151179_initialDB.cs" />
     <Compile Include="Migrations\201906031151179_initialDB.Designer.cs">
       <DependentUpon>201906031151179_initialDB.cs</DependentUpon>

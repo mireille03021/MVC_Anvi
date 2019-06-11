@@ -23,7 +23,7 @@ namespace ANVI_Mvc.Controllers
         }
 
         [HttpGet]
-        public ActionResult BackSystemRegister()
+        public ActionResult BackSystemRegister()  //後台註冊頁面
         {
             ViewBag.RoleString = new SelectList(db.AspNetRoles, "Name", "Name");
             ViewData["SideActive"] = (int)SideIndex.BackSystemRegister;

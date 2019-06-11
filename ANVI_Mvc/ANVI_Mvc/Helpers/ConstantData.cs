@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ANVI_Mvc.Helpers
 {
-    public class ConstantData
+    public static class ConstantData
     {
         public const int PageRows = 10;
 
