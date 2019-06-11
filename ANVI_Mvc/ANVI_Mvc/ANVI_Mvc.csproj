@@ -177,7 +177,6 @@
     <Compile Include="Controllers\BackSystemController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ColorsController.cs" />
     <Compile Include="Controllers\DesDetailsController.cs" />
     <Compile Include="Controllers\DesSubTitlesController.cs" />
@@ -191,7 +190,6 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
     <Compile Include="Controllers\SizesController.cs" />
-    <Compile Include="Controllers\SortAndFilterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,6 +259,7 @@
     <Content Include="Assets\css\footer.css" />
     <Content Include="Assets\css\header-styles-index.css" />
     <Content Include="Assets\css\header-styles.css" />
+    <Content Include="Assets\css\header_style_black.css" />
     <Content Include="Assets\css\Home__Slideshow.css" />
     <Content Include="Assets\css\hot.css" />
     <Content Include="Assets\css\Login.css" />
@@ -268,13 +267,13 @@
     <Content Include="Assets\css\Order_Customerclone.css" />
     <Content Include="Assets\css\Order_Customer.css" />
     <Content Include="Assets\css\Order_Pay.css" />
+    <Content Include="Assets\css\ProductPage.css" />
     <Content Include="Assets\css\Register.css" />
     <Content Include="Assets\css\searched.css" />
     <Content Include="Assets\css\search.css" />
     <Content Include="Assets\css\ShoppingCart_CSS.css" />
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\css\ProductDetailPage.css" />
-    <Content Include="Assets\css\ProductPage.css" />
     <Content Include="Assets\css\index_bottom.css" />
     <Content Include="Assets\images\Bracelets\2_fae8f255-1152-4a34-8c7b-54b8f3033a87_900x.jpg" />
     <Content Include="Assets\images\Bracelets\3_18536ee1-d9ad-490e-9755-ae6b03dab5ab_900x.jpg" />
@@ -294,7 +293,7 @@
     <Content Include="Assets\images\Bracelets\C_900x.jpg" />
     <Content Include="Assets\images\Bracelets\f5251328ce40a7a02253945753c430e6_900x.jpg" />
     <Content Include="Assets\images\Color\18k-Gold.png" />
-    <Content Include="Assets\images\Color\Rose Gold.png" />
+    <Content Include="Assets\images\Color\Rose-Gold.png" />
     <Content Include="Assets\images\Color\Silver.png" />
     <Content Include="Assets\images\EarRings\3_ebcf859e-215d-4b14-8a01-6ad2535e40a2_900x.jpg" />
     <Content Include="Assets\images\EarRings\4_970e215a-18c2-4afb-826f-0c5b3835757b_900x.jpg" />
@@ -415,6 +414,7 @@
     <Content Include="Assets\js\header-js.js" />
     <Content Include="Assets\js\headerjava.js" />
     <Content Include="Assets\js\Home.js" />
+    <Content Include="Assets\js\hot.js" />
     <Content Include="Assets\js\jquery-3.3.1.js" />
     <Content Include="Assets\js\Order_Check.js" />
     <Content Include="Assets\js\Order_Customer.js" />
@@ -433,6 +433,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\json\hot.json" />
     <None Include="Properties\PublishProfiles\ANVIMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -495,11 +496,6 @@
     <Content Include="Views\Shared\_ProductsPartial.cshtml" />
     <Content Include="Views\Search\SearchedProducts.cshtml" />
     <Content Include="Views\Shared\_OrderPartial.cshtml" />
-    <Content Include="Views\Category\Bracelets.cshtml" />
-    <Content Include="Views\Category\EarRingsProductsPage.cshtml" />
-    <Content Include="Views\Category\EarRings.cshtml" />
-    <Content Include="Views\Category\Necklaces.cshtml" />
-    <Content Include="Views\Category\Rings.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -569,7 +565,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SortAndFilter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

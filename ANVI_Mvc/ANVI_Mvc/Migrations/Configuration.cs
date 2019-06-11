@@ -26,7 +26,7 @@ namespace ANVI_Mvc.Migrations
             context.Colors.AddOrUpdate(
                 x => x.ColorID,
                 new Color() { ColorID = 1, ColorName = "18k-Gold"},
-                new Color() { ColorID = 2, ColorName = "Rose Gold" },
+                new Color() { ColorID = 2, ColorName = "Rose-Gold" },
                 new Color() { ColorID = 3, ColorName = "Silver" }
             );
             context.Sizes.AddOrUpdate(

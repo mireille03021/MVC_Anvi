@@ -30,23 +30,10 @@ namespace ANVI_Mvc
             );
             routes.MapRoute(
                 name: "ProductsPage",
-                url: "Home/{action}/{page}",
-                defaults: new { controller = "Home", action = "ProductsPage", page = 1 }
+                url: "Home/ProductsPage/{Category}/{page}/{sortOrder}",
+                defaults: new { controller = "Home", action = "ProductsPage",Category = "All", page = 1,sortOrder="" }
             );
 
-            //預設的產品分類位置
-            routes.MapRoute(
-                name: "CategoryProducts",
-                url: "Category/{action}/{page}",
-                defaults: new { controller = "Category", action = "Bracelets", page = 1}
-            );
-            
-
-            routes.MapRoute(
-                name: "SortAndFilter",
-                url: "SortAndFilter/{action}/{page}",
-                defaults: new { controller = "SortAndFilter", action = "PriceLowToHigh", page = 1 }
-            );
 
             routes.MapRoute(
                 name: "Default",

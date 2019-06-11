@@ -36,20 +36,65 @@ namespace ANVI_Mvc.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult ProductsPage(int page) //商品頁面
+        public ActionResult ProductsPage(string Category ,int page,string sortOrder) //商品頁面
         {
-            //取得此頁面是用什麼做分類的，因為這為總商品頁，所以不做分類
-            ViewData.Model = db.Products/*.Where(x => x.CategoryID == 3)*/.ToList();
+            var products = from p in db.Products select p;
+            //分類
+            switch (Category)
+            {
+                case "Bracelets":
+                    products = products.Where(x => x.CategoryID == 1);
+                    ViewBag.Title = "BRACELETS";
+                    ViewBag.Category = "Bracelets";
+                    break;
+                case "Ear Rings":
+                    products = products.Where(x => x.CategoryID == 2);
+                    ViewBag.Title = "EAR RINGS";
+                    ViewBag.Category = "Ear Rings";
+                    break;
+                case "Necklaces":
+                    products = products.Where(x => x.CategoryID == 3);
+                    ViewBag.Title = "NECKLACES";
+                    ViewBag.Category = "Necklaces";
+                    break;
+                case "Rings":
+                    products = products.Where(x => x.CategoryID == 4);
+                    ViewBag.Title = "RINGS";
+                    ViewBag.Category = "Rings";
+                    break;
+                default:
+                    ViewBag.Title = "PRODUCTS";
+                    ViewBag.Category = "All";
+                    break;
+            }
+            //排序
+            switch (sortOrder)
+            {
+                case "PriceHighToLow":
+                    products = products.OrderByDescending(x=>x.UnitPrice);
+                    ViewBag.SortOrder = "PriceHighToLow";
+                    break;
+                case "PriceLowToHigh":
+                    products = products.OrderBy(x => x.UnitPrice);
+                    ViewBag.SortOrder = "PriceLowToHigh";
+                    break;
+                case "Name":
+                    products = products.OrderBy(x => x.ProductName);
+                    ViewBag.SortOrder = "Name";
+                    break;
+                case "Name_desc":
+                    products = products.OrderByDescending(x => x.ProductName);
+                    ViewBag.SortOrder = "Name_desc";
+                    break;
+                default:
+                    ViewBag.SortOrder = "";
+                    break;
+            }
 
-            //給上一頁下一頁按鈕使用
-            ViewBag.mainController = "Home";
-            ViewBag.mainActionName = "ProductsPage";
+            ViewData.Model = products.ToList();
 
-            //給@Html.Action使用，取得HomeController的GetProducts方法
-            ViewBag.Title = "PRODUCTS";
-            ViewBag.ActionName = "GetProducts";
-            ViewBag.Controller = "Home";
             ViewBag.Page = page;
+
             return View();
         }
 
@@ -72,8 +117,7 @@ namespace ANVI_Mvc.Controllers
                 if (i % 8 == 0 && i != 0) break;
 
                 //取得此產品ID所有的PDID，並加進List<ProductPageViewModel> Model中
-                var NowPid = pList[i].ProductID;
-                var FilterList = AllProductDetails.Where(x => x.ProductID == NowPid);
+                var FilterList = AllProductDetails.Where(x => x.ProductID == pList[i].ProductID);
                 foreach (var item in FilterList)
                 {
                     Model.Add(item);
