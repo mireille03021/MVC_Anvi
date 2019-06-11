@@ -1,16 +1,14 @@
-﻿using System;
-using System.Globalization;
+﻿using ANVI_Mvc.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using ANVI_Mvc.Models;
-using ANVI_Mvc.Repositories;
-using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.Routing;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -169,13 +167,32 @@ namespace ANVI_Mvc.Controllers
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
+                        //使用者角色名稱
+                        var RoleName = model.RoleString;
+
+                        // 判斷角色是否存在
+                        if(HttpContext.GetOwinContext().Get<ApplicationRoleManager>().RoleExists(RoleName) == false)
+                        {
+                            // 角色不存在建立角色
+                            var role = new IdentityRole(RoleName);
+                            await HttpContext.GetOwinContext().Get<ApplicationRoleManager>().CreateAsync(role);
+                        }
+                        // 將使用者加入該角色
+                        await UserManager.AddToRoleAsync(user.Id, RoleName);
+
                         // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
                         // 傳送包含此連結的電子郵件
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
 
-                        return RedirectToAction("AccountPage", "Home");
+                        if(model.RoleString == "CustomerUser")
+                        {
+                            return RedirectToAction("AccountPage", "Home");
+                        }else
+                        {
+                            return RedirectToAction("Index", "BackSystem");
+                        }
                     }
                     AddErrors(result);
                 }
@@ -499,5 +516,39 @@ namespace ANVI_Mvc.Controllers
         }
         #endregion
 
+    }
+
+    public class BackendAttribute : AuthorizeAttribute
+    {
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            if (filterContext == null)
+                throw new ArgumentNullException();
+
+            //有設置AllowAnonymouse則不需要驗證
+            if (SkipAuthorization(filterContext))
+                return;
+
+            var user = filterContext.RequestContext.HttpContext.User;
+            var userIdentity = user.Identity;
+
+            if (!userIdentity.IsAuthenticated)
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));
+                return;
+            }
+
+            if (!user.IsInRole("Admin"))
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Index" }));
+                return;
+            }
+        }
+
+        private static bool SkipAuthorization(AuthorizationContext filterContext)
+        {
+            return filterContext.ActionDescriptor.IsDefined(typeof(AllowAnonymousAttribute), true) ||
+            filterContext.ActionDescriptor.ControllerDescriptor.IsDefined(typeof(AllowAnonymousAttribute), true);
+        }
     }
 }

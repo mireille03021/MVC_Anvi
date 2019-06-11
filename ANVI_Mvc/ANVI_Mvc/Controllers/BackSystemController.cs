@@ -6,17 +6,34 @@ using System.Web.Mvc;
 using ANVI_Mvc.Models;
 using ANVI_Mvc.ViewModels;
 using ANVI_Mvc.Helpers;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
+    [Authorize]
+    [Backend]
     public class BackSystemController : Controller
     {
         private AnviModel db = new AnviModel(); 
         private Helper hp = new Helper();
         public ActionResult Index()
         {
-            ViewData["SideActive"] = 1;
+            ViewData["SideActive"] = (int)SideIndex.Index;
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult BackSystemRegister()
+        {
+            ViewBag.RoleString = new SelectList(db.AspNetRoles, "Name", "Name");
+            ViewData["SideActive"] = (int)SideIndex.BackSystemRegister;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BackSystemRegister(RegisterViewModel model)
+        {
+            return RedirectToAction("Register", "Account");
         }
 
         public ActionResult ListAllProduct(int id = 1)
@@ -25,12 +42,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.Products.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Product> products = db.Products.OrderBy(x => x.ProductID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<Product> products = db.Products.OrderBy(x => x.ProductID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 2;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Product;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
             return View(products);
         }
@@ -40,12 +57,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.ProductDetails.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.PDID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.PDID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 3;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(productDetils);
@@ -57,12 +74,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.Categories.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Category> categories = db.Categories.OrderBy(x => x.CategoryID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<Category> categories = db.Categories.OrderBy(x => x.CategoryID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 4;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Category;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(categories);
@@ -73,12 +90,12 @@ namespace ANVI_Mvc.Controllers
 
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.Images.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Image> images = db.Images.OrderBy(x => x.ImgID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<Image> images = db.Images.OrderBy(x => x.ImgID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(images);
@@ -88,12 +105,12 @@ namespace ANVI_Mvc.Controllers
             int activePage = id; //目前所在頁
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.Sizes.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Size> sizes = db.Sizes.OrderBy(x => x.SizeID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<Size> sizes = db.Sizes.OrderBy(x => x.SizeID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 6;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(sizes);
@@ -104,12 +121,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.Colors.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Color> colors = db.Colors.OrderBy(x => x.ColorID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<Color> colors = db.Colors.OrderBy(x => x.ColorID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(colors);
@@ -120,12 +137,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.DesDetails.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<DesDetail> desDetails = db.DesDetails.OrderBy(x => x.DDID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<DesDetail> desDetails = db.DesDetails.OrderBy(x => x.DDID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(desDetails);
@@ -136,12 +153,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.DesSubTitles.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<DesSubTitle> desSubTitles = db.DesSubTitles.OrderBy(x => x.DSTID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<DesSubTitle> desSubTitles = db.DesSubTitles.OrderBy(x => x.DSTID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(desSubTitles);
@@ -153,12 +170,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.Orders.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Order> orders  = db.Orders.OrderBy(x => x.OrderID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<Order> orders  = db.Orders.OrderBy(x => x.OrderID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 10;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(orders);
@@ -170,12 +187,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.OrderDetails.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<OrderDetail> orderDetails  = db.OrderDetails.OrderBy(x => x.OrderID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<OrderDetail> orderDetails  = db.OrderDetails.OrderBy(x => x.OrderID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 11;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(orderDetails);
@@ -187,12 +204,12 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.Shippers.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Shipper> shippers = db.Shippers.OrderBy(x => x.ShipperID).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<Shipper> shippers = db.Shippers.OrderBy(x => x.ShipperID).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 12;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Shipper;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(shippers);
@@ -204,15 +221,25 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.AspNetUsers.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<AspNetUser> aspNetUsers = db.AspNetUsers.OrderBy(x => x.Id).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<AspNetUser> aspNetUsers = db.AspNetUsers.OrderBy(x => x.Id).Skip(startRow).Take(PageRows).ToList();
 
+            ViewBag.UserId = 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 13;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.IdentityModels;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View(aspNetUsers);
+        }
+    }
+
+    [Backend]
+    public abstract class BaseController : Controller
+    {
+        public BaseController()
+        {
+
         }
     }
 }

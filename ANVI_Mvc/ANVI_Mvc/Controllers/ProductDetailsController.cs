@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ANVI_Mvc.Helpers;
 using ANVI_Mvc.Models;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -27,7 +28,7 @@ namespace ANVI_Mvc.Controllers
             List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.PDID).Skip(startRow).Take(ConstantData.PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 3;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
             return View("../BackSystem/ListAllProductDetail", productDetils);
         }
@@ -44,7 +45,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 3;
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -54,13 +55,13 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName");
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName");
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext");
-            ViewData["SideActive"] = 3;
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View();
         }
 
         // POST: ProductDetails/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=(int)SideIndex.ProductDetail17598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PDID,ProductID,Stock,SizeID,ColorID")] ProductDetail productDetail)
@@ -75,7 +76,7 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName", productDetail.ColorID);
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", productDetail.ProductID);
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext", productDetail.SizeID);
-            ViewData["SideActive"] = 3;
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -94,13 +95,13 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName", productDetail.ColorID);
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", productDetail.ProductID);
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext", productDetail.SizeID);
-            ViewData["SideActive"] = 3;
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
         // POST: ProductDetails/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=(int)SideIndex.ProductDetail17598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PDID,ProductID,Stock,SizeID,ColorID")] ProductDetail productDetail)
@@ -114,7 +115,7 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName", productDetail.ColorID);
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", productDetail.ProductID);
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext", productDetail.SizeID);
-            ViewData["SideActive"] = 3;
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -130,7 +131,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 3;
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -142,7 +143,7 @@ namespace ANVI_Mvc.Controllers
             ProductDetail productDetail = db.ProductDetails.Find(id);
             db.ProductDetails.Remove(productDetail);
             db.SaveChanges();
-            ViewData["SideActive"] = 3;
+            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return RedirectToAction("Index");
         }
 

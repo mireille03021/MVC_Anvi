@@ -255,7 +255,7 @@
                                         @Html.LabelFor(model => model.User.City, "City", htmlAttributes: new { @class = "Form__FloatingLabel" })
                                         @if (Model.User.City != null)
                                         {
-                                            @Html.DropDownList("City", null,Model.User.City.Trim(), htmlAttributes: new { @class = "",@Value=Model.User.City.Trim() })
+                                            @Html.DropDownList("City", null, Model.User.City.Trim(), htmlAttributes: new { @class = "", @Value=Model.User.City.Trim() })
                                         }
                                         else
                                         {

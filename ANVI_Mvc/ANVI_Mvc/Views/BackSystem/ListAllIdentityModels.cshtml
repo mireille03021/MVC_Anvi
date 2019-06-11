@@ -16,19 +16,22 @@
             @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
+            @Html.DisplayNameFor(modele => modele.AspNetRoles.First(x => x.Id == modele))
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PasswordHash)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.City)
@@ -57,19 +60,19 @@
             @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PasswordHash)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.City)

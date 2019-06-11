@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ANVI_Mvc.Helpers;
 using ANVI_Mvc.Models;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -27,12 +28,12 @@ namespace ANVI_Mvc.Controllers
             List<Image> images = db.Images.OrderBy(x => x.ImgID).Skip(startRow).Take(ConstantData.PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
             return View("../BackSystem/ListAllImage", images);
         }
 
-        // GET: Images/Details/5
+        // GET: Images/Details/(int)SideIndex.Image
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,7 +45,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
@@ -52,13 +53,13 @@ namespace ANVI_Mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID");
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View();
         }
 
         // POST: Images/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317(int)SideIndex.Image98。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ImgID,PDID,ImgName")] Image image)
@@ -71,11 +72,11 @@ namespace ANVI_Mvc.Controllers
             }
 
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", image.PDID);
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
-        // GET: Images/Edit/5
+        // GET: Images/Edit/(int)SideIndex.Image
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -88,13 +89,13 @@ namespace ANVI_Mvc.Controllers
                 return HttpNotFound();
             }
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", image.PDID);
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
-        // POST: Images/Edit/5
+        // POST: Images/Edit/(int)SideIndex.Image
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317(int)SideIndex.Image98。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ImgID,PDID,ImgName")] Image image)
@@ -106,11 +107,11 @@ namespace ANVI_Mvc.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", image.PDID);
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
-        // GET: Images/Delete/5
+        // GET: Images/Delete/(int)SideIndex.Image
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,11 +123,11 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
-        // POST: Images/Delete/5
+        // POST: Images/Delete/(int)SideIndex.Image
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -134,7 +135,7 @@ namespace ANVI_Mvc.Controllers
             Image image = db.Images.Find(id);
             db.Images.Remove(image);
             db.SaveChanges();
-            ViewData["SideActive"] = 5;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

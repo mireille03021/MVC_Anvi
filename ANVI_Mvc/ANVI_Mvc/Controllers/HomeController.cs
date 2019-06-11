@@ -427,7 +427,7 @@ namespace ANVI_Mvc.Controllers
                 model.OrderDetails = orderDetails;
                 model.images = images;
             }
-            ViewBag.City = new SelectList(ConstantData.citys, model.User.City);
+            ViewBag.City = new SelectList(ConstantData.Citys, model.User.City);
             return View(model);
         }
 

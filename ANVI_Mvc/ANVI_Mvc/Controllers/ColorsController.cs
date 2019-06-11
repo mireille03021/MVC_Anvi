@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ANVI_Mvc.Helpers;
 using ANVI_Mvc.Models;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -27,7 +28,7 @@ namespace ANVI_Mvc.Controllers
             List<Color> colors = db.Colors.OrderBy(x => x.ColorID).Skip(startRow).Take(ConstantData.PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
             return View("../BackSystem/ListAllColor", colors);
         }
@@ -44,20 +45,20 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             return View(color);
         }
 
         // GET: Colors/Create
         public ActionResult Create()
         {
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             return View();
         }
 
         // POST: Colors/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=31(int)SideIndex.Color598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ColorID,ColorName")] Color color)
@@ -68,7 +69,7 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             return View(color);
         }
 
@@ -84,13 +85,13 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             return View(color);
         }
 
         // POST: Colors/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=31(int)SideIndex.Color598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ColorID,ColorName")] Color color)
@@ -101,7 +102,7 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             return View(color);
         }
 
@@ -117,7 +118,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             return View(color);
         }
 
@@ -129,7 +130,7 @@ namespace ANVI_Mvc.Controllers
             Color color = db.Colors.Find(id);
             db.Colors.Remove(color);
             db.SaveChanges();
-            ViewData["SideActive"] = 7;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

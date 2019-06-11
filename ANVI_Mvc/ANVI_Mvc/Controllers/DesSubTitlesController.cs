@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ANVI_Mvc.Helpers;
 using ANVI_Mvc.Models;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -27,7 +28,7 @@ namespace ANVI_Mvc.Controllers
             List<DesSubTitle> desSubTitles = db.DesSubTitles.OrderBy(x => x.DSTID).Skip(startRow).Take(ConstantData.PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View("../BackSystem/ListAllDesSubTitle", desSubTitles);
@@ -45,7 +46,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             return View(desSubTitle);
         }
 
@@ -53,13 +54,13 @@ namespace ANVI_Mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName");
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             return View();
         }
 
         // POST: DesSubTitles/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=3175(int)SideIndex.DesSubTitle8。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "DSTID,ProductID,SubTitle")] DesSubTitle desSubTitle)
@@ -72,7 +73,7 @@ namespace ANVI_Mvc.Controllers
             }
 
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desSubTitle.ProductID);
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             return View(desSubTitle);
         }
 
@@ -89,13 +90,13 @@ namespace ANVI_Mvc.Controllers
                 return HttpNotFound();
             }
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desSubTitle.ProductID);
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             return View(desSubTitle);
         }
 
         // POST: DesSubTitles/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=3175(int)SideIndex.DesSubTitle8。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "DSTID,ProductID,SubTitle")] DesSubTitle desSubTitle)
@@ -107,7 +108,7 @@ namespace ANVI_Mvc.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desSubTitle.ProductID);
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             return View(desSubTitle);
         }
 
@@ -123,7 +124,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             return View(desSubTitle);
         }
 
@@ -135,7 +136,7 @@ namespace ANVI_Mvc.Controllers
             DesSubTitle desSubTitle = db.DesSubTitles.Find(id);
             db.DesSubTitles.Remove(desSubTitle);
             db.SaveChanges();
-            ViewData["SideActive"] = 9;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

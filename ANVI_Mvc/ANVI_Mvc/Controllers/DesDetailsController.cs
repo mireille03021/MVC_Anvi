@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ANVI_Mvc.Helpers;
 using ANVI_Mvc.Models;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -27,7 +28,7 @@ namespace ANVI_Mvc.Controllers
             List<DesDetail> desDetails = db.DesDetails.OrderBy(x => x.DDID).Skip(startRow).Take(ConstantData.PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
 
             return View("../BackSystem/ListAllDesDetail", desDetails);
@@ -45,7 +46,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -53,13 +54,13 @@ namespace ANVI_Mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName");
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View();
         }
 
         // POST: DesDetails/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=31759(int)SideIndex.DesDetail。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "DDID,ProductID,Detail")] DesDetail desDetail)
@@ -72,7 +73,7 @@ namespace ANVI_Mvc.Controllers
             }
 
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desDetail.ProductID);
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -89,13 +90,13 @@ namespace ANVI_Mvc.Controllers
                 return HttpNotFound();
             }
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desDetail.ProductID);
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
         // POST: DesDetails/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=31759(int)SideIndex.DesDetail。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "DDID,ProductID,Detail")] DesDetail desDetail)
@@ -107,7 +108,7 @@ namespace ANVI_Mvc.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desDetail.ProductID);
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -123,7 +124,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -135,7 +136,7 @@ namespace ANVI_Mvc.Controllers
             DesDetail desDetail = db.DesDetails.Find(id);
             db.DesDetails.Remove(desDetail);
             db.SaveChanges();
-            ViewData["SideActive"] = 8;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

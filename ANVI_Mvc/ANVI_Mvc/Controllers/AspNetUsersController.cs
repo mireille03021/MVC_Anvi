@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ANVI_Mvc.Helpers;
 using ANVI_Mvc.Models;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -23,9 +24,9 @@ namespace ANVI_Mvc.Controllers
             //計算Page頁數
             int Pages = hp.Cul_Pages(db.AspNetUsers.Count()); //傳入總筆數
 
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
+            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<AspNetUser> aspNetUsers= db.AspNetUsers.OrderBy(x => x.Id).Skip(startRow).Take(ConstantData.PageRows).ToList();
+            List<AspNetUser> aspNetUsers= db.AspNetUsers.OrderBy(x => x.Id).Skip(startRow).Take(PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
             ViewData["SideActive"] = 13;    //Active Dashboard
@@ -52,6 +53,7 @@ namespace ANVI_Mvc.Controllers
         // GET: AspNetUsers/Create
         public ActionResult Create()
         {
+            ViewBag.City = new SelectList(Citys);
             ViewData["SideActive"] = 13;    //Active Dashboard
             return View();
         }
@@ -85,6 +87,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.City = new SelectList(Citys);
             ViewData["SideActive"] = 13;    //Active Dashboard
             return View(aspNetUser);
         }

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ANVI_Mvc.Helpers;
 using ANVI_Mvc.Models;
+using static ANVI_Mvc.Helpers.ConstantData;
 
 namespace ANVI_Mvc.Controllers
 {
@@ -28,7 +29,7 @@ namespace ANVI_Mvc.Controllers
             List<Category> categories = db.Categories.OrderBy(x => x.CategoryID).Skip(startRow).Take(ConstantData.PageRows).ToList();
 
             ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 4;    //Active Dashboard
+            ViewData["SideActive"] = (int)SideIndex.Category;    //Active Dashboard
             ViewData["Pages"] = Pages;  //頁數
             return View("../BackSystem/ListAllCategory", categories);
         }
@@ -45,14 +46,14 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 4;
+            ViewData["SideActive"] = (int)SideIndex.Category;
             return View(category);
         }
 
         // GET: Categories/Create
         public ActionResult Create()
         {
-            ViewData["SideActive"] = 4;
+            ViewData["SideActive"] = (int)SideIndex.Category;
             return View();
         }
 
@@ -69,7 +70,7 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = 4;
+            ViewData["SideActive"] = (int)SideIndex.Category;
             return View(category);
         }
 
@@ -85,7 +86,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 4;
+            ViewData["SideActive"] = (int)SideIndex.Category;
             return View(category);
         }
 
@@ -102,7 +103,7 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = 4;
+            ViewData["SideActive"] = (int)SideIndex.Category;
             return View(category);
         }
 
@@ -118,7 +119,7 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 4;
+            ViewData["SideActive"] = (int)SideIndex.Category;
             return View(category);
         }
 
@@ -130,7 +131,7 @@ namespace ANVI_Mvc.Controllers
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category);
             db.SaveChanges();
-            ViewData["SideActive"] = 4;
+            ViewData["SideActive"] = (int)SideIndex.Category;
             return RedirectToAction("Index");
         }
 

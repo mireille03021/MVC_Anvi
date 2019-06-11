@@ -234,6 +234,7 @@
     <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Shipper.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\SidebarItemViewModels.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -564,6 +565,7 @@
     <Content Include="Views\BackSystem\ListAllOrder.cshtml" />
     <Content Include="Views\BackSystem\ListAllShipper.cshtml" />
     <Content Include="Views\BackSystem\ListAllIdentityModels.cshtml" />
+    <Content Include="Views\BackSystem\BackSystemRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

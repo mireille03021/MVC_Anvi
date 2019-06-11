@@ -89,6 +89,9 @@ namespace ANVI_Mvc.Models
         [Phone]
         [Display(Name = "電話號碼")]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public string RoleString { get; set; }
     }
 
     public class ResetPasswordViewModel
