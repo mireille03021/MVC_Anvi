@@ -29,3 +29,4 @@ $(function () {
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(s, x);
     //$("<p></p>").text("@286yoxxl").prependTo(".LyWrap");
+});
