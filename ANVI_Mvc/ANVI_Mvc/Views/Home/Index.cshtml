@@ -7,13 +7,7 @@
     <link href="~/Assets/css/header-styles-index.css" rel="stylesheet" />
     <link href="~/Assets/css/hot.css" rel="stylesheet" />
     <link href="~/Assets/css/Home__Slideshow.css" rel="stylesheet" />
-@*<<<<<<< HEAD*@
-    
-
-
-@*=======*@
     <link href="~/Assets/css/index_bottom.css" rel="stylesheet" />
-@*>>>>>>> 90794c9d9b6b5a8a50afa45c6d20628937a3c1e0*@
 }
 @section endJS
 {
@@ -22,7 +16,9 @@
     <script type="text/javascript" src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="~/Assets/js/Home.js"></script>
-    <script type="text/javascript" src="~/Assets/js/headerjava.js"></script>
+    <script src="~/Assets/js/headerjava.js"></script>
+    <script src="~/Assets/js/hot.js"></script>
+
 
 }
 @*<div class="jumbotron">
@@ -74,7 +70,7 @@
                          class=" Slideshow__Slide Carousel__Cell"
                          style="visibility: visible"
                          data-slide-index="0">
-                        <div id="animation_1" class="Slideshow__ImageContainer   hidden-tablet-and-up"
+                        <div id="animation_1" class="Slideshow__ImageContainer"
                              style=" background-image: url(/Assets/images/Home/HP2_1800x.jpg)">
                             <img class="Slideshow__Image Image--lazyLoad"
                                  src="~/Assets/images/Home/HP2_1800x.jpg"
@@ -114,7 +110,7 @@
                     <div id="Slideslide-2"
                          class=" Slideshow__Slide Carousel__Cell "
                          data-slide-index="1">
-                        <div id="animation_2" class=" Slideshow__ImageContainer   hidden-tablet-and-up"
+                        <div id="animation_2" class=" Slideshow__ImageContainer"
                              style=" background-image: url(/Assets/images/Home/HP_1600x.jpg)">
                             <img class=" Slideshow__Image Image--lazyLoad"
                                  src="~/Assets/images/Home/HP_1600x.jpg"
@@ -155,7 +151,7 @@
                          class="Slideshow__Slide Carousel__Cell "
                          data-slide-index="2">
                         <div id="animation_3"
-                             class="Slideshow__ImageContainer   hidden-tablet-and-up"
+                             class="Slideshow__ImageContainer"
                              style=" background-image: url(/Assets/images/Home/ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg)">
                             <img class="Slideshow__Image Image--lazyLoad"
                                  src="~/Assets/images/Home/ANVI-GRACEFUL_ADVENTURE-Spring_Summer_2019_Collection_HomeSlide1_1800x.jpg"
@@ -290,9 +286,9 @@
                                         <!-- 這邊有很多 -->
                                     </div>
                                     <!-- 記得點點要改位置或隱藏 -->
-                                    <span class="ShopTheLook__Dot ShopTheLook__Dot--light" style="left:73%;top:57%;">
+                                    <span id="ShopTheLook__Dot1" class="ShopTheLook__Dot ShopTheLook__Dot--light is--active" style="left:73%;top:57%;">
                                     </span>
-                                    <span class="ShopTheLook__Dot ShopTheLook__Dot--light is--active" style="left:66%;top:37%;">
+                                    <span id="ShopTheLook__Dot2" class="ShopTheLook__Dot ShopTheLook__Dot--light " style="left:66%;top:37%;">
                                     </span>
 
                                 </div>
@@ -304,7 +300,7 @@
                                                     <div class="ProductItem__Wrapper">
                                                         <a href="" class="ProductItem__ImageWrapper ProductItem__ImageWrapper--withAlternateImage ">
                                                             <!-- <div class="AspectRatio AspectRatio--withFallback" style="max-width:1050px;padding-bottom:100.0%;--aspcet-ratio:1.0;"> -->
-                                                            <img src="~/Assets/images/Necklaces/4_5400f2af-b2e2-4fc0-9d7a-14cd08bec319_900x.jpg" alt="八芒星圓片吊飾純銀項鍊" class="ProductItem__Image ProductItem__Image Image--fadeIn lazyautosizes Image--lazyLoaded" sizes="250px">
+                                                            <img src="~/Assets/images/Necklaces/4_5400f2af-b2e2-4fc0-9d7a-14cd08bec319_900x.jpg" alt="八芒星圓片吊飾純銀項鍊" class="ProductItem__Image Image--fadeIn lazyautosizes Image--lazyLoaded" sizes="250px">
                                                             <img src="~/Assets/images/Necklaces/N19403_900x.jpg" alt="八芒星圓片吊飾純銀項鍊" class="ProductItem__Image ProductItem__Image--alternate Image--fadeIn lazyautosizes Image--lazyLoaded" sizes="250px">
                                                             <span class="Image__Loader"></span>
                                                             <!-- </div> -->
@@ -363,8 +359,8 @@
                                         VIEW THIS PRODUCT
                                     </a>
                                     <ol class="flickity-page-dots">
-                                        <li class="dottodot is-selected"></li>
-                                        <li class="dottodot "></li>
+                                        <li id="dottodot1" class="dottodot is-selected"></li>
+                                        <li id="dottodot2" class="dottodot"></li>
                                     </ol>
                                 </div>
 
@@ -910,79 +906,84 @@
 
 
 
-    //$(function () {
-    //    $(".shop").hover(function () {
-    //        $(".MenuList").css("visibility", "visible");
-    //    });
+                //$(function () {
+                //    $(".shop").hover(function () {
+                //        $(".MenuList").css("visibility", "visible");
+                //    });
+                //});
+
+                //$(function () {
+                //    $(".new").hover(function () {
+                //        $(".MenuList").css("visibility", "hidden");
+                //    });
+                //});
+                //$(function () {
+                //    $(".about_us").hover(function () {
+                //        $(".MenuList").css("visibility", "hidden");
+                //    });
+                //});
+
+                //$(function () {
+                //    $(".MenuList").hover(function () {
+                //        $(".MenuList").css("visibility", "visible");
+                //    }, function () {
+                //        $(".MenuList").css("visibility", "hidden");
+                //    });
+                //});
+                //$(function () {
+                //    $(".topnemu").hover(function () {
+
+                //    }, function () {
+                //        $(".MenuList").css("visibility", "hidden");
+                //    });
+                //});
+                ////應該要寫一個語法合併上面
+
+
+
+
+                //$(window).scroll(function () {
+                //    var scroll = $(window).scrollTop();
+
+                //    if (scroll >= 15) {
+                //        $('#header').addClass('fixed');
+
+                //        $(".topnemu").css("background-color", "#ffffff");
+                //        $(".topnemu").css("color", "#1C1B1B");
+                //        $(".SListItem").css("color", "#1C1B1B");
+                //        $(".username a").css("color", "#1C1B1B");
+                //        $(".search a").css("color", "#1C1B1B");
+                //        $(".topnemu a").css("color", "#1C1B1B");
+                //        $(".topnemulinetwo ul").css("border-bottom", "#dddddd 1px solid");
+                //        $(".LogoImage").css("background-image", "url('/Assets/images/Logo/ANVI-Logo-Black_140x@2x.png')");
+
+
+                //    } else if (scroll == 0) {
+                //        $('#header').removeClass('fixed');
+
+                //        $(".topnemu").css("background-color", "transparent");
+                //        $(".topnemu").css("color", "#ffffff");
+                //        $(".SListItem").css("color", "#ffffff");
+                //        $(".username a").css("color", "#ffffff");
+                //        $(".search a").css("color", "#ffffff");
+                //        $(".topnemu a").css("color", "#ffffff");
+                //        $(".topnemulinetwo ul").css("border-bottom", "#ffffff 1px solid");
+                //        $(".LogoImage").css("background-image", "url('/Assets/images/Logo/ANVI-Logo-White_140x@2x.png')");
+
+
+
+                //    } else {
+                //        $('#header').removeClass('fixed');
+
+                //    }
+
+                //});
+
+<<<<<<< HEAD
     //});
 
-    //$(function () {
-    //    $(".new").hover(function () {
-    //        $(".MenuList").css("visibility", "hidden");
-    //    });
-    //});
-    //$(function () {
-    //    $(".about_us").hover(function () {
-    //        $(".MenuList").css("visibility", "hidden");
-    //    });
-    //});
-
-    //$(function () {
-    //    $(".MenuList").hover(function () {
-    //        $(".MenuList").css("visibility", "visible");
-    //    }, function () {
-    //        $(".MenuList").css("visibility", "hidden");
-    //    });
-    //});
-    //$(function () {
-    //    $(".topnemu").hover(function () {
-
-    //    }, function () {
-    //        $(".MenuList").css("visibility", "hidden");
-    //    });
-    //});
-    ////應該要寫一個語法合併上面
-
-
-
-
-    //$(window).scroll(function () {
-    //    var scroll = $(window).scrollTop();
-
-    //    if (scroll >= 15) {
-    //        $('#header').addClass('fixed');
-
-    //        $(".topnemu").css("background-color", "#ffffff");
-    //        $(".topnemu").css("color", "#1C1B1B");
-    //        $(".SListItem").css("color", "#1C1B1B");
-    //        $(".username a").css("color", "#1C1B1B");
-    //        $(".search a").css("color", "#1C1B1B");
-    //        $(".topnemu a").css("color", "#1C1B1B");
-    //        $(".topnemulinetwo ul").css("border-bottom", "#dddddd 1px solid");
-    //        $(".LogoImage").css("background-image", "url('/Assets/images/Logo/ANVI-Logo-Black_140x@2x.png')");
-
-
-    //    } else if (scroll == 0) {
-    //        $('#header').removeClass('fixed');
-
-    //        $(".topnemu").css("background-color", "transparent");
-    //        $(".topnemu").css("color", "#ffffff");
-    //        $(".SListItem").css("color", "#ffffff");
-    //        $(".username a").css("color", "#ffffff");
-    //        $(".search a").css("color", "#ffffff");
-    //        $(".topnemu a").css("color", "#ffffff");
-    //        $(".topnemulinetwo ul").css("border-bottom", "#ffffff 1px solid");
-    //        $(".LogoImage").css("background-image", "url('/Assets/images/Logo/ANVI-Logo-White_140x@2x.png')");
-
-
-
-    //    } else {
-    //        $('#header').removeClass('fixed');
-
-    //    }
-
-    //});
-   
+=======
+>>>>>>> 90786a4dbe875f37cd7089922b4ad38cc9515f94
 
 
 

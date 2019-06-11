@@ -6,16 +6,13 @@
 }
 @section topCSS
 {
-    <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
+    @*<link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">*@
     <link href="~/Assets/css/ProductDetailPage.css" rel="stylesheet" />
 }
 @section topJS
 {
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
 }
-
-<!--浮動視窗的黑色半透明背景-->
-<div id="PageOverBlack" class="PageOverlay"></div>
 
 <main id="main" role="main">
     <div id="shopify-section-product-template" class="shopify-section shopify-section--bordered">
@@ -55,76 +52,81 @@
                                 <h1 name="ProductName" class="u-h2 Heading">@Model.Product.ProductName</h1>
                                 <div name="UnitPrice" class="Heading ProductMeta__PriceList">$@Model.Product.UnitPrice.ToString("##,###") TWD</div>
                             </div>
-                                <div id="PF-V">
-                                    <div id="PF-O" class="ProductForm__Option ProductForm__Option--labelled">
-                                        <span>COLOR：</span>
-                                        <button type="button" id="PFI-b" class="ProductForm__Item">
-                                            <span id="PFON">@ViewData["ColorName"]</span>
-                                            <svg class="Icon Icon--select-arrow"></svg>
-                                        </button>
-                                        @* 這個form之後會搬到PartialView *@
-                                        @*@{
-                                                var colorList = new List<Color>();
-                                                foreach (var item in Model.ProductDetailViewModels)
-                                                {
-                                                    if (colorList.All(x => x.ColorID != item.ColorID))
-                                                    {
-                                                        colorList.Add(new Color() { ColorID = item.ColorID, ColorName = item.ColorName });
-                                                    }
-                                                }
-                                                var ColorList = new SelectList(colorList, "ColorName", "ColorName");
-                                            }
-                                            @Html.DropDownList("DropDownList_Color", ColorList, new { @class = "" })
-                                            <input type="submit" value="確認顏色" name="ChangeColor" />*@
-                                    </div>
-                                    @if (Model.ProductDetailViewModels.GroupBy(x => x.SizeID).Count() > 1)
-                                    {
-                                        <div id="PF-O_01" class="ProductForm__Option ProductForm__Option--labelled">
-                                            <span>
-                                                Size：
-                                                <button type="button" class="ProductForm__LabelLink Text--subdued Link">
-                                                    Size chart
-                                                </button>
-                                                <!-- data-action="open-modal" aria-controls="modal-size-chart" -->
-                                            </span>
-                                            <ul class="HorizontalList HorizontalList--spacingTight">
-                                                @{
-                                                    var i = 0;
-                                                }
-                                                @foreach (var size in Model.ProductDetailViewModels.Where(x => x.ColorName == ViewData["ColorName"].ToString()))
-                                                {
-                                                    <li class="HorizontalList__Item">
-                                                        @if (i != 0)
-                                                        {
-                                                            <input type="radio" id="option-1-@i" name="option-1" value="@size.SizeContext" class="SizeSwatch__Radio">
-                                                        }
-                                                        else
-                                                        {
-                                                            <input type="radio" id="option-1-@i" name="option-1" value="@size.SizeContext" class="SizeSwatch__Radio" checked="checked">
-                                                        }
-
-                                                        <label for="option-1-@i" class="SizeSwatch">@size.SizeContext</label>
-                                                    </li>
-                                                    i++;
-                                                }
-                                            </ul>
-                                        </div>
-                                    }
-                                    <div class="ProductForm__Option">
-                                        <label>庫存量 : </label>
-                                        <span class="ProductForm__Inventory Text--subdued" id="Stock" name="Stock">
-                                            @if (Model.ProductDetailViewModels.GroupBy(x => x.SizeID).Count() == 1)
+                            <div id="PF-V">
+                                <div id="PF-O" class="ProductForm__Option ProductForm__Option--labelled">
+                                    <span>COLOR：</span>
+                                    <button type="button" id="PFI-b" class="ProductForm__Item">
+                                        <span id="PFON">@ViewData["ColorName"]</span>
+                                        <svg class="Icon Icon--select-arrow" role="presentation"
+                                             viewBox="0 0 19 12">
+                                            <polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2"
+                                                      fill-rule="evenodd" stroke-width="2" stroke-linecap="square">
+                                            </polyline>
+                                        </svg>
+                                    </button>
+                                    @* 這個form之後會搬到PartialView *@
+                                    @*@{
+                                            var colorList = new List<Color>();
+                                            foreach (var item in Model.ProductDetailViewModels)
                                             {
-                                                @Model.ProductDetailViewModels[0].Stock
+                                                if (colorList.All(x => x.ColorID != item.ColorID))
+                                                {
+                                                    colorList.Add(new Color() { ColorID = item.ColorID, ColorName = item.ColorName });
+                                                }
                                             }
-                                        </span>
-                                    </div>
+                                            var ColorList = new SelectList(colorList, "ColorName", "ColorName");
+                                        }
+                                        @Html.DropDownList("DropDownList_Color", ColorList, new { @class = "" })
+                                        <input type="submit" value="確認顏色" name="ChangeColor" />*@
                                 </div>
-                                <button class="ProductForm__AddToCart Button Button--secondary Button--full" id="AddToCart">
-                                    <span>Add to cart</span>
-                                    <span class="Button__SeparatorDot"></span>
-                                    <span name="UnitPrice">$@Model.Product.UnitPrice.ToString("##,###") TWD</span>
-                                </button>
+                                @if (Model.ProductDetailViewModels.GroupBy(x => x.SizeID).Count() > 1)
+                                {
+                                    <div id="PF-O_01" class="ProductForm__Option ProductForm__Option--labelled">
+                                        <span>
+                                            Size：
+                                            <button type="button" class="ProductForm__LabelLink Text--subdued Link">
+                                                Size chart
+                                            </button>
+                                            <!-- data-action="open-modal" aria-controls="modal-size-chart" -->
+                                        </span>
+                                        <ul class="HorizontalList HorizontalList--spacingTight">
+                                            @{
+                                                var i = 0;
+                                            }
+                                            @foreach (var size in Model.ProductDetailViewModels.Where(x => x.ColorName == ViewData["ColorName"].ToString()))
+                                            {
+                                                <li class="HorizontalList__Item">
+                                                    @if (i != 0)
+                                                    {
+                                                        <input type="radio" id="option-1-@i" name="option-1" value="@size.SizeContext" class="SizeSwatch__Radio">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" id="option-1-@i" name="option-1" value="@size.SizeContext" class="SizeSwatch__Radio" checked="checked">
+                                                    }
+
+                                                    <label for="option-1-@i" class="SizeSwatch">@size.SizeContext</label>
+                                                </li>
+                                                i++;
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                                <div class="ProductForm__Option">
+                                    <label>庫存量 : </label>
+                                    <span class="ProductForm__Inventory Text--subdued" id="Stock" name="Stock">
+                                        @if (Model.ProductDetailViewModels.GroupBy(x => x.SizeID).Count() == 1)
+                                        {
+                                            @Model.ProductDetailViewModels[0].Stock
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                            <button class="ProductForm__AddToCart Button Button--secondary Button--full" id="AddToCart">
+                                <span>Add to cart</span>
+                                <span class="Button__SeparatorDot"></span>
+                                <span name="UnitPrice">$@Model.Product.UnitPrice.ToString("##,###") TWD</span>
+                            </button>
                             <div id="S-pay-Btn" class="shopify-payment-button">
                                 <form action="/Home/BuyItNow" method="post">
                                     <div>
@@ -167,7 +169,7 @@
                         <div id="tran" class="Collapsible Collapsible--large">
                             <button class="Collapsible__Button u-h6 Heading" aria-expanded="false">
                                 運送須知
-                                <span></span>
+                                <span class="Collapsible__Plus"></span>
                             </button>
                             <div id="CI_01" class="Collapsible__Inner">
                                 <div class="Collapsible__Content">
@@ -214,7 +216,7 @@
                             <button class="Collapsible__Button u-h6 Heading" aria-expanded="false">
                                 退/換貨須知
                                 <!--data-action="Collapsible_Btn_TF()" onclick="Collapsible_Btn_TF()"-->
-                                <span></span>
+                                <span class="Collapsible__Plus"></span>
                             </button>
                             <div class="Collapsible__Inner">
                                 <div class="Collapsible__Content">
@@ -242,7 +244,8 @@
             </div>
 
             <div id="colorselect_part" class="VariantSelector" aria-hidden="true">
-                <div class="VariantSelector__Carousel Carousel" data-flickity='{ "prevNextButtons": true,
+                <div class="VariantSelector__Carousel Carousel flickity-enabled is-draggable"
+                     data-flickity-config='{ "prevNextButtons": true,
                         "pageDots": true,
                         "initialIndex": 0,
                         "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25} }'>
@@ -436,6 +439,7 @@
 @section endJS
 {
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
+
     <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
 
     <!--html的scroll-->
@@ -568,7 +572,8 @@
     <script>
 
         /*運送、退貨*/
-        var Collapsible_Btn_OC = document.getElementsByClassName("Collapsible__Button");
+        var Collapsible_Btn_OC = document.getElementsByClassName("Collapsible Collapsible--large>Collapsible__Button");
+        console.log(Collapsible_Btn_OC);
         for (var i = 0; i < Collapsible_Btn_OC.length; i++) {
             Collapsible_Btn_OC[i].onclick = Collapsible_Btn_TF;
         }
@@ -671,13 +676,13 @@
                 }
                 if (@price.Length > 3) {
                     var addcartext = "<span>Add to cart</span>" +
-                        "<span class='Button__SeparatorDot'>.</span>" +
+                        "<span class='Button__SeparatorDot'></span>" +
                         "<span>$" +
                         "@price.Insert(price.Length-3,",")" +
                         " TWD</span>";
                 } else {
                     var addcartext = "<span>Add to cart</span>" +
-                        "<span class='Button__SeparatorDot'>.</span>" +
+                        "<span class='Button__SeparatorDot'></span>" +
                         "<span>$" +
                         "@price" +
                         " TWD</span>";

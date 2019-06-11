@@ -178,7 +178,7 @@ Rte h1 {
 
 .ShopTheLook__ImageWrapper {
     width: 413px;
-    background: url(/Assets/images/otherphoto/IMG_0734_1200x.progressive.jpg);
+    /*background: url(/Assets/images/otherphoto/IMG_0734_1200x.progressive.jpg);*/
     -webkit-box-flex: 0;
     flex: 0 1 auto;
     position: relative;

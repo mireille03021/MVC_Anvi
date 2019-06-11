@@ -258,6 +258,7 @@
     <Content Include="Assets\css\footer.css" />
     <Content Include="Assets\css\header-styles-index.css" />
     <Content Include="Assets\css\header-styles.css" />
+    <Content Include="Assets\css\header_style_black.css" />
     <Content Include="Assets\css\Home__Slideshow.css" />
     <Content Include="Assets\css\hot.css" />
     <Content Include="Assets\css\Login.css" />
@@ -412,6 +413,7 @@
     <Content Include="Assets\js\header-js.js" />
     <Content Include="Assets\js\headerjava.js" />
     <Content Include="Assets\js\Home.js" />
+    <Content Include="Assets\js\hot.js" />
     <Content Include="Assets\js\jquery-3.3.1.js" />
     <Content Include="Assets\js\Order_Check.js" />
     <Content Include="Assets\js\Order_Customer.js" />
@@ -430,6 +432,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\json\hot.json" />
     <None Include="Properties\PublishProfiles\ANVIMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
