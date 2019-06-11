@@ -3087,6 +3087,22 @@
     <Content Include="Assets\BackSystem\vendors\popper.js\LICENSE.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\MENTIONS.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\package.json" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\README.md" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\yarn.lock" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\.bower.json" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\codropsicons\codropsicons.eot" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\codropsicons\codropsicons.ttf" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\codropsicons\codropsicons.woff" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\icomoon\icomoon.eot" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\icomoon\icomoon.woff" />
+    <Content Include="Assets\BackSystem\vendors\selectFX\README.md" />
+    <Content Include="Assets\BackSystem\vendors\themify-icons\.bower.json" />
+    <Content Include="Assets\BackSystem\vendors\themify-icons\bower.json" />
+    <Content Include="Assets\BackSystem\vendors\themify-icons\fonts\themify.eot" />
+    <Content Include="Assets\BackSystem\vendors\themify-icons\fonts\themify.ttf" />
+    <Content Include="Assets\BackSystem\vendors\themify-icons\fonts\themify.woff" />
+    <Content Include="Assets\BackSystem\vendors\themify-icons\README.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\babel-config\package.json" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\babel-config\yarn.lock" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\bundle\package.json" />
@@ -3104,22 +3120,6 @@
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test\README.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\package.json" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\yarn.lock" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\README.md" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\yarn.lock" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\.bower.json" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\codropsicons\codropsicons.eot" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\codropsicons\codropsicons.ttf" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\codropsicons\codropsicons.woff" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\icomoon\icomoon.eot" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\icomoon\icomoon.ttf" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\fonts\icomoon\icomoon.woff" />
-    <Content Include="Assets\BackSystem\vendors\selectFX\README.md" />
-    <Content Include="Assets\BackSystem\vendors\themify-icons\.bower.json" />
-    <Content Include="Assets\BackSystem\vendors\themify-icons\bower.json" />
-    <Content Include="Assets\BackSystem\vendors\themify-icons\fonts\themify.eot" />
-    <Content Include="Assets\BackSystem\vendors\themify-icons\fonts\themify.ttf" />
-    <Content Include="Assets\BackSystem\vendors\themify-icons\fonts\themify.woff" />
-    <Content Include="Assets\BackSystem\vendors\themify-icons\README.md" />
     <None Include="Properties\PublishProfiles\ANVIMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -3290,11 +3290,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\popper\index.d.ts" />
-    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\index.d.ts" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\popper\index.d.ts" />
+    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
