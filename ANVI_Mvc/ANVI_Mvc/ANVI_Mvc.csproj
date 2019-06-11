@@ -2156,9 +2156,20 @@
     <Content Include="Assets\BackSystem\vendors\popper.js\docs\_layouts\page-nowrap.html" />
     <Content Include="Assets\BackSystem\vendors\popper.js\docs\_layouts\page.html" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\babel-config\index.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\babel-config\package.json" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\babel-config\yarn.lock" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\bundle\index.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\bundle\package.json" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\bundle\yarn.lock" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\eslint-config-popper\index.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\eslint-config-popper\package.json" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\eslint-config-popper\yarn.lock" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\bower-publish.sh" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\bower.json" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\bundle.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\index.js.flow" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\package.json" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\README.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\src\index.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\src\methods\defaults.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\src\methods\destroy.js" />
@@ -2220,6 +2231,7 @@
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\src\utils\setAttributes.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\src\utils\setStyles.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\src\utils\setupEventListeners.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\package.json" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\setup.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\utils\appendNewPopper.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\utils\appendNewRef.js" />
@@ -2232,10 +2244,15 @@
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\utils\prepend.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\utils\simulateScroll.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\utils\then.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\yarn.lock" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test\bin\karma.js" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\test\karma.conf.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test\package.json" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test\README.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\bundle.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\package.json" />
     <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\src\index.js" />
+    <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\yarn.lock" />
     <Content Include="Assets\BackSystem\vendors\popper.js\popperjs.png" />
     <Content Include="Assets\BackSystem\vendors\selectFX\css\cs-select.css" />
     <Content Include="Assets\BackSystem\vendors\selectFX\css\cs-skin-border.css" />
@@ -3086,23 +3103,6 @@
     <Content Include="Assets\BackSystem\vendors\popper.js\LICENSE.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\MENTIONS.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\babel-config\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\babel-config\yarn.lock" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\bundle\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\bundle\yarn.lock" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\eslint-config-popper\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\eslint-config-popper\yarn.lock" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\bower-publish.sh" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\bower.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\index.js.flow" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\popper\README.md" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test-utils\yarn.lock" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\test\README.md" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\package.json" />
-    <Content Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\yarn.lock" />
     <Content Include="Assets\BackSystem\vendors\popper.js\README.md" />
     <Content Include="Assets\BackSystem\vendors\popper.js\yarn.lock" />
     <Content Include="Assets\BackSystem\vendors\selectFX\.bower.json" />
@@ -3286,11 +3286,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\popper\index.d.ts" />
-    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\index.d.ts" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\popper\index.d.ts" />
+    <TypeScriptCompile Include="Assets\BackSystem\vendors\popper.js\packages\tooltip\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
