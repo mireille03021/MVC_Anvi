@@ -18,6 +18,13 @@ namespace ANVI_Mvc.Helpers
             "金門縣", "連江縣"
         };
 
+        public enum SideGroup
+        {
+            product = 1,
+            order = 2,
+            Identity = 3
+        }
+
         public enum SideIndex
         {
             Index = 1,
