@@ -1,6 +1,12 @@
 ﻿@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+TC|Titillium+Web&display=swap');
 /*大範圍*/
+*, *:before, *:after {
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 article, aside, details, figcaption, figure, footer, header, main, nav, section, summary {
   display: block;
