@@ -19,11 +19,12 @@
     <!-- fontawesome -->
     <link href="~/Assets/css/header-styles.css" rel="stylesheet" />
     <link href="~/Assets/css/header_style_black.css" rel="stylesheet" />
+    <link href="~/Assets/css/footer.css" rel="stylesheet" />
     <!-- CSS檔引入 -->
     <link rel="shortcut icon" href="~/Assets/images/Logo/ANVI_FAVICON_32x32.png" type="image/png">
     @RenderSection("topCSS", false)
     @RenderSection("topJS", false)
-    <link href="~/Assets/css/footer.css" rel="stylesheet" />
+
 
 </head>
 <body>
@@ -422,7 +423,7 @@
                     <div class="Header__FlexItem Header__FlexItem--fill">
                         <div class="userlist hidden-pocket hidden-lap">
 
-                            <nav class="topnemulineone">
+                            <nav class="topnemulinenav">
                                 <ul class="lineonelist">
                                     <li class="account"> <a href="/Home/AccountPage">帳號</a></li>
                                     <li class="search"><a href="/Search/SearchIndex">搜尋</a></li>
@@ -570,7 +571,7 @@
                 </div>
             </footer>
             <div class="Footer__end">
-                <a href="https://www.anvistudios.com" class="Footer__StoreName Heading u-h7 Link Link--secondary">© KUMA | 日常輕珠寶成就女性迷人魅力</a>
+                <a href="/Home/Index" class="Footer__StoreName Heading u-h7 Link Link--secondary">© KUMA | 日常輕珠寶成就女性迷人魅力</a>
             </div>
             <div class="Footer__end">
                 <a href="/BackSystem/Index">&nbsp;</a>

@@ -24,7 +24,8 @@ namespace ANVI_Mvc.Helpers
             product = 1,
             order = 2,
             Identity = 3,
-            Chart = 4
+            productChart = 4,
+            OrderChart = 5
         }
 
         public enum SideIndex
@@ -43,7 +44,8 @@ namespace ANVI_Mvc.Helpers
             Shipper = 12,
             IdentityModels = 13,
             BackSystemRegister = 14,
-            AllStockChart = 15
+            AllStockChart = 15,
+            AllKindChart = 16
         }
     }
 }

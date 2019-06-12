@@ -3,8 +3,10 @@
 @{
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "產品";
+    ViewBag.isListAll = "true";
     int i = 0;
 }
+
 
 <div class="breadcrumbs">
     <div class="col-sm-4">
@@ -99,28 +101,28 @@
                                                 {
                                                     classstring = "role=\"row\" class=\"odd\"";
                                                 }
-                                                    <tr @classstring>
-                                                        <td class="sorting_1">
-                                                            @Html.DisplayFor(modelItem => item.ProductID)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.ProductName)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.UnitPrice)
-                                                        </td>
-                                                        <td>
-                                                            @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductID }, new { @class = "" }) |
-                                                            @Html.ActionLink("Details", "Details", "Products", new { id = item.ProductID }, new { @class = "" }) |
-                                                            @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductID }, new { @class = "" })
-                                                        </td>
-                                                    </tr>
-                                                }
+                                                <tr @classstring>
+                                                    <td class="sorting_1">
+                                                        @Html.DisplayFor(modelItem => item.ProductID)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ProductName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductID }, new { @class = "" }) |
+                                                        @Html.ActionLink("Details", "Details", "Products", new { id = item.ProductID }, new { @class = "" }) |
+                                                        @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductID }, new { @class = "" })
+                                                    </td>
+                                                </tr>
+                                            }
 
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>

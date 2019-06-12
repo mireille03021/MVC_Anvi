@@ -40,7 +40,7 @@ namespace ANVI_Mvc.Controllers
         {
             return View();
         }
-        public ActionResult AllChart()
+        public ActionResult AllKindChart()
         {
             return View();
         }

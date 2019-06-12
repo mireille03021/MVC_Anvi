@@ -262,8 +262,8 @@
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BackSystem\assets\css\CRUD-style.css" />
     <Content Include="Assets\BackSystem\assets\css\style.css" />
-    <Content Include="Assets\BackSystem\assets\css\ListAll-style.css" />
     <Content Include="Assets\BackSystem\assets\js\dashboard.js" />
     <Content Include="Assets\BackSystem\assets\js\index.html" />
     <Content Include="Assets\BackSystem\assets\js\init-scripts\chart-js\chartjs-init.js" />
@@ -3267,6 +3267,7 @@
     <Content Include="Views\Shared\_BackSystem_LoginNavbarHeaderPartial.cshtml" />
     <Content Include="Views\Other\About.cshtml" />
     <Content Include="Views\BackSystem\AllStockChart.cshtml" />
+    <Content Include="Views\BackSystem\AllKindChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

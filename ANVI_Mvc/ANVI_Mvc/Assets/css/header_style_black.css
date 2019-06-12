@@ -820,6 +820,10 @@ svg:not(:root) {
         -ms-flex: 1 0 0px;
         flex: 1 0 0;
     }
+
+    .Header__FlexItem:last-child {
+        text-align: right;
+    }
 }
 
 @media screen and (min-width: 1008px) {
