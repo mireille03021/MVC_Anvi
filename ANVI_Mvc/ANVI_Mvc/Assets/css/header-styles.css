@@ -83,6 +83,10 @@ body {
     padding: 18px 20px 0px 20px;
 }
 
+.topnemulinenav {
+    padding: 18px 20px 0px 20px;
+}
+
 .topnemulinetwo {
     width: 100%;
     text-align: center;
@@ -111,9 +115,6 @@ body {
 .linetwolist {} */
 
 .userlist {
-    width: 539px;
-    display: flex;
-    justify-content: flex-end;
     margin-bottom: 30px;
 }
 
@@ -295,10 +296,6 @@ a {
 .shopify-section--header {
     position: -webkit-sticky;
     position: sticky;
-}
-
-.shopify-section--header {
-    margin-bottom: calc(-1 * var(--header-height));
 }
 
 @media screen and (max-width: 640px) {
