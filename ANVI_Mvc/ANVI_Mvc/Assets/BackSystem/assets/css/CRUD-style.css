@@ -2482,3 +2482,10 @@ header .form-inline {
         font-size: 18px;
         color:black;
     }
+.modal-content {
+    padding:25px;
+
+}
+    .modal-content h3 {
+    margin-bottom:10px;
+    }
