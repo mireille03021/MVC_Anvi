@@ -36,6 +36,15 @@ namespace ANVI_Mvc.Controllers
             return RedirectToAction("Register", "Account");
         }
 
+        public ActionResult AllStockChart()
+        {
+            return View();
+        }
+        public ActionResult AllChart()
+        {
+            return View();
+        }
+
         public ActionResult ListAllProduct(int id = 1)
         {
             int activePage = id; //目前所在頁

@@ -74,12 +74,12 @@ window.onscroll = function () {
     var scrollHeight = document.body.scrollHeight;
 
     if (scrollTop == 0) {
-        document.getElementById("header").className = "";
-        document.getElementById("header").style.position = "absolute";
+        //document.getElementById("header").className = "";
+        //document.getElementById("header").style.position = "absolute";
     } else if (scrollTop >= 15) {
 
-        document.getElementById("header").className = "fixed";
-        document.getElementById("header").style.position = "fixed";
+        //document.getElementById("header").className = "fixed";
+        //document.getElementById("header").style.position = "fixed";
         var topmenu = document.getElementsByClassName("topnemu")[0];
         topmenu.style.backgroundColor = "#ffffff";
         topmenu.style.color = "#1C1B1B";
@@ -102,8 +102,8 @@ window.onscroll = function () {
 
     }
     else {
-        document.getElementById("header").className = "";
-        document.getElementById("header").style.position = "absolute";
+        //document.getElementById("header").className = "";
+        //document.getElementById("header").style.position = "absolute";
     }
 
 
