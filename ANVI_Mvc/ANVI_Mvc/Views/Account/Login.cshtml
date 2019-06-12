@@ -37,7 +37,7 @@
                         @*<input type="email" n.ame="customer[email]" id="" placeholder="Email" class="F-Input">*@
                         @Html.TextBoxFor(m => m.Email, new { @name = "customer[Email]", @placeholder = "Email", @class = "F-Input" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        @*<label for="" class="F-FLabel">Email</label>*@
+                        <label for="" class="F-FLabel">Email</label>
                     </div>
 
                     <div class="F-Item">
@@ -45,7 +45,7 @@
                         @*<input type="password" name="customer[password]" id="" placeholder="Password" class="F-Input">*@
                         @Html.PasswordFor(m => m.Password, new { @name = "customer[password]", @placeholder = "Password", @class = "F-Input" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        @*<label class="F-FLabel">Password</label>*@
+                        <label class="F-FLabel">Password</label>
                         <button class="F-ItemSOS Link Link-pmy">Forgot password?</button>
                         @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項
                             <p>
