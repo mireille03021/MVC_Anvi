@@ -49,5 +49,10 @@ namespace ANVI_Mvc.Controllers
 
             return View();
         }
+        public ActionResult About()
+        {
+
+            return View();
+        }
     }
 }

@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+.subtitle {
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #1c1b1b;
+    border-bottom: 1px solid #1c1b1b;
+}
+
+.page {
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.page {
+    width: 220px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.subtitle {
+    font-size: 13.125px;
+    border-top: 1px solid #c7b299;
+    border-bottom: 1px solid #c7b299;
+    padding: 5px;
+}
+
+.gridrow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 50px 0;
+}
+
+.gridrow64 {
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    margin: 50px 0;
+    height: 480px;
+}
+
+.gridrow32 {
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+    margin: 50px 0;
+   
+    text-align: center;
+}
+
+.privacy-policy .policy-content section>:first-child {
+    font-size: 16.125px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    padding-left: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px !important;
+    margin-top: 0 !important;
+    border-bottom: 1px solid #ccc;
+}
+
+.privacy-policy .policy-content section p {
+    font-size: 13.125px;
+}
+
+.cell {
+    margin: 0 0 40px 0;
+}
+
+.cell>h4 {
+    margin-top: 10px !important;
+}
+
+.cell:nth-child(odd) .photo {
+    height: 160px;
+    width: 160px;
+    background-color: #a78a67;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.cell:nth-child(even) .photo {
+    height: 160px;
+    width: 160px;
+    background-color: #b99962;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.name {
+    font-family: 'Noto Sans TC', sans-serif;
+    /* margin: auto; */
+    line-height: 2.3em;
+    font-size: 5em;
+    color: white;
+    /* font-weight: bold; */
+}
+
+.textabout {
+    margin-top: 20px;
+    padding: 0 18px;
+}
+
+.textabout h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 10px;
+}
