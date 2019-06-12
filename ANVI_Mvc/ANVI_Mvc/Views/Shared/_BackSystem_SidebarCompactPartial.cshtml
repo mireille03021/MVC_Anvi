@@ -95,12 +95,26 @@
             <h3 class="menu-title">圖表</h3><!-- /.menu-title -->
             <li class="menu-item-has-children dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="menu-icon fa fa-bar-chart"></i>產品相關圖表
+                    <i class="menu-icon fa fa-bar-chart"></i>產品相關圖表
                 </a>
                 <ul class="sub-menu children dropdown-menu">
                     @foreach (var item in Model)
                     {
-                        if (item.SideGroup == (int)ConstantData.SideGroup.Chart)
+                        if (item.SideGroup == (int)ConstantData.SideGroup.productChart)
+                        {
+                            <li><i class="menu-icon @item.Icon"></i><a href="@item.Url">@item.Name</a></li>
+                        }
+                    }
+                </ul>
+            </li>
+            <li class="menu-item-has-children dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="menu-icon fa fa-bar-chart"></i>訂單相關圖表
+                </a>
+                <ul class="sub-menu children dropdown-menu">
+                    @foreach (var item in Model)
+                    {
+                        if (item.SideGroup == (int)ConstantData.SideGroup.OrderChart)
                         {
                             <li><i class="menu-icon @item.Icon"></i><a href="@item.Url">@item.Name</a></li>
                         }
