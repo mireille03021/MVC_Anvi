@@ -17,22 +17,31 @@
     <link href="~/Assets/BackSystem/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
     <link href="~/Assets/BackSystem/vendors/selectFX/css/cs-skin-elastic.css" rel="stylesheet" />
     <link href="~/Assets/BackSystem/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/Assets/BackSystem/assets/css/style.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     @RenderSection("topCSS", required: false)
     @RenderSection("topJS", required: false)
 </head>
 <body>
-
-    <aside id="left-panel" class="left-panel">
-        @Html.Partial("_BackSystem_SidebarCompactPartial", new Site().GetCategoriesData())
-    </aside><!-- /#left-panel -->
-    <div id="right-panel" class="right-panel">
-        @Html.Partial("_BackSystem_NavbarHeaderPartial")
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    @if (ViewData["isBack"] == "true")
+    {
+        <div></div>
+        <div id="right-panel" class="right-panel">
+            @Html.Partial("_BackSystem_LoginNavbarHeaderPartial")
             @RenderBody()
-        </main>
-    </div>
+        </div>
+    }
+    else
+    {
+        <aside id="left-panel" class="left-panel">
+            @Html.Partial("_BackSystem_SidebarCompactPartial", new Site().GetCategoriesData())
+        </aside><!-- /#left-panel -->
+        <div id="right-panel" class="right-panel">
+            @Html.Partial("_BackSystem_NavbarHeaderPartial")
+            @RenderBody()
+        </div>
+    }
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
             asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -47,14 +56,14 @@
             integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
     </script>
 
-    <script src="~/Assets/BackSystem/vendors/popper.js/dist/popper.js"></script>
-    <script src="~/Assets/BackSystem/assets/js/main.js"></script>
-    <script src="~/Assets/BackSystem/vendors/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="~/Assets/BackSystem/assets/js/dashboard.js"></script>
-    <script src="~/Assets/BackSystem/assets/js/widgets.js"></script>
-    <script src="~/Assets/BackSystem/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-    <script src="~/Assets/BackSystem/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <script src="~/Assets/BackSystem/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/Assets/BackSystem/vendors/popper.js/dist/popper.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/assets/js/main.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/chart.js/dist/Chart.bundle.min.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/assets/js/dashboard.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/assets/js/widgets.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/jqvmap/dist/jquery.vmap.min.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/jqvmap/dist/maps/jquery.vmap.world.js" type="text/javascript"></script>
 
     @RenderSection("Scripts", required: false)
     @RenderSection("endCSS", required: false)

@@ -3255,6 +3255,7 @@
     <Content Include="Views\Other\Refundpolicy.cshtml" />
     <Content Include="Views\Other\Privacypolicy.cshtml" />
     <Content Include="Views\Other\Termsofservice.cshtml" />
+    <Content Include="Views\Shared\_BackSystem_LoginNavbarHeaderPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
