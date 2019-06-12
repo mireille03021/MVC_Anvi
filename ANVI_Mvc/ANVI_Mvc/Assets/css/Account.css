@@ -964,4 +964,12 @@ svg:not(:root) {
     padding: 35px 40px 40px 40px;
   }
 }
+
+
+a:hover {
+    text-decoration: none;
+    /* 2 */
+ color:black;
+    
+}
 /*# sourceMappingURL=Account.css.map */

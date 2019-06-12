@@ -16,6 +16,7 @@
 @section topCSS
 {
     <link href="~/Assets/css/Order_Customer.css" rel="stylesheet" />
+    <link href="~/Assets/css/Order_Customer.css" rel="stylesheet" />
 }
 @section endJS
 {
@@ -39,7 +40,7 @@
                                 <a href="/Cart/ShoppingCart" class="breadcrumb__link">購物車</a><i class="fas fa-chevron-right"></i>
                             </li>
                         }
-                        
+
                         <li class="breadcrumb__item"><span class="breadcrumb__text">客戶資訊</span><i class="fas fa-chevron-right"></i></li>
                         <li class="breadcrumb__item"><span class="breadcrumb__text">運送方式</span><i class="fas fa-chevron-right"></i></li>
                         <li class="breadcrumb__item"><span class="breadcrumb__text">付款方式</span></li>
@@ -93,7 +94,7 @@
                                                     <span class="page-main__emphasis">@ViewData["UserName"]</span>
                                                     <span>(@ViewData["Email"])</span>
                                                     <br>
-                                                    
+
                                                 </p>
                                             </div>
 
@@ -247,7 +248,7 @@
                             }
                             else
                             {
-                                var BuyOne = (BuyOneViewModel) Session["BuyItNow"];
+                                var BuyOne = (BuyOneViewModel)Session["BuyItNow"];
                                 <a href="/Home/ProductDetailPage/@BuyOne.CartItem.ProductID" class="step__footer__previous-link">
                                     <i class="fas fa-chevron-left"></i><span class="step__footer__previous-link__content">回到商品頁</span>
                                 </a>
