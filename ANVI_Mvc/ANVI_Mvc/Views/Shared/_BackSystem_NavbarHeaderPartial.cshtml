@@ -91,15 +91,16 @@
                     <p>@User.Identity.Name</p>
                 </a>
 
-                <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
 
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                    <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                    <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
-                </div>
+                    <div class="user-menu dropdown-menu">
+                        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
+                            <i class="fa fa-power-off"></i> Logout
+                        </a>
+                    </div>
+                }
             </div>
 
             @*<div class="language-select dropdown" id="language-select">

@@ -921,6 +921,7 @@ svg:not(:root) {
     flex-direction:row-reverse;
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
+    margin-bottom: 40px;
   }
 }
 

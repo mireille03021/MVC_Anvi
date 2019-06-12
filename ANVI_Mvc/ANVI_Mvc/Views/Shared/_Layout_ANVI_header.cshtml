@@ -29,6 +29,8 @@
 <body>
     <!--浮動視窗的黑色半透明背景-->
     <div id="PageOverBlack" class="PageOverlay"></div>
+
+    <!--購物車浮動視窗-->
     <div id="sidebar-cart"
          class="Drawer Drawer--fromRight"
          aria-hidden="true"
@@ -429,7 +431,8 @@
                         </nav>
                     </div>
 
-                    <a href="/Cart/ShoppingCart" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
+                    <!--購物車的RWD圖示-->
+                    <a id="carticon" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
                        data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="購物車">
                         <span class="hidden-tablet-and-up">
                             <svg class="Icon Icon--cart" role="presentation" viewBox="0 0 17 20">

@@ -2,18 +2,21 @@
 $(function() {
     
     var count = 0;
-    $('#cart').click(function() {
+    $('#cart').click(cartpart);
+    $('#carticon').click(cartpart);
+
+    function cartpart() {
         count++;
-        if(count % 2 == 1) {
+        if (count % 2 == 1) {
             $('#PageOverBlack').addClass("is-visible");
             $('#sidebar-cart').attr("aria-hidden", "false");
             $('#html').addClass("no-scroll");
         }
-        if(count % 2 == 0) {
+        if (count % 2 == 0) {
             $('#PageOverBlack').removeClass("is-visible");
         }
-    
-    });
+    }
+
     $('#PageOverBlack').click(function() {
         $('#sidebar-cart').attr("aria-hidden", "true");
         $('#PageOverBlack').removeClass("is-visible");
