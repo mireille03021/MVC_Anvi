@@ -18,7 +18,7 @@
 
 .Footer__Title,
 .Footer__Content {
-    width: 600px;
+    width: 300px;
     margin: 0 auto;
     /* text-align: center; */
 }
@@ -175,7 +175,7 @@ margin-bottom:25px;
   line-height: 0;
 }
 
-.Icon-Wrapper--clickable {
+/*.Icon-Wrapper--clickable {
   position: relative;
   background: transparent;
 }
@@ -189,7 +189,7 @@ margin-bottom:25px;
   bottom: -8px;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
-}
+}*/
 
 .Drawer__Close svg {
   width: 15px;
