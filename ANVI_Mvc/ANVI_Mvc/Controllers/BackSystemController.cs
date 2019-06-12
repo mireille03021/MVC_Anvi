@@ -47,19 +47,20 @@ namespace ANVI_Mvc.Controllers
 
         public ActionResult ListAllProduct(int id = 1)
         {
-            int activePage = id; //目前所在頁
-            int Count = db.Products.Count();
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(Count); //傳入總筆數
+            //int activePage = id; //目前所在頁
+            //int Count = db.Products.Count();
+            ////計算Page頁數
+            //int Pages = hp.Cul_Pages(Count); //傳入總筆數
 
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
+            //int startRow = (activePage - 1) * PageRows;  //起始記錄Index
 
-            List<Product> products = db.Products.OrderBy(x => x.ProductID).Skip(startRow).Take(PageRows).ToList();
+            //List<Product> products = db.Products.OrderBy(x => x.ProductID).Skip(startRow).Take(PageRows).ToList();
 
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Product;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-            ViewData["Count"] = Count;
+            //ViewData["PageActive"] = id;    //Active頁碼
+            //ViewData["SideActive"] = (int)SideIndex.Product;    //Active Dashboard
+            //ViewData["Pages"] = Pages;  //頁數
+            //ViewData["Count"] = Count;
+            List<Product> products = db.Products.OrderBy(x => x.ProductID).ToList();
             return View(products);
         }
         public ActionResult ListAllProductDetail(int id = 1)
