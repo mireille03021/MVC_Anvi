@@ -4,8 +4,8 @@ $(function () {
         var scroll = $(window).scrollTop();
 
         if (scroll >= 15) {
-            $('#header').addClass('fixed');
-            $('#header').css(" position:", "fixed");
+            //$('#header').addClass('fixed');
+            //$('#header').css(" position:", "fixed");
             $(".topnemu").css("background-color", "#ffffff");
             $(".topnemu").css("color", "#1C1B1B");
             $(".SListItem").css("color", "#1C1B1B");
@@ -40,8 +40,8 @@ $(function () {
 
 
         } else if (scroll == 0) {
-            $('#header').removeClass('fixed');
-            $('#header').css(" position:", " absolute");
+            //$('#header').removeClass('fixed');
+            //$('#header').css(" position:", " absolute");
             $(".topnemu").css("background-color", "transparent");
             $(".topnemu").css("color", "#ffffff");
             $(".SListItem").css("color", "#ffffff");
@@ -74,8 +74,8 @@ $(function () {
 
 
         } else {
-            $('#header').removeClass('fixed');
-            $('#header').css(" position:", " absolute");
+            //$('#header').removeClass('fixed');
+            //$('#header').css(" position:", " absolute");
             $("#header").hover(function () {
                 $(".topnemu").css("background-color", "#ffffff");
                 $(".topnemu").css("color", "#1C1B1B");
