@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anvi</title>
+    <title>Kuma</title>
 
     @*
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
@@ -31,7 +31,7 @@
     <div id="PageOverBlack" class="PageOverlay"></div>
 
     <!--購物車浮動視窗-->
-    <div id="sidebar-cart"
+    @*<div id="sidebar-cart"
          class="Drawer Drawer--fromRight"
          aria-hidden="true"
          data-section-id="cart"
@@ -58,7 +58,6 @@
                 </svg>
             </button>
         </div>
-
         <form class="Cart Drawer__Content"
               action="/cart?locale=zh"
               method="POST"
@@ -161,9 +160,8 @@
                         class="Cart__NoteButton"
                         data-action="toggle-cart-note">
                     加入備註
-                </button><span class="Cart__Taxes Text--subdued">運費將於結帳時計算</span><button type="submit"
-                                                                                         name="checkout"
-                                                                                         class="Cart__Checkout Button Button--primary Button--full">
+                </button><span class="Cart__Taxes Text--subdued">運費將於結帳時計算</span>
+                <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
                     <span>前往結帳</span>
                     <span class="Button__SeparatorDot"></span>
                     <span data-money-convertible><span>$1,980 TWD</span></span>
@@ -187,7 +185,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div>*@
 
     <!--黑色RWD-->
     <div id="shopify-section-sidebar-menu" class="shopify-section">
@@ -426,7 +424,7 @@
                             <ul class="lineonelist">
                                 <li class="account"> <a href="/Home/AccountPage">帳號</a></li>
                                 <li class="search"><a href="/Search/SearchIndex">搜尋</a></li>
-                                <li class="cart"> <a id="cart" data-action="open-drawer" data-drawer-id="sidebar-cart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
+                                <li class="cart"> <a href="/Cart/ShoppingCart" id="cart" data-action="open-drawer" data-drawer-id="sidebar-cart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
                             </ul>
                         </nav>
                     </div>
