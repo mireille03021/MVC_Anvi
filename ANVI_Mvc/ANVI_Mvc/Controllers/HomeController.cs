@@ -498,5 +498,10 @@ namespace ANVI_Mvc.Controllers
             return RedirectToAction("AccountPage","Home");
 
         }
+
+        public ActionResult OtherPage()   //主頁面
+        {
+            return View();
+        }
     }
 }

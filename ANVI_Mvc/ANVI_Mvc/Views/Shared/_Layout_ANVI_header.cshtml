@@ -30,6 +30,165 @@
     <!--浮動視窗的黑色半透明背景-->
     <div id="PageOverBlack" class="PageOverlay"></div>
 
+    <!--購物車浮動視窗-->
+    <div id="sidebar-cart"
+         class="Drawer Drawer--fromRight"
+         aria-hidden="true"
+         data-section-id="cart"
+         data-section-type="cart"
+         data-section-settings='{
+        "type": "drawer",
+        "itemCount": 1,
+        "drawer": true,
+        "hasShippingEstimator": false
+      }'>
+        <div class="Drawer__Header Drawer__Header--bordered Drawer__Container">
+            <span class="Drawer__Title Heading u-h4">購物車</span>
+
+            <button id="sidebar-cart"
+                    class="Drawer__Close Icon-Wrapper--clickable"
+                    data-action="close-drawer"
+                    data-drawer-id="sidebar-cart"
+                    aria-label="關閉購物車">
+                <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
+                    <path d="M15 0L1 14m14 0L1 0"
+                          stroke="currentColor"
+                          fill="none"
+                          fill-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+
+        <form class="Cart Drawer__Content"
+              action="/cart?locale=zh"
+              method="POST"
+              novalidate>
+            <div class="Drawer__Main" data-scrollable>
+                <div class="Drawer__Container">
+                    <input type="hidden"
+                           name="attributes[collection_mobile_items_per_row]"
+                           value="" />
+                    <input type="hidden"
+                           name="attributes[collection_desktop_items_per_row]"
+                           value="" />
+
+                    <div class="Cart__ItemList">
+                        <div class="CartItemWrapper">
+                            <div class="CartItem">
+                                <div class="CartItem__ImageWrapper AspectRatio">
+                                    <div class="AspectRatio" style="--aspect-ratio: 1.0">
+                                        <img class="CartItem__Image"
+                                             src="//cdn.shopify.com/s/files/1/2023/9563/products/ANVI_ME_NECKLACE_14KGold_240x.png?v=1559315705"
+                                             alt="ANVI ME NECKLACE" />
+                                    </div>
+                                </div>
+
+                                <div class="CartItem__Info">
+                                    <h2 class="CartItem__Title Heading">
+                                        <a href="/products/anvi-me-necklace?variant=12480415301655">ANVI ME 項鍊</a>
+                                    </h2>
+
+                                    <div class="CartItem__Meta Heading Text--subdued">
+                                        <p class="CartItem__Variant">18K Gold / 1</p>
+                                        <ul class="CartItem__PropertyList"></ul>
+                                        <div class="CartItem__PriceList">
+                                            <span class="CartItem__Price Price"
+                                                  data-money-convertible><span>$1,980 TWD</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="CartItem__Actions Heading Text--subdued"
+                                         style="text-align: center">
+                                        <div class="CartItem__QuantitySelector">
+                                            <div class="QuantitySelector">
+                                                <a class="QuantitySelector__Button Link Link--primary"
+                                                   title="設定數量為： 0"
+                                                   href="/cart/change?quantity=0&id=12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                                   data-quantity="0"
+                                                   data-line-id="12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                                   data-action="update-item-quantity">
+                                                    <svg class="Icon Icon--minus"
+                                                         role="presentation"
+                                                         viewBox="0 0 16 2">
+                                                        <path d="M1,1 L15,1"
+                                                              stroke="currentColor"
+                                                              fill="none"
+                                                              fill-rule="evenodd"
+                                                              stroke-linecap="square"></path>
+                                                    </svg>
+                                                </a>
+
+                                                <input type="text"
+                                                       name="updates[12480415301655:c044a1725a73b75bc556e81a31da767c]"
+                                                       id="updates_12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                                       class="QuantitySelector__CurrentQuantity"
+                                                       pattern="[0-9]*"
+                                                       data-line-id="12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                                       value="1" /><a class="QuantitySelector__Button Link Link--primary"
+                                                                      title="設定數量為： 2"
+                                                                      href="/cart/change?quantity=2&id=12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                                                      data-quantity="2"
+                                                                      data-line-id="12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                                                      data-action="update-item-quantity">
+                                                    <svg class="Icon Icon--plus"
+                                                         role="presentation"
+                                                         viewBox="0 0 16 16">
+                                                        <g stroke="currentColor"
+                                                           fill="none"
+                                                           fill-rule="evenodd"
+                                                           stroke-linecap="square">
+                                                            <path d="M8,1 L8,15"></path>
+                                                            <path d="M1,8 L15,8"></path>
+                                                        </g>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <a href="/cart/change?quantity=0&id=12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                           class="CartItem__Remove Link Link--underline Link--underlineShort"
+                                           data-quantity="0"
+                                           data-line-id="12480415301655:c044a1725a73b75bc556e81a31da767c"
+                                           data-action="remove-item">移除</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Drawer__Footer" data-drawer-animated-bottom>
+                <button type="button"
+                        class="Cart__NoteButton"
+                        data-action="toggle-cart-note">
+                    加入備註
+                </button><span class="Cart__Taxes Text--subdued">運費將於結帳時計算</span><button type="submit"
+                                                                                         name="checkout"
+                                                                                         class="Cart__Checkout Button Button--primary Button--full">
+                    <span>前往結帳</span>
+                    <span class="Button__SeparatorDot"></span>
+                    <span data-money-convertible><span>$1,980 TWD</span></span>
+                </button>
+                <div class="Cart__OffscreenNoteContainer" aria-hidden="true">
+                    <span class="Cart__NoteButton">加入備註</span>
+                    <div class="Form__Item">
+                        <textarea class="Cart__Note Form__Textarea"
+                                  name="note"
+                                  id="cart-note"
+                                  rows="3"
+                                  placeholder="填寫備註..."
+                                  data-scrollable></textarea>
+                    </div>
+
+                    <button type="button"
+                            class="Button Button--primary Button--full"
+                            data-action="toggle-cart-note">
+                        儲存
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <!--黑色RWD-->
     <div id="shopify-section-sidebar-menu" class="shopify-section">
         <section id="sidebar-menu" class="SidebarMenu Drawer Drawer--small Drawer--fromLeft" aria-hidden="true"
@@ -55,30 +214,27 @@
                                 </button>
                                 <div class="Collapsible__Inner">
                                     <div class="Collapsible__Content">
-                                        <div class="Collapsible">
-                                            <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7" data-action="toggle-collapsible" aria-expanded="false">
-                                                全部 <span class="Collapsible__Plus"></span>
-                                            </button>
+                                        @*<div class="Collapsible">
+                                                <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7" data-action="toggle-collapsible" aria-expanded="false">
+                                                    全部 <span class="Collapsible__Plus"></span>
+                                                </button>
 
-                                            <div class="Collapsible__Inner">
-                                                <div class="Collapsible__Content">
-                                                    <ul class="Linklist_black Linklist--bordered Linklist--spacingLoose">
-                                                        <li class="Linklist__Item_black">
-                                                            <a href="#"
-                                                               class="Text--subdued Link Link--primary">發燒新品</a>
-                                                        </li>
-                                                        <li class="Linklist__Item_black">
-                                                            <a href="#"
-                                                               class="Text--subdued Link Link--primary">人氣商品</a>
-                                                        </li>
-                                                        @*<li class="Linklist__Item_black">
-                                                                <a href="/collections/sale"
-                                                                   class="Text--subdued Link Link--primary">SALE</a>
-                                                            </li>*@
-                                                    </ul>
+                                                <div class="Collapsible__Inner">
+                                                    <div class="Collapsible__Content">
+                                                        <ul class="Linklist_black Linklist--bordered Linklist--spacingLoose">
+                                                            <li class="Linklist__Item_black">
+                                                                <a href="#"
+                                                                   class="Text--subdued Link Link--primary">發燒新品</a>
+                                                            </li>
+                                                            <li class="Linklist__Item_black">
+                                                                <a href="#"
+                                                                   class="Text--subdued Link Link--primary">人氣商品</a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </div>*@
                                         <div class="Collapsible">
                                             <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7"
                                                     data-action="toggle-collapsible" aria-expanded="false">
@@ -89,19 +245,23 @@
                                                 <div class="Collapsible__Content">
                                                     <ul class="Linklist_black Linklist--bordered Linklist--spacingLoose">
                                                         <li class="Linklist__Item_black">
-                                                            <a href="/collections/bracelets"
+                                                            <a href="/Home/ProductsPage/"
+                                                               class="Text--subdued Link Link--primary">全部商品</a>
+                                                        </li>
+                                                        <li class="Linklist__Item_black">
+                                                            <a href="/Home/ProductsPage/Bracelets"
                                                                class="Text--subdued Link Link--primary">手環</a>
                                                         </li>
                                                         <li class="Linklist__Item_black">
-                                                            <a href="/collections/earrings"
+                                                            <a href="/Home/ProductsPage/EarRings"
                                                                class="Text--subdued Link Link--primary">耳環</a>
                                                         </li>
                                                         <li class="Linklist__Item_black">
-                                                            <a href="/collections/necklaces"
+                                                            <a href="/Home/ProductsPage/Necklaces"
                                                                class="Text--subdued Link Link--primary">項鍊</a>
                                                         </li>
                                                         <li class="Linklist__Item_black">
-                                                            <a href="/collections/rings"
+                                                            <a href="/Home/ProductsPage/Rings"
                                                                class="Text--subdued Link Link--primary">戒指</a>
                                                         </li>
                                                     </ul>
@@ -120,50 +280,46 @@
                             <div class="Collapsible">
                                 <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible"
                                         aria-expanded="false">
-                                    媒體 <span class="Collapsible__Plus"></span>
+                                    Other <span class="Collapsible__Plus"></span>
                                 </button>
                                 <div class="Collapsible__Inner">
                                     <div class="Collapsible__Content">
                                         <div class="Collapsible">
-                                            <a href="/blogs/press/anvi-newarrival-april"
+                                            <a href="/Other/Shipping"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
-                                                摩登、經典、優雅的存在
-                                                - ANVI 新品上市
+                                                運送須知
                                             </a>
                                         </div>
+                                    </div>
+                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
-                                            <a href="/blogs/press/graceful-adventure"
+                                            <a href="/Other/Returns"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
-                                                GRACEFUL
-                                                ADVENTURE
+                                                退/換貨須知
                                             </a>
                                         </div>
+                                    </div>
+                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
-                                            <a href="/blogs/press/anvi-girl"
+                                            <a href="/Other/TermsConditions"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
-                                                ANVI
-                                                GIRL
+                                                隱私政策
                                             </a>
                                         </div>
+                                    </div>
+                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
-                                            <a href="/blogs/press/anvi-me-fantasy"
+                                            <a href="/Other/Privacy"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
-                                                ANVI
-                                                ME FANTASY
+                                                服務條款
                                             </a>
                                         </div>
+                                    </div>
+                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
-                                            <a href="/blogs/press/she-fell-in-love-with-september-sunset"
+                                            <a href="#"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
-                                                SHE
-                                                FELL IN LOVE WITH SEPTEMBER SUNSET
-                                            </a>
-                                        </div>
-                                        <div class="Collapsible">
-                                            <a href="/blogs/press/anvi-me-xoxo"
-                                               class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
-                                                ANVI
-                                                ME XOXO
+                                                About us
                                             </a>
                                         </div>
                                     </div>
@@ -270,12 +426,13 @@
                             <ul class="lineonelist">
                                 <li class="account"> <a href="/Home/AccountPage">帳號</a></li>
                                 <li class="search"><a href="/Search/SearchIndex">搜尋</a></li>
-                                <li class="cart"> <a href="/Cart/ShoppingCart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
+                                <li class="cart"> <a id="cart" data-action="open-drawer" data-drawer-id="sidebar-cart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
                             </ul>
                         </nav>
                     </div>
 
-                    <a href="/Cart/ShoppingCart" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
+                    <!--購物車的RWD圖示-->
+                    <a id="carticon" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
                        data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="購物車">
                         <span class="hidden-tablet-and-up">
                             <svg class="Icon Icon--cart" role="presentation" viewBox="0 0 17 20">
@@ -300,7 +457,7 @@
                 <ul class="linetwolist hidden-pocket hidden-lap">
                     <li class="shop"><a href="/Home/ProductsPage/All">商店<div class="listspan"></div><span class="lineofselect"></span></a></li>
                     <li class="new"><a href="/Home/ProductsPage/All">最新到貨<div class="listspan"></div><span class="lineofselect"></span></a></li>
-                    <li class="about_us"><a href="#">About<div class="listspan"></div><span class="lineofselect"></span></a></li>
+                    <li class="about_us"><a href="/Other/About">About<div class="listspan"></div><span class="lineofselect"></span></a></li>
                 </ul>
             </nav>
 
@@ -371,15 +528,15 @@
         <footer id="section-footer" class="Footer  " role="contentinfo">
             <div class="footer__Container">
                 <div class="Footer__Block Footer__Block--text">
-                    <h2 class="Footer__Title Heading u-h6">關於ANVI</h2>
+                    <h2 class="Footer__Title Heading u-h6">關於KUMA</h2>
                     <div class="Footer__Content Rte">
                         <p>
-                            ANVI Studios為新創銀飾品牌，專為對於品味與時尚有所追求的女性，打造極簡、質感、富含女性魅力的精緻飾品。
+                            KUMA Studios為新創銀飾品牌，專為對於品味與時尚有所追求的女性，打造極簡、質感、富含女性魅力的精緻飾品。
                         </p>
                         <p>
-                            ANVI相信每位女性都有天生魅力、個人風格，而表態就該由天天配戴的飾品開始。ANVI Studios承襲多年的精品工藝，擅長製作頂尖質感，揉合現代設計風格與時尚外型，為女人畫龍點睛，高貴飾品不該只放在展間，應以合理售價取得並作為日常不可或缺的單品。
+                            KUMA相信每位女性都有天生魅力、個人風格，而表態就該由天天配戴的飾品開始。KUMA Studios承襲多年的精品工藝，擅長製作頂尖質感，揉合現代設計風格與時尚外型，為女人畫龍點睛，高貴飾品不該只放在展間，應以合理售價取得並作為日常不可或缺的單品。
                         </p>
-                        <p>ANVI Girl為摩登、經典、優雅的代名詞。</p>
+                        <p>KUMA Girl為摩登、經典、優雅的代名詞。</p>
                     </div>
                 </div>
             </div>
@@ -390,16 +547,16 @@
 
                     <ul class="Linklist">
                         <li class="Linklist__Item">
-                            <a href="#" class="Link Link--primary">運送須知</a>
+                            <a href="/Other/Shipping" class="Link Link--primary">運送須知</a>
                         </li>
                         <li class="Linklist__Item">
-                            <a href="#" class="Link Link--primary">退/換貨須知</a>
+                            <a href="/Other/Returns" class="Link Link--primary">退/換貨須知</a>
                         </li>
                         <li class="Linklist__Item">
-                            <a href="#" class="Link Link--primary">隱私政策</a>
+                            <a href="/Other/TermsConditions" class="Link Link--primary">隱私政策</a>
                         </li>
                         <li class="Linklist__Item">
-                            <a href="#" class="Link Link--primary">服務條款</a>
+                            <a href="/Other/Privacy" class="Link Link--primary">服務條款</a>
                         </li>
                         <li class="Linklist__Item">
                             <a href="#" class="Link Link--primary">聯絡我們</a>
@@ -413,7 +570,10 @@
             </div>
         </footer>
         <div class="Footer__end">
-            <a href="https://www.anvistudios.com" class="Footer__StoreName Heading u-h7 Link Link--secondary">© ANVI | 日常輕珠寶成就女性迷人魅力</a>
+            <a href="https://www.anvistudios.com" class="Footer__StoreName Heading u-h7 Link Link--secondary">© KUMA | 日常輕珠寶成就女性迷人魅力</a>
+        </div>
+        <div class="Footer__end">
+            <a href="/BackSystem/Index">&nbsp;</a>
         </div>
     </div>
 
@@ -608,6 +768,7 @@
 
     @*---------------------讀進LineBot----------------------*@
     <script src="~/Assets/js/ChatBot.js"></script>
+    <script src="~/Assets/js/footer-cart.js"></script>
 </body>
 </html>
 

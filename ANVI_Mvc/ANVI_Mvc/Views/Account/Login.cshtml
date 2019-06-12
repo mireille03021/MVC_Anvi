@@ -1,6 +1,11 @@
 ﻿@using ANVI_Mvc.Models
 @model LoginViewModel
 @{
+    if (ViewBag.isBack == "true")
+    {
+        Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+        ViewData["isBack"] = "true";
+    }
     ViewBag.Title = "登入";
 }
 @section topCSS
@@ -17,6 +22,12 @@
                     @Html.AntiForgeryToken()
                     <header class="Form-Header">
                         <h1 class="Heading u-h1">Login</h1>
+                        @{
+                            if (ViewBag.isBack == "true")
+                            {
+                                <p class="" style="margin-bottom:0px; margin-top: 10px; ">Authentication required to login.</p>
+                            }
+                        }
                         <p class="">Please enter your e-mail and password:</p>
                     </header>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -26,7 +37,7 @@
                         @*<input type="email" n.ame="customer[email]" id="" placeholder="Email" class="F-Input">*@
                         @Html.TextBoxFor(m => m.Email, new { @name = "customer[Email]", @placeholder = "Email", @class = "F-Input" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        @*<label for="" class="F-FLabel">Email</label>*@
+                        <label for="" class="F-FLabel">Email</label>
                     </div>
 
                     <div class="F-Item">
@@ -34,7 +45,7 @@
                         @*<input type="password" name="customer[password]" id="" placeholder="Password" class="F-Input">*@
                         @Html.PasswordFor(m => m.Password, new { @name = "customer[password]", @placeholder = "Password", @class = "F-Input" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        @*<label class="F-FLabel">Password</label>*@
+                        <label class="F-FLabel">Password</label>
                         <button class="F-ItemSOS Link Link-pmy">Forgot password?</button>
                         @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項
                             <p>
@@ -60,16 +71,25 @@
                         </div>*@
 
                     <button type="submit" class="F-Sub Btn-full Btn Btn-pmy">Login</button>
+                    
+                     if (ViewBag.isBack == "false")
+                     {
+                         <div class="F-Hint F-Hint-ct">
+                         <span class="Text-sub">Don&#39;t have an account?</span>
+                         <a href="#" class="Link Link-sec">@Html.ActionLink("Create one", "Register")</a>
+                         </div>
 
-                    <div class="F-Hint F-Hint-ct">
-                        <span class="Text-sub">Don&#39;t have an account?</span>
-                        <a href="#" class="Link Link-sec">@Html.ActionLink("Create one", "Register")</a>
-                    </div>
-
-                    @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項
-                        <p>
-                            @Html.ActionLink("忘記密碼?", "ForgotPassword")
-                        </p>*@
+                         @* 只要您的密碼重設功能能夠進行帳戶確認，就啟用此項
+                         <p>
+                         @Html.ActionLink("忘記密碼?", "ForgotPassword")
+                         </p>*@
+                     }
+                     else
+                     {
+                         <div class="F-Hint F-Hint-ct">
+                            <a href="/Home/Index" class="Link Link-sec">No Authentication</a>
+                         </div>
+                     }
                 }
             </div>
         </div>

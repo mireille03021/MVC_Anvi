@@ -3,35 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AVNI後台管理系統 - @ViewData["Title"]</title>
+    <title>KUMA Back System - @ViewData["Title"]</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
           asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
           crossorigin="anonymous"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
-    <link href="~/Assets/css/dashboard.css" rel="stylesheet" />
+
+    <link href="~/Assets/BackSystem/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/vendors/selectFX/css/cs-skin-elastic.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Assets/BackSystem/assets/css/style.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     @RenderSection("topCSS", required: false)
     @RenderSection("topJS", required: false)
 </head>
 <body>
-
-    @Html.Partial("_BackSystem_NavbarHeaderPartial")
-
-    <div class="container-fluid">
-        <div class="row">
-            @Html.Partial("_BackSystem_SidebarCompactPartial", new Site().GetCategoriesData())
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                @RenderBody()
-            </main>
+    @if (ViewData["isBack"] == "true")
+    {
+        <div></div>
+        <div id="right-panel" class="right-panel">
+            @Html.Partial("_BackSystem_LoginNavbarHeaderPartial")
+            @RenderBody()
         </div>
-    </div>
-
-    @*<footer class="border-top footer text-muted px-4">
-            <div class="container">
-                &copy; 2019 - CoreMvc22Template - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>*@
+    }
+    else
+    {
+        <aside id="left-panel" class="left-panel">
+            @Html.Partial("_BackSystem_SidebarCompactPartial", new Site().GetCategoriesData())
+        </aside><!-- /#left-panel -->
+        <div id="right-panel" class="right-panel">
+            @Html.Partial("_BackSystem_NavbarHeaderPartial")
+            @RenderBody()
+        </div>
+    }
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
             asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -46,6 +56,14 @@
             integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
     </script>
 
+    <script src="~/Assets/BackSystem/vendors/popper.js/dist/popper.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/assets/js/main.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/chart.js/dist/Chart.bundle.min.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/assets/js/dashboard.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/assets/js/widgets.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/jqvmap/dist/jquery.vmap.min.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="~/Assets/BackSystem/vendors/jqvmap/dist/maps/jquery.vmap.world.js" type="text/javascript"></script>
 
     @RenderSection("Scripts", required: false)
     @RenderSection("endCSS", required: false)

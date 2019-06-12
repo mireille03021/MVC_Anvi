@@ -5,9 +5,10 @@ using System.Web;
 
 namespace ANVI_Mvc.Helpers
 {
-    public class ConstantData
+    public static class ConstantData
     {
         public const int PageRows = 10;
+
 
         public static List<string> Citys = new List<string>()
         {
@@ -17,6 +18,13 @@ namespace ANVI_Mvc.Helpers
             "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣",
             "金門縣", "連江縣"
         };
+
+        public enum SideGroup
+        {
+            product = 1,
+            order = 2,
+            Identity = 3
+        }
 
         public enum SideIndex
         {

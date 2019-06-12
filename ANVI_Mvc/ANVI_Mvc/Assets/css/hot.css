@@ -114,9 +114,9 @@ Rte h1 {
 }
 
 .ShopTheLook {
-    min-width: 1480px;
+    /*min-width: 1480px;*/
     margin: 0 auto;
-    padding: 0 130px;
+    /*padding: 0 130px;*/
     z-index: 2;
 }
 
@@ -522,5 +522,141 @@ Rte h1 {
     top: cale(50%- (45px/2));
     top: 49%;
 }
+.hot-carousel {
+    display: none;
+   
+}
+
+/*RWD*/
+@media screen and (max-width: 1200px) {
+    .ShopTheLook .flickity-prev-next-button.previous {
+        left: 5%;
+       
+    }
+
+    .ShopTheLook .flickity-prev-next-button.next {
+        right: 5%;
+       
+    }
+
+}
+@media screen and (max-width: 1067px) {
+    .ShopTheLook .flickity-prev-next-button.previous {
+        left: 2%;
+    }
+
+    .ShopTheLook .flickity-prev-next-button.next {
+        right: 2%;
+    }
+}
+
+
+@media screen and (max-width: 1010px) {
+    .ShopTheLook {
+        display: none;
+    }
+
+
+
+    .hot-carousel {
+        display: block;
+        background: white;
+    }
+
+    .hot-carousel-cell {
+        width: 270px;
+        height: 270px;
+        margin-right: 10px;
+        /*background: #8C8;*/
+        border-radius: 5px;
+        counter-increment: hot-carousel-cell;
+    }
+
+        /*.hot-carousel-cell:before {
+            display: block;
+            text-align: center;
+            content: counter(hot-carousel-cell);
+            line-height: 200px;
+            font-size: 80px;
+            color: white;
+        }*/
+}
+.hot-carousel-cell:nth-child(1) {
+    background: url(/Assets/images/Bracelets/B19403_900x.jpg);
+    background-size: contain;
+}
+
+.hot-carousel-cell:nth-child(2) {
+    background: url(/Assets/images/Necklaces/N19403_900x.jpg);
+    background-size: contain;
+}
+
+.hot-carousel-cell:nth-child(3) {
+    background: url(/Assets/images/Rings/R19301_900x.jpg);
+    background-size: contain;
+}
+
+.hot-carousel-cell:nth-child(4) {
+    background: url(/Assets/images/Rings/R19303_900x.jpg);
+    background-size: contain;
+}
+
+.hot-carousel-cell:nth-child(5) {
+    background: url(/Assets/images/Necklaces/N19303-1G_900x.png);
+    background-size: contain;
+}
+.hot-carousel-cell a {
+    margin: auto;
+    height: 100%;
+    line-height: 480px;
+    font-size: 12px;
+  
+}
+.hot-carousel-cell.is-selected a:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 0, rgba(0, 0, 0, 0.8) 0 0 5px;
+}
+.hot-carousel-cell:nth-child(1).is-selected {
+    background: url(/Assets/images/Bracelets/C_900x.jpg);
+    background-size: contain;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 0, rgba(0, 0, 0, 0.8) 0 0 5px;
+}
+.hot-carousel-cell:nth-child(2).is-selected {
+    background: url(/Assets/images/Necklaces/4_5400f2af-b2e2-4fc0-9d7a-14cd08bec319_900x.jpg);
+    background-size: contain;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 0, rgba(0, 0, 0, 0.8) 0 0 5px;
+}
+
+.hot-carousel-cell:nth-child(3).is-selected {
+    background: url(/Assets/images/Rings/R_2_254969e1-1c77-4080-97c5-2c01f726250b_900x.jpg);
+    background-size: contain;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 0, rgba(0, 0, 0, 0.8) 0 0 5px;
+}
+
+.hot-carousel-cell:nth-child(4).is-selected {
+    background: url(/Assets/images/Rings/R_5_1_900x.jpg);
+    background-size: contain;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 0, rgba(0, 0, 0, 0.8) 0 0 5px;
+}
+
+.hot-carousel-cell:nth-child(5).is-selected {
+    background: url(/Assets/images/Necklaces/N_LOVE_G_1_900x.jpg);
+    background-size: contain;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 0, rgba(0, 0, 0, 0.8) 0 0 5px;
+}
+
+
+
+
+        /* cell number */
+
+       
+
+
 
 /*SVG的CSS還沒寫完*/

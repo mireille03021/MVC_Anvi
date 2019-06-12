@@ -16,7 +16,7 @@
 $(function () {
     var options = {
         line: "//line.me/R/ti/p/%40286yoxxl", // Line QR code URL
-        call_to_action: "與我們聯絡!", // Call to action
+        call_to_action: "Message us", // Call to action
         position: "right", // Position may be 'right' or 'left'
     };
     var proto = document.location.protocol,
@@ -29,4 +29,4 @@ $(function () {
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(s, x);
     //$("<p></p>").text("@286yoxxl").prependTo(".LyWrap");
-}
+});

@@ -1036,7 +1036,7 @@ margin: 0;
 
 
 /*RWD*/
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 300px) {
     .Slideshow__Content {
         padding: 0 60px 0 45px;
         top: 70%;

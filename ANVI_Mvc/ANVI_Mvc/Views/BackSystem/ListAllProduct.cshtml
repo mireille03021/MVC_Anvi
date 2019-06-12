@@ -3,76 +3,249 @@
 @{
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "產品";
+    int i = 0;
 }
 
-<h2>ListAllProduct</h2>
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>產品</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">產品</a></li>
+                    <li class="active">產品</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create", "Products")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </th>
-        <th></th>
-    </tr>
+<div class="content mt-3">
+    <div class="animated fadeIn">
 
-    @foreach (var item in Model)
-    {
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <p>
+                            @Html.ActionLink("Create New", "Create", "Products")
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div id="bootstrap-data-table-export_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dataTables_length" id="bootstrap-data-table-export_length">
+                                        <label>
+                                            Show
+                                            <select name="bootstrap-data-table-export_length" aria-controls="bootstrap-data-table-export" class="custom-select custom-select-sm form-control form-control-sm">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="-1">All</option>
+                                            </select> entries
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+
+                                    <div id="bootstrap-data-table-export_filter" class="dataTables_filter">
+                                        <label>
+                                            Search:
+                                            <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="bootstrap-data-table-export">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="bootstrap-data-table-export_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="@Html.DisplayNameFor(model => model.ProductID): activate to sort column descending" style="width: 247px;">
+                                                    @Html.DisplayNameFor(model => model.ProductID)
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(model => model.Category.CategoryName): activate to sort column ascending" style="width: 407px;">
+                                                    @Html.DisplayNameFor(model => model.Category.CategoryName)
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(model => model.ProductName): activate to sort column ascending" style="width: 183px;">
+                                                    @Html.DisplayNameFor(model => model.ProductName)
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label=" @Html.DisplayNameFor(model => model.UnitPrice): activate to sort column ascending" style="width: 146px;">
+                                                    @Html.DisplayNameFor(model => model.UnitPrice)
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                i = 1;
+                                            }
+                                            @foreach (var item in Model)
+                                            {
+                                                string classstring = string.Empty;
+                                                if (i % 2 == 0)
+                                                {
+                                                    classstring = "role=\"row\" class=\"even\"";
+                                                }
+                                                else
+                                                {
+                                                    classstring = "role=\"row\" class=\"odd\"";
+                                                }
+                                                    <tr @classstring>
+                                                        <td class="sorting_1">
+                                                            @Html.DisplayFor(modelItem => item.ProductID)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductID }, new { @class = "" }) |
+                                                            @Html.ActionLink("Details", "Details", "Products", new { id = item.ProductID }, new { @class = "" }) |
+                                                            @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductID }, new { @class = "" })
+                                                        </td>
+                                                    </tr>
+                                                }
+
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                @{
+                                    int previous = (int)ViewData["PageActive"];
+                                    int next = (int)ViewData["PageActive"];
+                                    int top = 1 + ConstantData.PageRows * ((int)ViewData["PageActive"] - 1);
+                                    int end = ConstantData.PageRows * (int)ViewData["PageActive"];
+                                    if ((int)ViewData["PageActive"] != 1)
+                                    {
+                                        --previous;
+                                    }
+                                    if ((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+                                    {
+                                        ++next;
+                                    }
+                                    else
+                                    {
+                                        end = (int)ViewData["Count"];
+                                    }
+                                }
+                                <div class="col-sm-12 col-md-5">
+                                    <div class="dataTables_info" id="bootstrap-data-table-export_info" role="status" aria-live="polite">Showing @top to @end of @ViewData["Count"] entries</div>
+                                </div>
+                                <div class="col-sm-12 col-md-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="bootstrap-data-table-export_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item previous disabled" id="bootstrap-data-table-export_previous">
+                                                <a href="/BackSystem/ListAllProduct/@previous" aria-controls="bootstrap-data-table-export" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                            </li>
+                                            @for (i = 1; i <= (int)ViewData["Pages"]; i++)
+                                            {
+                                                string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+                                                <li class="paginate_button page-item @active">
+                                                    <a href="/BackSystem/ListAllProduct/@i" aria-controls="bootstrap-data-table-export" data-dt-idx="1" tabindex="0" class="page-link">@i</a>
+                                                </li>
+                                            }
+                                            <li class="paginate_button page-item next" id="bootstrap-data-table-export_next">
+                                                <a href="/BackSystem/ListAllProduct/@next" aria-controls="bootstrap-data-table-export" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div><!-- .animated -->
+</div>
+
+@*<h2>ListAllProduct</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", "Products")
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductID }, new { @class = "" }) |
-                @Html.ActionLink("Details", "Details", "Products", new { id = item.ProductID }, new { @class = "" }) |
-                @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductID }, new { @class = "" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        @{
-            int previous = (int)ViewData["PageActive"];
-            int next = (int)ViewData["PageActive"];
-            if ((int)ViewData["PageActive"] != 1)
-            {
-                --previous;
-            }
-            if((int)ViewData["PageActive"] != (int)ViewData["Pages"])
-            {
-                ++next;
-            }
-        }
-        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllProduct/@previous">Previous</a></li>
-        @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+        @foreach (var item in Model)
         {
-            string active = i == (int)ViewData["PageActive"] ? "active" : "";
-
-            <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllProduct/@i">@i</a></li>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductID }, new { @class = "" }) |
+                    @Html.ActionLink("Details", "Details", "Products", new { id = item.ProductID }, new { @class = "" }) |
+                    @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductID }, new { @class = "" })
+                </td>
+            </tr>
         }
-        <li class="page-item"><a class="page-link" href="/BackSystem/ListAllProduct/@next">Next</a></li>
-    </ul>
-</nav>
+
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @{
+                int previous = (int)ViewData["PageActive"];
+                int next = (int)ViewData["PageActive"];
+                if ((int)ViewData["PageActive"] != 1)
+                {
+                    --previous;
+                }
+                if((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+                {
+                    ++next;
+                }
+            }
+            <li class="page-item"><a class="page-link" href="/BackSystem/ListAllProduct/@previous">Previous</a></li>
+            @for (int i = 1; i <= (int)ViewData["Pages"]; i++)
+            {
+                string active = i == (int)ViewData["PageActive"] ? "active" : "";
+
+                <li class="page-item @active"><a class="page-link" href="/BackSystem/ListAllProduct/@i">@i</a></li>
+            }
+            <li class="page-item"><a class="page-link" href="/BackSystem/ListAllProduct/@next">Next</a></li>
+        </ul>
+    </nav>*@

@@ -1,0 +1,196 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+a {
+    color: inherit;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    margin: 0;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 0;
+    padding-left: 0px;
+    list-style-position: inside;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p:last-child,
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+    margin-bottom: 0;
+}
+
+.u-h1,
+.Rte h1 {
+    font-size: 22px;
+}
+
+.Heading {
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.Container {
+    padding: 0 80px;
+}
+
+.PageHeader {
+    margin: 50px 0;
+}
+
+.SectionHeader--center {
+    text-align: center;
+}
+
+.SectionHeader__Heading.SectionHeader__Heading,
+.SectionHeader__SubHeading.SectionHeader__SubHeading {
+    margin-top: -0.325em;
+}
+
+.PageHeader .SectionHeader__Heading,
+.PageHeader .SectionHeader__Description {
+    margin-top: 0 !important;
+}
+
+.PageHeader+.PageContent {
+    margin-top: 0;
+}
+
+.PageContent--narrow {
+    max-width: 680px;
+}
+
+.Rte p:not(:last-child),
+.Rte ul:not(:last-child),
+.Rte ol:not(:last-child) {
+    margin-bottom: 1.6em;
+}
+
+.Rte a:not(.Button) {
+    color: #6a6a6a;
+    text-decoration: underline;
+    text-decoration-color: currentcolor;
+    -webkit-text-decoration-color: rgba(106, 106, 106, 0.6);
+    text-decoration-color: rgba(106, 106, 106, 0.6);
+    text-underline-position: under;
+    -webkit-transition: color 0.2s ease-in-out, -webkit-text-decoration-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, -webkit-text-decoration-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out, -webkit-text-decoration-color 0.2s ease-in-out;
+}
+
+.Rte h1,
+.Rte h2,
+.Rte h3,
+.Rte h4,
+.Rte h5,
+.Rte h6 {
+    font-weight: 400;
+    font-style: normal;
+    color: #1c1b1b;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.Rte h2 {
+    margin: 2.2em 0 0.9em;
+}
+
+.Rte ul,
+.Rte ol {
+    margin-left: 30px;
+    padding-left: 0;
+    list-style-position: outside;
+}
+
+.Rte li {
+    padding: 5px 0;
+}
+
+.Rte::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+@media screen and (max-width: 1240px) {
+    .Container {
+        padding: 0 50px;
+    }
+}
+
+.PageContent {
+    max-width: 1000px;
+    margin: 35px auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+@media screen and (max-width: 641px) {
+    .Container {
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .u-h1,
+    .Rte h1 {
+        font-size: 22px;
+    }
+    .u-h2,
+    .Rte h2 {
+        font-size: 20px;
+    }
+    .PageHeader {
+        position: relative;
+        margin: 35px 0;
+    }
+    .PageContent {
+        margin-bottom: 80px;
+        margin-top: 80px;
+    }
+}

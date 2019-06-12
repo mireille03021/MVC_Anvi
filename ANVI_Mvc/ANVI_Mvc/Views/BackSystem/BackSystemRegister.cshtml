@@ -59,19 +59,13 @@
 
                     <div class="F-Item">
                         @Html.LabelFor(m => m.RoleString, "RoleString", htmlAttributes: new { @class = "F-FLabel" })
-                        @Html.DropDownList("RoleString", null, htmlAttributes: new { @class = "F-Input" })
+                        @Html.DropDownList("RoleString", null, "", htmlAttributes: new { @class = "F-Input",@placeholder="-select-", @Value = "" })
                         @Html.ValidationMessageFor(m => m.RoleString, "", new { @class = "text-danger" })
                     </div>
 
                     @Html.HiddenFor(m => m.RoleString, new { @Value = "Admin" })
 
                     <button type="submit" class="F-Sub Btn-full Btn Btn-pmy" value="註冊">Create my account</button>
-
-                    @*<div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="註冊" />
-                </div>
-            </div>*@
                 }
 
             </div>
