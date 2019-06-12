@@ -16,8 +16,8 @@
 $(function () {
     var options = {
         line: "//line.me/R/ti/p/%40286yoxxl", // Line QR code URL
-        call_to_action: "Message us", // Call to action
-        position: "right", // Position may be 'right' or 'left'
+        call_to_action: "與我們聊聊", // Call to action
+        position: "left", // Position may be 'right' or 'left'
     };
     var proto = document.location.protocol,
         host = "whatshelp.io",
