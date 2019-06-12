@@ -42,12 +42,16 @@
 
 .gridrow32 {
     display: grid;
-    grid-template-columns: 4fr 4fr 4fr;
+   
     margin: 50px 0;
    
     text-align: center;
 }
-
+@media (min-width: 750px) {
+    .gridrow32 {
+         grid-template-columns: 4fr 4fr 4fr;
+    }
+    }
 .privacy-policy .policy-content section>:first-child {
     font-size: 16.125px;
     margin-bottom: 30px;
@@ -110,4 +114,9 @@ h4,
 h5,
 h6 {
     margin-bottom: 10px;
+}
+
+.SectionHeader__Heading.SectionHeader__Heading,
+.SectionHeader__SubHeading.SectionHeader__SubHeading {
+    margin-top: 0;
 }
