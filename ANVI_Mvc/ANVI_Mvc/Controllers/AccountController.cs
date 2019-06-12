@@ -59,10 +59,10 @@ namespace ANVI_Mvc.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            bool isBack = false;
+            string isBack = "false";
             if (returnUrl.Substring(0, 11) == "/BackSystem")
             {
-                isBack = true;
+                isBack = "true";
             }
             ViewBag.ReturnUrl = returnUrl;
             ViewBag.isBack = isBack;
