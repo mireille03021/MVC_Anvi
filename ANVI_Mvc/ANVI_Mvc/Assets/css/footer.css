@@ -725,4 +725,15 @@ body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(
         transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     }
 }
+
+
+
+/*RWD*/
+
+
+@media screen and (min-width: 300px) {
+    .footer__Container {
+        padding: 50px 10px 30px;
+    }
+}
 /*# sourceMappingURL=Home__Slideshow.css.map */
