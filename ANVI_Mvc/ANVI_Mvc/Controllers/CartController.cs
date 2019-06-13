@@ -30,12 +30,6 @@ namespace ANVI_Mvc.Controllers
 
         public ActionResult ShoppingCart()  //購物車頁面
         {
-            if (CartService.GetCurrentCart() != null)
-            {
-                var stocks = CartService.getEachProductStocks(db);
-                ViewBag.Stocks = stocks;
-                ViewBag.CheckStocks = true;
-            }
             return View();
         }
 
@@ -70,7 +64,7 @@ namespace ANVI_Mvc.Controllers
         [HttpPost]
         public ActionResult SubmitOrder(string Remark)
         {
-            var stocks = CartService.getEachProductStocks(db);
+            var stocks = CartService.getEachProductStocks();
             for (int i = 0; i < currentCart.Count; i++)
             {
                 if (stocks[i] < currentCart.cartItems[i].Quantity)

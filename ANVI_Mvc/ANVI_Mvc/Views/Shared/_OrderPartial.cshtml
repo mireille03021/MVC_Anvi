@@ -39,73 +39,73 @@
                     <tr>
 
                     <tbody>
-                        @if (CartToHere)
+                    @if (CartToHere)
+                    {
+                        var i = 0;
+
+                        foreach (var item in currentCart)
                         {
-                            var i = 0;
-
-                            foreach (var item in currentCart)
-                            {
 
 
-                                <tr class="product">
-                                    <td class="product__image">
-                                        <div class="product-thumbnail">
-                                            <div class="product-thumbnail__wrapper">
-                                                <img src="~/Assets/images/@item.CategoryName/@Img[i]" class="product-thumbnail_image" />
-                                            </div>
-                                            <span class="product-thumbnail__quantity" id="Quantity">@item.Quantity</span>
+                            <tr class="product">
+                                <td class="product__image">
+                                    <div class="product-thumbnail">
+                                        <div class="product-thumbnail__wrapper">
+                                            <img src="~/Assets/images/@item.CategoryName/@Img[i]" class="product-thumbnail_image" />
                                         </div>
-                                    </td>
-                                    <td class="product__description">
-                                        <span class="product_description_name order-summary__emphasis">
-                                            @item.ProductName
-                                        </span>
-                                        <span class="product_description_variant order-summary__small-text">
-                                            @item.ColorName/@item.SizeContext
-                                        </span>
+                                        <span class="product-thumbnail__quantity" id="Quantity">@item.Quantity</span>
+                                    </div>
+                                </td>
+                                <td class="product__description">
+                                    <span class="product_description_name order-summary__emphasis">
+                                        @item.ProductName
+                                    </span>
+                                    <span class="product_description_variant order-summary__small-text">
+                                        @item.ColorName/@item.SizeContext
+                                    </span>
 
-                                    </td>
-                                    <!--有一個TD序號 -->
-                                    <td class="product__price">
-                                        <span class=" .order-summary__emphasis">
-                                            $@item.UnitPrice.ToString("##,###") TWD
+                                </td>
+                                <!--有一個TD序號 -->
+                                <td class="product__price">
+                                    <span class=" .order-summary__emphasis">
+                                        $@item.UnitPrice.ToString("##,###") TWD
 
-                                        </span>
-                                    </td>
-                                </tr>
+                                    </span>
+                                </td>
+                            </tr>
 
-                                i++;
-                            }
+                            i++;
                         }
-                        else
-                        {
-                                <tr class="product">
-                                    <td class="product__image">
-                                        <div class="product-thumbnail">
-                                            <div class="product-thumbnail__wrapper">
-                                                <img src="~/Assets/images/@BuyOneProduct.CartItem.CategoryName/@BuyOneProduct.Image" class="product-thumbnail_image" />
-                                            </div>
-                                            <span class="product-thumbnail__quantity" id="Quantity">@BuyOneProduct.CartItem.Quantity</span>
-                                        </div>
-                                    </td>
-                                    <td class="product__description">
-                                        <span class="product_description_name order-summary__emphasis">
-                                            @BuyOneProduct.CartItem.ProductName
-                                        </span>
-                                        <span class="product_description_variant order-summary__small-text">
-                                            @BuyOneProduct.CartItem.ColorName/@BuyOneProduct.CartItem.SizeContext
-                                        </span>
+                    }
+                    else
+                    {
+                        <tr class="product">
+                            <td class="product__image">
+                                <div class="product-thumbnail">
+                                    <div class="product-thumbnail__wrapper">
+                                        <img src="~/Assets/images/@BuyOneProduct.CartItem.CategoryName/@BuyOneProduct.Image" class="product-thumbnail_image" />
+                                    </div>
+                                    <span class="product-thumbnail__quantity" id="Quantity">@BuyOneProduct.CartItem.Quantity</span>
+                                </div>
+                            </td>
+                            <td class="product__description">
+                                <span class="product_description_name order-summary__emphasis">
+                                    @BuyOneProduct.CartItem.ProductName
+                                </span>
+                                <span class="product_description_variant order-summary__small-text">
+                                    @BuyOneProduct.CartItem.ColorName/@BuyOneProduct.CartItem.SizeContext
+                                </span>
 
-                                    </td>
-                                    @*有一個TD序號*@ 
-                                    <td class="product__price">
-                                        <span class=" .order-summary__emphasis">
-                                            $@BuyOneProduct.CartItem.UnitPrice.ToString("##,###") TWD
+                            </td>
+                            @*有一個TD序號*@ 
+                            <td class="product__price">
+                                <span class=" .order-summary__emphasis">
+                                    $@BuyOneProduct.CartItem.UnitPrice.ToString("##,###") TWD
 
-                                        </span>
-                                    </td>
-                                </tr>
-                        }
+                                </span>
+                            </td>
+                        </tr>
+                    }
                     </tbody>
 
                 </table>
@@ -142,69 +142,67 @@
                 <thead></thead>
                 <tbody class="total-line-table__tbody">
 
-                    <tr class="total-line total-line--subtotal">
-                        <th class="total-line__name" scope="row">小計</th>
-                        <td class="total-line__price">
-                            <span class="order-summary__emphasis id='SubTotal'">
-                                $
-                                @if(CartToHere)
-                                {
-                                    @currentCart.TotalAmount.ToString("##,###");
-                                }
-                                else
-                                {
-                                    @BuyOneProduct.CartItem.Amount.ToString("##,###")
-                                }
-                                TWD
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="total-line total-line--shipping">
-                        <th class="total-line__name" scope="row">
-                            運費
+                <tr class="total-line total-line--subtotal">
+                    <th class="total-line__name" scope="row">小計</th>
+                    <td class="total-line__price">
+                        <span class="order-summary__emphasis id='SubTotal'">
+                            $
+                            @if(CartToHere)
+                            {
+                                @currentCart.TotalAmount.ToString("##,###")
+                            }
+                            else
+                            {
+                                @BuyOneProduct.CartItem.Amount.ToString("##,###")
+                            }
+                            TWD
+                        </span>
+                    </td>
+                </tr>
+                <tr class="total-line total-line--shipping">
+                    <th class="total-line__name" scope="row">
+                        運費
 
-                        </th>
-                        <td class="total-line__price">
-                            <span class="order-summary__small-text">
-                                免費
-                            </span>
-                        </td>
+                    </th>
+                    <td class="total-line__price">
+                        <span class="order-summary__small-text">
+                            免費
+                        </span>
+                    </td>
 
-                    </tr>
+                </tr>
                 </tbody>
                 <tfoot class="total-line-table__footer">
-                    <tr class="total-line">
-                        <th class="total-line_name payment-sue-label" scope="row">
-                            <span class="payment-due-label__total">
-                                總計
+                <tr class="total-line">
+                    <th class="total-line_name payment-sue-label" scope="row">
+                        <span class="payment-due-label__total">
+                            總計
 
-                            </span>
-                            <!-- <span class="payment-due-label__taxes order-summary__small-text">
+                        </span>
+                        <!-- <span class="payment-due-label__taxes order-summary__small-text">
                             稅:
                             <span>$56.43 TWD</span>
-                                </span> -->
-                        </th>
-                        <td class="total-line__price payment-due">
+                        </span> -->
+                    </th>
+                    <td class="total-line__price payment-due">
 
-                            <span class="payment-due__price">
-                                $
-                                @if (CartToHere)
-                                {
-                                    @currentCart.TotalAmount.ToString("##,###");
-                                }
-                                else
-                                {
-                                    @BuyOneProduct.CartItem.Amount.ToString("##,###")
-                                }
-                                TWD
-                            </span>
-                        </td>
-                    </tr>
+                        <span class="payment-due__price">
+                            $
+                            @if (CartToHere)
+                            {
+                                @currentCart.TotalAmount.ToString("##,###")
+                            }
+                            else
+                            {
+                                @BuyOneProduct.CartItem.Amount.ToString("##,###")
+                            }
+                            TWD
+                        </span>
+                    </td>
+                </tr>
 
                 </tfoot>
             </table>
         </div>
     </div>
 </div>
-
-

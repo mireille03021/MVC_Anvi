@@ -2294,6 +2294,7 @@
     <Content Include="Assets\css\Order_Customerclone.css" />
     <Content Include="Assets\css\Order_Customer.css" />
     <Content Include="Assets\css\Order_Pay.css" />
+    <Content Include="Assets\css\PartialCar.css" />
     <Content Include="Assets\css\ProductPage.css" />
     <Content Include="Assets\css\Register.css" />
     <Content Include="Assets\css\searched.css" />
@@ -2454,6 +2455,7 @@
     <Content Include="Assets\js\Order_Check.js" />
     <Content Include="Assets\js\Order_Customer.js" />
     <Content Include="Assets\js\Order_pay.js" />
+    <Content Include="Assets\js\prev-next-button.arrowShape.js" />
     <Content Include="Assets\js\ProductPage.js" />
     <Content Include="Assets\js\ProductDetailPage.js" />
     <Content Include="Assets\js\ShoppingCart.js" />
@@ -3267,7 +3269,9 @@
     <Content Include="Views\Shared\_BackSystem_LoginNavbarHeaderPartial.cshtml" />
     <Content Include="Views\Other\About.cshtml" />
     <Content Include="Views\BackSystem\AllStockChart.cshtml" />
-    <Content Include="Views\BackSystem\ThisMonthSalesChart.cshtml" />
+    <Content Include="Views\BackSystem\AllKindChart.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCart.cshtml" />
+    <Content Include="Views\Shared\_Layout_ANVI_header_forCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

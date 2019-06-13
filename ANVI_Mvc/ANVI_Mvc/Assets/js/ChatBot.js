@@ -1,7 +1,7 @@
 ﻿$(function () {
     var options = {
         line: "//line.me/R/ti/p/%40545nfrgg", // Line QR code URL
-        call_to_action: "Line QRCode在這！", // Call to action
+       // call_to_action: "QRCode", // Call to action
         position: "right", // Position may be 'right' or 'left'
     };
     var proto = document.location.protocol,

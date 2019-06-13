@@ -17,7 +17,6 @@
     <!-- google字體 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- fontawesome -->
-    <link rel="stylesheet" href="~/Assets/css/PartialCar.css" />
     <link href="~/Assets/css/header-styles.css" rel="stylesheet" />
     <link href="~/Assets/css/header_style_black.css" rel="stylesheet" />
     <link href="~/Assets/css/footer.css" rel="stylesheet" />
@@ -29,39 +28,8 @@
 
 </head>
 <body>
-    <!--浮動視窗的黑色半透明背景-->
+    @*浮動視窗的黑色半透明背景*@
     <div id="PageOverBlack" class="PageOverlay"></div>
-
-    @*購物車浮動視窗*@
-    <div id="sidebar-cart"
-         class="Drawer Drawer--fromRight"
-         aria-hidden="true"
-         data-section-id="cart"
-         data-section-type="cart"
-         data-section-settings='{
-            "type": "drawer",
-            "itemCount": 1,
-            "drawer": true,
-            "hasShippingEstimator": false
-          }'>
-        <div id="closecart" class="Drawer__Header Drawer__Header--bordered Drawer__Container">
-            <span class="Drawer__Title Heading u-h4">購物車</span>
-
-            <button id="closecart"
-                    class="Drawer__Close Icon--clickable"
-                    data-action="close-drawer"
-                    data-drawer-id="sidebar-cart"
-                    aria-label="關閉購物車">
-                <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
-                    <path d="M15 0L1 14m14 0L1 0"
-                          stroke="currentColor"
-                          fill="none"
-                          fill-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        @Html.Partial("_ShoppingCart")
-    </div>
 
     <!--黑色RWD-->
     <div id="shopify-section-sidebar-menu" class="shopify-section">
@@ -273,7 +241,7 @@
                         <button id="open-drawer-btn" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
                                 aria-expanded="false" data-action="open-drawer" data-drawer-id="sidebar-menu"
                                 aria-label="Open navigation">
-                           
+                            
                                 <span class="hidden-tablet-and-up">
                                     <svg class="Icon Icon--nav" role="presentation" viewBox="0 0 20 14">
                                         <path d="M0 14v-1h20v1H0zm0-7.5h20v1H0v-1zM0 0h20v1H0V0z" fill="currentColor"></path>
@@ -300,13 +268,13 @@
                                 <ul class="lineonelist">
                                     <li class="account"> <a href="/Home/AccountPage">帳號</a></li>
                                     <li class="search"><a href="/Search/SearchIndex">搜尋</a></li>
-                                    <li class="cart"> <a href="/Cart/ShoppingCart" id="cart" data-action="open-drawer" data-drawer-id="sidebar-cart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
+                                    <li class="cart"> <a href="/Cart/ShoppingCart" data-action="open-drawer" data-drawer-id="sidebar-cart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
                                 </ul>
                             </nav>
                         </div>
 
                         <!--購物車的RWD圖示-->
-                        <a href="/Cart/ShoppingCart" id="carticon" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
+                        <a href="/Cart/ShoppingCart"  class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
                            data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="購物車">
                             <span class="hidden-tablet-and-up">
                                 <svg class="Icon Icon--cart" role="presentation" viewBox="0 0 17 20">
@@ -456,7 +424,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
+
     <!--header-->
     <script>
         $(function () {

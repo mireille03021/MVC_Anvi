@@ -400,6 +400,58 @@ template {
   }
 }
 
+/*動畫*/
+
+@-webkit-keyframes buttonFromTopToBottom {
+    0% {
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+
+    25% {
+        opacity: 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+    50% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    75% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes buttonFromTopToBottom {
+    0% {
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+
+    25% {
+        opacity: 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+    50% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    75% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
 body {
     font-family: 'Titillium Web', sans-serif, 'Noto Serif TC', serif;
     font-weight: 400;
@@ -1019,6 +1071,13 @@ margin: 0;
   .RoundButton:not([aria-expanded="true"]):hover, .flickity-prev-next-button:not([aria-expanded="true"]):hover {
     color: #1c1b1b;
   }
+}
+
+@media not all, (hover: hover) {
+    .RoundButton[data-animate-bottom]:hover svg, [data-animate-bottom].flickity-prev-next-button:hover svg {
+        -webkit-animation: buttonFromTopToBottom 0.5s ease-in-out forwards;
+        animation: buttonFromTopToBottom 0.5s ease-in-out forwards;
+    }
 }
 
 @media not all, (hover: hover) {

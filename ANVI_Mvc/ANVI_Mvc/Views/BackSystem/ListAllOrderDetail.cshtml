@@ -91,7 +91,7 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Discount)
                                         </td>
-                                        <td>
+                                        <td style="width: 150px;">
                                             @Html.ActionLink("Edit", "Edit", "OrderDetails", new { orderid = item.OrderID, pdid = item.PDID }, new { @class = "" }) |
                                             @Html.ActionLink("Details", "Details", "OrderDetails", new { orderid = item.OrderID, pdid = item.PDID }, new { @class = "" }) |
                                             @Html.ActionLink("Delete", "Delete", "OrderDetails", new { orderid = item.OrderID, pdid = item.PDID }, new { @class = "" })

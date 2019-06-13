@@ -21,65 +21,65 @@
 <!--SORT-->
 <div id="collection-sort-popover" class="Popover" aria-hidden="true">
     <header class="Popover__Header">
-        <button class="Popover__Close Icon-Wrapper--clickable"
-                data-action="close-popover">
-            <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
-                <path d="M15 0L1 14m14 0L1 0"
-                      stroke="currentColor"
-                      fill="none"
-                      fill-rule="evenodd"></path>
-            </svg>
-        </button>
+        @*<button class="Popover__Close Icon-Wrapper--clickable"
+                    data-action="close-popover">
+                <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
+                    <path d="M15 0L1 14m14 0L1 0"
+                          stroke="currentColor"
+                          fill="none"
+                          fill-rule="evenodd"></path>
+                </svg>
+            </button>*@
         <span class="Popover__Title Heading u-h4">Sort</span>
     </header>
 
     <div class="Popover__Content">
         <div class="Popover__ValueList" data-scrollable>
             @*<button class="Popover__Value  Heading Link Link--primary u-h6"
-                    data-value="manual"
-                    data-action="select-value">
-                Featured
-            </button>
-            <button class="Popover__Value  Heading Link Link--primary u-h6"
-                             data-value="best-selling"
-                             data-action="select-value">
-                Best selling
-            </button>*@
+                        data-value="manual"
+                        data-action="select-value">
+                    Featured
+                </button>
+                <button class="Popover__Value  Heading Link Link--primary u-h6"
+                                 data-value="best-selling"
+                                 data-action="select-value">
+                    Best selling
+                </button>*@
             <a href="/Home/ProductsPage/@ViewBag.Category/@CurrentPage" class="Popover__Value  Heading Link Link--primary u-h6"
                data-value="price-descending"
                data-action="select-value">
                 Default
             </a>
             <a href="/Home/ProductsPage/@ViewBag.Category/@CurrentPage/Name" class="Popover__Value is-selected Heading Link Link--primary u-h6"
-                    data-value="title-ascending"
-                    data-action="select-value">
+               data-value="title-ascending"
+               data-action="select-value">
                 Alphabetically, A-Z
             </a>
             <a href="/Home/ProductsPage/@ViewBag.Category/@CurrentPage/Name_desc" class="Popover__Value  Heading Link Link--primary u-h6"
-                    data-value="title-descending"
-                    data-action="select-value">
+               data-value="title-descending"
+               data-action="select-value">
                 Alphabetically, Z-A
             </a>
             <a href="/Home/ProductsPage/@ViewBag.Category/@CurrentPage/PriceLowToHigh" class="Popover__Value  Heading Link Link--primary u-h6"
-                    data-value="price-ascending"
-                    data-action="select-value">
+               data-value="price-ascending"
+               data-action="select-value">
                 Price, low to high
             </a>
             <a href="/Home/ProductsPage/@ViewBag.Category/@CurrentPage/PriceHighToLow" class="Popover__Value  Heading Link Link--primary u-h6"
-                    data-value="price-descending"
-                    data-action="select-value">
+               data-value="price-descending"
+               data-action="select-value">
                 Price, high to low
             </a>
             @*<button class="Popover__Value  Heading Link Link--primary u-h6"
-                    data-value="created-ascending"
-                    data-action="select-value">
-                Date, old to new
-            </button>
-            <button class="Popover__Value  Heading Link Link--primary u-h6"
-                             data-value="created-descending"
-                             data-action="select-value">
-                Date, new to old
-            </button>*@
+                        data-value="created-ascending"
+                        data-action="select-value">
+                    Date, old to new
+                </button>
+                <button class="Popover__Value  Heading Link Link--primary u-h6"
+                                 data-value="created-descending"
+                                 data-action="select-value">
+                    Date, new to old
+                </button>*@
         </div>
     </div>
 </div>
@@ -163,34 +163,11 @@
 
     <!--商品底部選擇器------------------------------------------------------------------------------------------------------->
     <div class="CollectionToolbar CollectionToolbar--bottom CollectionToolbar--reverse">
-        <div class="CollectionToolbar__Group">
-            <button class="CollectionToolbar__Item CollectionToolbar__Item--filter Heading Text--subdued u-h6 "
-                    data-action="open-drawer"
-                    data-drawer-id="collection-filter-drawer"
-                    aria-label="Show filters">
-            </button>
-            <button id="bnt" class="CollectionToolbar__Item CollectionToolbar__Item--sort Heading Text--subdued u-h6"
-                             aria-label="Show sort by"
-                             aria-haspopup="true"
-                             aria-expanded="false"
-                             aria-controls="collection-sort-popover">
-                Sort
-                <svg class="Icon Icon--select-arrow"
-                     role="presentation"
-                     viewBox="0 0 19 12">
-                    <polyline fill="none"
-                              stroke="currentColor"
-                              points="17 2 9.5 10 2 2"
-                              fill-rule="evenodd"
-                              stroke-width="2"
-                              stroke-linecap="square"></polyline>
-                </svg>
-            </button>
-        </div>
         <div class="CollectionToolbar__Item CollectionToolbar__Item--layout">
             <div class="CollectionToolbar__LayoutSwitch hidden-tablet-and-up">
                 <button aria-label="Show one product per row"
-                        class="CollectionToolbar__LayoutType "
+                        class="CollectionToolbar__LayoutType is-active"
+                        id="mainoneproducts"
                         data-action="change-layout-mode"
                         data-grid-type="mobile"
                         data-count="1">
@@ -201,7 +178,8 @@
                     </svg>
                 </button>
                 <button aria-label="Show two products per row"
-                        class="CollectionToolbar__LayoutType is-active"
+                        class="CollectionToolbar__LayoutType"
+                        id="maintwoproducts"
                         data-action="change-layout-mode"
                         data-grid-type="mobile"
                         data-count="2">
@@ -243,6 +221,30 @@
                 </button>
             </div>
         </div>
+        <div class="CollectionToolbar__Group">
+            @*<button class="CollectionToolbar__Item CollectionToolbar__Item--filter Heading Text--subdued u-h6 "
+                data-action="open-drawer"
+                data-drawer-id="collection-filter-drawer"
+                aria-label="Show filters"></button>*@
+            <button id="bnt" class="CollectionToolbar__Item CollectionToolbar__Item--sort Heading Text--subdued u-h6"
+                    aria-label="Show sort by"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="collection-sort-popover">
+                Sort
+                <svg class="Icon Icon--select-arrow"
+                     role="presentation"
+                     viewBox="0 0 19 12">
+                    <polyline fill="none"
+                              stroke="currentColor"
+                              points="17 2 9.5 10 2 2"
+                              fill-rule="evenodd"
+                              stroke-width="2"
+                              stroke-linecap="square"></polyline>
+                </svg>
+            </button>
+        </div>
+
     </div>
 
 </div>

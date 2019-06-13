@@ -20,13 +20,13 @@ a {
   font-style: normal;
   font-size: 14px;
   line-height: 1.65;
-  padding: 0 80px;
+  padding: 0 40px;
 }
 
 .PageHeader {
   display: block;
   position: relative;
-  margin: 50px 0;
+  margin: 30px 0 0;
 }
 
 .PageHeader .u-h1 {
@@ -80,22 +80,22 @@ a {
   font-size: 12px;
 }
 
-.PageContent .Cart_ItemList .CartItem__ImageWrapper,
+/*.PageContent .Cart_ItemList .CartItem__ImageWrapper,
 .PageContent .Cart_ItemList .CartItem__Info {
   display: table-cell;
   vertical-align: middle;
-}
+}*/
 
 .CartItem {
   display: table;
   table-layout: fixed;
-  margin: 30px 0;
+  margin:  0 30px;
   width: 100%;
 }
 
 .CartItem .CartItem__ImageWrapper {
-  width: 120px;
-  min-width: 120px;
+  width: 90px;
+  min-width: 90px;
   text-align: center;
 }
 
@@ -189,6 +189,20 @@ a {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.CartItem__Actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .CartItem__Actions .Link--underline {
@@ -683,4 +697,26 @@ h1 {
     margin: 250px 0;
   }
 }
+
+@media screen and (min-width: 641px) {
+    .Cart--expanded .CartItem__Info ~ .CartItem__Actions, .Cart--expanded .CartItem__Info ~ .CartItem__LinePrice {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .CartItem__Info ~ .CartItem__Actions, .CartItem__Info ~ .CartItem__LinePrice {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .CartItem__Info .CartItem__Meta > .CartItem__Actions {
+        display: none;
+    }
+}
+
+
+
 /*# sourceMappingURL=ShoppingCart_CSS.css.map */

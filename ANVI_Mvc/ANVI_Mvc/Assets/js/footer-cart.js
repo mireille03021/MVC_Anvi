@@ -15,6 +15,7 @@ $(function() {
         if (count % 2 == 0) {
             $('#PageOverBlack').removeClass("is-visible");
         }
+        return false;
     }
 
     $('#PageOverBlack').click(function() {
@@ -23,7 +24,7 @@ $(function() {
         $('#html').removeClass("no-scroll");
     })
 
-    $('#sidebar-cart').click(function() {
+    $('#closecart').click(function() {
         $('#sidebar-cart').attr("aria-hidden", "true");
         $('#PageOverBlack').removeClass("is-visible");
         $('#html').removeClass("no-scroll");

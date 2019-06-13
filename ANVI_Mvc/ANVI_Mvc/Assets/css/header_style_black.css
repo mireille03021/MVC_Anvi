@@ -454,16 +454,10 @@ body:not(.is-tabbing) button:focus {
     padding-bottom: 18px;
 }
 
-.Collapsible {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    overflow: hidden;
+.Collapsible .Collapsible {
+    margin-left: 16px;
+    border: none;
 }
-
-    .Collapsible .Collapsible {
-        margin-left: 16px;
-        border: none;
-    }
 
 .SidebarMenu .Collapsible {
     /*.SidebarMenu .Collapsible, .SidebarMenu .Linklist_black*/
@@ -579,18 +573,6 @@ a:active, a:hover {
     color: #1c1b1b;
 }
 
-/*媒體*/
-.Collapsible {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    overflow: hidden;
-}
-
-    .Collapsible .Collapsible {
-        margin-left: 16px;
-        border: none;
-    }
-
 /*帳戶、搜尋*/
 .SidebarMenu__Nav--secondary {
     margin-top: 28px;
@@ -674,6 +656,11 @@ svg:not(:root) {
     -webkit-box-shadow: none;
     box-shadow: none;
     background-color: currentColor;
+}
+
+.Header__CartDot.is-visible {
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 
 /*LOGO*/

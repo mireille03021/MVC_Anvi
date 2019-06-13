@@ -9,10 +9,6 @@
     @*<link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">*@
     <link href="~/Assets/css/ProductDetailPage.css" rel="stylesheet" />
 }
-@section topJS
-{
-    <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
-}
 
 <main id="main" role="main">
     <div id="shopify-section-product-template" class="shopify-section shopify-section--bordered">
@@ -332,7 +328,7 @@
                         }
                     </div>
 
-                    <form action="/Home/ChangeColor" method="post" class="">
+                    <form action="/Home/ProductDetailPage" method="post" class="">
                         <input hidden name="pid" id="pid" value="@Model.Product.ProductID" />
                         <input hidden name="DropDownList_Color" id="DropDownList_Color" value="" />
                         <button type="submit" value="確認顏色" class="VariantSelector__Button Button Button--primary Button--full" name="ChangeColor" data-action="select-variant">
@@ -441,7 +437,7 @@
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
 
     <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-
+    <script src="~/Assets/js/prev-next-button.arrowShape.js"></script>
     <!--html的scroll-->
     <script>
         var htmlpart = document.getElementsByTagName("html")[0];
@@ -459,7 +455,7 @@
     <!--隨螢幕寬調整圖片高-flickity-viewport-->
     <script>
         /* 隨螢幕寬調整圖片高-flickity-viewport */
-        pic_flickity_viewport_window();
+        //pic_flickity_viewport_window();
         window.addEventListener("resize", pic_flickity_viewport_window);
 
         function pic_flickity_viewport_window() {
@@ -468,7 +464,7 @@
 
             var F_view_height = document.getElementsByClassName("flickity-viewport")[0].style.height;
 
-            console.log(F_view_height);
+            //console.log(F_view_height);
         }
 
     </script>
@@ -512,7 +508,7 @@
         document.getElementById("DropDownList_Color").setAttribute("value", selcolval[0].innerHTML);
 
         flkty.on('select', function (index) {
-            console.log('Flickity select ' + index);
+            //console.log('Flickity select ' + index);
             selcolimgtext(index);
         });
 
@@ -535,12 +531,12 @@
 
             for (var i = 0; i < selcoltext.length; i++) {
                 if (i == selnum) {
-                    console.log(selcoltext[selnum]);
+                    //console.log(selcoltext[selnum]);
                     selcoltext[selnum].className = ("VariantSelector__Choice is-selected");
                     document.getElementById("DropDownList_Color").setAttribute("value", selcolval[selnum].innerHTML);
                 }
                 else {
-                    console.log(selcoltext[i]);
+                    //console.log(selcoltext[i]);
                     selcoltext[i].className = ("VariantSelector__Choice");
                 }
             }

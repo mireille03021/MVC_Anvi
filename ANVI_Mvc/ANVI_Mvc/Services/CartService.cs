@@ -39,8 +39,9 @@ namespace ANVI_Mvc.Services
             HttpContext.Current.Session["Cart"] = new CartModel();
         }
 
-        public static int[] getEachProductStocks(AnviModel db)  //取得購物車中物品每個庫存，給Jquery防呆用
+        public static int[] getEachProductStocks()  //取得購物車中物品每個庫存，給Jquery防呆用
         {
+            AnviModel db = new AnviModel();
             var currentCart = GetCurrentCart();
             int count = currentCart.Count;
             var stocks = new int[count];

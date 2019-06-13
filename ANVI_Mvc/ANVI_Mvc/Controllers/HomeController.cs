@@ -144,7 +144,7 @@ namespace ANVI_Mvc.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult ChangeColor(int pid, string DropDownList_Color)  //單一商品頁面Post
+        public ActionResult ProductDetailPage(int pid, string DropDownList_Color)  //單一商品頁面Post
         {
             ProductViewModelService service = new ProductViewModelService(db, pid);
             var sPVM = service.PVM;
