@@ -56,11 +56,11 @@ Car__.Container {
     max-width: 1000px;
 }
 
-    .PageContent .Cart--expanded {
+    /*.PageContent .Cart--expanded {
         display: table-cell;
         vertical-align: middle;
         width: 1000px;
-    }
+    }*/
 
     .PageContent input {
         line-height: normal;
@@ -71,6 +71,7 @@ Car__.Container {
         display: table;
         table-layout: auto;
         width: 100%;
+        overflow: hidden;
     }
 
         .PageContent .Cart_ItemList .Cart_Head {
@@ -526,11 +527,11 @@ h1 {
         }
 }
 
-@media screen and (min-width: 641px) {
+/*@media screen and (min-width: 641px) {
     .Cart--expanded .CartItem {
         display: table-row;
     }
-}
+}*/
 
 @media screen and (min-width: 641px) {
     .CartItem__ImageWrapper {
@@ -538,12 +539,12 @@ h1 {
     }
 }
 
-@media screen and (min-width: 641px) {
+/*@media screen and (min-width: 641px) {
     .Cart--expanded .CartItem__Info {
         max-width: 300px;
         width: 300px;
     }
-}
+}*/
 
 /*@media screen and (min-width: 1240px) {
     .Cart--expanded .CartItem__Info {
@@ -713,7 +714,8 @@ h1 {
     }
 
 @media screen and (min-width: 641px) {
-    .Container {
+    .Cart_Container {
+        padding: 0 50px 0;
         padding: 0 50px 0;
     }
 }
