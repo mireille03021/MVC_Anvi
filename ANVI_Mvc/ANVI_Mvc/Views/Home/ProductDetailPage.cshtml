@@ -436,7 +436,8 @@
 {
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
 
-    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+    @*<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>*@
+    <script src="~/Assets/js/flickity.pkgd.arrowShape.js"></script>
 
     <!--html的scroll-->
     <script>
@@ -455,7 +456,7 @@
     <!--隨螢幕寬調整圖片高-flickity-viewport-->
     <script>
         /* 隨螢幕寬調整圖片高-flickity-viewport */
-        pic_flickity_viewport_window();
+        //pic_flickity_viewport_window();
         window.addEventListener("resize", pic_flickity_viewport_window);
 
         function pic_flickity_viewport_window() {
@@ -464,7 +465,7 @@
 
             var F_view_height = document.getElementsByClassName("flickity-viewport")[0].style.height;
 
-            console.log(F_view_height);
+            //console.log(F_view_height);
         }
 
     </script>
@@ -508,7 +509,7 @@
         document.getElementById("DropDownList_Color").setAttribute("value", selcolval[0].innerHTML);
 
         flkty.on('select', function (index) {
-            console.log('Flickity select ' + index);
+            //console.log('Flickity select ' + index);
             selcolimgtext(index);
         });
 
@@ -531,12 +532,12 @@
 
             for (var i = 0; i < selcoltext.length; i++) {
                 if (i == selnum) {
-                    console.log(selcoltext[selnum]);
+                    //console.log(selcoltext[selnum]);
                     selcoltext[selnum].className = ("VariantSelector__Choice is-selected");
                     document.getElementById("DropDownList_Color").setAttribute("value", selcolval[selnum].innerHTML);
                 }
                 else {
-                    console.log(selcoltext[i]);
+                    //console.log(selcoltext[i]);
                     selcoltext[i].className = ("VariantSelector__Choice");
                 }
             }
