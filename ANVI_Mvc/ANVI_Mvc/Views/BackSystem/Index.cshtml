@@ -1,8 +1,166 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "首頁";
 }
 
-<h2>Index</h2>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row" style="display: flex; justify-content: center;">
+            <div class="col-xl-3 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">會員人數</div>
+                                <div class="stat-digit">@ViewBag.UserCount</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-xl-3 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">總銷售產品數</div>
+                                <div class="stat-digit">@ViewBag.SalesProductCount</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">月銷售總額</div>
+                                <div class="stat-digit">@(ViewBag.TotalSales.ToString("#,#"))</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /# row -->
+        <div class="row">
+            <div class="col-lg-11"  style="margin: auto;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-3">當月每日完成訂單</h4>
+                        <canvas id="LineChart" style="width: 100%; height: 275px;"></canvas>
+                    </div>
+                </div><!-- /# card -->
+            </div><!-- /# column -->
+        </div><!-- /# row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-3">商品分類銷售總覽</h4>
+                        <canvas id="PieChartSales" style="width:100%; height:275px;"></canvas>
+
+                    </div>
+                </div><!-- /# card -->
+            </div><!-- /# column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-3">商品分類數量總覽</h4>
+                        <canvas id="PieChartProduct" style="width:100%; height:275px;"></canvas>
+                    </div>
+                </div><!-- /# card -->
+            </div><!-- /# column -->
+        </div><!-- /# row -->
+    </div><!-- .animated -->
+</div>
+
+@section endJS{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+    <script>
+        //折線圖
+        var linctx = document.getElementById('LineChart');
+        var data = {
+            labels: [@Html.Raw(ViewBag.LineLabels)],
+            datasets: [
+                {
+                    label: "數量",
+                    fill: false,
+                    lineTension: 0.1,
+                    backgroundColor: "rgba(75,192,192,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    data: [@ViewBag.LineData],
+                }
+            ]
+        };
+
+        var option = {
+            showLines: true,
+            legend: {
+                display: true,
+                labels: {
+                    boxWidth: 0,
+                    fontSize: 0
+                }
+            }
+        };
+        var myLineChart = Chart.Line(linctx,{
+            data:data,
+            options:option
+        });
+        //圓餅圖1
+
+        var ctx = document.getElementById('PieChartProduct').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data : {
+                labels:[@Html.Raw(@ViewBag.PieLabels)],
+                datasets: [{
+                    //預設資料
+                    data:[@ViewBag.PieDataProduct],
+                    backgroundColor: [
+                        //資料顏色
+                        "#1988ff",
+                   "#4ca2ff",
+                    "#7fbdff",
+                    "#c2e0ff"
+                    ],
+                }],
+            }
+        });
+
+        //圓餅圖2
+
+        var ctx = document.getElementById('PieChartSales').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data : {
+                labels:[@Html.Raw(@ViewBag.PieLabels)],
+                datasets: [{
+                    //預設資料
+                    data:[@ViewBag.PieDataSales],
+                    backgroundColor: [
+                        //資料顏色
+                        "#1988ff",
+                        "#4ca2ff",
+                        "#7fbdff",
+                        "#c2e0ff"
+                    ],
+                }],
+            }
+        });
+
+    </script>
+}

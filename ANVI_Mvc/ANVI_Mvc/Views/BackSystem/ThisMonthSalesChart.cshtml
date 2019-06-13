@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
+    ViewBag.Title = "本月銷售量";
+}
+
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-11" style="margin: auto;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-3">當月每日完成訂單</h4>
+                        <canvas id="LineChart" style="width: 100%; height: 275px;"></canvas>
+                    </div>
+                </div><!-- /# card -->
+            </div><!-- /# column -->
+        </div><!-- /# row -->
+    </div><!-- .animated -->
+</div>
+
+@section endJS{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+    <script>
+        //折線圖
+        var linctx = document.getElementById('LineChart');
+        var data = {
+            labels: [@Html.Raw(ViewBag.LineLabels)],
+            datasets: [
+                {
+                    label: "數量",
+                    fill: false,
+                    lineTension: 0.1,
+                    backgroundColor: "rgba(75,192,192,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    data: [@ViewBag.LineData],
+                }
+            ]
+        };
+
+        var option = {
+            showLines: true,
+            legend: {
+                display: true,
+                labels: {
+                    boxWidth: 0,
+                    fontSize: 0
+                }
+            }
+        };
+        var myLineChart = Chart.Line(linctx,{
+            data:data,
+            options:option
+        });
+        
+    </script>
+}

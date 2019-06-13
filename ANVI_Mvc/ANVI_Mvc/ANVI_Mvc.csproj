@@ -3267,7 +3267,7 @@
     <Content Include="Views\Shared\_BackSystem_LoginNavbarHeaderPartial.cshtml" />
     <Content Include="Views\Other\About.cshtml" />
     <Content Include="Views\BackSystem\AllStockChart.cshtml" />
-    <Content Include="Views\BackSystem\AllKindChart.cshtml" />
+    <Content Include="Views\BackSystem\ThisMonthSalesChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

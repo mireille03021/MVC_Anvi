@@ -25,7 +25,7 @@ namespace ANVI_Mvc.Helpers
             order = 2,
             Identity = 3,
             productChart = 4,
-            OrderChart = 5
+            SalesChart = 5
         }
 
         public enum SideIndex

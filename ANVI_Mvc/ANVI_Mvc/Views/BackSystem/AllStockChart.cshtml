@@ -26,13 +26,12 @@
 
 <div class="content mt-3">
     <div class="animated fadeIn">
-
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-11">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mb-3">Bar Chart</h4>
-                        <canvas id="StockChart" style="width:100%; height:275px;"></canvas>
+                        <h4 class="mb-3">Product Detils Stock</h4>
+                        <canvas id="StrockChart" style="width:100%; height:400px;"></canvas>
                     </div>
                 </div><!-- /# card -->
             </div><!-- /# column -->
@@ -44,54 +43,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
     <script>
-        @{
-            if (ConstantData.BackgroundColor.Count == 0)
-            {
-                ConstantData.CreatBackgroundColor();
-            }
-            if (ConstantData.BorderColor.Count == 0)
-            {
-                ConstantData.CreatBorderColor();
-            }
-            int count = (int) ViewData["Count"];
-            string[] labels = new string[count];
-            string[] data = new string[count];
-            string[] backgroungColor = new string[count];
-            string[] borderColor = new string[count];
-            int i = 0;
-
-            foreach (var item in Model)
-            {
-                labels[i] = item.PDID;
-                data[i] = $"{item.Stock}";
-                if (item.Stock < 5)
-                {
-                    backgroungColor[i] = ConstantData.BackgroundColor[(int) ConstantData.StockEnough.NotEnough5];
-                    borderColor[i] = ConstantData.BorderColor[(int) ConstantData.StockEnough.NotEnough5];
-                }
-                else if (item.Stock < 10 && item.Stock > 5)
-                {
-                    backgroungColor[i] = ConstantData.BackgroundColor[(int) ConstantData.StockEnough.Enough5NotEnough10];
-                    borderColor[i] = ConstantData.BorderColor[(int) ConstantData.StockEnough.Enough5NotEnough10];
-                }
-                else
-                {
-                    backgroungColor[i] = ConstantData.BackgroundColor[(int) ConstantData.StockEnough.Enough10NotEnough20];
-                    borderColor[i] = ConstantData.BorderColor[(int) ConstantData.StockEnough.Enough10NotEnough20];
-                }
-                i++;
-            }
-        }
-        var ctx = document.getElementById('StockChart').getContext('2d');
-        var StockChart = new Chart(ctx, {
+        var stctx = document.getElementById('StrockChart').getContext('2d');
+        var chart = new Chart(stctx, {
             type: 'bar',
             data: {
-                labels: @labels,
+                labels: [@Html.Raw(ViewBag.Labels)],
                 datasets: [{
-                    label: "數量",
-                    data: @data,
-                    backgroundColor: @backgroungColor,
-                    borderColor: @borderColor,
+                    label: '數量',
+                    data: [@ViewBag.Data],
+                    backgroundColor: [@Html.Raw(ViewBag.BackgroundColor)],
+                    borderColor: [@Html.Raw(ViewBag.BorderColor)],
                     borderWidth: 1
                 }]
             }
