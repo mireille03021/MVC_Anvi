@@ -2446,7 +2446,6 @@
     <Content Include="Assets\images\Rings\R_LOVE_S_1_900x.jpg" />
     <Content Include="Assets\images\Rings\R_LOVE_S_2_900x.jpg" />
     <Content Include="Assets\js\ChatBot.js" />
-    <Content Include="Assets\js\flickity.pkgd.arrowShape.js" />
     <Content Include="Assets\js\footer-cart.js" />
     <Content Include="Assets\js\header-js.js" />
     <Content Include="Assets\js\headerjava.js" />
@@ -2456,6 +2455,7 @@
     <Content Include="Assets\js\Order_Check.js" />
     <Content Include="Assets\js\Order_Customer.js" />
     <Content Include="Assets\js\Order_pay.js" />
+    <Content Include="Assets\js\prev-next-button.arrowShape.js" />
     <Content Include="Assets\js\ProductPage.js" />
     <Content Include="Assets\js\ProductDetailPage.js" />
     <Content Include="Assets\js\ShoppingCart.js" />

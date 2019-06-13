@@ -698,6 +698,13 @@ h1 {
   }
 }
 
+@media screen and (min-width: 641px) {
+    .Cart--expanded .CartItem__Info ~ .CartItem__Actions, .Cart--expanded .CartItem__Info ~ .CartItem__LinePrice {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
 @media screen and (max-width: 640px) {
     .CartItem__Info ~ .CartItem__Actions, .CartItem__Info ~ .CartItem__LinePrice {
         display: none;
@@ -705,15 +712,8 @@ h1 {
 }
 
 @media screen and (min-width: 641px) {
-    .Cart--expanded .CartItem__Info > .CartItem__Actions {
+    .CartItem__Info .CartItem__Meta > .CartItem__Actions {
         display: none;
-    }
-}
-
-@media screen and (min-width: 641px) {
-    .Cart--expanded .CartItem__Info ~ .CartItem__Actions, .Cart--expanded .CartItem__Info ~ .CartItem__LinePrice {
-        display: table-cell;
-        vertical-align: middle;
     }
 }
 

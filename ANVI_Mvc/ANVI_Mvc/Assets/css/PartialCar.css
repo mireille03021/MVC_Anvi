@@ -545,12 +545,12 @@ h1 {
     }
 }
 
-@media screen and (min-width: 1240px) {
+/*@media screen and (min-width: 1240px) {
     .Cart--expanded .CartItem__Info {
         max-width: 425px;
         width: 425px;
     }
-}
+}*/
 
 @media screen and (min-width: 641px) {
     .CartItem__Title {
