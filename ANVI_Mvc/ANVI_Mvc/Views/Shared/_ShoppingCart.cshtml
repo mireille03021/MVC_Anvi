@@ -162,8 +162,22 @@
             var url = "/Cart/DeleteCartItem/";
             var PDID = this.getAttribute('data-PDID');
             var controlNumber = this.getAttribute('aria-valuenow');
-            //$(document).ready(function() {
-            $.ajax({
+            @*$.post(url,{ pdid:PDID }, function(data) {   //post寫法
+                $(".Cart_ItemList").load("/Cart/GetCartItem", function() {
+                    stocks.splice(controlNumber, 1);
+                    @{  //更新Cart內容
+                        currentCart = CartService.GetCurrentCart();
+                    }
+                    //重新覆上移除事件
+                    for (var i = 0; i < @currentCart.Count; i++) {
+                        $("#add_" + i).on('click',doAdd);
+                        $("#cut_" + i).on('click', doCut);
+                    }
+                    //更新價格
+                    ChangeAmount();
+                });
+            });*@
+            $.ajax({   //ajax寫法
                 url: url,
                 method:"POST",
                 data: {
@@ -190,7 +204,7 @@
                 }
             });
         });
-        //});
+
         function doAdd() {
             var controlNumber = this.getAttribute('aria-valuenow');
             var PDID = $("#CartItem_" + controlNumber).attr('value');
@@ -212,6 +226,7 @@
                 //});
             }
         }
+
         function doCut() {
             var controlNumber = this.getAttribute('aria-valuenow');
             var PDID = $("#CartItem_" + controlNumber).attr('value');
@@ -231,6 +246,7 @@
                 ChangeAmount();
             }
         }
+
         //畫面上的總金額需要更新
         function ChangeAmount() {
             var Amount = 0;
