@@ -2468,3 +2468,9 @@ header .form-inline {
 .card-header p {
     margin:0;
 }
+
+
+.row th:last-child {
+    min-width: 130px;
+    max-width: 130px;
+}
