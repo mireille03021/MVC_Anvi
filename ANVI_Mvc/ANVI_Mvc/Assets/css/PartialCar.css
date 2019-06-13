@@ -45,6 +45,7 @@ Car__.Container {
     margin-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+    flex: 1 1 auto;
 }
 
 .PageContent {
@@ -286,6 +287,7 @@ Car__.Container {
 .Cart__Footer {
     padding-top: 25px;
     border-top: 1px solid #ddd;
+    position: sticky;
 }
 
 .Cart__NoteContainer {
