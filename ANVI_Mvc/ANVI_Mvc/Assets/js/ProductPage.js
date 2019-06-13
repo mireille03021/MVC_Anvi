@@ -79,6 +79,8 @@ $("#twoproducts").click(function () {
 
         $($("#i" + y)).addClass("two__Grid__Cell");
         $($("#i" + y)).addClass("two__ProductItem");
+        $($("#i" + y)).removeClass("maintwo__Grid__Cell");
+        $($("#i" + y)).removeClass("maintwo__ProductItem");
     }
 
     $("#PIL").addClass("two__ProductItemList");
@@ -90,13 +92,49 @@ $("#fourproducts").click(function () {
     $("#twoproducts").removeClass("is-active");
     $(this).addClass("is-active");
     for (var y = 1; y < card; y++) {
+        $($("#i" + y)).addClass("Grid__Cell");
+        $($("#i" + y)).addClass("ProductItem");
         $($("#i" + y)).removeClass("two__Grid__Cell");
         $($("#i" + y)).removeClass("two__ProductItem");
+        $($("#i" + y)).removeClass("maintwo__Grid__Cell");
+        $($("#i" + y)).removeClass("maintwo__ProductItem");
     }
 
     $("#PIL").removeClass("two__ProductItemList");
 
+
 });
+
+$("#maintwoproducts").click(function () {
+    $("#mainoneproducts").removeClass("is-active");
+    $(this).addClass("is-active");
+    for (var y = 1; y < card; y++) {
+        $($("#i" + y)).addClass("maintwo__Grid__Cell");
+        $($("#i" + y)).addClass("maintwo__ProductItem");
+        $($("#i" + y)).removeClass("Grid__Cell");
+        $($("#i" + y)).removeClass("ProductItem");
+        
+    }
+
+    $("#PIL").removeClass("one__ProductItemList");
+
+});
+
+$("#mainoneproducts").click(function () {
+    $("#maintwoproducts").removeClass("is-active");
+    $(this).addClass("is-active");
+    for (var y = 1; y < card; y++) {
+        $($("#i" + y)).removeClass("maintwo__Grid__Cell");
+        $($("#i" + y)).removeClass("maintwo__ProductItem");
+        $($("#i" + y)).addClass("Grid__Cell");
+        $($("#i" + y)).addClass("ProductItem");
+    }
+
+    $("#PIL").removeClass("maintwo__ProductItemList");
+
+});
+
+
 
 var nb = 0;
 $("#bnt").click(function () {

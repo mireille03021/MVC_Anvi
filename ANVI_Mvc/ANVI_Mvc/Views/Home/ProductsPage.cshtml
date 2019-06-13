@@ -21,7 +21,7 @@
 <!--SORT-->
 <div id="collection-sort-popover" class="Popover" aria-hidden="true">
     <header class="Popover__Header">
-        <button class="Popover__Close Icon-Wrapper--clickable"
+        @*<button class="Popover__Close Icon-Wrapper--clickable"
                 data-action="close-popover">
             <svg class="Icon Icon--close" role="presentation" viewBox="0 0 16 14">
                 <path d="M15 0L1 14m14 0L1 0"
@@ -29,7 +29,7 @@
                       fill="none"
                       fill-rule="evenodd"></path>
             </svg>
-        </button>
+        </button>*@
         <span class="Popover__Title Heading u-h4">Sort</span>
     </header>
 
@@ -163,34 +163,11 @@
 
     <!--商品底部選擇器------------------------------------------------------------------------------------------------------->
     <div class="CollectionToolbar CollectionToolbar--bottom CollectionToolbar--reverse">
-        <div class="CollectionToolbar__Group">
-            <button class="CollectionToolbar__Item CollectionToolbar__Item--filter Heading Text--subdued u-h6 "
-                    data-action="open-drawer"
-                    data-drawer-id="collection-filter-drawer"
-                    aria-label="Show filters">
-            </button>
-            <button id="bnt" class="CollectionToolbar__Item CollectionToolbar__Item--sort Heading Text--subdued u-h6"
-                             aria-label="Show sort by"
-                             aria-haspopup="true"
-                             aria-expanded="false"
-                             aria-controls="collection-sort-popover">
-                Sort
-                <svg class="Icon Icon--select-arrow"
-                     role="presentation"
-                     viewBox="0 0 19 12">
-                    <polyline fill="none"
-                              stroke="currentColor"
-                              points="17 2 9.5 10 2 2"
-                              fill-rule="evenodd"
-                              stroke-width="2"
-                              stroke-linecap="square"></polyline>
-                </svg>
-            </button>
-        </div>
         <div class="CollectionToolbar__Item CollectionToolbar__Item--layout">
             <div class="CollectionToolbar__LayoutSwitch hidden-tablet-and-up">
                 <button aria-label="Show one product per row"
-                        class="CollectionToolbar__LayoutType "
+                        class="CollectionToolbar__LayoutType is-active"
+                        id="mainoneproducts"
                         data-action="change-layout-mode"
                         data-grid-type="mobile"
                         data-count="1">
@@ -201,7 +178,8 @@
                     </svg>
                 </button>
                 <button aria-label="Show two products per row"
-                        class="CollectionToolbar__LayoutType is-active"
+                        class="CollectionToolbar__LayoutType"
+                        id="maintwoproducts"
                         data-action="change-layout-mode"
                         data-grid-type="mobile"
                         data-count="2">
@@ -243,6 +221,30 @@
                 </button>
             </div>
         </div>
+        <div class="CollectionToolbar__Group">
+            @*<button class="CollectionToolbar__Item CollectionToolbar__Item--filter Heading Text--subdued u-h6 "
+                    data-action="open-drawer"
+                    data-drawer-id="collection-filter-drawer"
+                    aria-label="Show filters"></button>*@
+            <button id="bnt" class="CollectionToolbar__Item CollectionToolbar__Item--sort Heading Text--subdued u-h6"
+                    aria-label="Show sort by"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="collection-sort-popover">
+                Sort
+                <svg class="Icon Icon--select-arrow"
+                     role="presentation"
+                     viewBox="0 0 19 12">
+                    <polyline fill="none"
+                              stroke="currentColor"
+                              points="17 2 9.5 10 2 2"
+                              fill-rule="evenodd"
+                              stroke-width="2"
+                              stroke-linecap="square"></polyline>
+                </svg>
+            </button>
+        </div>
+
     </div>
 
 </div>
