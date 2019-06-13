@@ -3,7 +3,7 @@
     ViewBag.Title = "Order_Check";
 
     Layout = "~/Views/Shared/_Layout_ANVI.cshtml";
-    var CartToHere = (bool) ViewBag.CartToHere;
+    var CartToHere = (bool)ViewBag.CartToHere;
 }
 @section topCSS
 {
@@ -55,9 +55,9 @@
 
                                                 <div class="review-block__link">
                                                     @*<a href="~/Views/Home/Order_Customer.cshtml" class="link--small">
-                                                        <span aria-hidden="true">Cange</span>
-                                                        <span class="visually-hidden">Change contact information</span>
-                                                    </a>*@
+                                                            <span aria-hidden="true">Cange</span>
+                                                            <span class="visually-hidden">Change contact information</span>
+                                                        </a>*@
                                                 </div>
                                             </div>
 
@@ -73,9 +73,9 @@
                                                 </div>
                                                 <div class="review-block__link">
                                                     @*<a href="~/Views/Home/Order_Customer.cshtml" class="link--small">
-                                                        <span aria-hidden="true">Cange</span>
-                                                        <span class="visually-hidden">Change contact information</span>
-                                                    </a>*@
+                                                            <span aria-hidden="true">Cange</span>
+                                                            <span class="visually-hidden">Change contact information</span>
+                                                        </a>*@
                                                 </div>
                                             </div>
 
@@ -213,11 +213,11 @@
                                                             </div>
                                                         </div>
                                                         <!-- <div class="field field--half-city">
-                                        <div class="field__input-wrapper">
-                                            <label class="field__label">城市</label>
-                                            <input type="text" class="field__input" id="checkout_shipping_address_city" placeholder="城市" size="30" name="checkout[shipping_address][city]">
-                                        </div>
-                                    </div> -->
+                                                            <div class="field__input-wrapper">
+                                                                <label class="field__label">城市</label>
+                                                                <input type="text" class="field__input" id="checkout_shipping_address_city" placeholder="城市" size="30" name="checkout[shipping_address][city]">
+                                                            </div>
+                                                        </div> -->
                                                         <div class="field field--half-zip">
                                                             <div class="field__input-wrapper">
                                                                 <!-- <label class="field__label">郵遞區號</label> -->
@@ -237,9 +237,9 @@
                                                             <input type="text" class="field__input" id="checkout_shipping_address_phone" placeholder="電話" size="30" name="Bill_Phone" value="@ViewData["Bill_Phone"]">
                                                             <div id="phone_tooltip" class="field__icon">
                                                                 <!-- <span id="tooltip-for-phone" class="tooltip">
-                                                In case we need to contact you about your order.
-                                            </span>
-                                            <i class="fas fa-question-circle"></i> -->
+                                                                    In case we need to contact you about your order.
+                                                                </span>
+                                                                <i class="fas fa-question-circle"></i> -->
 
                                                                 <div class="field__icon-svg" data-toggle="tooltip" data-placement="top" title=' In case we need to contact you about your order.'>
 
@@ -255,7 +255,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <div class="step__footer">
+                            <div class="step__footer">
                                 <button id="continue_button" class="step__footer__continue-btn btn" type="submit" name="button">
                                     <!-- loading ICON -->
                                     <span class="btn__content">完成訂單</span>
@@ -301,10 +301,10 @@
                      </a>
                     </div> -->
                     <div class="sidebar__content">
-                        @Html.Action("getOrderPartial", "Home")
-                         </div>
+                        @*@Html.Action("getOrderPartial", "Home")*@
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
