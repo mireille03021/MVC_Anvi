@@ -3270,6 +3270,7 @@
     <Content Include="Views\BackSystem\AllStockChart.cshtml" />
     <Content Include="Views\BackSystem\AllKindChart.cshtml" />
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
+    <Content Include="Views\Shared\_Layout_ANVI_header_forCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

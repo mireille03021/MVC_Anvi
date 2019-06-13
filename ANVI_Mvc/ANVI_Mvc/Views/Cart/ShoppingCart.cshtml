@@ -1,5 +1,6 @@
 ﻿@using ANVI_Mvc.Services
 @{
+    Layout = "~/Views/Shared/_Layout_ANVI_header_forCart.cshtml";
     var currentCart = CartService.GetCurrentCart();
     int[] stocks = new int[CartService.GetCurrentCart().Count];
     var CheckStocks = false;
