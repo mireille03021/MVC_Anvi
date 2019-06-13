@@ -153,7 +153,7 @@ namespace ANVI_Mvc.Controllers
             ViewBag.JsonPVM = Newtonsoft.Json.JsonConvert.SerializeObject(sPVM.ProductDetailViewModels);
 
             ViewData["ColorName"] = DropDownList_Color;
-            return View("ProductDetailPage");
+            return RedirectToAction("ProductDetailPage","Home",new {pid = pid});
         }
 
         [HttpPost]
