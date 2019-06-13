@@ -18,19 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: DesDetails
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.DesDetails.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<DesDetail> desDetails = db.DesDetails.OrderBy(x => x.DDID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<DesDetail> desDetails = db.DesDetails.OrderBy(x => x.DDID).ToList();
             return View("../BackSystem/ListAllDesDetail", desDetails);
         }
 
@@ -46,7 +36,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -54,7 +43,6 @@ namespace ANVI_Mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName");
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View();
         }
 
@@ -73,7 +61,6 @@ namespace ANVI_Mvc.Controllers
             }
 
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desDetail.ProductID);
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -90,7 +77,6 @@ namespace ANVI_Mvc.Controllers
                 return HttpNotFound();
             }
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desDetail.ProductID);
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -108,7 +94,6 @@ namespace ANVI_Mvc.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", desDetail.ProductID);
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -124,7 +109,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return View(desDetail);
         }
 
@@ -136,7 +120,6 @@ namespace ANVI_Mvc.Controllers
             DesDetail desDetail = db.DesDetails.Find(id);
             db.DesDetails.Remove(desDetail);
             db.SaveChanges();
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

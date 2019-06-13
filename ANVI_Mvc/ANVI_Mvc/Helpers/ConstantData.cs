@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,6 @@ namespace ANVI_Mvc.Helpers
     public static class ConstantData
     {
         public const int PageRows = 10;
-
 
         public static List<string> Citys = new List<string>()
         {
@@ -46,6 +46,31 @@ namespace ANVI_Mvc.Helpers
             BackSystemRegister = 14,
             AllStockChart = 15,
             AllKindChart = 16
+        }
+
+        public enum StockEnough
+        {
+            NotEnough5 = 1,
+            Enough5NotEnough10 = 2,
+            Enough10NotEnough20 = 3
+        }
+
+        public static Dictionary<int, string> BackgroundColor = new Dictionary<int, string>();
+
+        public static void CreatBackgroundColor()
+        {
+            BackgroundColor.Add(1, "rgba(255, 99, 132, 0.2)");
+            BackgroundColor.Add(2, "rgba(255, 206, 86, 0.2)");
+            BackgroundColor.Add(3, "rgba(75, 192, 192, 0.2)");
+        }
+
+        public static Dictionary<int, string> BorderColor = new Dictionary<int, string>();
+
+        public static void CreatBorderColor()
+        {
+            BorderColor.Add(1, "rgba(255,99,132,1)");
+            BorderColor.Add(2, "rgba(255, 206, 86, 1)");
+            BorderColor.Add(3, "rgba(75, 192, 192, 1)");
         }
     }
 }

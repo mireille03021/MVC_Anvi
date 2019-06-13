@@ -4,8 +4,191 @@
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "Delete";
 }
+@section topCSS
+{
+    <link href="~/Assets/BackSystem/assets/css/CRUD-style.css" rel="stylesheet" />
+}
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>訂單</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">訂單</a></li>
+                    <li><a href="/BackSystem/ListAllOrder">訂單</a></li>
+                    <li class="active">Delete</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Delete</h2>
+<div class="card">
+    <div class="card-header">
+        Delete <strong>訂單</strong>
+    </div>
+    <div class="card-body card-block">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrderID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Shipper.ShippName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Shipper.ShippName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientAddressee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientAddressee)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientZipCod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientZipCod)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientCity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientCity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientPhone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientPhone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Payment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Payment)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Remaeks)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Remaeks)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ShipDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShipDate)
+            </dd>
+        </dl>
+        <div class="Segment__ButtonWrapper">
+            <a href="/account/addresses"
+               class="btn btn-outline-secondary btn-lg btn-block"
+               data-toggle="modal"
+               data-target="#Dcn">
+                Detail
+            </a>
+
+            <div id="Dcn"
+                 class="modal right fade bd-example-modal-xl"
+                 tabindex="-1"
+                 role="dialog"
+                 aria-labelledby="myExtraLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <h3>Are you sure you want to delete this?</h3>
+                            <div class="form-actions no-color">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderID)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderID)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.AspNetUser.Email)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RecipientName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RecipientName)
+                                </dd>
+                                <br />
+                                <input type="submit" value="Delete" class="btn btn-danger btn-lg btn-block" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+
+<@*h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -110,7 +293,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -118,4 +302,4 @@
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
-</div>
+</div>*@

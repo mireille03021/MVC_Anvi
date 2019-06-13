@@ -5,7 +5,64 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+@section topCSS
+{
+    <link href="~/Assets/BackSystem/assets/css/CRUD-style.css" rel="stylesheet" />
+}
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>產品</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">產品</a></li>
+                    <li><a href="/BackSystem/ListAllCategory">類別</a></li>
+                    <li class="active">Details</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Details <strong>類別</strong>
+    </div>
+    <div class="card-body card-block">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryName)
+            </dd>
+
+
+        </dl>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+@*<h2>Details</h2>
 
 <div>
     <h4>Category</h4>
@@ -32,4 +89,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

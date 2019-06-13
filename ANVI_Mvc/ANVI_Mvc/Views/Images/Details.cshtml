@@ -4,8 +4,72 @@
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "Details";
 }
+@section topCSS
+{
+    <link href="~/Assets/BackSystem/assets/css/CRUD-style.css" rel="stylesheet" />
+}
 
-<h2>Details</h2>
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>產品</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">產品</a></li>
+                    <li><a href="/BackSystem/ListAllImage">圖片</a></li>
+                    <li class="active">Details</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Details <strong>圖片</strong>
+    </div>
+    <div class="card-body card-block">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ImgID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImgID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductDetail.PDID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductDetail.PDID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImgName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImgName)
+                <img src="~/Assets/images/@Model.ProductDetail.Product.Category.CategoryName/@Model.ImgName" style="width:200px; height:200px;" />
+            </dd>
+
+        </dl>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ImgID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+@*<h2>Details</h2>
 
 <div>
     <h4>Image</h4>
@@ -41,4 +105,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ImgID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

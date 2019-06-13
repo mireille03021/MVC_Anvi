@@ -4,8 +4,154 @@
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "Details";
 }
+@section topCSS
+{
+    <link href="~/Assets/BackSystem/assets/css/CRUD-style.css" rel="stylesheet" />
+}
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>訂單</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">訂單</a></li>
+                    <li><a href="/BackSystem/ListAllOrder">訂單</a></li>
+                    <li class="active">Details</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Details</h2>
+<div class="card">
+    <div class="card-header">
+        Details <strong>訂單</strong>
+    </div>
+    <div class="card-body card-block">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OrderID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.Id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientPhone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientPhone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientZipCod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientZipCod)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientCity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientCity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecipientAddressee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecipientAddressee)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Payment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Payment)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ShipDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShipDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Shipper.ShippName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Shipper.ShippName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Remaeks)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Remaeks)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+
+@*<h2>Details</h2>
 
 <div>
     <h4>Order</h4>
@@ -123,4 +269,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

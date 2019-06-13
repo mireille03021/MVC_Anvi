@@ -38,210 +38,77 @@ namespace ANVI_Mvc.Controllers
 
         public ActionResult AllStockChart()
         {
-            return View();
+            List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.ProductID).ThenBy(x => x.PDID).ToList();
+            ViewBag.Count = productDetils.Count;
+            return View(productDetils);
         }
         public ActionResult AllKindChart()
         {
             return View();
         }
 
-        public ActionResult ListAllProduct(int id = 1)
+        public ActionResult ListAllProduct()
         {
-            //int activePage = id; //目前所在頁
-            //int Count = db.Products.Count();
-            ////計算Page頁數
-            //int Pages = hp.Cul_Pages(Count); //傳入總筆數
-
-            //int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            //List<Product> products = db.Products.OrderBy(x => x.ProductID).Skip(startRow).Take(PageRows).ToList();
-
-            //ViewData["PageActive"] = id;    //Active頁碼
-            //ViewData["SideActive"] = (int)SideIndex.Product;    //Active Dashboard
-            //ViewData["Pages"] = Pages;  //頁數
-            //ViewData["Count"] = Count;
             List<Product> products = db.Products.OrderBy(x => x.ProductID).ToList();
             return View(products);
         }
-        public ActionResult ListAllProductDetail(int id = 1)
+        public ActionResult ListAllProductDetail()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.ProductDetails.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.PDID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.ProductID).ThenBy(x => x.PDID).ToList();
             return View(productDetils);
         }
-        public ActionResult ListAllCategory(int id = 1)
+        public ActionResult ListAllCategory()
         {
-            int activePage = id; //目前所在頁
-
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Categories.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<Category> categories = db.Categories.OrderBy(x => x.CategoryID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Category;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<Category> categories = db.Categories.OrderBy(x => x.CategoryID).ToList();
             return View(categories);
         }
-        public ActionResult ListAllImage(int id = 1)
+        public ActionResult ListAllImage()
         {
-            int activePage = id; //目前所在頁
-
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Images.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<Image> images = db.Images.OrderBy(x => x.ImgID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<Image> images = db.Images.OrderBy(x => x.ImgID).ToList();
             return View(images);
         }
-        public ActionResult ListAllSize(int id = 1)
+        public ActionResult ListAllSize()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Sizes.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<Size> sizes = db.Sizes.OrderBy(x => x.SizeID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<Size> sizes = db.Sizes.OrderBy(x => x.SizeID).ToList();
             return View(sizes);
         }
-        public ActionResult ListAllColor(int id = 1)
+        public ActionResult ListAllColor()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Colors.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<Color> colors = db.Colors.OrderBy(x => x.ColorID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Color;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<Color> colors = db.Colors.OrderBy(x => x.ColorID).ToList();
             return View(colors);
         }
-        public ActionResult ListAllDesDetail(int id = 1)
+        public ActionResult ListAllDesDetail()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.DesDetails.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<DesDetail> desDetails = db.DesDetails.OrderBy(x => x.DDID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.DesDetail;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<DesDetail> desDetails = db.DesDetails.OrderBy(x => x.DDID).ToList();
             return View(desDetails);
         }
-        public ActionResult ListAllDesSubTitle(int id = 1)
+        public ActionResult ListAllDesSubTitle()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.DesSubTitles.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<DesSubTitle> desSubTitles = db.DesSubTitles.OrderBy(x => x.DSTID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.DesSubTitle;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<DesSubTitle> desSubTitles = db.DesSubTitles.OrderBy(x => x.DSTID).ToList();
             return View(desSubTitles);
         }
 
-        public ActionResult ListAllOrder(int id = 1)
+        public ActionResult ListAllOrder()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Orders.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<Order> orders  = db.Orders.OrderBy(x => x.OrderID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<Order> orders  = db.Orders.OrderBy(x => x.OrderID).ToList();
             return View(orders);
         }
 
-        public ActionResult ListAllOrderDetail(int id = 1)
+        public ActionResult ListAllOrderDetail()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.OrderDetails.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<OrderDetail> orderDetails  = db.OrderDetails.OrderBy(x => x.OrderID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<OrderDetail> orderDetails  = db.OrderDetails.OrderBy(x => x.OrderID).ToList();
             return View(orderDetails);
         }
 
-        public ActionResult ListAllShipper(int id = 1)
+        public ActionResult ListAllShipper()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Shippers.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<Shipper> shippers = db.Shippers.OrderBy(x => x.ShipperID).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Shipper;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<Shipper> shippers = db.Shippers.OrderBy(x => x.ShipperID).ToList();
             return View(shippers);
         }
 
-        public ActionResult ListAllIdentityModels(int id = 1)
+        public ActionResult ListAllIdentityModels()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.AspNetUsers.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<AspNetUser> aspNetUsers = db.AspNetUsers.OrderBy(x => x.Id).Skip(startRow).Take(PageRows).ToList();
-
-            ViewBag.UserId = 
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.IdentityModels;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<AspNetUser> aspNetUsers = db.AspNetUsers.OrderBy(x => x.Id).ToList();
             return View(aspNetUsers);
         }
     }

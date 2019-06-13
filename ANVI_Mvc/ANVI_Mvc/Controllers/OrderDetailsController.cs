@@ -18,19 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: OrderDetails
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.OrderDetails.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<OrderDetail> orderDetails = db.OrderDetails.OrderBy(x => x.OrderID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
+            List<OrderDetail> orderDetails = db.OrderDetails.OrderBy(x => x.OrderID).ToList();
             return View("../BackSystem/ListAllOrderDetail", orderDetails);
         }
 
@@ -46,16 +36,14 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             return View(orderDetail);
         }
 
         // GET: OrderDetails/Create
         public ActionResult Create()
         {
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "UserID");
+            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID");
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID");
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             return View();
         }
 
@@ -73,9 +61,8 @@ namespace ANVI_Mvc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "UserID", orderDetail.OrderID);
+            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID", orderDetail.OrderID);
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", orderDetail.PDID);
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             return View(orderDetail);
         }
 
@@ -91,9 +78,8 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "UserID", orderDetail.OrderID);
+            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID", orderDetail.OrderID);
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", orderDetail.PDID);
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             return View(orderDetail);
         }
 
@@ -110,9 +96,8 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "UserID", orderDetail.OrderID);
+            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID", orderDetail.OrderID);
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", orderDetail.PDID);
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             return View(orderDetail);
         }
 
@@ -128,7 +113,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             return View(orderDetail);
         }
 
@@ -140,7 +124,6 @@ namespace ANVI_Mvc.Controllers
             OrderDetail orderDetail = db.OrderDetails.First(x => x.OrderID == orderid && x.PDID == pdid);
             db.OrderDetails.Remove(orderDetail);
             db.SaveChanges();
-            ViewData["SideActive"] = (int)SideIndex.OrderDetail;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

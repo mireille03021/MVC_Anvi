@@ -18,19 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: Products
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Products.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<Product> products = db.Products.OrderBy(x => x.ProductID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Product;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
+            List<Product> products = db.Products.OrderBy(x => x.ProductID).ToList();
             return View("../BackSystem/ListAllProduct", products);
         }
 
@@ -46,7 +36,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Product;
             return View(product);
         }
 
@@ -54,7 +43,6 @@ namespace ANVI_Mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
-            ViewData["SideActive"] = (int)SideIndex.Product;
             return View();
         }
 
@@ -73,7 +61,6 @@ namespace ANVI_Mvc.Controllers
             }
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewData["SideActive"] = (int)SideIndex.Product;
             return View(product);
         }
 
@@ -90,7 +77,6 @@ namespace ANVI_Mvc.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewData["SideActive"] = (int)SideIndex.Product;
             return View(product);
         }
 
@@ -108,7 +94,6 @@ namespace ANVI_Mvc.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewData["SideActive"] = (int)SideIndex.Product;
             return View(product);
         }
 
@@ -124,7 +109,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Product;
             return View(product);
         }
 
@@ -136,7 +120,6 @@ namespace ANVI_Mvc.Controllers
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
-            ViewData["SideActive"] = (int)SideIndex.Product;
             return RedirectToAction("Index");
         }
 
