@@ -466,13 +466,6 @@ body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(
         border-bottom: 1px solid #ddd;
     }
 
-    .Footer__Title,
-    .Footer__Content {
-        width: 300px;
-        margin: 0 auto;
-        /* text-align: center; */
-    }
-
     .ChangeTitle {
         text-align: center;
     }
@@ -607,6 +600,19 @@ body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(
 @media not all, (hover: hover) {
     .Button:not([disabled])::before, .shopify-payment-button__button--unbranded:not([disabled])::before {
         transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .Footer__Title,
+    .Footer__Content {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .Linklist {
+        width: auto;
     }
 }
 /*# sourceMappingURL=Home__Slideshow.css.map */
