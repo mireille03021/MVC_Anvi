@@ -120,3 +120,24 @@ h6 {
 .SectionHeader__SubHeading.SectionHeader__SubHeading {
     margin-top: 0;
 }
+.logo1X:nth-child(2) {
+    display: none;
+}
+@media (min-width:690px) {
+    .gridrow64 img:nth-child(1) {
+        display: block;
+    }
+
+    .gridrow64 img:nth-child(2) {
+        display: none;
+    }
+}
+@media (max-width: 690px) {
+    .logoimg img:nth-child(1) {
+        display: none;
+    }
+
+    .logoimg img:nth-child(2) {
+        display: block;
+    }
+}   
