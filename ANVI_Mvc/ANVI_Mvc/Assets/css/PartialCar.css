@@ -42,6 +42,7 @@ Car__.Container {
     }
 
 .Cart_ItemList {
+    margin-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
 }
@@ -492,8 +493,8 @@ h1 {
     margin-top: 20px;
 }
 
-.hidden-phone {
-    display: none !important;
+.hidden-cart {
+    display: none!important;
 }
 
 @media screen and (min-width: 641px) {
@@ -505,11 +506,11 @@ h1 {
     }
 }
 
-@media screen and (min-width: 641px) {
+/*@media screen and (min-width: 641px) {
     .Cart__Head, .Cart__Recap {
         display: table-header-group;
     }
-}
+}*/
 
 @media screen and (min-width: 641px) {
     .Cart--expanded .Cart__HeadItem {
@@ -590,11 +591,11 @@ h1 {
     }
 }
 
-@media screen and (min-width: 641px) {
+/*@media screen and (min-width: 641px) {
     .Cart__Recap, .Cart__NoteContainer {
         display: table-cell;
     }
-}
+}*/
 
 @media screen and (min-width: 641px) {
     .u-h6, .Rte h6 {
