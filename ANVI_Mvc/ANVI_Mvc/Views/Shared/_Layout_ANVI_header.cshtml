@@ -322,7 +322,7 @@
                                           fill="currentColor"></path>
                                 </svg>
                             </span>
-                            <span class="Header__CartDot "></span>
+                            <span id="CartDot" class="Header__CartDot"></span>
                         </a>
                     </div>
                 </div>
@@ -638,6 +638,17 @@
                     }
                 }
             });
+        }
+    </script>
+
+    <!--購物車RWD的有物品狀態-->
+    <script>
+        console.log($("#CartDot"));
+        if (@currentCart.Count> 0) {
+            $("#CartDot").addClass("is-visible");
+        }
+        else {
+            $("#CartDot").removeClass("is-visible");
         }
     </script>
 

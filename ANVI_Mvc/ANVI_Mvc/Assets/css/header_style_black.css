@@ -658,6 +658,11 @@ svg:not(:root) {
     background-color: currentColor;
 }
 
+.Header__CartDot.is-visible {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
 /*LOGO*/
 .Header__Logo {
     position: relative;

@@ -332,3 +332,10 @@ body {
     }
 }
     
+/*購物車RWD圖示的點*/
+
+.Header__CartDot {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: currentColor;
+}
