@@ -276,7 +276,7 @@
                         </div>
 
                         <!--購物車的RWD圖示-->
-                        <a href="/Cart/ShoppingCart" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
+                        <a href="/Cart/ShoppingCart"  class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
                            data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="購物車">
                             <span class="hidden-tablet-and-up">
                                 <svg class="Icon Icon--cart" role="presentation" viewBox="0 0 17 20">
@@ -550,11 +550,11 @@
             $("#sidebar-menu").attr("aria-hidden", true);
         }
 
-        //$(window).click(function (event) {
-        //    if (event.target == PageOverBlack) {
-        //        sidebar_menu_close();
-        //    }
-        //});
+        $(window).click(function (event) {
+            if (event.target == PageOverBlack) {
+                sidebar_menu_close();
+            }
+        });
 
     </script>
 
