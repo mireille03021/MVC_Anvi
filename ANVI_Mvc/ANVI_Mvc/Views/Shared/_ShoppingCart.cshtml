@@ -11,10 +11,6 @@
     var JsonStock = Json.Encode(stocks);
     var JsonCheckStock = Json.Encode(CheckStocks);
 }
-@section topCSS
-{
-    <link rel="stylesheet" href="~/Assets/css/ShoppingCart_CSS.css" />
-}
 
 <main id="main" role="main">
     <div class="Container">
@@ -144,8 +140,6 @@
     </div>
 </main>
 
-@section endJS
-{
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
     <script>
         var stocks = @JsonStock;
@@ -253,4 +247,3 @@
         ChangeAmount();
 
     </script>
-}
