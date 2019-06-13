@@ -162,7 +162,7 @@
             var url = "/Cart/DeleteCartItem/";
             var PDID = this.getAttribute('data-PDID');
             var controlNumber = this.getAttribute('aria-valuenow');
-            $.post(url,{ pdid:PDID }, function(data) {   //post寫法
+            @*$.post(url,{ pdid:PDID }, function(data) {   //post寫法
                 $(".Cart_ItemList").load("/Cart/GetCartItem", function() {
                     stocks.splice(controlNumber, 1);
                     @{  //更新Cart內容
@@ -176,8 +176,8 @@
                     //更新價格
                     ChangeAmount();
                 });
-            });
-            @*$.ajax({   //ajax寫法
+            });*@
+            $.ajax({   //ajax寫法
                 url: url,
                 method:"POST",
                 data: {
@@ -198,8 +198,10 @@
                         //更新價格
                         ChangeAmount();
                     });
+                },
+                error: function() {
                 }
-            });*@
+            });
         });
 
         function doAdd() {
