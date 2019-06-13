@@ -473,6 +473,10 @@ body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(
         /* text-align: center; */
     }
 
+    .ChangeTitle {
+        text-align: center;
+    }
+
     .Linklist {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -491,6 +495,24 @@ body:not(.is-tabbing) button:focus, body:not(.is-tabbing) input:focus, body:not(
 
     .Footer__end {
         margin: auto;
+    }
+
+    .Linklist__Item a {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .footer__Container {
+        padding: 50px 20px 30px;
+    }
+
+    .ChangeTitle {
+        text-align: center;
+    }
+
+    .Linklist__Item a {
+        width: auto;
     }
 }
 
