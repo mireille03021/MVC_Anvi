@@ -47,108 +47,161 @@
                     </span>
                 </span>
             </div>
-            <div class="CartItem__Actions Heading Text--subdued"
-                 style="text-align: center">
-                <div class="CartItem__QuantitySelector">
-                    <div class="QuantitySelector">
-                        <a id="cut_@i"
-                           class="QuantitySelector__Button Link Link--primary"
-                           title="減少數量"
-                           data-quantity="0" aria-valuenow="@i">
-                            <svg class="Icon Icon--minus"
-                                 role="presentation"
-                                 viewBox="0 0 16 2">
-                                <path d="M1,1 L15,1"
-                                      stroke="currentColor"
-                                      fill="none"
-                                      fill-rule="evenodd"
-                                      stroke-linecap="square"></path>
-                            </svg>
-                        </a>
-                        <input type="text"
-                               name="Quantity"
-                               id="Quantity_@i"
-                               class="QuantitySelector__CurrentQuantity"
-                               pattern="[0-9]*"
-                               value="@cartItem.Quantity" readonly="readonly" />
-                        <a id="add_@i"
-                           class="QuantitySelector__Button Link Link--primary"
-                           title="增加數量"
-                           data-quantity="2" aria-valuenow="@i">
-                            <svg class="Icon Icon--plus"
-                                 role="presentation"
-                                 viewBox="0 0 16 16">
-                                <g stroke="currentColor"
-                                   fill="none"
-                                   fill-rule="evenodd"
-                                   stroke-linecap="square">
-                                    <path d="M8,1 L8,15"></path>
-                                    <path d="M1,8 L15,8"></path>
-                                </g>
-                            </svg>
-                        </a>
-                    </div>
+            @*<div class="CartItem__Actions Heading Text--subdued"
+             style="text-align: center">
+            <div class="CartItem__QuantitySelector">
+                <div class="QuantitySelector">
+                    <a id="cut_@i"
+                       class="QuantitySelector__Button Link Link--primary"
+                       title="減少數量"
+                       data-quantity="0" aria-valuenow="@i">
+                        <svg class="Icon Icon--minus"
+                             role="presentation"
+                             viewBox="0 0 16 2">
+                            <path d="M1,1 L15,1"
+                                  stroke="currentColor"
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  stroke-linecap="square"></path>
+                        </svg>
+                    </a>
+                    <input type="text"
+                           name="Quantity"
+                           id="Quantity_@i"
+                           class="QuantitySelector__CurrentQuantity"
+                           pattern="[0-9]*"
+                           value="@cartItem.Quantity" readonly="readonly" />
+                    <a id="add_@i"
+                       class="QuantitySelector__Button Link Link--primary"
+                       title="增加數量"
+                       data-quantity="2" aria-valuenow="@i">
+                        <svg class="Icon Icon--plus"
+                             role="presentation"
+                             viewBox="0 0 16 16">
+                            <g stroke="currentColor"
+                               fill="none"
+                               fill-rule="evenodd"
+                               stroke-linecap="square">
+                                <path d="M8,1 L8,15"></path>
+                                <path d="M1,8 L15,8"></path>
+                            </g>
+                        </svg>
+                    </a>
                 </div>
-                <a href="" data-PDID="@cartItem.PDID"
-                   style="text-decoration:none;"
-                   class="CartItem__Remove Link Link--underline"
-                   data-quantity="0"
-                   data-action="remove-item"
-                   aria-valuenow="@i">移除</a>
             </div>
+            <a href="" data-PDID="@cartItem.PDID"
+               style="text-decoration:none;"
+               class="CartItem__Remove Link Link--underline"
+               data-quantity="0"
+               data-action="remove-item"
+               aria-valuenow="@i">移除</a>
+        </div>*@
+            @if (Request.Url != new Uri("http://localhost:4559/Cart/ShoppingCart"))    //網址需要改成發行版
+            {
+                <div class="CartItem__Actions Heading Text--subdued"
+                     style="text-align: center">
+                    <div class="CartItem__QuantitySelector">
+                        <div class="QuantitySelector">
+                            <a id="cut_@i"
+                               class="QuantitySelector__Button Link Link--primary"
+                               title="減少數量"
+                               data-quantity="0" aria-valuenow="@i">
+                                <svg class="Icon Icon--minus"
+                                     role="presentation"
+                                     viewBox="0 0 16 2">
+                                    <path d="M1,1 L15,1"
+                                          stroke="currentColor"
+                                          fill="none"
+                                          fill-rule="evenodd"
+                                          stroke-linecap="square"></path>
+                                </svg>
+                            </a>
+                            <input type="text"
+                                   name="Quantity"
+                                   id="Quantity_@i"
+                                   class="QuantitySelector__CurrentQuantity"
+                                   pattern="[0-9]*"
+                                   value="@cartItem.Quantity" readonly="readonly" />
+                            <a id="add_@i"
+                               class="QuantitySelector__Button Link Link--primary"
+                               title="增加數量"
+                               data-quantity="2" aria-valuenow="@i">
+                                <svg class="Icon Icon--plus"
+                                     role="presentation"
+                                     viewBox="0 0 16 16">
+                                    <g stroke="currentColor"
+                                       fill="none"
+                                       fill-rule="evenodd"
+                                       stroke-linecap="square">
+                                        <path d="M8,1 L8,15"></path>
+                                        <path d="M1,8 L15,8"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="" data-PDID="@cartItem.PDID"
+                       style="text-decoration:none;"
+                       class="CartItem__Remove Link Link--underline"
+                       data-quantity="0"
+                       data-action="remove-item"
+                       aria-valuenow="@i">移除</a>
+                </div>
+            }
+            @if (Request.Url == new Uri("http://localhost:4559/Cart/ShoppingCart"))    //網址需要改成發行版
+            {
+                <div class="CartItem__Actions Heading Text--subdued"
+                     style="text-align: center">
+                    <div class="CartItem__QuantitySelector">
+                        <div class="QuantitySelector">
+                            <a id="cut_@i"
+                               class="QuantitySelector__Button Link Link--primary"
+                               title="減少數量"
+                               data-quantity="0" aria-valuenow="@i">
+                                <svg class="Icon Icon--minus"
+                                     role="presentation"
+                                     viewBox="0 0 16 2">
+                                    <path d="M1,1 L15,1"
+                                          stroke="currentColor"
+                                          fill="none"
+                                          fill-rule="evenodd"
+                                          stroke-linecap="square"></path>
+                                </svg>
+                            </a>
+                            <input type="text"
+                                   name="Quantity"
+                                   id="Quantity_@i"
+                                   class="QuantitySelector__CurrentQuantity"
+                                   pattern="[0-9]*"
+                                   value="@cartItem.Quantity" readonly="readonly" />
+                            <a id="add_@i"
+                               class="QuantitySelector__Button Link Link--primary"
+                               title="增加數量"
+                               data-quantity="2" aria-valuenow="@i">
+                                <svg class="Icon Icon--plus"
+                                     role="presentation"
+                                     viewBox="0 0 16 16">
+                                    <g stroke="currentColor"
+                                       fill="none"
+                                       fill-rule="evenodd"
+                                       stroke-linecap="square">
+                                        <path d="M8,1 L8,15"></path>
+                                        <path d="M1,8 L15,8"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="" data-PDID="@cartItem.PDID"
+                       style="text-decoration:none;"
+                       class="CartItem__Remove Link Link--underline"
+                       data-quantity="0"
+                       data-action="remove-item"
+                       aria-valuenow="@i">移除</a>
+                </div>
+            }
         </div>
-        @if (Request.Url != new Uri("http://localhost:4559/Cart/ShoppingCart"))    //網址需要改成發行版
-        {
-            <div class="CartItem__Actions Heading Text--subdued"
-                 style="text-align: center">
-                <div class="CartItem__QuantitySelector">
-                    <div class="QuantitySelector">
-                        <a id="cut_@i"
-                           class="QuantitySelector__Button Link Link--primary"
-                           title="減少數量"
-                           data-quantity="0" aria-valuenow="@i">
-                            <svg class="Icon Icon--minus"
-                                 role="presentation"
-                                 viewBox="0 0 16 2">
-                                <path d="M1,1 L15,1"
-                                      stroke="currentColor"
-                                      fill="none"
-                                      fill-rule="evenodd"
-                                      stroke-linecap="square"></path>
-                            </svg>
-                        </a>
-                        <input type="text"
-                               name="Quantity"
-                               id="Quantity_@i"
-                               class="QuantitySelector__CurrentQuantity"
-                               pattern="[0-9]*"
-                               value="@cartItem.Quantity" readonly="readonly" />
-                        <a id="add_@i"
-                           class="QuantitySelector__Button Link Link--primary"
-                           title="增加數量"
-                           data-quantity="2" aria-valuenow="@i">
-                            <svg class="Icon Icon--plus"
-                                 role="presentation"
-                                 viewBox="0 0 16 16">
-                                <g stroke="currentColor"
-                                   fill="none"
-                                   fill-rule="evenodd"
-                                   stroke-linecap="square">
-                                    <path d="M8,1 L8,15"></path>
-                                    <path d="M1,8 L15,8"></path>
-                                </g>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <a href="" data-PDID="@cartItem.PDID"
-                   style="text-decoration:none;"
-                   class="CartItem__Remove Link Link--underline"
-                   data-quantity="0"
-                   data-action="remove-item"
-                   aria-valuenow="@i">移除</a>
-            </div>
-        }
+
     </div>
     <div class="CartItem__Actions Heading Text--subdued"
          style="text-align: center">
