@@ -18,19 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: Shippers
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Shippers.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<Shipper> shippers = db.Shippers.OrderBy(x => x.ShipperID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Shipper;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
+            List<Shipper> shippers = db.Shippers.OrderBy(x => x.ShipperID).ToList();
             return View("../BackSystem/ListAllShipper", shippers);
         }
 
@@ -46,14 +36,12 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] =(int)SideIndex.Shipper;    //Active Dashboard
             return View(shipper);
         }
 
         // GET: Shippers/Create
         public ActionResult Create()
         {
-            ViewData["SideActive"] =(int)SideIndex.Shipper;    //Active Dashboard
             return View();
         }
 
@@ -68,7 +56,6 @@ namespace ANVI_Mvc.Controllers
             {
                 db.Shippers.Add(shipper);
                 db.SaveChanges();
-                ViewData["SideActive"] =(int)SideIndex.Shipper;    //Active Dashboard
                 return RedirectToAction("Index");
             }
 
@@ -87,7 +74,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] =(int)SideIndex.Shipper;    //Active Dashboard
             return View(shipper);
         }
 
@@ -104,7 +90,6 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] =(int)SideIndex.Shipper;    //Active Dashboard
             return View(shipper);
         }
 
@@ -120,7 +105,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] =(int)SideIndex.Shipper;    //Active Dashboard
             return View(shipper);
         }
 
@@ -132,7 +116,6 @@ namespace ANVI_Mvc.Controllers
             Shipper shipper = db.Shippers.Find(id);
             db.Shippers.Remove(shipper);
             db.SaveChanges();
-            ViewData["SideActive"] =(int)SideIndex.Shipper;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

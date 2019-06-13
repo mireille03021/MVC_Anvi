@@ -103,6 +103,19 @@ svg:not(:root) {
     overflow: hidden;
 }
 
+/*頭部邊線*/
+
+.Header {
+    background: #fff;
+    color: #1c1b1b;
+    -webkit-box-shadow: 0 -1px #ddd inset;
+    box-shadow: 0 -1px #ddd inset;
+    -webkit-transition: background 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+}
+
 /*黑色半透明*/
 .PageOverlay {
     position: fixed;
@@ -807,6 +820,10 @@ svg:not(:root) {
         -ms-flex: 1 0 0px;
         flex: 1 0 0;
     }
+
+    .Header__FlexItem:last-child {
+        text-align: right;
+    }
 }
 
 @media screen and (min-width: 1008px) {
@@ -887,6 +904,10 @@ svg:not(:root) {
 @media screen and (max-width: 640px) {
     .hidden-phone {
         display: none !important;
+    }
+
+    .Header__Wrapper {
+        padding: 15px 18px;
     }
 }
 

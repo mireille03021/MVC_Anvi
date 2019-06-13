@@ -18,18 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: Images
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Images.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<Image> images = db.Images.OrderBy(x => x.ImgID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
+            List<Image> images = db.Images.OrderBy(x => x.ImgID).ToList();
             return View("../BackSystem/ListAllImage", images);
         }
 
@@ -45,7 +36,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
@@ -53,7 +43,6 @@ namespace ANVI_Mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID");
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View();
         }
 
@@ -72,7 +61,6 @@ namespace ANVI_Mvc.Controllers
             }
 
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", image.PDID);
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
@@ -89,7 +77,6 @@ namespace ANVI_Mvc.Controllers
                 return HttpNotFound();
             }
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", image.PDID);
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
@@ -107,7 +94,6 @@ namespace ANVI_Mvc.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.PDID = new SelectList(db.ProductDetails, "PDID", "PDID", image.PDID);
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
@@ -123,7 +109,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return View(image);
         }
 
@@ -135,7 +120,6 @@ namespace ANVI_Mvc.Controllers
             Image image = db.Images.Find(id);
             db.Images.Remove(image);
             db.SaveChanges();
-            ViewData["SideActive"] = (int)SideIndex.Image;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

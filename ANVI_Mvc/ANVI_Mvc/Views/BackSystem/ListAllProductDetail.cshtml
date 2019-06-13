@@ -3,9 +3,132 @@
 @{
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "產品明細";
+    int i = 0;
 }
 
-<h2>ListAllProductDetail</h2>
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>產品</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">產品</a></li>
+                    <li class="active">產品明細</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content mt-3">
+    <div class="animated fadeIn">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <p>
+                            @Html.ActionLink("Create New", "Create", "ProductDetails")
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="bootstrap-data-table-export_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc text-center" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="@Html.DisplayNameFor(model => model.PDID): activate to sort column descending" style="width:52px; text-align:center;">
+                                        @Html.DisplayNameFor(model => model.PDID)
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(model => model.Product.ProductName): activate to sort column ascending" style="width: 184px;">
+                                        @Html.DisplayNameFor(model => model.Product.ProductName)
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(model => model.Color.ColorName): activate to sort column ascending" style="width: 280px;">
+                                        @Html.DisplayNameFor(model => model.Color.ColorName)
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label=" @Html.DisplayNameFor(model => model.Size.SizeContext): activate to sort column ascending" style="width: 150px;">
+                                        @Html.DisplayNameFor(model => model.Size.SizeContext)
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1" aria-label=" @Html.DisplayNameFor(model => model.Stock): activate to sort column ascending" style="width: 150px;">
+                                        @Html.DisplayNameFor(model => model.Stock)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    i = 1;
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    string classstring = string.Empty;
+                                    if (i % 2 == 0)
+                                    {
+                                        classstring = "role=\"row\" class=\"even\"";
+                                    }
+                                    else
+                                    {
+                                        classstring = "role=\"row\" class=\"odd\"";
+                                    }
+                                    <tr @classstring>
+                                        <td class="sorting_1">
+                                            @Html.DisplayFor(modelItem => item.PDID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Color.ColorName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Size.SizeContext)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Stock)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", "ProductDetails", new { id = item.PDID }, new { @class = "" }) |
+                                            @Html.ActionLink("Details", "Details", "ProductDetails", new { id = item.PDID }, new { @class = "" }) |
+                                            @Html.ActionLink("Delete", "Delete", "ProductDetails", new { id = item.PDID }, new { @class = "" })
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div><!-- .animated -->
+</div>
+
+@section endJS{
+
+    <script src="~/Assets/BackSystem/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/Assets/BackSystem/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Assets/BackSystem/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/Assets/BackSystem/assets/js/init-scripts/data-table/datatables-init.js"></script>
+}
+
+@*<h2>ListAllProductDetail</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", "ProductDetails")
@@ -30,30 +153,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PDID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color.ColorName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size.SizeContext)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", "ProductDetails", new { id=item.PDID }, new { @class = "" }) |
-            @Html.ActionLink("Details", "Details", "ProductDetails", new { id=item.PDID }, new { @class = "" }) |
-            @Html.ActionLink("Delete", "Delete", "ProductDetails", new { id=item.PDID }, new { @class = "" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PDID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.ColorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size.SizeContext)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "ProductDetails", new { id = item.PDID }, new { @class = "" }) |
+                @Html.ActionLink("Details", "Details", "ProductDetails", new { id = item.PDID }, new { @class = "" }) |
+                @Html.ActionLink("Delete", "Delete", "ProductDetails", new { id = item.PDID }, new { @class = "" })
+            </td>
+        </tr>
+    }
 
 </table>
 
@@ -66,7 +190,7 @@
             {
                 --previous;
             }
-            if((int)ViewData["PageActive"] != (int)ViewData["Pages"])
+            if ((int)ViewData["PageActive"] != (int)ViewData["Pages"])
             {
                 ++next;
             }
@@ -80,4 +204,4 @@
         }
         <li class="page-item"><a class="page-link" href="/BackSystem/ListAllProductDetail/@next">Next</a></li>
     </ul>
-</nav>
+</nav>*@

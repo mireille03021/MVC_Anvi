@@ -18,19 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: Orders
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Orders.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<Order> orders  = db.Orders.OrderBy(x => x.OrderID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
+            List<Order> orders  = db.Orders.OrderBy(x => x.OrderID).ToList();
             return View("../BackSystem/ListAllOrder", orders);
         }
 
@@ -46,7 +36,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             return View(order);
         }
 
@@ -55,7 +44,6 @@ namespace ANVI_Mvc.Controllers
         {
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
             ViewBag.ShippingID = new SelectList(db.Shippers, "ShipperID", "ShippName");
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             return View();
         }
 
@@ -75,7 +63,6 @@ namespace ANVI_Mvc.Controllers
 
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", order.UserID);
             ViewBag.ShippingID = new SelectList(db.Shippers, "ShipperID", "ShippName", order.ShippingID);
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             return View(order);
         }
 
@@ -93,7 +80,6 @@ namespace ANVI_Mvc.Controllers
             }
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", order.UserID);
             ViewBag.ShippingID = new SelectList(db.Shippers, "ShipperID", "ShippName", order.ShippingID);
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             return View(order);
         }
 
@@ -112,7 +98,6 @@ namespace ANVI_Mvc.Controllers
             }
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", order.UserID);
             ViewBag.ShippingID = new SelectList(db.Shippers, "ShipperID", "ShippName", order.ShippingID);
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             return View(order);
         }
 
@@ -128,7 +113,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             return View(order);
         }
 
@@ -140,7 +124,6 @@ namespace ANVI_Mvc.Controllers
             Order order = db.Orders.Find(id);
             db.Orders.Remove(order);
             db.SaveChanges();
-            ViewData["SideActive"] = (int)SideIndex.Order;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

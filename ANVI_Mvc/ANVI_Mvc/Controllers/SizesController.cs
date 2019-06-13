@@ -18,19 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: Sizes
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.Sizes.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<Size> sizes = db.Sizes.OrderBy(x => x.SizeID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
-
+            List<Size> sizes = db.Sizes.OrderBy(x => x.SizeID).ToList();
             return View("../BackSystem/ListAllSize", sizes);
         }
 
@@ -46,14 +36,12 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             return View(size);
         }
 
         // GET: Sizes/Create
         public ActionResult Create()
         {
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             return View();
         }
 
@@ -70,7 +58,6 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             return View(size);
         }
 
@@ -86,7 +73,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             return View(size);
         }
 
@@ -103,7 +89,6 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             return View(size);
         }
 
@@ -119,7 +104,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             return View(size);
         }
 
@@ -131,7 +115,6 @@ namespace ANVI_Mvc.Controllers
             Size size = db.Sizes.Find(id);
             db.Sizes.Remove(size);
             db.SaveChanges();
-            ViewData["SideActive"] = (int)SideIndex.Size;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

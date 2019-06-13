@@ -4,8 +4,123 @@
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "Delete";
 }
+@section topCSS
+{
+    <link href="~/Assets/BackSystem/assets/css/CRUD-style.css" rel="stylesheet" />
+}
 
-<h2>Delete</h2>
+
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>產品</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">產品</a></li>
+                    <li><a href="/BackSystem/ListAllProduct">產品</a></li>
+                    <li class="active">Delete</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Delete <strong>產品</strong>
+    </div>
+    <div class="card-body card-block">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductID)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UnitPrice)
+            </dd>
+
+        </dl>
+        <div class="Segment__ButtonWrapper">
+            <a href="/account/addresses"
+               class="btn btn-outline-secondary btn-lg btn-block"
+               data-toggle="modal"
+               data-target="#Dcn">
+                Detail
+            </a>
+
+            <div id="Dcn"
+                 class="modal right fade bd-example-modal-xl"
+                 tabindex="-1"
+                 role="dialog"
+                 aria-labelledby="myExtraLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <h3>Are you sure you want to delete this?</h3>
+                            <div class="form-actions no-color">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductID)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductID)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductName)
+                                </dd>
+                                <br />
+                                <input type="submit" value="Delete" class="btn btn-danger btn-lg btn-block" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+
+@*<h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -54,33 +169,4 @@
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
-</div>
-<div class="card">
-    <div class="card-header">
-        Input <strong>Sizes</strong>
-    </div>
-    <div class="card-body card-block">
-        <form action="" method="post" class="form-horizontal">
-            <div class="row form-group">
-                <div class="col col-sm-5"><label for="input-small" class=" form-control-label">Small Input</label></div>
-                <div class="col col-sm-6"><input type="text" id="input-small" name="input-small" placeholder=".form-control-sm" class="input-sm form-control-sm form-control"></div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Normal Input</label></div>
-                <div class="col col-sm-6"><input type="text" id="input-normal" name="input-normal" placeholder="Normal" class="form-control"></div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-sm-5"><label for="input-large" class=" form-control-label">Large Input</label></div>
-                <div class="col col-sm-6"><input type="text" id="input-large" name="input-large" placeholder=".form-control-lg" class="input-lg form-control-lg form-control"></div>
-            </div>
-        </form>
-    </div>
-    <div class="card-footer">
-        <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Submit
-        </button>
-        <button type="reset" class="btn btn-danger btn-sm">
-            <i class="fa fa-ban"></i> Reset
-        </button>
-    </div>
-</div>
+</div>*@

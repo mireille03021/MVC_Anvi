@@ -18,19 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: AspNetUsers
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.AspNetUsers.Count()); //傳入總筆數
-
-            int startRow = (activePage - 1) * PageRows;  //起始記錄Index
-
-            List<AspNetUser> aspNetUsers= db.AspNetUsers.OrderBy(x => x.Id).Skip(startRow).Take(PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = 13;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
+            List<AspNetUser> aspNetUsers= db.AspNetUsers.OrderBy(x => x.Id).ToList();
             return View("../BackSystem/ListAllIdentityModels", aspNetUsers);
         }
 
@@ -46,7 +36,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 13;    //Active Dashboard
             return View(aspNetUser);
         }
 
@@ -54,7 +43,6 @@ namespace ANVI_Mvc.Controllers
         public ActionResult Create()
         {
             ViewBag.City = new SelectList(Citys);
-            ViewData["SideActive"] = 13;    //Active Dashboard
             return View();
         }
 
@@ -71,7 +59,6 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = 13;    //Active Dashboard
             return View(aspNetUser);
         }
 
@@ -88,7 +75,6 @@ namespace ANVI_Mvc.Controllers
                 return HttpNotFound();
             }
             ViewBag.City = new SelectList(Citys);
-            ViewData["SideActive"] = 13;    //Active Dashboard
             return View(aspNetUser);
         }
 
@@ -105,7 +91,6 @@ namespace ANVI_Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["SideActive"] = 13;    //Active Dashboard
             return View(aspNetUser);
         }
 
@@ -121,7 +106,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = 13;    //Active Dashboard
             return View(aspNetUser);
         }
 
@@ -133,7 +117,6 @@ namespace ANVI_Mvc.Controllers
             AspNetUser aspNetUser = db.AspNetUsers.Find(id);
             db.AspNetUsers.Remove(aspNetUser);
             db.SaveChanges();
-            ViewData["SideActive"] = 13;    //Active Dashboard
             return RedirectToAction("Index");
         }
 

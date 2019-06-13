@@ -691,7 +691,8 @@ input[type="radio"] {
     width: 16px;
     height: 16px;
     font-size: 0.8em;
-    left: 15%;
+    top: 20%;
+    left: 20%;
     color: white;
 }
 

@@ -26,8 +26,9 @@ namespace ANVI_Mvc.Helpers
                 new SidebarItem { Id = (int)SideIndex.OrderDetail, Name = "訂單明細", SideGroup = (int)SideGroup.order, Icon = "ti-shopping-cart", Url = "/BackSystem/ListAllOrderDetail"},
                 new SidebarItem { Id = (int)SideIndex.Shipper, Name = "物流", SideGroup = (int)SideGroup.order, Icon = "ti-truck", Url = "/BackSystem/ListAllShipper"},
                 new SidebarItem { Id = (int)SideIndex.IdentityModels, Name = "帳戶管理", SideGroup = (int)SideGroup.Identity, Icon = "ti-user", Url = "/BackSystem/ListAllIdentityModels"},
-                new SidebarItem { Id = (int)SideIndex.BackSystemRegister, Name = "後台帳戶註冊", SideGroup = (int)SideGroup.Identity, Icon = "ti-user", Url = "/BackSystem/BackSystemRegister"}
-
+                new SidebarItem { Id = (int)SideIndex.BackSystemRegister, Name = "後台帳戶註冊", SideGroup = (int)SideGroup.Identity, Icon = "ti-user", Url = "/BackSystem/BackSystemRegister"},
+                new SidebarItem { Id = (int)SideIndex.AllStockChart, Name = "庫存圖表", SideGroup = (int)SideGroup.productChart, Icon = "fa fa-bar-chart", Url = "/BackSystem/AllStockChart"},
+                new SidebarItem { Id = (int)SideIndex.AllKindChart, Name = "種類圖表", SideGroup = (int)SideGroup.productChart, Icon = "fa fa-bar-chart", Url = "/BackSystem/AllKindChart"}
             };
 
             return cates;

@@ -4,8 +4,141 @@
     Layout = "~/Views/Shared/_BackSystem_Layout.cshtml";
     ViewBag.Title = "Details";
 }
+@section topCSS
+{
+    <link href="~/Assets/BackSystem/assets/css/CRUD-style.css" rel="stylesheet" />
+}
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>會員</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="#">會員</a></li>
+                    <li><a href="/BackSystem/ListAllIdentityModels">帳戶管理</a></li>
+                    <li class="active">Details</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Details</h2>
+<div class="card">
+    <div class="card-header">
+        Details <strong>帳戶管理</strong>
+    </div>
+    <div class="card-body card-block">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PasswordHash)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PasswordHash)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Country)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Country)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ZipCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BankAccount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BankAccount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditCard)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreditCard)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+@*<h2>Details</h2>
 
 <div>
     <h4>AspNetUser</h4>
@@ -112,4 +245,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

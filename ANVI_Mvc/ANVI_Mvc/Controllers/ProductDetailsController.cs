@@ -18,18 +18,9 @@ namespace ANVI_Mvc.Controllers
         private Helper hp = new Helper();
 
         // GET: ProductDetails
-        public ActionResult Index(int id = 1)
+        public ActionResult Index()
         {
-            int activePage = id; //目前所在頁
-            //計算Page頁數
-            int Pages = hp.Cul_Pages(db.ProductDetails.Count()); //傳入總筆數
-            int startRow = (activePage - 1) * ConstantData.PageRows;  //起始記錄Index
-
-            List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.PDID).Skip(startRow).Take(ConstantData.PageRows).ToList();
-
-            ViewData["PageActive"] = id;    //Active頁碼
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;    //Active Dashboard
-            ViewData["Pages"] = Pages;  //頁數
+            List<ProductDetail> productDetils = db.ProductDetails.OrderBy(x => x.PDID).ToList();
             return View("../BackSystem/ListAllProductDetail", productDetils);
         }
 
@@ -45,7 +36,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -55,7 +45,6 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName");
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName");
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext");
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View();
         }
 
@@ -76,7 +65,6 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName", productDetail.ColorID);
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", productDetail.ProductID);
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext", productDetail.SizeID);
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -95,7 +83,6 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName", productDetail.ColorID);
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", productDetail.ProductID);
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext", productDetail.SizeID);
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -115,7 +102,6 @@ namespace ANVI_Mvc.Controllers
             ViewBag.ColorID = new SelectList(db.Colors, "ColorID", "ColorName", productDetail.ColorID);
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", productDetail.ProductID);
             ViewBag.SizeID = new SelectList(db.Sizes, "SizeID", "SizeContext", productDetail.SizeID);
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -131,7 +117,6 @@ namespace ANVI_Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return View(productDetail);
         }
 
@@ -143,7 +128,6 @@ namespace ANVI_Mvc.Controllers
             ProductDetail productDetail = db.ProductDetails.Find(id);
             db.ProductDetails.Remove(productDetail);
             db.SaveChanges();
-            ViewData["SideActive"] = (int)SideIndex.ProductDetail;
             return RedirectToAction("Index");
         }
 
