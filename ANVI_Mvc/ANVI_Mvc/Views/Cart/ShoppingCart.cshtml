@@ -1,9 +1,15 @@
 ﻿@using ANVI_Mvc.Services
 @{
-    ViewBag.Title = "Cart";
     var currentCart = CartService.GetCurrentCart();
-    var JsonStock = Json.Encode(ViewBag.Stocks);
-    var JsonCheckStock = Json.Encode(ViewBag.CheckStocks);
+    int[] stocks = new int[CartService.GetCurrentCart().Count];
+    var CheckStocks = false;
+    if (CartService.GetCurrentCart() != null)
+    {
+        stocks = CartService.getEachProductStocks();
+        CheckStocks = true;
+    }
+    var JsonStock = Json.Encode(stocks);
+    var JsonCheckStock = Json.Encode(CheckStocks);
 }
 @section topCSS
 {
