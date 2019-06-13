@@ -1,0 +1,256 @@
+﻿@using ANVI_Mvc.Services
+@{
+    var currentCart = CartService.GetCurrentCart();
+    int[] stocks = new int[CartService.GetCurrentCart().Count];
+    var CheckStocks = false;
+    if (CartService.GetCurrentCart() != null)
+    {
+        stocks = CartService.getEachProductStocks();
+        CheckStocks = true;
+    }
+    var JsonStock = Json.Encode(stocks);
+    var JsonCheckStock = Json.Encode(CheckStocks);
+}
+@section topCSS
+{
+    <link rel="stylesheet" href="~/Assets/css/ShoppingCart_CSS.css" />
+}
+
+<main id="main" role="main">
+    <div class="Container">
+        @if (currentCart.cartItems.Count > 0)
+        {
+            <header class="PageHeader">
+                <div class="SectionHeader SectionHeader_center">
+                    <h1 class="SectionHeader_Heading Heading u-h1">購物車</h1>
+                </div>
+            </header>
+
+            <div class="PageContent">
+                <form action="/Cart/SubmitOrder"
+                      method="POST"
+                      class="Cart Cart--expanded"
+                      novalidate>
+                    <input type="hidden"
+                           name="attributes[collection_mobile_items_per_row]"
+                           value="" />
+                    <input type="hidden"
+                           name="attributes[collection_desktop_items_per_row]"
+                           value="" />
+                    <div class="Cart_ItemList">
+                        @Html.Action("GetCartItem", "Cart")
+                    </div>
+                    <footer class="Cart__Footer">
+                        <div class="Cart__NoteContainer">
+                            <span class="Cart__NoteButton">備註</span>
+                            <textarea class="Cart__Note Form__Textarea"
+                                      name="Remark"
+                                      id="cart-note"
+                                      rows="4"
+                                      placeholder="填寫備註..."></textarea>
+                        </div>
+                        <div class="Cart__Recap">
+                            <span class="Cart__Total Heading u-h6">
+                                總額:
+                                <span data-money-convertible>
+                                    <span id="Amount"></span>
+                                </span>
+                            </span>
+                            <span class="Cart__Taxes Text--subdued">運費將於結帳時計算</span>
+                            <button type="submit" id="checkout"
+                                    name="checkout"
+                                    class="Cart__Checkout Button Button--primary Button--full">
+                                前往結帳
+                            </button>
+                        </div>
+                    </footer>
+                </form>
+                @*<div class="Section Section--spacingExtraLarge">
+                    <div class="Panel">
+                        <h2 class="Panel__Title Heading u-h2">運費估計</h2>
+
+                        <div class="Panel__Content">
+                            <div class="ShippingEstimator">
+                                <div class="ShippingEstimator__Form">
+                                    <div class="ShippingEstimator__Country Form__Select Select Select--primary">
+                                        <svg class="Icon Icon--select-arrow"
+                                             role="presentation"
+                                             viewBox="0 0 19 12">
+                                            <polyline fill="none"
+                                                      stroke="currentColor"
+                                                      points="17 2 9.5 10 2 2"
+                                                      fill-rule="evenodd"
+                                                      stroke-width="2"
+                                                      stroke-linecap="square"></polyline>
+                                        </svg>
+                                        <select name="country"
+                                                title="國家"
+                                                data-default="United States">
+
+                                            <option value="台北市"> 台北市 </option>
+                                            <option value="基隆市"> 基隆市 </option>
+                                            <option value="新北市"> 新北市 </option>
+                                            <option value="宜蘭縣"> 宜蘭縣 </option>
+                                            <option value="新竹市"> 新竹市 </option>
+                                            <option value="新竹縣"> 新竹縣 </option>
+                                            <option value="桃園縣"> 桃園縣 </option>
+                                            <option value="苗栗縣"> 苗栗縣 </option>
+                                            <option value="台中市"> 台中市 </option>
+                                            <option value="彰化縣"> 彰化縣 </option>
+                                            <option value="南投縣"> 南投縣 </option>
+                                            <option value="嘉義市"> 嘉義市 </option>
+                                            <option value="嘉義縣"> 嘉義縣 </option>
+                                            <option value="雲林縣"> 雲林縣 </option>
+                                            <option value="台南市"> 台南市 </option>
+                                            <option value="高雄市"> 高雄市 </option>
+                                            <option value="澎湖縣"> 澎湖縣 </option>
+                                            <option value="屏東縣"> 屏東縣 </option>
+                                            <option value="台東縣"> 台東縣 </option>
+                                            <option value="花蓮縣"> 花蓮縣 </option>
+                                            <option value="金門縣"> 金門縣 </option>
+                                            <option value="連江縣"> 連江縣 </option>
+                                        </select>
+                                    </div>
+                                    <input type="text"
+                                           class="ShippingEstimator__Zip Form__Input"
+                                           name="zip"
+                                           placeholder="郵遞區號" />
+                                    <button type="button"
+                                            class="ShippingEstimator__Submit Button Button--primary">
+                                        計算
+                                    </button>
+                                </div>
+
+                                <div class="ShippingEstimator__Error Alert Alert--error"
+                                     style="display: none"></div>
+                                <div class="ShippingEstimator__Results">
+                                    <div class="ShippingEstimator__ResultsInner"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        }
+        else
+        {
+            <div class="EmptyState">
+                <div class="Container">
+                    <h1 class="EmptyState__Title Heading u-h5">尚無商品加入購物車</h1>  
+                    <a href="/Home/ProductsPage" class="EmptyState__Action Button Button--primary">前往購物</a>                
+                </div>          
+            </div>
+        }
+    </div>
+</main>
+
+@section endJS
+{
+    <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
+    <script>
+        var stocks = @JsonStock;
+        var CheckStock = @JsonCheckStock;
+
+        if (!CheckStock) {
+            alert("庫存不足，請修正數量");
+        }
+        if ($(".CartItem").length == 0) {
+            $("#checkout").attr('disabled', 'disabled');
+        }
+
+        for (var i = 0; i < @currentCart.Count; i++) {
+            $("#add_" + i).on('click',doAdd);
+            $("#cut_" + i).on('click',doCut);
+        }
+        //點擊移除
+        $(".CartItem__Remove").on('click', function() {
+            var url = "/Cart/DeleteCartItem/";
+            var PDID = this.getAttribute('data-PDID');
+            var controlNumber = this.getAttribute('aria-valuenow');
+            $(document).ready(function() {
+                $.ajax({
+                    url: url,
+                    method:"POST",
+                    data: {
+                        pdid:PDID
+                    },
+                    success: function () {
+                        //使用load來重讀中間購物商品的區塊(CartItemPartial)
+                        $(".Cart_ItemList").load("/Cart/GetCartItem", function() {
+                            stocks.splice(controlNumber, 1);
+                            @{  //更新Cart內容
+                            currentCart = CartService.GetCurrentCart();
+                            }
+                            //重新覆上移除事件
+                            for (var i = 0; i < @currentCart.Count; i++) {
+                                $("#add_" + i).on('click',doAdd);
+                                $("#cut_" + i).on('click', doCut);
+                            }
+                            //更新價格
+                            ChangeAmount();
+                        });
+                    },
+                    error: function() {
+                        alert("移除失敗，請重新來過");
+                    }
+                });
+            });
+        });
+        function doAdd() {
+            var controlNumber = this.getAttribute('aria-valuenow');
+            var PDID = $("#CartItem_" + controlNumber).attr('value');
+            var quantity = $("#Quantity_" + controlNumber).val();
+            var stock = stocks[controlNumber];
+            if (quantity < stock) {
+                $("#Quantity_" + controlNumber).val(parseInt(quantity) + 1); //畫面的更新
+                //資料的更新，避免下次在點進來時還是1
+                $(document).ready(function() {
+                    $.ajax({
+                        //讓ajax可以去執行我的CartController的AddQuantity方法
+                        url: "/Cart/AddQuantity/",
+                        method: "POST",
+                        data: {
+                            pdid: PDID
+                        }
+                    });
+                    ChangeAmount();
+                });
+            }
+        }
+        function doCut() {
+            var controlNumber = this.getAttribute('aria-valuenow');
+            var PDID = $("#CartItem_" + controlNumber).attr('value');
+            var quantity = $("#Quantity_" + controlNumber).val();
+            var stock = stocks[controlNumber];
+            if (quantity > 1) {
+                $("#Quantity_" + controlNumber).val(parseInt(quantity) - 1);
+                $(document).ready(function() {
+                    $.ajax({
+                        url: "/Cart/ReduceQuantity/",
+                        method: "POST",
+                        data: {
+                            pdid: PDID
+                        }
+                    });
+                });
+                ChangeAmount();
+            }
+        }
+        //畫面上的總金額需要更新
+        function ChangeAmount() {
+            var Amount = 0;
+            for (var i = 0; i < @currentCart.Count; i++) {
+                var unitPrice = parseFloat($("#UnitPrice_" + i).attr('value'));
+                var quantity = parseInt($("#Quantity_" + i).val());
+                Amount += (unitPrice * quantity);
+            }
+            $("#Amount").val(Amount);
+            var pattern = /(-?\d+)(\d{3})/;
+            var AmountText = Amount.toString().replace(pattern,"$1,$2");
+            $("#Amount").text("$"+ AmountText + "TWD");
+        }
+
+        ChangeAmount();
+
+    </script>
+}

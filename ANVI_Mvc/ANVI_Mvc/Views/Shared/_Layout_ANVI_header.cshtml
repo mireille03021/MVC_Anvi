@@ -59,7 +59,7 @@
                 </svg>
             </button>
         </div>
-        @*@Html.Action("ShoppingCart", "Cart")*@
+        @Html.Partial("_ShoppingCart")
     </div>
 
     <!--黑色RWD-->
@@ -301,7 +301,7 @@
                                 <ul class="lineonelist">
                                     <li class="account"> <a href="/Home/AccountPage">帳號</a></li>
                                     <li class="search"><a href="/Search/SearchIndex">搜尋</a></li>
-                                    <li class="cart"> <a  id="cart" data-action="open-drawer" data-drawer-id="sidebar-cart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
+                                    <li class="cart"> <a href="/Cart/ShoppingCart" id="cart" data-action="open-drawer" data-drawer-id="sidebar-cart">購物車(<snap class="header_cartcount">@currentCart.Count</snap>)</a></li>
                                 </ul>
                             </nav>
                         </div>

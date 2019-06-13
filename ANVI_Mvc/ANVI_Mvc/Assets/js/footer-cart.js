@@ -15,6 +15,7 @@ $(function() {
         if (count % 2 == 0) {
             $('#PageOverBlack').removeClass("is-visible");
         }
+        return false;
     }
 
     $('#PageOverBlack').click(function() {
