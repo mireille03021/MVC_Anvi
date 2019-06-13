@@ -149,6 +149,7 @@
 {
     <script type="text/javascript" src="~/Assets/js/jquery-3.3.1.js"></script>
     <script>
+        $(function() {
         var stocks = @JsonStock;
         var CheckStock = @JsonCheckStock;
 
@@ -168,35 +169,49 @@
             var url = "/Cart/DeleteCartItem/";
             var PDID = this.getAttribute('data-PDID');
             var controlNumber = this.getAttribute('aria-valuenow');
-            $(document).ready(function() {
-                $.ajax({
-                    url: url,
-                    method:"POST",
-                    data: {
-                        pdid:PDID
-                    },
-                    success: function () {
-                        //使用load來重讀中間購物商品的區塊(CartItemPartial)
-                        $(".Cart_ItemList").load("/Cart/GetCartItem", function() {
-                            stocks.splice(controlNumber, 1);
-                            @{  //更新Cart內容
-                            currentCart = CartService.GetCurrentCart();
-                            }
-                            //重新覆上移除事件
-                            for (var i = 0; i < @currentCart.Count; i++) {
-                                $("#add_" + i).on('click',doAdd);
-                                $("#cut_" + i).on('click', doCut);
-                            }
-                            //更新價格
-                            ChangeAmount();
-                        });
-                    },
-                    error: function() {
-                        alert("移除失敗，請重新來過");
+            @*$.post(url,{ pdid:PDID }, function(data) {   //post寫法
+                $(".Cart_ItemList").load("/Cart/GetCartItem", function() {
+                    stocks.splice(controlNumber, 1);
+                    @{  //更新Cart內容
+                        currentCart = CartService.GetCurrentCart();
                     }
+                    //重新覆上移除事件
+                    for (var i = 0; i < @currentCart.Count; i++) {
+                        $("#add_" + i).on('click',doAdd);
+                        $("#cut_" + i).on('click', doCut);
+                    }
+                    //更新價格
+                    ChangeAmount();
                 });
+            });*@
+            $.ajax({   //ajax寫法
+                url: url,
+                method:"POST",
+                data: {
+                    pdid:PDID
+                },
+                success: function () {
+                    //使用load來重讀中間購物商品的區塊(CartItemPartial)
+                    $(".Cart_ItemList").load("/Cart/GetCartItem", function() {
+                        stocks.splice(controlNumber, 1);
+                        @{  //更新Cart內容
+                                currentCart = CartService.GetCurrentCart();
+                                }
+                        //重新覆上移除事件
+                        for (var i = 0; i < @currentCart.Count; i++) {
+                            $("#add_" + i).on('click',doAdd);
+                            $("#cut_" + i).on('click', doCut);
+                        }
+                        //更新價格
+                        ChangeAmount();
+                    });
+                },
+                error: function() {
+                    alert("移除失敗，請重新來過");
+                }
             });
         });
+
         function doAdd() {
             var controlNumber = this.getAttribute('aria-valuenow');
             var PDID = $("#CartItem_" + controlNumber).attr('value');
@@ -205,7 +220,7 @@
             if (quantity < stock) {
                 $("#Quantity_" + controlNumber).val(parseInt(quantity) + 1); //畫面的更新
                 //資料的更新，避免下次在點進來時還是1
-                $(document).ready(function() {
+                //$(document).ready(function() {
                     $.ajax({
                         //讓ajax可以去執行我的CartController的AddQuantity方法
                         url: "/Cart/AddQuantity/",
@@ -215,9 +230,10 @@
                         }
                     });
                     ChangeAmount();
-                });
+                //});
             }
         }
+
         function doCut() {
             var controlNumber = this.getAttribute('aria-valuenow');
             var PDID = $("#CartItem_" + controlNumber).attr('value');
@@ -225,7 +241,7 @@
             var stock = stocks[controlNumber];
             if (quantity > 1) {
                 $("#Quantity_" + controlNumber).val(parseInt(quantity) - 1);
-                $(document).ready(function() {
+                //$(document).ready(function() {
                     $.ajax({
                         url: "/Cart/ReduceQuantity/",
                         method: "POST",
@@ -233,10 +249,11 @@
                             pdid: PDID
                         }
                     });
-                });
+                //});
                 ChangeAmount();
             }
         }
+
         //畫面上的總金額需要更新
         function ChangeAmount() {
             var Amount = 0;
@@ -252,6 +269,6 @@
         }
 
         ChangeAmount();
-
+    });
     </script>
 }
