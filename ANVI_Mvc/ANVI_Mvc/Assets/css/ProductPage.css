@@ -784,7 +784,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 #collection-sort-popover {
-  bottom: 70px;
+  bottom: 58px;
   /*right: 151px;*/
 }
 
@@ -1014,4 +1014,12 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
         padding: 0 75px 0;
     }
 }
+@media screen and (max-width: 640px) {
+    .CollectionToolbar__Group
+    .CollectionToolbar__Item {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
     /*# sourceMappingURL=styles.css.map */
