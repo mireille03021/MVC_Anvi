@@ -953,6 +953,12 @@ svg:not(:root) {
   }
 }
 
+@media screen and (max-width: 640px) {
+    .PageLayout__Section--secondary {
+        margin: 0 0 40px;
+    }
+}
+
 @media screen and (min-width: 641px) {
   .Form__Item, .Form__Alert {
     margin-bottom: 30px;
@@ -971,6 +977,54 @@ a:hover {
     /* 2 */
  color:black;
     
+}
+
+@media screen and (max-width: 600px) {
+    .rwdtable {
+    border: 0;
+    }
+
+    .rwdtable caption {
+        font-size: 1.3em;
+    }
+
+    .rwdtable thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .rwdtable tr {
+        background-color: #fff;
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+        .rwdtable td {
+            color: #212529;
+            border-bottom: 1px solid #ddd;
+            display: block;
+            font-size: .8em;
+            text-align: right;
+        }
+
+        .rwdtable td:before {
+            color: black;
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .rwdtable td:last-child {
+            border-bottom: 0;
+        }
 }
 
 

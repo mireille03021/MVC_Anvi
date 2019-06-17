@@ -73,7 +73,7 @@
                         <th scope="col">Recipient</th>
                       </tr>
                     </thead>*@
-                            <tbody>
+                            <tbody >
                                 @if (Model.Orders != null)
                                 {
                                     foreach (var item in Model.Orders)
@@ -93,7 +93,7 @@
                                                 @Html.DisplayFor(modelItem => item.RecipientName)
                                             </td>
                                             <td></td>
-                                            <td></td>
+                                            @*<td></td>*@
                                             <td>
                                                 @{ 
                                                     DcnName = "Dcn" + item.OrderID;
@@ -117,30 +117,30 @@
                                                          aria-hidden="true">
                                                         <div class="modal-dialog modal-xl">
                                                             <div class="modal-content">
-                                                                <table class="table">
+                                                                <table class="table rwdtable">
                                                                     @if (Model.OrderDetails != null)
                                                                     {
                                                                         <thead>
                                                                             <tr>
-                                                                                <th scope="col">
+                                                                                <th scope="col" data-label="ImgName">
                                                                                     @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Images.First().ImgName)
                                                                                 </th>
-                                                                                <th scope="col">
+                                                                                <th scope="col" >
                                                                                     @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Product.ProductName)
                                                                                 </th>
-                                                                                <th scope="col">
+                                                                                <th scope="col" >
                                                                                     @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.PDID)
                                                                                 </th>
-                                                                                <th scope="col">
+                                                                                <th scope="col" >
                                                                                     @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Color.ColorName)
                                                                                 </th>
-                                                                                <th scope="col">
+                                                                                <th scope="col" >
                                                                                     @Html.DisplayNameFor(model => model.OrderDetails.First().ProductDetail.Size.SizeContext)
                                                                                 </th>
-                                                                                <th scope="col">
+                                                                                <th scope="col" >
                                                                                     @Html.DisplayNameFor(model => model.OrderDetails.First().Quantity)
                                                                                 </th>
-                                                                                <th scope="col">
+                                                                                <th scope="col" >
                                                                                     @Html.DisplayNameFor(model => model.OrderDetails.First().Price)
                                                                                 </th>
                                                                             </tr>
@@ -152,7 +152,7 @@
                                                                             @foreach (var sonitem in thisOrderDetails)
                                                                             {
                                                                                 <tr>
-                                                                                    <td>
+                                                                                    <td data-label="ImgName">
                                                                                         @{
                                                                                             endIndext = sonitem.PDID.IndexOf("-");
                                                                                             PDIDtoFindImg = sonitem.PDID.Substring(0, endIndext) + "-1";
@@ -163,22 +163,22 @@
                                                                                             </a>
                                                                                         </div>
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td data-label="ProductName">
                                                                                         @Html.DisplayFor(modelItem => sonitem.ProductDetail.Product.ProductName)
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td data-label="PDID">
                                                                                         @Html.DisplayFor(modelItem => sonitem.PDID)
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td data-label="ColorName">
                                                                                         @Html.DisplayFor(modelItem => sonitem.ProductDetail.Color.ColorName)
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td data-label="SizeContext">
                                                                                         @Html.DisplayFor(modelItem => sonitem.ProductDetail.Size.SizeContext)
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td data-label="Quantity">
                                                                                         @Html.DisplayFor(modelItem => sonitem.Quantity)
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td data-label="Price">
                                                                                         @Html.DisplayFor(modelItem => sonitem.Price)
                                                                                     </td>
                                                                                 </tr>
