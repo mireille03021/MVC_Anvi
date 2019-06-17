@@ -164,32 +164,24 @@
                                                 運送須知
                                             </a>
                                         </div>
-                                    </div>
-                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
                                             <a href="/Other/Returns"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
                                                 退/換貨須知
                                             </a>
                                         </div>
-                                    </div>
-                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
                                             <a href="/Other/TermsConditions"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
                                                 隱私政策
                                             </a>
                                         </div>
-                                    </div>
-                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
                                             <a href="/Other/Privacy"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
                                                 服務條款
                                             </a>
                                         </div>
-                                    </div>
-                                    <div class="Collapsible__Content">
                                         <div class="Collapsible">
                                             <a href="/Other/About"
                                                class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">
@@ -273,17 +265,17 @@
                         <button id="open-drawer-btn" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-desk"
                                 aria-expanded="false" data-action="open-drawer" data-drawer-id="sidebar-menu"
                                 aria-label="Open navigation">
-                           
-                                <span class="hidden-tablet-and-up">
-                                    <svg class="Icon Icon--nav" role="presentation" viewBox="0 0 20 14">
-                                        <path d="M0 14v-1h20v1H0zm0-7.5h20v1H0v-1zM0 0h20v1H0V0z" fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                                <span class="hidden-phone">
-                                    <svg class="Icon Icon--nav-desktop" role="presentation" viewBox="0 0 24 16">
-                                        <path d="M0 15.985v-2h24v2H0zm0-9h24v2H0v-2zm0-7h24v2H0v-2z" fill="currentColor"></path>
-                                    </svg>
-                                </span>
+
+                            <span class="hidden-tablet-and-up">
+                                <svg class="Icon Icon--nav" role="presentation" viewBox="0 0 20 14">
+                                    <path d="M0 14v-1h20v1H0zm0-7.5h20v1H0v-1zM0 0h20v1H0V0z" fill="currentColor"></path>
+                                </svg>
+                            </span>
+                            <span class="hidden-phone">
+                                <svg class="Icon Icon--nav-desktop" role="presentation" viewBox="0 0 24 16">
+                                    <path d="M0 15.985v-2h24v2H0zm0-9h24v2H0v-2zm0-7h24v2H0v-2z" fill="currentColor"></path>
+                                </svg>
+                            </span>
                         </button>
                     </div>
                     <div class="Header__FlexItem">
@@ -590,40 +582,65 @@
 
     <!--黑色Menu的li-->
     <script>
-        var bigblackmenu = $("Button.Collapsible__Button.u-h6");
-        var midblackmenu = $("Button.Collapsible__Button.u-h7");
-        var bigblackmenuli = $("Button.Collapsible__Button.u-h6+.Collapsible__Inner");
-        var midblackmenuli = $("Button.Collapsible__Button.u-h7+.Collapsible__Inner");
+        var bigblackmenu = $(".SidebarMenu__Nav>.Collapsible>Button.Collapsible__Button.u-h6");
+        var midblackmenu = $(".Collapsible__Content>.Collapsible>Button.Collapsible__Button.u-h7");
+        var bigblackmenuli = $(".SidebarMenu__Nav>.Collapsible>Button.Collapsible__Button.u-h6+.Collapsible__Inner");
+        var midblackmenuli = $(".Collapsible__Content>.Collapsible>Button.Collapsible__Button.u-h7+.Collapsible__Inner");
+        var bigblackmenuhei = $(".SidebarMenu__Nav>.Collapsible>Button.Collapsible__Button.u-h6+.Collapsible__Inner>.Collapsible__Content");
+        var midblackmenuhei = $(".Collapsible__Content>.Collapsible>Button.Collapsible__Button.u-h7+.Collapsible__Inner>.Collapsible__Content");
+        var bigblackbtn;
+        var autoInner;
+        var bigblackothbtn;
+        var zeroothInner;
 
         /*開啟、關閉*/
-        for (var i = 0; i < $("Button.Collapsible__Button.Heading.u-h6").length; i++) {
+        for (var i = 0; i < $(bigblackmenu).length; i++) {
             $(bigblackmenu[i]).on("click", function () {
-                for (var j = 0; j < $("Button.Collapsible__Button.Heading.u-h6").length; j++) {
+                for (var j = 0; j < $(bigblackmenu).length; j++) {
                     if (bigblackmenu[j] == this) {
+                        $bigblackbtn = $(this);
+                        $autoInner = $(bigblackmenuli[j]);
+
                         if ($(bigblackmenu[j]).attr("aria-expanded") == "false") {
                             $(this).attr("aria-expanded", true);
-                            $(bigblackmenuli[j]).css({ "overflow": "visible", "height": "auto" });
+                            $(bigblackmenuli[j]).css({ "overflow": "visible", "height": bigblackmenuhei[j].offsetHeight + "px" });
+                            setTimeout(openauto, 350);
                         }
                         else {
                             $(this).attr("aria-expanded", false);
-                            $(bigblackmenuli[j]).css({ "overflow": "hidden", "height": "0px" });
+                            $(bigblackmenuli[j]).css({ "overflow": "hidden", "height": bigblackmenuhei[j].offsetHeight + "px" });
+                            setTimeout(closezero, 10);
                         }
                     }
                     else {
-                        $(bigblackmenu[j]).attr("aria-expanded", false);
-                        $(bigblackmenuli[j]).css({ "overflow": "hidden", "height": "0px" });
+                        $(bigblackmenuli[j]).css({ "overflow": "visible", "height": bigblackmenuhei[j].offsetHeight + "px" });
+                        $bigblackothbtn = $(bigblackmenu[j]);
+                        $zeroothInner = $(bigblackmenuli[j]);
+                        setTimeout(closeothzero, 3);
                     }
                 }
             });
         }
 
-        for (var i = 0; i < $("Button.Collapsible__Button.Heading.u-h7").length; i++) {
+        function openauto() {
+            $autoInner.css({ "overflow": "visible", "height": "auto" });
+        }
+        function closezero() {
+            $bigblackbtn.attr("aria-expanded", false);
+            $autoInner.css({ "overflow": "hidden", "height": "0px" });
+        }
+        function closeothzero() {
+            $bigblackothbtn.attr("aria-expanded", false);
+            $zeroothInner.css({ "overflow": "hidden", "height": "0px" });
+        }
+
+        for (var i = 0; i < $(midblackmenu).length; i++) {
             $(midblackmenu[i]).on("click", function () {
-                for (var j = 0; j < $("Button.Collapsible__Button.Heading.u-h7").length; j++) {
+                for (var j = 0; j < $(midblackmenu).length; j++) {
                     if (midblackmenu[j] == this) {
                         if ($(midblackmenu[j]).attr("aria-expanded") == "false") {
                             $(this).attr("aria-expanded", true);
-                            $(midblackmenuli[j]).css({ "overflow": "visible", "height": "auto" });
+                            $(midblackmenuli[j]).css({ "overflow": "visible", "height": midblackmenuhei[j].offsetHeight + "px" });
                         }
                         else {
                             $(this).attr("aria-expanded", false);

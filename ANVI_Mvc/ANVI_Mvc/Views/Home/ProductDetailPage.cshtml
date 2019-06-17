@@ -568,31 +568,41 @@
     <script>
 
         /*運送、退貨*/
-        var Collapsible_Btn_OC = document.getElementsByClassName("Collapsible Collapsible--large>Collapsible__Button");
-        console.log(Collapsible_Btn_OC);
-        for (var i = 0; i < Collapsible_Btn_OC.length; i++) {
-            Collapsible_Btn_OC[i].onclick = Collapsible_Btn_TF;
-        }
-        function Collapsible_Btn_TF() {
+        var Collapsible_Btn_OC = $(".Collapsible--large>Button.Collapsible__Button.u-h6");
+        var Collapsible_text_OC = $(".Collapsible--large>Button.Collapsible__Button.u-h6+.Collapsible__Inner");
+        var Collapsible_hei_OC = $(".Collapsible--large>Button.Collapsible__Button.u-h6+.Collapsible__Inner>.Collapsible__Content");
+        //var bigblackbtn;
+        //var autoInner;
+        //var bigblackothbtn;
+        //var zeroothInner;
 
-            //console.log(this);
-            var x = this.getAttribute("aria-expanded");
-            if (x == "true") {
-                //console.log("T")
-                x = "false";
-                this.nextElementSibling.style.overflow = "hidden";
-                this.nextElementSibling.style.height = "0px";
-            } else {
-                //console.log("F")
-                x = "true";
-                //console.log(this.nextElementSibling);
-                this.nextElementSibling.style.overflow = "visible";
-                //console.log(this);
-                this.nextElementSibling.style.height = "auto";
-            }
-            this.setAttribute("aria-expanded", x);
-        }
+        for (var i = 0; i < $(Collapsible_Btn_OC).length; i++) {
+            $(Collapsible_Btn_OC[i]).on("click", function () {
+                for (var j = 0; j < $(Collapsible_Btn_OC).length; j++) {
+                    if (Collapsible_Btn_OC[j] == this) {
+                        $bigblackbtn = $(this);
+                        $autoInner = $(Collapsible_text_OC[j]);
 
+                        if ($(Collapsible_Btn_OC[j]).attr("aria-expanded") == "false") {
+                            $(this).attr("aria-expanded", true);
+                            $(Collapsible_text_OC[j]).css({ "overflow": "visible", "height": Collapsible_hei_OC[j].offsetHeight + "px" });
+                            setTimeout(openauto, 350);
+                        }
+                        else {
+                            $(this).attr("aria-expanded", false);
+                            $(Collapsible_text_OC[j]).css({ "overflow": "hidden", "height": Collapsible_hei_OC[j].offsetHeight + "px" });
+                            setTimeout(closezero, 10);
+                        }
+                    }
+                    else {
+                        $(Collapsible_text_OC[j]).css({ "overflow": "visible", "height": Collapsible_hei_OC[j].offsetHeight + "px" });
+                        $bigblackothbtn = $(Collapsible_Btn_OC[j]);
+                        $zeroothInner = $(Collapsible_text_OC[j]);
+                        setTimeout(closeothzero, 3);
+                    }
+                }
+            });
+        }
     </script>
 
     <!-- 跳轉位置 -->
