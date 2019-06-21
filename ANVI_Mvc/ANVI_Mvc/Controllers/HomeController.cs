@@ -30,12 +30,14 @@ namespace ANVI_Mvc.Controllers
         }
 
         [AllowAnonymous]
+        [OutputCache(CacheProfile = "HomeIndex")]
         public ActionResult Index()   //主頁面
         {
             return View();
         }
 
         [AllowAnonymous]
+        [OutputCache(CacheProfile = "ProductsPage")]
         public ActionResult ProductsPage(string Category ,int page,string sortOrder) //商品頁面
         {
             var products = from p in db.Products select p;
@@ -104,7 +106,7 @@ namespace ANVI_Mvc.Controllers
             //每八個一頁
             var ProductNumber = 8;
             //取得目前頁所需要顯示的物品
-            var pList = AllProducts.Skip((page - 1) * ProductNumber).Take(page * ProductNumber).ToList();
+            var pList = AllProducts.Skip((page - 1) * ProductNumber).Take(ProductNumber).ToList();
 
             //建立全部商品
             ProductsService service = new ProductsService(db);

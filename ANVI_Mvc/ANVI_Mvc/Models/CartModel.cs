@@ -83,8 +83,6 @@ namespace ANVI_Mvc.Models
             }
             return true;
         }
-        //刪除一筆CartItem
-        
 
         //新增一筆CartItem
         private bool AddCartItem(CartItemViewModel cartItem)
@@ -114,6 +112,7 @@ namespace ANVI_Mvc.Models
         {
             cartItems.First(x => x.PDID == PDID).Quantity -= 1;
         }
+        //刪除一筆CartItem
         internal void DeleCartItem(string pdid)
         {
             var item = cartItems.Find(x => x.PDID == pdid);

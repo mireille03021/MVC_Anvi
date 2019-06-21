@@ -711,6 +711,7 @@
                 //console.log(document.getElementsByClassName("shopify-payment-button")[0]);
                 document.getElementById("Stock").innerHTML = product["Stock"];
             }
+
             $("#AddToCart").on('click', AddCartItem);
             function AddCartItem() {
                 var url = "/Cart/AddToCart/";
