@@ -1027,6 +1027,12 @@ a:hover {
         }
 }
 
+@media screen and (min-width: 1240px) {
+    .EmptyState {
+        margin: 250px 0;
+    }
+}
+
 
 
 /*# sourceMappingURL=Account.css.map */

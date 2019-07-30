@@ -11,15 +11,30 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ANVI_Mvc.Models;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Net;
+using System.Net.Mail;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace ANVI_Mvc
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // 將您的電子郵件服務外掛到這裡以傳送電子郵件。
-            return Task.FromResult(0);
+            //var apiKey = "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";
+            var apiKey = ConfigurationManager.AppSettings["SendGrid_KUMA"];
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("Services@CodeMagic.com", "CodeMagic客服人員");
+            var to = new EmailAddress(message.Destination);
+            var subject = message.Subject;
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, message.Body, message.Body);
+            var response = await client.SendEmailAsync(msg);
+
+            await Task.FromResult(0);
         }
     }
 

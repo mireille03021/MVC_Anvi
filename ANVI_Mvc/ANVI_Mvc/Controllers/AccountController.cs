@@ -143,7 +143,7 @@ namespace ANVI_Mvc.Controllers
         }
 
         //
-        // GET: /Account/Register
+        // GET: /Account/Register 
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -171,7 +171,7 @@ namespace ANVI_Mvc.Controllers
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         //使用者角色名稱
                         var RoleName = model.RoleString;
@@ -188,13 +188,23 @@ namespace ANVI_Mvc.Controllers
 
                         // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
                         // 傳送包含此連結的電子郵件
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
 
-                        if(model.RoleString == "CustomerUser")
+                        if (model.RoleString == "CustomerUser")
                         {
+                            //var te = db.AspNetUsers.Where(x => x.EmailConfirmed == true);
+                            if (user.EmailConfirmed == false)
+                            {
+                                string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                                await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
+
+                                ViewBag.Message = "請檢查你的郵件信箱，帳號必須被驗證才能登入";
+                                return RedirectToAction("AccountPage", "Home");
+
+                            }
+
                             return RedirectToAction("AccountPage", "Home");
+
                         }else
                         {
                             return RedirectToAction("Index", "BackSystem");
